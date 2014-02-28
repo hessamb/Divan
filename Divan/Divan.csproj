@@ -1,0 +1,482 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{D394093D-402B-4126-8EC7-D4F3C2561DF4}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Divan</RootNamespace>
+    <AssemblyName>Divan</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Icon1.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.Common, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="Microsoft.VisualBasic.PowerPacks.Vs, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ChangeManagement\Action.cs" />
+    <Compile Include="ChangeManagement\ActionExecuter.cs" />
+    <Compile Include="ChangeManagement\ActionList.cs" />
+    <Compile Include="Divan.cs">
+      <DependentUpon>Divan.dbml</DependentUpon>
+    </Compile>
+    <Compile Include="Divan.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Divan.dbml</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\ActionReportGenerator.cs" />
+    <Compile Include="Assets\Asset.cs" />
+    <Compile Include="ChangeManagement\AssetChangeRecord.cs" />
+    <Compile Include="UI\AssetHistoryWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\AssetHistoryWindow.Designer.cs">
+      <DependentUpon>AssetHistoryWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Assets\AssetList.cs" />
+    <Compile Include="Assets\AssetQuery.cs" />
+    <Compile Include="Reports\AssetReportGenerator.cs" />
+    <Compile Include="UI\AssetsWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\AssetsWindow.designer.cs">
+      <DependentUpon>AssetsWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\AssetDetailsWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\AssetDetailsWindow.Designer.cs">
+      <DependentUpon>AssetDetailsWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Users\AssetSupporter.cs" />
+    <Compile Include="ChangeManagement\Baseline.cs" />
+    <Compile Include="ChangeManagement\Changable.cs" />
+    <Compile Include="ChangeManagement\CompositeAction.cs" />
+    <Compile Include="Assets\CompositeAsset.cs" />
+    <Compile Include="Labels\CompositeLabel.cs" />
+    <Compile Include="UI\ConfirmationBox.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\ConfirmationBox.Designer.cs">
+      <DependentUpon>ConfirmationBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\ChangeStateWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\ChangeStateWindow.Designer.cs">
+      <DependentUpon>ChangeStateWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\ActionsWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\ActionsWindow.designer.cs">
+      <DependentUpon>ActionsWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\BaselinesWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\BaselinesWindow.designer.cs">
+      <DependentUpon>BaselinesWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Assets\ConsistancyRule.cs" />
+    <Compile Include="Reports\ConsistencyReportGenerator.cs" />
+    <Compile Include="Labels\ContinuousDomain.cs" />
+    <Compile Include="Labels\DiscreteDomain.cs" />
+    <Compile Include="Users\Employee.cs" />
+    <Compile Include="ChangeManagement\Event.cs" />
+    <Compile Include="Labels\Label.cs" />
+    <Compile Include="Labels\LabelDomain.cs" />
+    <Compile Include="Labels\LabelInstance.cs" />
+    <Compile Include="Labels\LabelList.cs" />
+    <Compile Include="Labels\LabelPlugin.cs" />
+    <Compile Include="Reports\LabelReportGenerator.cs" />
+    <Compile Include="ChangeManagement\LabelValueUpdater.cs" />
+    <Compile Include="ChangeManagement\LocationUpdater.cs" />
+    <Compile Include="UI\LoginWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\LoginWindow.Designer.cs">
+      <DependentUpon>LoginWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Users\Manager.cs" />
+    <Compile Include="ChangeManagement\PeriodicExecuter.cs" />
+    <Compile Include="Reports\PeriodReportGenerator.cs" />
+    <Compile Include="Assets\Property.cs" />
+    <Compile Include="Reports\ReportGenerator.cs" />
+    <Compile Include="UI\SetingsWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\SetingsWindow.Designer.cs">
+      <DependentUpon>SetingsWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\NewBaselineWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\NewBaselineWindow.Designer.cs">
+      <DependentUpon>NewBaselineWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\EventsWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\EventsWindow.designer.cs">
+      <DependentUpon>EventsWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\NewEventWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\NewEventWindow.Designer.cs">
+      <DependentUpon>NewEventWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\NewActionWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\NewActionWindow.Designer.cs">
+      <DependentUpon>NewActionWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\EditLabelWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\EditLabelWindow.Designer.cs">
+      <DependentUpon>EditLabelWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\EditAssetWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\EditAssetWindow.Designer.cs">
+      <DependentUpon>EditAssetWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\LabelDetailsWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\LabelDetailsWindow.Designer.cs">
+      <DependentUpon>LabelDetailsWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\LabelsWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\LabelsWindow.designer.cs">
+      <DependentUpon>LabelsWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\NewAssetWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\NewAssetWindow.Designer.cs">
+      <DependentUpon>NewAssetWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\MainWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\MainWindow.Designer.cs">
+      <DependentUpon>MainWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\NewLabelWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\NewLabelWindow.Designer.cs">
+      <DependentUpon>NewLabelWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\PlugInCodeWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\PlugInCodeWindow.Designer.cs">
+      <DependentUpon>PlugInCodeWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UI\RemoveConfirmationBox.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\RemoveConfirmationBox.Designer.cs">
+      <DependentUpon>RemoveConfirmationBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\ReportAsset.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\ReportAsset.designer.cs">
+      <DependentUpon>ReportAsset.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\ReportActionWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\ReportActionWindow.Designer.cs">
+      <DependentUpon>ReportActionWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\ReportPeriod.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\ReportPeriod.Designer.cs">
+      <DependentUpon>ReportPeriod.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\ReportLabelWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\ReportLabelWindow.Designer.cs">
+      <DependentUpon>ReportLabelWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\UIHelper.cs" />
+    <Compile Include="Users\User.cs" />
+    <Compile Include="Users\UserList.cs" />
+    <Compile Include="Utility.cs" />
+    <None Include="Divan.dbml.layout">
+      <DependentUpon>Divan.dbml</DependentUpon>
+    </None>
+    <EmbeddedResource Include="UI\AssetHistoryWindow.resx">
+      <DependentUpon>AssetHistoryWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\AssetsWindow.resx">
+      <DependentUpon>AssetsWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\AssetDetailsWindow.resx">
+      <DependentUpon>AssetDetailsWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\ConfirmationBox.resx">
+      <DependentUpon>ConfirmationBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\ChangeStateWindow.resx">
+      <DependentUpon>ChangeStateWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\ActionsWindow.resx">
+      <DependentUpon>ActionsWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\BaselinesWindow.resx">
+      <DependentUpon>BaselinesWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\LoginWindow.resx">
+      <DependentUpon>LoginWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\SetingsWindow.resx">
+      <DependentUpon>SetingsWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\NewBaselineWindow.resx">
+      <DependentUpon>NewBaselineWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\EventsWindow.resx">
+      <DependentUpon>EventsWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\NewEventWindow.resx">
+      <DependentUpon>NewEventWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\NewActionWindow.resx">
+      <DependentUpon>NewActionWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\EditLabelWindow.resx">
+      <DependentUpon>EditLabelWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\EditAssetWindow.resx">
+      <DependentUpon>EditAssetWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\LabelDetailsWindow.resx">
+      <DependentUpon>LabelDetailsWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\LabelsWindow.resx">
+      <DependentUpon>LabelsWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\NewAssetWindow.resx">
+      <DependentUpon>NewAssetWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\MainWindow.resx">
+      <DependentUpon>MainWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\NewLabelWindow.resx">
+      <DependentUpon>NewLabelWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\PlugInCodeWindow.resx">
+      <DependentUpon>PlugInCodeWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="UI\RemoveConfirmationBox.resx">
+      <DependentUpon>RemoveConfirmationBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\ReportAsset.resx">
+      <DependentUpon>ReportAsset.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\ReportActionWindow.resx">
+      <DependentUpon>ReportActionWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\ReportPeriod.resx">
+      <DependentUpon>ReportPeriod.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\ReportLabelWindow.resx">
+      <DependentUpon>ReportLabelWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="Divan.dbml">
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>Divan.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Database.mdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Database_log.ldf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <DependentUpon>Database.mdf</DependentUpon>
+    </Content>
+    <Content Include="Icon1.ico" />
+    <None Include="Resources\icon.png" />
+    <None Include="Resources\icon_package_get.gif" />
+    <None Include="Resources\action_go.gif" />
+    <None Include="Resources\pencil.png" />
+    <None Include="Resources\page_text.gif" />
+    <None Include="Resources\disk.png" />
+    <None Include="Resources\delete.png" />
+    <None Include="Resources\cross.png" />
+    <None Include="Resources\add.png" />
+    <None Include="Resources\accept.png" />
+    <None Include="Resources\icon_info.gif" />
+    <None Include="Resources\list_note.gif" />
+    <None Include="Resources\page_tag_red.gif" />
+    <None Include="Resources\page_tag_blue.gif" />
+    <None Include="Resources\page_script.gif" />
+    <None Include="Resources\page_code.gif" />
+    <None Include="Resources\note_new.gif" />
+    <None Include="Resources\note_delete.gif" />
+    <None Include="Resources\note.gif" />
+    <None Include="Resources\list_users.gif" />
+    <None Include="Resources\list_settings.gif" />
+    <None Include="Resources\list_packages.gif" />
+    <None Include="Resources\list_links.gif" />
+    <None Include="Resources\list_keys.gif" />
+    <None Include="Resources\list_errors.gif" />
+    <None Include="Resources\list_components.gif" />
+    <None Include="Resources\image_new.gif" />
+    <None Include="Resources\image.gif" />
+    <None Include="Resources\icon_world.gif" />
+    <None Include="Resources\icon_wand.gif" />
+    <None Include="Resources\icon_user.gif" />
+    <None Include="Resources\icon_settings.gif" />
+    <None Include="Resources\icon_padlock.gif" />
+    <None Include="Resources\icon_package_add1.gif" />
+    <None Include="Resources\icon_package.gif" />
+    <None Include="Resources\icon_link.gif" />
+    <None Include="Resources\icon_key.gif" />
+    <None Include="Resources\icon_history.gif" />
+    <None Include="Resources\icon_favourites.gif" />
+    <None Include="Resources\icon_component.gif" />
+    <None Include="Resources\icon_clock.gif" />
+    <None Include="Resources\icon_attachment.gif" />
+    <None Include="Resources\icon_alert.gif" />
+    <None Include="Resources\icon_accept.gif" />
+    <None Include="Resources\action_stop.gif" />
+    <None Include="Resources\action_save.gif" />
+    <None Include="Resources\action_refresh_blue.gif" />
+    <None Include="Resources\action_forward.gif" />
+    <None Include="Resources\action_back.gif" />
+    <None Include="Resources\icon_package_add.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.5">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.5 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
