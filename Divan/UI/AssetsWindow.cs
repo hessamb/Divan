@@ -43,31 +43,8 @@ namespace Divan
         {
             UIHelper.SetPlaceHolder(searchTxt, "جستجوی دارایی");
 
+            assetsGrid.AutoGenerateColumns = false;
             assetsGrid.DataSource = AssetList.Instance.GetAll();
-            //assetsGrid.Columns["Id"].HeaderText = "شناسه";
-            assetsGrid.Columns["isPhysical"].HeaderText = "فیزیکی";
-            assetsGrid.Columns["isHuman"].HeaderText = "انسانی";
-            assetsGrid.Columns["isPortable"].HeaderText = "مکانمند";
-            assetsGrid.Columns["needsAutoUpdate"].HeaderText = "بروزرسانی خودکار";
-            //assetsGrid.
-
-            //for (int i = 0; i < 5; i++)
-            //{
-            //    TreeNode trafficLight = new TreeNode("چراغ راهنمایی چهارراه بهبودی");
-            //    TreeNode crossWalk = new TreeNode("خط‌کشی عابر پیاده چهارراه بهبودی");
-            //    TreeNode behboodi = new TreeNode("چهارراه بهبودی", new TreeNode[] { trafficLight, crossWalk });
-            //    TreeNode azadi = new TreeNode("خیابان آزادی", new TreeNode[] { behboodi });
-            //    azadi.ExpandAll();
-            //    //assetsTree.Nodes.Add(azadi);
-            //}
-
-            //for (int i = 0; i < 5; i++)
-            //{
-            //    assetsGrid.Rows.Add(new object[] {"azdst" + (i+1), "خیابان آزادی", false, true,true, false, true });
-            //    assetsGrid.Rows.Add(new object[] { "bhbdsq" + (i + 1), "چهارراه بهبودی", false, true, true, false, false, "azdst" + (i + 1) });
-            //    assetsGrid.Rows.Add(new object[] { "bhbdcw" + (i + 1), "خطکشی عابر پیاده چهارراه بهبودی", false, false, true, false, false, "bhbdsq" + (i + 1) });
-            //    assetsGrid.Rows.Add(new object[] { "bhbdlght" + (i + 1), "چراغ راهنمایی چهارراه بهبودی", false, false, true, false, false, "bhbdcw" + (i + 1) });
-            //}
         }
 
         private void assetsGrid_SelectionChanged(object sender, EventArgs e)
@@ -80,7 +57,7 @@ namespace Divan
 
         private void select_Click(object sender, EventArgs e)
         {
-           SelectedAsset = (string)assetsGrid.SelectedCells[0].OwningRow.Cells[1].Value;
+           SelectedAsset = (string)assetsGrid.SelectedCells[0].OwningRow.Cells[0].Value;
            DialogResult = System.Windows.Forms.DialogResult.OK;
         }
 
@@ -131,6 +108,11 @@ namespace Divan
                 message = "آیا از حذف دارایی «" + name + "» مطمئنید؟";
             }
             RemoveConfirmationBox.ShowConfirmation(message);
+        }
+
+        private void assetsGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

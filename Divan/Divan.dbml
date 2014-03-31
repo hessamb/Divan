@@ -2,7 +2,7 @@
   <Connection Mode="AppSettings" ConnectionString="Data Source=(LocalDB)\v11.0;AttachDbFilename=|DataDirectory|\Database.mdf;Integrated Security=True;Connect Timeout=30" SettingsObjectName="Divan.Properties.Settings" SettingsPropertyName="DatabaseConnectionString" Provider="System.Data.SqlClient" />
   <Table Name="dbo.Action" Member="Actions">
     <Type Name="Action">
-      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Id" AutoSync="Never" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="name" Type="System.String" DbType="NChar(30) NOT NULL" CanBeNull="false" />
       <Column Name="value" Type="System.String" DbType="NChar(100)" CanBeNull="true" />
       <Column Name="needsAutoRun" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
@@ -16,11 +16,10 @@
   </Table>
   <Table Name="dbo.Asset" Member="Assets">
     <Type Name="Asset">
-      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Id" AutoSync="Never" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="isHuman" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="isPortable" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="isPhysical" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
-      <Column Name="needsAutoUpdate" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Association Name="Asset_Action" Member="Actions" ThisKey="Id" OtherKey="assetID" Type="Action" />
       <Association Name="Asset_ConsistencyRule" Member="ConsistencyRules" ThisKey="Id" OtherKey="assetID" Type="ConsistencyRule" />
       <Association Name="Asset_LabelInstance" Member="LabelInstances" ThisKey="Id" OtherKey="assetID" Type="LabelInstance" />
@@ -30,7 +29,7 @@
   </Table>
   <Table Name="dbo.ConsistencyRule" Member="ConsistencyRules">
     <Type Name="ConsistencyRule">
-      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Id" AutoSync="Never" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="sValue" Type="System.String" DbType="NChar(30) NOT NULL" CanBeNull="false" />
       <Column Name="mValue" Type="System.String" DbType="NChar(30) NOT NULL" CanBeNull="false" />
       <Column Name="condition" Type="System.String" DbType="NChar(10) NOT NULL" CanBeNull="false" />
@@ -41,7 +40,7 @@
   </Table>
   <Table Name="dbo.DiscreteDomainValue" Member="DiscreteDomainValues">
     <Type Name="DiscreteDomainValue">
-      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Id" AutoSync="Never" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="value" Type="System.String" DbType="NChar(100) NOT NULL" CanBeNull="false" />
       <Column Name="domainID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Association Name="LabelDomain_DiscreteDomainValue" Member="LabelDomain" ThisKey="domainID" OtherKey="Id" Type="LabelDomain" IsForeignKey="true" />
@@ -49,7 +48,7 @@
   </Table>
   <Table Name="dbo.Event" Member="Events">
     <Type Name="Event">
-      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Id" AutoSync="Never" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="Name" Type="System.String" DbType="NChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="ActionID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Association Name="Action_Event" Member="Action" ThisKey="ActionID" OtherKey="Id" Type="Action" IsForeignKey="true" />
@@ -57,7 +56,7 @@
   </Table>
   <Table Name="dbo.Label" Member="Labels">
     <Type Name="Label">
-      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Id" AutoSync="Never" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="name" Type="System.String" DbType="NChar(30) NOT NULL" CanBeNull="false" />
       <Column Name="isChangable" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="domainID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
@@ -71,7 +70,7 @@
   </Table>
   <Table Name="dbo.LabelDomain" Member="LabelDomains">
     <Type Name="LabelDomain">
-      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Id" AutoSync="Never" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Association Name="LabelDomain_DiscreteDomainValue" Member="DiscreteDomainValues" ThisKey="Id" OtherKey="domainID" Type="DiscreteDomainValue" />
       <Association Name="LabelDomain_Label" Member="Labels" ThisKey="Id" OtherKey="domainID" Type="Label" />
       <Type Name="ContinuousDomain">
@@ -85,7 +84,7 @@
   </Table>
   <Table Name="dbo.LabelInstance" Member="LabelInstances">
     <Type Name="LabelInstance">
-      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Id" AutoSync="Never" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="labelID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="value" Type="System.String" DbType="NChar(100)" CanBeNull="true" />
       <Column Name="assetID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
@@ -95,14 +94,14 @@
   </Table>
   <Table Name="dbo.LabelPlugin" Member="LabelPlugins">
     <Type Name="LabelPlugin">
-      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Id" AutoSync="Never" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="code" Type="System.String" DbType="NChar(1000) NOT NULL" CanBeNull="false" />
       <Association Name="LabelPlugin_Label" Member="Labels" ThisKey="Id" OtherKey="pluginID" Type="Label" />
     </Type>
   </Table>
   <Table Name="dbo.Property" Member="Properties">
     <Type Name="Property">
-      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Id" AutoSync="Never" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="name" Type="System.String" DbType="NChar(30) NOT NULL" CanBeNull="false" />
       <Column Name="type" Type="System.String" DbType="NChar(10) NOT NULL" CanBeNull="false" />
       <Column Name="value" Type="System.String" DbType="NChar(100) NOT NULL" CanBeNull="false" />
@@ -112,7 +111,7 @@
   </Table>
   <Table Name="dbo.AttachedFile" Member="AttachedFiles">
     <Type Name="AttachedFile">
-      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Id" AutoSync="Never" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="path" Type="System.String" DbType="NChar(200) NOT NULL" CanBeNull="false" />
       <Column Name="assetID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Association Name="Asset_AttachedFile" Member="Asset" ThisKey="assetID" OtherKey="Id" Type="Asset" IsForeignKey="true" />

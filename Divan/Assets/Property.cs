@@ -7,6 +7,12 @@ namespace Divan
 {
     public partial class Property:Changable
     {
-
+        public Property(string name, string value, Asset asset, string type = "string")
+        {
+            this.name = name;
+            this.value = value;
+            this.Asset = asset;
+            this.type = type;
+        }
     }
 }
