@@ -38,7 +38,7 @@
             this.isHuman = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.isPhysical = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.isPortable = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.rightClickMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.مشاهدهمشخصاتToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.حذفToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -53,16 +53,16 @@
             this.delete = new System.Windows.Forms.Button();
             this.edit = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
-            this.contextMenuStrip2 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.howToDeleteMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.فقطازلیستپاککنToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.حذفازداخلداراییهایدیگرToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.select = new System.Windows.Forms.Button();
             this.cancel = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGrid_assets)).BeginInit();
-            this.contextMenuStrip1.SuspendLayout();
+            this.rightClickMenuStrip.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
-            this.contextMenuStrip2.SuspendLayout();
+            this.howToDeleteMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
             // searchTxt
@@ -93,7 +93,7 @@
             this.isHuman,
             this.isPhysical,
             this.isPortable});
-            this.dataGrid_assets.ContextMenuStrip = this.contextMenuStrip1;
+            this.dataGrid_assets.ContextMenuStrip = this.rightClickMenuStrip;
             this.dataGrid_assets.Location = new System.Drawing.Point(14, 59);
             this.dataGrid_assets.MultiSelect = false;
             this.dataGrid_assets.Name = "dataGrid_assets";
@@ -153,16 +153,16 @@
             this.isPortable.ReadOnly = true;
             this.isPortable.Width = 54;
             // 
-            // contextMenuStrip1
+            // rightClickMenuStrip
             // 
-            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.rightClickMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.مشاهدهمشخصاتToolStripMenuItem,
             this.toolStripSeparator1,
             this.حذفToolStripMenuItem,
             this.ویرایشToolStripMenuItem});
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.contextMenuStrip1.Size = new System.Drawing.Size(155, 76);
+            this.rightClickMenuStrip.Name = "contextMenuStrip1";
+            this.rightClickMenuStrip.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.rightClickMenuStrip.Size = new System.Drawing.Size(155, 98);
             // 
             // مشاهدهمشخصاتToolStripMenuItem
             // 
@@ -321,14 +321,14 @@
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button3_Click);
             // 
-            // contextMenuStrip2
+            // howToDeleteMenuStrip
             // 
-            this.contextMenuStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.howToDeleteMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.فقطازلیستپاککنToolStripMenuItem,
             this.حذفازداخلداراییهایدیگرToolStripMenuItem});
-            this.contextMenuStrip2.Name = "contextMenuStrip2";
-            this.contextMenuStrip2.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.contextMenuStrip2.Size = new System.Drawing.Size(246, 48);
+            this.howToDeleteMenuStrip.Name = "contextMenuStrip2";
+            this.howToDeleteMenuStrip.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.howToDeleteMenuStrip.Size = new System.Drawing.Size(246, 48);
             // 
             // فقطازلیستپاککنToolStripMenuItem
             // 
@@ -414,9 +414,9 @@
             this.Text = "دارایی‌ها";
             this.Load += new System.EventHandler(this.assetForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGrid_assets)).EndInit();
-            this.contextMenuStrip1.ResumeLayout(false);
+            this.rightClickMenuStrip.ResumeLayout(false);
             this.flowLayoutPanel1.ResumeLayout(false);
-            this.contextMenuStrip2.ResumeLayout(false);
+            this.howToDeleteMenuStrip.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -432,7 +432,7 @@
         private System.Windows.Forms.RadioButton radioButton3;
         private System.Windows.Forms.Button select;
         private System.Windows.Forms.Button cancel;
-        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ContextMenuStrip rightClickMenuStrip;
         private System.Windows.Forms.ToolStripMenuItem مشاهدهمشخصاتToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripMenuItem حذفToolStripMenuItem;
@@ -444,7 +444,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button changeState;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.ContextMenuStrip contextMenuStrip2;
+        private System.Windows.Forms.ContextMenuStrip howToDeleteMenuStrip;
         private System.Windows.Forms.ToolStripMenuItem فقطازلیستپاککنToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem حذفازداخلداراییهایدیگرToolStripMenuItem;
         private System.Windows.Forms.DataGridViewTextBoxColumn UID;

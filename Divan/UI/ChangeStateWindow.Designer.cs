@@ -35,26 +35,24 @@
             this.name = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.value = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
+            this.labelSearchText = new System.Windows.Forms.TextBox();
+            this.dataGrid_Label = new System.Windows.Forms.DataGridView();
+            this.LabelName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.LabelValue = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel2 = new System.Windows.Forms.Panel();
             this.cancelBtn = new System.Windows.Forms.Button();
             this.okBtn = new System.Windows.Forms.Button();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.مشاهدهمشخصاتToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.valueTxt = new System.Windows.Forms.TextBox();
-            this.labelLbl = new System.Windows.Forms.Label();
-            this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
-            this.dataGrid_DefinerLabel = new System.Windows.Forms.DataGridView();
-            this.Check = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.LabelName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.LabelValue = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.flowLayoutPanel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGrid_primaryInfo)).BeginInit();
             this.groupBox2.SuspendLayout();
+            this.flowLayoutPanel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGrid_Label)).BeginInit();
             this.panel2.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
-            this.flowLayoutPanel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGrid_DefinerLabel)).BeginInit();
             this.SuspendLayout();
             // 
             // flowLayoutPanel1
@@ -117,13 +115,58 @@
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.flowLayoutPanel2);
-            this.groupBox2.Controls.Add(this.dataGrid_DefinerLabel);
+            this.groupBox2.Controls.Add(this.dataGrid_Label);
             this.groupBox2.Location = new System.Drawing.Point(12, 201);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(467, 271);
             this.groupBox2.TabIndex = 9;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "برچسب‌ها و مقادیر:";
+            // 
+            // flowLayoutPanel2
+            // 
+            this.flowLayoutPanel2.Controls.Add(this.labelSearchText);
+            this.flowLayoutPanel2.Location = new System.Drawing.Point(7, 21);
+            this.flowLayoutPanel2.Name = "flowLayoutPanel2";
+            this.flowLayoutPanel2.Size = new System.Drawing.Size(452, 26);
+            this.flowLayoutPanel2.TabIndex = 19;
+            // 
+            // labelSearchText
+            // 
+            this.labelSearchText.Location = new System.Drawing.Point(274, 3);
+            this.labelSearchText.Name = "labelSearchText";
+            this.labelSearchText.Size = new System.Drawing.Size(175, 22);
+            this.labelSearchText.TabIndex = 1;
+            this.labelSearchText.TextChanged += new System.EventHandler(this.labelSearchText_TextChanged);
+            // 
+            // dataGrid_Label
+            // 
+            this.dataGrid_Label.AllowUserToAddRows = false;
+            this.dataGrid_Label.AllowUserToDeleteRows = false;
+            this.dataGrid_Label.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGrid_Label.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.LabelName,
+            this.LabelValue});
+            this.dataGrid_Label.Location = new System.Drawing.Point(6, 53);
+            this.dataGrid_Label.MultiSelect = false;
+            this.dataGrid_Label.Name = "dataGrid_Label";
+            this.dataGrid_Label.RowHeadersVisible = false;
+            this.dataGrid_Label.Size = new System.Drawing.Size(453, 212);
+            this.dataGrid_Label.TabIndex = 18;
+            // 
+            // LabelName
+            // 
+            this.LabelName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.LabelName.HeaderText = "برچسب";
+            this.LabelName.Name = "LabelName";
+            this.LabelName.ReadOnly = true;
+            this.LabelName.Width = 72;
+            // 
+            // LabelValue
+            // 
+            this.LabelValue.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.LabelValue.HeaderText = "مقدار";
+            this.LabelValue.Name = "LabelValue";
             // 
             // panel2
             // 
@@ -159,6 +202,7 @@
             this.okBtn.Text = "تایید";
             this.okBtn.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.okBtn.UseVisualStyleBackColor = true;
+            this.okBtn.Click += new System.EventHandler(this.okBtn_Click);
             // 
             // contextMenuStrip1
             // 
@@ -175,70 +219,6 @@
             this.مشاهدهمشخصاتToolStripMenuItem.Size = new System.Drawing.Size(204, 22);
             this.مشاهدهمشخصاتToolStripMenuItem.Text = "مشاهده مشخصات زیردارایی";
             this.مشاهدهمشخصاتToolStripMenuItem.Click += new System.EventHandler(this.مشاهدهمشخصاتToolStripMenuItem_Click);
-            // 
-            // valueTxt
-            // 
-            this.valueTxt.Location = new System.Drawing.Point(226, 3);
-            this.valueTxt.Name = "valueTxt";
-            this.valueTxt.Size = new System.Drawing.Size(175, 22);
-            this.valueTxt.TabIndex = 1;
-            this.valueTxt.Text = "متوسط";
-            // 
-            // labelLbl
-            // 
-            this.labelLbl.AutoSize = true;
-            this.labelLbl.Location = new System.Drawing.Point(407, 6);
-            this.labelLbl.Margin = new System.Windows.Forms.Padding(3, 6, 3, 0);
-            this.labelLbl.Name = "labelLbl";
-            this.labelLbl.Size = new System.Drawing.Size(42, 14);
-            this.labelLbl.TabIndex = 0;
-            this.labelLbl.Text = "خیابان:";
-            // 
-            // flowLayoutPanel2
-            // 
-            this.flowLayoutPanel2.Controls.Add(this.labelLbl);
-            this.flowLayoutPanel2.Controls.Add(this.valueTxt);
-            this.flowLayoutPanel2.Location = new System.Drawing.Point(7, 21);
-            this.flowLayoutPanel2.Name = "flowLayoutPanel2";
-            this.flowLayoutPanel2.Size = new System.Drawing.Size(452, 26);
-            this.flowLayoutPanel2.TabIndex = 19;
-            // 
-            // dataGrid_DefinerLabel
-            // 
-            this.dataGrid_DefinerLabel.AllowUserToAddRows = false;
-            this.dataGrid_DefinerLabel.AllowUserToDeleteRows = false;
-            this.dataGrid_DefinerLabel.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGrid_DefinerLabel.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Check,
-            this.LabelName,
-            this.LabelValue});
-            this.dataGrid_DefinerLabel.Location = new System.Drawing.Point(6, 53);
-            this.dataGrid_DefinerLabel.MultiSelect = false;
-            this.dataGrid_DefinerLabel.Name = "dataGrid_DefinerLabel";
-            this.dataGrid_DefinerLabel.RowHeadersVisible = false;
-            this.dataGrid_DefinerLabel.Size = new System.Drawing.Size(453, 212);
-            this.dataGrid_DefinerLabel.TabIndex = 18;
-            // 
-            // Check
-            // 
-            this.Check.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.Check.HeaderText = "";
-            this.Check.Name = "Check";
-            this.Check.Width = 5;
-            // 
-            // LabelName
-            // 
-            this.LabelName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.LabelName.HeaderText = "برچسب";
-            this.LabelName.Name = "LabelName";
-            this.LabelName.ReadOnly = true;
-            this.LabelName.Width = 72;
-            // 
-            // LabelValue
-            // 
-            this.LabelValue.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.LabelValue.HeaderText = "مقدار";
-            this.LabelValue.Name = "LabelValue";
             // 
             // ChangeStateWindow
             // 
@@ -263,11 +243,11 @@
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGrid_primaryInfo)).EndInit();
             this.groupBox2.ResumeLayout(false);
-            this.panel2.ResumeLayout(false);
-            this.contextMenuStrip1.ResumeLayout(false);
             this.flowLayoutPanel2.ResumeLayout(false);
             this.flowLayoutPanel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGrid_DefinerLabel)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGrid_Label)).EndInit();
+            this.panel2.ResumeLayout(false);
+            this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -286,10 +266,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn name;
         private System.Windows.Forms.DataGridViewTextBoxColumn value;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
-        private System.Windows.Forms.Label labelLbl;
-        private System.Windows.Forms.TextBox valueTxt;
-        private System.Windows.Forms.DataGridView dataGrid_DefinerLabel;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn Check;
+        private System.Windows.Forms.TextBox labelSearchText;
+        private System.Windows.Forms.DataGridView dataGrid_Label;
         private System.Windows.Forms.DataGridViewTextBoxColumn LabelName;
         private System.Windows.Forms.DataGridViewTextBoxColumn LabelValue;
     }

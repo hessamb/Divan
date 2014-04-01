@@ -168,9 +168,32 @@ namespace Divan
             }
         }
 
+        private bool doesMatch(DataGridViewRow row, string pattern)
+        {
+            foreach (string word in pattern.Split(" ".ToCharArray()))
+            {
+                bool matched = false;
+                foreach (DataGridViewCell cell in row.Cells)
+                {
+                    if (cell.Value is string && ((string)cell.Value).IndexOf(word) != -1)
+                    {
+                        matched = true;
+                        break;
+                    }
+                }
+                if (!matched)
+                    return false;
+            }
+            return true;
+        }
+
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
-
+            string pattern = labelSearchtxt.Text;
+            foreach (DataGridViewRow row in dataGrid_OtherLabel.Rows)
+            {
+                row.Visible = doesMatch(row, pattern);
+            }
         }
 
         private void compositAsset_CheckedChanged(object sender, EventArgs e)

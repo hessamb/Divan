@@ -13,6 +13,8 @@ namespace Divan
     public partial class ChangeStateWindow : Form
     {
         Asset selectedAsset;
+        List<int> labelId;
+
         public ChangeStateWindow()
         {
             InitializeComponent();
@@ -50,9 +52,28 @@ namespace Divan
             }
         }
 
+        private void loadLabelInstances()
+        {
+            IEnumerable<LabelInstance> labels = selectedAsset.LabelInstances;
+            labelId = new List<int>();
+
+            foreach (LabelInstance label in labels)
+            {
+                DataGridView grid = dataGrid_Label;
+                grid.Rows.Add(new object[] { label.Label.name, label.Label.setValue ? label.value : Label.UNASSANABLE_VALUE });
+                if (!label.Label.setValue)
+                {
+                    UIHelper.disableCell(grid.Rows[grid.Rows.Count - 1].Cells[2]);
+                }
+                labelId.Add(label.Id);
+            }
+        }
+
         private void NewAsset_Load(object sender, EventArgs e)
         {
+            UIHelper.SetPlaceHolder(labelSearchText, "جستجوی برچسب");
             fillPrimaryInfoGrid();
+            loadLabelInstances();
         }
 
         private void edit_Click(object sender, EventArgs e)
@@ -88,9 +109,57 @@ namespace Divan
 
         private void labelsTree_AfterSelect(object sender, TreeViewEventArgs e)
         {
-            string[] s =labelsTree.SelectedNode.Text.Split(':');
-            labelLbl.Text = s[0]+":";
-            valueTxt.Text = s[1];
+        }
+
+        private void okBtn_Click(object sender, EventArgs e)
+        {
+            IEnumerable<LabelInstance> labels = selectedAsset.LabelInstances;
+            labelId = new List<int>();
+
+            for (int i = 0; i < labelId.Count; i++)
+            {
+                int id = labelId[i];
+                var labelInstance = from label in DivanDataContext.Instance.LabelInstances
+                                    where label.labelID == id && label.assetID == selectedAsset.Id
+                                    select label;
+                try
+                {
+                    LabelInstance row = labelInstance.First();
+                    row.value = (string)dataGrid_Label.Rows[i].Cells[1].Value;
+                }
+                catch
+                {
+                }
+            }
+            DivanDataContext.Instance.SubmitChanges();
+        }
+
+        private bool doesMatch(DataGridViewRow row, string pattern)
+        {
+            foreach (string word in pattern.Split(" ".ToCharArray()))
+            {
+                bool matched = false;
+                foreach (DataGridViewCell cell in row.Cells)
+                {
+                    if (cell.Value is string && ((string)cell.Value).IndexOf(word) != -1)
+                    {
+                        matched = true;
+                        break;
+                    }
+                }
+                if (!matched)
+                    return false;
+            }
+            return true;
+        }
+
+        private void labelSearchText_TextChanged(object sender, EventArgs e)
+        {
+            string pattern = labelSearchText.Text;
+            foreach (DataGridViewRow row in dataGrid_Label.Rows)
+            {
+                row.Visible = doesMatch(row, pattern);
+            }
         }
     }
 }

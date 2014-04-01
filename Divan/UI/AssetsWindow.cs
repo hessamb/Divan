@@ -74,14 +74,19 @@ namespace Divan
 
         private void delete_Click(object sender, EventArgs e)
         {
-            contextMenuStrip2.Show(delete, 0, 0);
+            howToDeleteMenuStrip.Show(delete, 0, 0);
+        }
+
+        private Asset getSelectedAsset()
+        {
+            string uid = (string)dataGrid_assets.SelectedRows[0].Cells[0].Value;
+            Asset asset = AssetList.Instance.GetByUid(uid);
+            return asset;
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            string uid = (string)dataGrid_assets.SelectedRows[0].Cells[0].Value;
-            Asset asset = AssetList.Instance.GetByUid(uid);
-            (new AssetDetailsWindow(asset)).ShowDialog();
+            (new AssetDetailsWindow(getSelectedAsset())).ShowDialog();
         }
 
         private void assetsGrid_DoubleClick(object sender, EventArgs e)
@@ -91,15 +96,12 @@ namespace Divan
 
         private void changeState_Click(object sender, EventArgs e)
         {
-            (new ChangeStateWindow()).ShowDialog();
+            (new ChangeStateWindow(getSelectedAsset())).ShowDialog();
         }
 
         private void فقطازلیستپاککنToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            HashSet<int> set = new HashSet<int>();
-            for (int i = 0; i < dataGrid_assets.SelectedCells.Count; i++)
-                set.Add(dataGrid_assets.SelectedCells[i].RowIndex);
-            int cnt = set.Count;
+            int cnt = dataGrid_assets.SelectedRows.Count;
             string message = "";
             if (cnt > 1)
             {
@@ -107,10 +109,21 @@ namespace Divan
             }
             else if (cnt == 1)
             {
-                string name = (string)dataGrid_assets.SelectedCells[0].OwningRow.Cells[1].Value;
-                message = "آیا از حذف دارایی «" + name + "» مطمئنید؟";
+                string name = (string)dataGrid_assets.SelectedRows[0].Cells[1].Value;
+                message = "آیا از حذف دارایی " + name + " مطمئنید؟";
             }
-            RemoveConfirmationBox.ShowConfirmation(message);
+            if (RemoveConfirmationBox.ShowConfirmation(message) == DialogResult.Yes)
+            {
+                foreach (DataGridViewRow row in dataGrid_assets.SelectedRows)
+                {
+                    string uid = (string)row.Cells[0].Value;
+                    Asset rowAsset = AssetList.Instance.GetByUid(uid);
+                    DivanDataContext.Instance.Assets.DeleteOnSubmit(rowAsset);
+                }
+                DivanDataContext.Instance.SubmitChanges();
+                dataGrid_assets.DataSource = AssetList.Instance.GetAll();
+                dataGrid_assets.Update();
+            }
         }
 
         private void assetsGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)

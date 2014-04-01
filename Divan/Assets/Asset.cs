@@ -17,10 +17,12 @@ namespace Divan
             PERSONNEL_CODE_STRING = "PersonnelCode", HUMAN_DESCRIPTION_STRING = "HumanDescription";
         public const String PHYSICAL_DESCRIPTION_STRING = "PhysicalDescription";
 
-        public static readonly string[] SPECIAL_NAMES = new string[]{UID_STRING, NAME_STRING,
+        public readonly static String[] SPECIAL_NAMES = new String[]{UID_STRING, NAME_STRING,
             FIRST_NAME_STRING, LAST_NAME_STRING, NATIONAL_ID_STRING,
             PERSONNEL_CODE_STRING, HUMAN_DESCRIPTION_STRING,
             PHYSICAL_DESCRIPTION_STRING};
+
+        public const String UNNAMED_ASSET = "بی‌نام";
 
         public string UID
         {
@@ -40,7 +42,7 @@ namespace Divan
                 }
                 catch
                 {
-                    return "«بی‌نام»";
+                    return UNNAMED_ASSET;
                 }
             }
         }
