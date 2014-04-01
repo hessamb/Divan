@@ -8,16 +8,23 @@ namespace Divan
 {
     public partial class LabelList
     {
-        public List<Label> GetAll()
+        private static LabelList instance;
+
+        public static LabelList Instance
         {
-            //TODO
-            return null;
+            get
+            {
+                if (instance == null)
+                    instance = new LabelList();
+                return instance;
+            }
         }
 
-        public List<Label> GetAutoUpdatables()
+        public IEnumerable<Label> GetAll()
         {
-            //TODO
-            return null;
+            var labels = from l in DivanDataContext.Instance.Labels
+                         select l;
+            return labels.AsEnumerable();
         }
 
         public List<Label> GetResult(string query)

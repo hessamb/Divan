@@ -13,9 +13,14 @@ namespace Divan
         public const String UID_STRING = "UID";
         public const String NAME_STRING = "Name";
         public const String FIRST_NAME_STRING = "FirstName",
-            LAST_NAME_STRING = "LastName", National_ID_STRING = "NationalId",
+            LAST_NAME_STRING = "LastName", NATIONAL_ID_STRING = "NationalId",
             PERSONNEL_CODE_STRING = "PersonnelCode", HUMAN_DESCRIPTION_STRING = "HumanDescription";
         public const String PHYSICAL_DESCRIPTION_STRING = "PhysicalDescription";
+
+        public static readonly string[] SPECIAL_NAMES = new string[]{UID_STRING, NAME_STRING,
+            FIRST_NAME_STRING, LAST_NAME_STRING, NATIONAL_ID_STRING,
+            PERSONNEL_CODE_STRING, HUMAN_DESCRIPTION_STRING,
+            PHYSICAL_DESCRIPTION_STRING};
 
         public string UID
         {
@@ -76,7 +81,7 @@ namespace Divan
             {
                 try
                 {
-                    return this.Properties.Single(p => p.name == National_ID_STRING).value;
+                    return this.Properties.Single(p => p.name == NATIONAL_ID_STRING).value;
                 }
                 catch
                 {
@@ -113,6 +118,26 @@ namespace Divan
                     return "";
                 }
             }
+        }
+
+        public string PhysicalDescription
+        {
+            get
+            {
+                try
+                {
+                    return this.Properties.Single(p => p.name == PHYSICAL_DESCRIPTION_STRING).value;
+                }
+                catch
+                {
+                    return "";
+                }
+            }
+        }
+
+        public Boolean isComposite()
+        {
+            return true;
         }
 
         public Asset[] getSubAssets()

@@ -44,10 +44,10 @@
         <elementListCompartment Id="ee7b11e3-7935-4e3e-8a9b-8127ac89fd9c" absoluteBounds="6.1400000000000006, 2.5850000000000009, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="e1b84c04-ef05-46f9-8a2f-4adc364a357c" absoluteBounds="6.125, 3.875, 2, 1.9631982421875005">
+    <classShape Id="e1b84c04-ef05-46f9-8a2f-4adc364a357c" absoluteBounds="6.125, 3.875, 2, 1.7708968098958327">
       <DataClassMoniker Name="/DivanDataContext/Label" />
       <nestedChildShapes>
-        <elementListCompartment Id="d86ee251-1e32-4bc1-bf48-71d033c30e16" absoluteBounds="6.14, 4.335, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="d86ee251-1e32-4bc1-bf48-71d033c30e16" absoluteBounds="6.14, 4.335, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
     <classShape Id="3e6612ce-b570-4bfd-8508-18234dca470e" absoluteBounds="3.375, 5.5, 2, 1.0016910807291666">
@@ -62,19 +62,13 @@
         <elementListCompartment Id="38f8d2c4-330b-4d4a-b45f-6abb20135712" absoluteBounds="8.89, 6.335, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="d024892d-25dd-456e-85db-68ba38099019" absoluteBounds="3.375, 3.875, 2, 1.1939925130208344">
-      <DataClassMoniker Name="/DivanDataContext/LabelPlugin" />
-      <nestedChildShapes>
-        <elementListCompartment Id="5b508940-1d83-4ec3-ab5b-9c310f03b1eb" absoluteBounds="3.39, 4.335, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
     <classShape Id="80e7d786-89dc-429e-a06c-97d510bc3e36" absoluteBounds="8.875, 7.875, 2, 1.7708968098958327">
       <DataClassMoniker Name="/DivanDataContext/Property" />
       <nestedChildShapes>
         <elementListCompartment Id="c91c6775-bafa-4123-b580-24ba72a22685" absoluteBounds="8.89, 8.335, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <associationConnector edgePoints="[(8.09949961313101 : 9.25); (8.5 : 8.84949961313101); (8.5 : 4.07774983723958); (8.875 : 4.07774983723958)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+    <associationConnector edgePoints="[(8.125 : 9.25); (8.5 : 8.875); (8.5 : 3.72637291861979); (8.875 : 3.72637291861979)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/DivanDataContext/Asset/Asset_Action" />
       <nodes>
         <classShapeMoniker Id="e32eedac-d988-4114-bcd3-fd1030abe2fd" />
@@ -95,7 +89,7 @@
         <classShapeMoniker Id="58257945-5941-423e-99da-7ec83ec7a76b" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(8.125 : 4.67912475585937); (8.875 : 4.67912475585937)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+    <associationConnector edgePoints="[(8.125 : 4.51524983723958); (8.875 : 4.51524983723958)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/DivanDataContext/Label/Label_Action" />
       <nodes>
         <classShapeMoniker Id="e1b84c04-ef05-46f9-8a2f-4adc364a357c" />
@@ -109,7 +103,7 @@
         <classShapeMoniker Id="71ff5802-8df2-4462-893a-281eb8f9ea2b" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(5.375 : 5.66909912109375); (6.125 : 5.66909912109375)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+    <associationConnector edgePoints="[(4.375 : 5.5); (4.375 : 4.6874995); (6.125 : 4.6874995)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/DivanDataContext/LabelDomain/LabelDomain_Label" />
       <nodes>
         <classShapeMoniker Id="3e6612ce-b570-4bfd-8508-18234dca470e" />
@@ -123,18 +117,11 @@
         <classShapeMoniker Id="3fe1ac3f-829d-497d-a92c-2bf753a8eea8" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(8.125 : 5.48361469325937); (8.41666666666667 : 5.48361469325937 : JumpStart); (8.58333333333333 : 5.48361469325937 : JumpEnd); (9.875 : 5.48361469325937); (9.875 : 5.875)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+    <associationConnector edgePoints="[(7.01321972531079 : 5.64589680989583); (7.01321972531079 : 6.1504259456259); (8.875 : 6.1504259456259)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/DivanDataContext/Label/Label_LabelInstance" />
       <nodes>
         <classShapeMoniker Id="e1b84c04-ef05-46f9-8a2f-4adc364a357c" />
         <classShapeMoniker Id="3fe1ac3f-829d-497d-a92c-2bf753a8eea8" />
-      </nodes>
-    </associationConnector>
-    <associationConnector edgePoints="[(5.375 : 4.47199625651042); (6.125 : 4.47199625651042)]" fixedFrom="NotFixed" fixedTo="NotFixed">
-      <AssociationMoniker Name="/DivanDataContext/LabelPlugin/LabelPlugin_Label" />
-      <nodes>
-        <classShapeMoniker Id="d024892d-25dd-456e-85db-68ba38099019" />
-        <classShapeMoniker Id="e1b84c04-ef05-46f9-8a2f-4adc364a357c" />
       </nodes>
     </associationConnector>
     <associationConnector edgePoints="[(8.125 : 9.50773655215845); (8.875 : 9.50773655215845)]" fixedFrom="NotFixed" fixedTo="NotFixed">
@@ -144,19 +131,19 @@
         <classShapeMoniker Id="80e7d786-89dc-429e-a06c-97d510bc3e36" />
       </nodes>
     </associationConnector>
-    <inheritanceConnector edgePoints="[(5.375 : 6.00932514651756); (5.75 : 6.00932514651756); (5.75 : 7.09699625651042); (6.125 : 7.09699625651042)]" fixedFrom="NotFixed" fixedTo="NotFixed" TargetRelationshipDomainClassId="7a7fe09e-e9ef-4b01-9ff3-bde95e827b62">
+    <inheritanceConnector edgePoints="[(5.375 : 5.94361098154105); (5.75 : 5.94361098154105); (5.75 : 7.09699625651042); (6.125 : 7.09699625651042)]" fixedFrom="NotFixed" fixedTo="NotFixed" TargetRelationshipDomainClassId="7a7fe09e-e9ef-4b01-9ff3-bde95e827b62">
       <nodes>
         <classShapeMoniker Id="3e6612ce-b570-4bfd-8508-18234dca470e" />
         <classShapeMoniker Id="5e1eff67-324a-4007-a38d-b930410e250b" />
       </nodes>
     </inheritanceConnector>
-    <inheritanceConnector edgePoints="[(4.375 : 6.50169108072917); (4.375 : 7.3976); (5.4774 : 7.3976); (5.4774 : 7.8464); (7.125 : 7.8464); (7.125 : 8)]" fixedFrom="NotFixed" fixedTo="NotFixed" TargetRelationshipDomainClassId="7a7fe09e-e9ef-4b01-9ff3-bde95e827b62">
+    <inheritanceConnector edgePoints="[(4.63822925299823 : 6.50169108072917); (4.63822925299823 : 7.3976); (5.4774 : 7.3976); (5.4774 : 7.8464); (7.125 : 7.8464); (7.125 : 8)]" fixedFrom="NotFixed" fixedTo="NotFixed" TargetRelationshipDomainClassId="7a7fe09e-e9ef-4b01-9ff3-bde95e827b62">
       <nodes>
         <classShapeMoniker Id="3e6612ce-b570-4bfd-8508-18234dca470e" />
         <classShapeMoniker Id="a00b35dd-5527-4d14-a1e3-91f6c184c1a9" />
       </nodes>
     </inheritanceConnector>
-    <classShape Id="295ba84d-e993-4139-aeb6-bab3f00c78f2" absoluteBounds="3.375, 9.25, 2, 1.3862939453125">
+    <classShape Id="295ba84d-e993-4139-aeb6-bab3f00c78f2" absoluteBounds="3.375, 9.25, 2, 1.3862939453125005">
       <DataClassMoniker Name="/DivanDataContext/AttachedFile" />
       <nestedChildShapes>
         <elementListCompartment Id="f3e01053-0a49-4e63-8dbf-9275fb3f5c71" absoluteBounds="3.3900000000000006, 9.71, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />

@@ -7,6 +7,7 @@ namespace Divan
 {
     public partial class Label:Changable
     {
+        public const string UNASSANABLE_VALUE = "مقدارناپذیر";
         public void Create()
         {
             //TODO

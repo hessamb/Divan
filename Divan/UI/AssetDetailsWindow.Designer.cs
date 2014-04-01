@@ -29,47 +29,22 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.TreeNode treeNode7 = new System.Windows.Forms.TreeNode("سال خطکشی: ۱۳۹۲");
-            System.Windows.Forms.TreeNode treeNode8 = new System.Windows.Forms.TreeNode("خطکشی: متوسط", new System.Windows.Forms.TreeNode[] {
-            treeNode7});
-            System.Windows.Forms.TreeNode treeNode9 = new System.Windows.Forms.TreeNode("۱۳۸۶ : تاریخ آسفالت");
-            System.Windows.Forms.TreeNode treeNode10 = new System.Windows.Forms.TreeNode("آسفالت: متوسط", new System.Windows.Forms.TreeNode[] {
-            treeNode9});
-            System.Windows.Forms.TreeNode treeNode11 = new System.Windows.Forms.TreeNode("تابلو راهنما: دارد");
-            System.Windows.Forms.TreeNode treeNode12 = new System.Windows.Forms.TreeNode("خیابان: متوسط", new System.Windows.Forms.TreeNode[] {
-            treeNode8,
-            treeNode10,
-            treeNode11});
-            System.Windows.Forms.TreeNode treeNode13 = new System.Windows.Forms.TreeNode("زیردارایی ۱.۱.۱");
-            System.Windows.Forms.TreeNode treeNode14 = new System.Windows.Forms.TreeNode("زیردارایی ۱.۱", new System.Windows.Forms.TreeNode[] {
-            treeNode13});
-            System.Windows.Forms.TreeNode treeNode15 = new System.Windows.Forms.TreeNode("زیردارایی ۱.۲");
-            System.Windows.Forms.TreeNode treeNode31 = new System.Windows.Forms.TreeNode("زیردارایی ۱.۳.۱");
-            System.Windows.Forms.TreeNode treeNode32 = new System.Windows.Forms.TreeNode("زیردارایی ۱.۳", new System.Windows.Forms.TreeNode[] {
-            treeNode31});
-            System.Windows.Forms.TreeNode treeNode33 = new System.Windows.Forms.TreeNode("زیردارایی ۱", new System.Windows.Forms.TreeNode[] {
-            treeNode14,
-            treeNode15,
-            treeNode32});
-            System.Windows.Forms.TreeNode treeNode34 = new System.Windows.Forms.TreeNode("زیردارایی ۲.۱");
-            System.Windows.Forms.TreeNode treeNode35 = new System.Windows.Forms.TreeNode("زیردارایی ۲", new System.Windows.Forms.TreeNode[] {
-            treeNode34});
-            System.Windows.Forms.TreeNode treeNode36 = new System.Windows.Forms.TreeNode("زیردارایی ۳");
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.propsGrid = new System.Windows.Forms.DataGridView();
+            this.dataGrid_primaryInfo = new System.Windows.Forms.DataGridView();
             this.name = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.value = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.labelsTree = new System.Windows.Forms.TreeView();
+            this.dataGrid_labelInstance = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.subAssets = new System.Windows.Forms.GroupBox();
-            this.subAssetsTree = new System.Windows.Forms.TreeView();
+            this.treeView_subAsset = new System.Windows.Forms.TreeView();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.مشاهدهمشخصاتToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel2 = new System.Windows.Forms.Panel();
             this.changeState = new System.Windows.Forms.Button();
             this.delete = new System.Windows.Forms.Button();
-            this.history = new System.Windows.Forms.Button();
             this.edit = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.contextMenuStrip2 = new System.Windows.Forms.ContextMenuStrip(this.components);
@@ -77,8 +52,9 @@
             this.حذفازداخلداراییهایدیگرToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.flowLayoutPanel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.propsGrid)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGrid_primaryInfo)).BeginInit();
             this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGrid_labelInstance)).BeginInit();
             this.subAssets.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -101,10 +77,11 @@
             this.flowLayoutPanel1.Padding = new System.Windows.Forms.Padding(12, 11, 0, 0);
             this.flowLayoutPanel1.Size = new System.Drawing.Size(494, 627);
             this.flowLayoutPanel1.TabIndex = 100;
+            this.flowLayoutPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.flowLayoutPanel1_Paint);
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.propsGrid);
+            this.groupBox1.Controls.Add(this.dataGrid_primaryInfo);
             this.groupBox1.Location = new System.Drawing.Point(12, 14);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(467, 181);
@@ -112,20 +89,20 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "مشخصات اولیه:";
             // 
-            // propsGrid
+            // dataGrid_primaryInfo
             // 
-            this.propsGrid.AllowUserToAddRows = false;
-            this.propsGrid.AllowUserToDeleteRows = false;
-            this.propsGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.propsGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGrid_primaryInfo.AllowUserToAddRows = false;
+            this.dataGrid_primaryInfo.AllowUserToDeleteRows = false;
+            this.dataGrid_primaryInfo.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGrid_primaryInfo.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.name,
             this.value});
-            this.propsGrid.Location = new System.Drawing.Point(7, 24);
-            this.propsGrid.Name = "propsGrid";
-            this.propsGrid.ReadOnly = true;
-            this.propsGrid.RowHeadersVisible = false;
-            this.propsGrid.Size = new System.Drawing.Size(452, 150);
-            this.propsGrid.TabIndex = 13;
+            this.dataGrid_primaryInfo.Location = new System.Drawing.Point(7, 24);
+            this.dataGrid_primaryInfo.Name = "dataGrid_primaryInfo";
+            this.dataGrid_primaryInfo.ReadOnly = true;
+            this.dataGrid_primaryInfo.RowHeadersVisible = false;
+            this.dataGrid_primaryInfo.Size = new System.Drawing.Size(452, 150);
+            this.dataGrid_primaryInfo.TabIndex = 13;
             // 
             // name
             // 
@@ -144,40 +121,48 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.labelsTree);
+            this.groupBox2.Controls.Add(this.dataGrid_labelInstance);
             this.groupBox2.Location = new System.Drawing.Point(12, 201);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(467, 174);
             this.groupBox2.TabIndex = 9;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "برچسب‌ها و مقادیر:";
+            this.groupBox2.Enter += new System.EventHandler(this.groupBox2_Enter);
             // 
-            // labelsTree
+            // dataGrid_labelInstance
             // 
-            this.labelsTree.Location = new System.Drawing.Point(7, 21);
-            this.labelsTree.Name = "labelsTree";
-            treeNode7.Name = "Node1";
-            treeNode7.Text = "سال خطکشی: ۱۳۹۲";
-            treeNode8.Name = "Node3";
-            treeNode8.Text = "خطکشی: متوسط";
-            treeNode9.Name = "Node0";
-            treeNode9.Text = "۱۳۸۶ : تاریخ آسفالت";
-            treeNode10.Name = "Node4";
-            treeNode10.Text = "آسفالت: متوسط";
-            treeNode11.Name = "Node5";
-            treeNode11.Text = "تابلو راهنما: دارد";
-            treeNode12.Name = "Node0";
-            treeNode12.Text = "خیابان: متوسط";
-            this.labelsTree.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode12});
-            this.labelsTree.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.labelsTree.RightToLeftLayout = true;
-            this.labelsTree.Size = new System.Drawing.Size(452, 147);
-            this.labelsTree.TabIndex = 18;
+            this.dataGrid_labelInstance.AllowUserToAddRows = false;
+            this.dataGrid_labelInstance.AllowUserToDeleteRows = false;
+            this.dataGrid_labelInstance.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGrid_labelInstance.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn1,
+            this.dataGridViewTextBoxColumn2});
+            this.dataGrid_labelInstance.Location = new System.Drawing.Point(9, 24);
+            this.dataGrid_labelInstance.Name = "dataGrid_labelInstance";
+            this.dataGrid_labelInstance.ReadOnly = true;
+            this.dataGrid_labelInstance.RowHeadersVisible = false;
+            this.dataGrid_labelInstance.Size = new System.Drawing.Size(452, 150);
+            this.dataGrid_labelInstance.TabIndex = 14;
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.dataGridViewTextBoxColumn1.HeaderText = "برچسب";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            this.dataGridViewTextBoxColumn1.Width = 72;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewTextBoxColumn2.HeaderText = "مقدار";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.ReadOnly = true;
             // 
             // subAssets
             // 
-            this.subAssets.Controls.Add(this.subAssetsTree);
+            this.subAssets.Controls.Add(this.treeView_subAsset);
             this.subAssets.Location = new System.Drawing.Point(12, 381);
             this.subAssets.Name = "subAssets";
             this.subAssets.Size = new System.Drawing.Size(467, 181);
@@ -185,38 +170,16 @@
             this.subAssets.TabStop = false;
             this.subAssets.Text = "زیردارایی‌ها:";
             // 
-            // subAssetsTree
+            // treeView_subAsset
             // 
-            this.subAssetsTree.ContextMenuStrip = this.contextMenuStrip1;
-            this.subAssetsTree.Location = new System.Drawing.Point(7, 22);
-            this.subAssetsTree.Name = "subAssetsTree";
-            treeNode13.Name = "Node6";
-            treeNode13.Text = "زیردارایی ۱.۱.۱";
-            treeNode14.Name = "Node3";
-            treeNode14.Text = "زیردارایی ۱.۱";
-            treeNode15.Name = "Node4";
-            treeNode15.Text = "زیردارایی ۱.۲";
-            treeNode31.Name = "Node7";
-            treeNode31.Text = "زیردارایی ۱.۳.۱";
-            treeNode32.Name = "Node5";
-            treeNode32.Text = "زیردارایی ۱.۳";
-            treeNode33.Name = "Node0";
-            treeNode33.Text = "زیردارایی ۱";
-            treeNode34.Name = "Node8";
-            treeNode34.Text = "زیردارایی ۲.۱";
-            treeNode35.Name = "Node1";
-            treeNode35.Text = "زیردارایی ۲";
-            treeNode36.Name = "Node2";
-            treeNode36.Text = "زیردارایی ۳";
-            this.subAssetsTree.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode33,
-            treeNode35,
-            treeNode36});
-            this.subAssetsTree.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.subAssetsTree.RightToLeftLayout = true;
-            this.subAssetsTree.Size = new System.Drawing.Size(452, 152);
-            this.subAssetsTree.TabIndex = 18;
-            this.subAssetsTree.DoubleClick += new System.EventHandler(this.subAssetsTree_DoubleClick);
+            this.treeView_subAsset.ContextMenuStrip = this.contextMenuStrip1;
+            this.treeView_subAsset.Location = new System.Drawing.Point(7, 22);
+            this.treeView_subAsset.Name = "treeView_subAsset";
+            this.treeView_subAsset.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.treeView_subAsset.RightToLeftLayout = true;
+            this.treeView_subAsset.Size = new System.Drawing.Size(452, 152);
+            this.treeView_subAsset.TabIndex = 18;
+            this.treeView_subAsset.DoubleClick += new System.EventHandler(this.subAssetsTree_DoubleClick);
             // 
             // contextMenuStrip1
             // 
@@ -224,13 +187,13 @@
             this.مشاهدهمشخصاتToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
             this.contextMenuStrip1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.contextMenuStrip1.Size = new System.Drawing.Size(215, 26);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(205, 26);
             // 
             // مشاهدهمشخصاتToolStripMenuItem
             // 
             this.مشاهدهمشخصاتToolStripMenuItem.Image = global::Divan.Properties.Resources.icon_package;
             this.مشاهدهمشخصاتToolStripMenuItem.Name = "مشاهدهمشخصاتToolStripMenuItem";
-            this.مشاهدهمشخصاتToolStripMenuItem.Size = new System.Drawing.Size(214, 22);
+            this.مشاهدهمشخصاتToolStripMenuItem.Size = new System.Drawing.Size(204, 22);
             this.مشاهدهمشخصاتToolStripMenuItem.Text = "مشاهده مشخصات زیردارایی";
             this.مشاهدهمشخصاتToolStripMenuItem.Click += new System.EventHandler(this.مشاهدهمشخصاتToolStripMenuItem_Click);
             // 
@@ -238,7 +201,6 @@
             // 
             this.panel2.Controls.Add(this.changeState);
             this.panel2.Controls.Add(this.delete);
-            this.panel2.Controls.Add(this.history);
             this.panel2.Controls.Add(this.edit);
             this.panel2.Controls.Add(this.button4);
             this.panel2.Location = new System.Drawing.Point(12, 568);
@@ -265,7 +227,7 @@
             this.delete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.delete.Image = global::Divan.Properties.Resources.delete;
             this.delete.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.delete.Location = new System.Drawing.Point(87, 9);
+            this.delete.Location = new System.Drawing.Point(204, 9);
             this.delete.Name = "delete";
             this.delete.Size = new System.Drawing.Size(60, 25);
             this.delete.TabIndex = 22;
@@ -274,26 +236,12 @@
             this.delete.UseVisualStyleBackColor = true;
             this.delete.Click += new System.EventHandler(this.delete_Click);
             // 
-            // history
-            // 
-            this.history.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.history.Image = global::Divan.Properties.Resources.icon_clock;
-            this.history.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.history.Location = new System.Drawing.Point(229, 9);
-            this.history.Name = "history";
-            this.history.Size = new System.Drawing.Size(111, 25);
-            this.history.TabIndex = 21;
-            this.history.Text = "تاریخچه تغییرات";
-            this.history.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.history.UseVisualStyleBackColor = true;
-            this.history.Click += new System.EventHandler(this.history_Click);
-            // 
             // edit
             // 
             this.edit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.edit.Image = global::Divan.Properties.Resources.pencil;
             this.edit.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.edit.Location = new System.Drawing.Point(153, 9);
+            this.edit.Location = new System.Drawing.Point(270, 9);
             this.edit.Name = "edit";
             this.edit.Size = new System.Drawing.Size(70, 25);
             this.edit.TabIndex = 21;
@@ -322,23 +270,23 @@
             this.حذفازداخلداراییهایدیگرToolStripMenuItem});
             this.contextMenuStrip2.Name = "contextMenuStrip2";
             this.contextMenuStrip2.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.contextMenuStrip2.Size = new System.Drawing.Size(256, 70);
+            this.contextMenuStrip2.Size = new System.Drawing.Size(246, 48);
             // 
             // فقطازلیستپاککنToolStripMenuItem
             // 
             this.فقطازلیستپاککنToolStripMenuItem.Name = "فقطازلیستپاککنToolStripMenuItem";
-            this.فقطازلیستپاککنToolStripMenuItem.Size = new System.Drawing.Size(255, 22);
+            this.فقطازلیستپاککنToolStripMenuItem.Size = new System.Drawing.Size(245, 22);
             this.فقطازلیستپاککنToolStripMenuItem.Text = "فقط حذف از لیست";
             this.فقطازلیستپاککنToolStripMenuItem.Click += new System.EventHandler(this.فقطازلیستپاککنToolStripMenuItem_Click);
             // 
             // حذفازداخلداراییهایدیگرToolStripMenuItem
             // 
             this.حذفازداخلداراییهایدیگرToolStripMenuItem.Name = "حذفازداخلداراییهایدیگرToolStripMenuItem";
-            this.حذفازداخلداراییهایدیگرToolStripMenuItem.Size = new System.Drawing.Size(255, 22);
+            this.حذفازداخلداراییهایدیگرToolStripMenuItem.Size = new System.Drawing.Size(245, 22);
             this.حذفازداخلداراییهایدیگرToolStripMenuItem.Text = "حذف از لیست و داخل دارایی‌های دیگر";
             this.حذفازداخلداراییهایدیگرToolStripMenuItem.Click += new System.EventHandler(this.فقطازلیستپاککنToolStripMenuItem_Click);
             // 
-            // AssetDetails
+            // AssetDetailsWindow
             // 
             this.AcceptButton = this.changeState;
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
@@ -350,7 +298,7 @@
             this.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
-            this.Name = "AssetDetails";
+            this.Name = "AssetDetailsWindow";
             this.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
@@ -359,8 +307,9 @@
             this.Load += new System.EventHandler(this.NewAsset_Load);
             this.flowLayoutPanel1.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.propsGrid)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGrid_primaryInfo)).EndInit();
             this.groupBox2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGrid_labelInstance)).EndInit();
             this.subAssets.ResumeLayout(false);
             this.contextMenuStrip1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
@@ -373,23 +322,24 @@
 
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.DataGridView propsGrid;
+        private System.Windows.Forms.DataGridView dataGrid_primaryInfo;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.GroupBox subAssets;
-        private System.Windows.Forms.TreeView subAssetsTree;
+        private System.Windows.Forms.TreeView treeView_subAsset;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.TreeView labelsTree;
         private System.Windows.Forms.Button edit;
         private System.Windows.Forms.Button delete;
         private System.Windows.Forms.DataGridViewTextBoxColumn name;
         private System.Windows.Forms.DataGridViewTextBoxColumn value;
-        private System.Windows.Forms.Button history;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem مشاهدهمشخصاتToolStripMenuItem;
         private System.Windows.Forms.Button changeState;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip2;
         private System.Windows.Forms.ToolStripMenuItem فقطازلیستپاککنToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem حذفازداخلداراییهایدیگرToolStripMenuItem;
+        private System.Windows.Forms.DataGridView dataGrid_labelInstance;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
     }
 }

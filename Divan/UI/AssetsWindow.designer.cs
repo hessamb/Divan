@@ -32,7 +32,12 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.searchTxt = new System.Windows.Forms.TextBox();
-            this.assetsGrid = new System.Windows.Forms.DataGridView();
+            this.dataGrid_assets = new System.Windows.Forms.DataGridView();
+            this.UID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NameColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.isHuman = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.isPhysical = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.isPortable = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.مشاهدهمشخصاتToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
@@ -54,12 +59,7 @@
             this.select = new System.Windows.Forms.Button();
             this.cancel = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
-            this.UID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NameColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.isHuman = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.isPhysical = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.isPortable = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            ((System.ComponentModel.ISupportInitialize)(this.assetsGrid)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGrid_assets)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
             this.contextMenuStrip2.SuspendLayout();
@@ -76,37 +76,82 @@
             this.searchTxt.Size = new System.Drawing.Size(357, 22);
             this.searchTxt.TabIndex = 4;
             // 
-            // assetsGrid
+            // dataGrid_assets
             // 
-            this.assetsGrid.AllowUserToAddRows = false;
-            this.assetsGrid.AllowUserToDeleteRows = false;
-            this.assetsGrid.AllowUserToResizeRows = false;
+            this.dataGrid_assets.AllowUserToAddRows = false;
+            this.dataGrid_assets.AllowUserToDeleteRows = false;
+            this.dataGrid_assets.AllowUserToResizeRows = false;
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.assetsGrid.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            this.assetsGrid.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.dataGrid_assets.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.dataGrid_assets.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.assetsGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.assetsGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGrid_assets.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGrid_assets.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.UID,
             this.NameColumn,
             this.isHuman,
             this.isPhysical,
             this.isPortable});
-            this.assetsGrid.ContextMenuStrip = this.contextMenuStrip1;
-            this.assetsGrid.Location = new System.Drawing.Point(14, 59);
-            this.assetsGrid.Name = "assetsGrid";
-            this.assetsGrid.ReadOnly = true;
-            this.assetsGrid.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.dataGrid_assets.ContextMenuStrip = this.contextMenuStrip1;
+            this.dataGrid_assets.Location = new System.Drawing.Point(14, 59);
+            this.dataGrid_assets.MultiSelect = false;
+            this.dataGrid_assets.Name = "dataGrid_assets";
+            this.dataGrid_assets.ReadOnly = true;
+            this.dataGrid_assets.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.assetsGrid.RowsDefaultCellStyle = dataGridViewCellStyle2;
-            this.assetsGrid.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.assetsGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.assetsGrid.Size = new System.Drawing.Size(731, 418);
-            this.assetsGrid.TabIndex = 0;
-            this.assetsGrid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.assetsGrid_CellContentClick);
-            this.assetsGrid.SelectionChanged += new System.EventHandler(this.assetsGrid_SelectionChanged);
-            this.assetsGrid.DoubleClick += new System.EventHandler(this.assetsGrid_DoubleClick);
+            this.dataGrid_assets.RowsDefaultCellStyle = dataGridViewCellStyle2;
+            this.dataGrid_assets.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.dataGrid_assets.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGrid_assets.Size = new System.Drawing.Size(731, 418);
+            this.dataGrid_assets.TabIndex = 0;
+            this.dataGrid_assets.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.assetsGrid_CellContentClick);
+            this.dataGrid_assets.SelectionChanged += new System.EventHandler(this.assetsGrid_SelectionChanged);
+            this.dataGrid_assets.DoubleClick += new System.EventHandler(this.assetsGrid_DoubleClick);
+            // 
+            // UID
+            // 
+            this.UID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.UID.DataPropertyName = "UID";
+            this.UID.HeaderText = "شناسه";
+            this.UID.Name = "UID";
+            this.UID.ReadOnly = true;
+            this.UID.Width = 71;
+            // 
+            // NameColumn
+            // 
+            this.NameColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.NameColumn.DataPropertyName = "Name";
+            this.NameColumn.HeaderText = "نام";
+            this.NameColumn.Name = "NameColumn";
+            this.NameColumn.ReadOnly = true;
+            // 
+            // isHuman
+            // 
+            this.isHuman.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.isHuman.DataPropertyName = "isHuman";
+            this.isHuman.HeaderText = "انسانی";
+            this.isHuman.Name = "isHuman";
+            this.isHuman.ReadOnly = true;
+            this.isHuman.Width = 51;
+            // 
+            // isPhysical
+            // 
+            this.isPhysical.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.isPhysical.DataPropertyName = "isPhysical";
+            this.isPhysical.HeaderText = "فیزیکی";
+            this.isPhysical.Name = "isPhysical";
+            this.isPhysical.ReadOnly = true;
+            this.isPhysical.Width = 48;
+            // 
+            // isPortable
+            // 
+            this.isPortable.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.isPortable.DataPropertyName = "isPortable";
+            this.isPortable.HeaderText = "مکان‌مند";
+            this.isPortable.Name = "isPortable";
+            this.isPortable.ReadOnly = true;
+            this.isPortable.Width = 54;
             // 
             // contextMenuStrip1
             // 
@@ -344,50 +389,6 @@
             this.label2.Text = "لطفا دارایی مورد نظر را انتخاب کنید.";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // UID
-            // 
-            this.UID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.UID.DataPropertyName = "UID";
-            this.UID.HeaderText = "شناسه";
-            this.UID.Name = "UID";
-            this.UID.ReadOnly = true;
-            this.UID.Width = 71;
-            // 
-            // NameColumn
-            // 
-            this.NameColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.NameColumn.DataPropertyName = "Name";
-            this.NameColumn.HeaderText = "نام";
-            this.NameColumn.Name = "NameColumn";
-            this.NameColumn.ReadOnly = true;
-            // 
-            // isHuman
-            // 
-            this.isHuman.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.isHuman.DataPropertyName = "isHuman";
-            this.isHuman.HeaderText = "انسانی";
-            this.isHuman.Name = "isHuman";
-            this.isHuman.ReadOnly = true;
-            this.isHuman.Width = 51;
-            // 
-            // isPhysical
-            // 
-            this.isPhysical.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.isPhysical.DataPropertyName = "isPhysical";
-            this.isPhysical.HeaderText = "فیزیکی";
-            this.isPhysical.Name = "isPhysical";
-            this.isPhysical.ReadOnly = true;
-            this.isPhysical.Width = 48;
-            // 
-            // isPortable
-            // 
-            this.isPortable.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.isPortable.DataPropertyName = "isPortable";
-            this.isPortable.HeaderText = "مکان‌مند";
-            this.isPortable.Name = "isPortable";
-            this.isPortable.ReadOnly = true;
-            this.isPortable.Width = 54;
-            // 
             // AssetsWindow
             // 
             this.AcceptButton = this.select;
@@ -402,7 +403,7 @@
             this.Controls.Add(this.radioButton3);
             this.Controls.Add(this.radioButton2);
             this.Controls.Add(this.radioButton1);
-            this.Controls.Add(this.assetsGrid);
+            this.Controls.Add(this.dataGrid_assets);
             this.Controls.Add(this.searchTxt);
             this.Controls.Add(this.flowLayoutPanel1);
             this.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
@@ -412,7 +413,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "دارایی‌ها";
             this.Load += new System.EventHandler(this.assetForm_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.assetsGrid)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGrid_assets)).EndInit();
             this.contextMenuStrip1.ResumeLayout(false);
             this.flowLayoutPanel1.ResumeLayout(false);
             this.contextMenuStrip2.ResumeLayout(false);
@@ -424,7 +425,7 @@
         #endregion
 
         private System.Windows.Forms.TextBox searchTxt;
-        private System.Windows.Forms.DataGridView assetsGrid;
+        private System.Windows.Forms.DataGridView dataGrid_assets;
         private System.Windows.Forms.RadioButton radioButton1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.RadioButton radioButton2;

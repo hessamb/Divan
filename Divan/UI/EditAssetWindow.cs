@@ -12,75 +12,102 @@ namespace Divan
 {
     public partial class EditAssetWindow : Form
     {
+        Asset asset;
         public EditAssetWindow()
         {
             InitializeComponent();
         }
 
+        public EditAssetWindow(Asset asset) : this()
+        {
+            this.asset = asset;
+        }
+
         private void NewAsset_Load(object sender, EventArgs e)
         {
-            UIHelper.SetPlaceHolder(labelSearchtxt,"جستجوی برچسب");
+            textBox_Name.Text = asset.Name;
+            textBox_UID.Text = asset.UID;
+            checkBox_isHuman.Checked = asset.isHuman;
+            textBox_FirstName.Text = asset.FirstName;
+            textBox_LastName.Text = asset.LastName;
+            textBox_NationalID.Text = asset.NationalID;
+            textBox_PersonnelCode.Text = asset.PersonnelCode;
+            textBox_HumanDescription.Text = asset.HumanDescription;
+            checkBox_isPhysical.Checked = asset.isPhysical;
+            textBox_PhysicalDescription.Text = asset.PhysicalDescription;
+            checkBox_isPortable.Checked = asset.isPortable;
 
-            propsGrid.Rows.Add(new object[] { "مشخصه", "azdst1" });
-            propsGrid.Rows.Add(new object[] { "نام", "خیابان آزادی" });
-            propsGrid.Rows.Add(new object[] { "مرکب", "بلی" });
-            propsGrid.Rows.Add(new object[] { "انسانی", "خیر" });
-            propsGrid.Rows.Add(new object[] { "ملموس", "بلی" });
-            propsGrid.Rows.Add(new object[] { "متغییر در زمان", "خیر" });
-            propsGrid.Rows.Add(new object[] { "مکان‌مند", "خیر" });
-            propsGrid.Rows.Add(new object[] { "عرض", "20m" });
-            propsGrid.Rows.Add(new object[] { "طول", "4km" });
-
-            subAssetsTree.ExpandAll();
-        }
-
-        private void treeView1_AfterSelect(object sender, TreeViewEventArgs e)
-        {
-            removeSubAssetBut.Enabled = subAssetsTree.Focused && subAssetsTree.SelectedNode != null;
-        }
-
-        private void subAssetsTree_Leave(object sender, EventArgs e)
-        {
-            removeSubAssetBut.Enabled = subAssetsTree.Focused && subAssetsTree.SelectedNode != null;
-        }
-
-        private void removeSubAssetBut_Click(object sender, EventArgs e)
-        {
-            if (RemoveConfirmationBox.ShowConfirmation()==System.Windows.Forms.DialogResult.Yes)
-                subAssetsTree.SelectedNode.Remove();
-        }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            string ns=AssetsWindow.ShowAssets();
-            if (ns != null)
+            foreach (Property prop in asset.Properties)
             {
-                subAssetsTree.Nodes.Add(ns);
+                if (!Asset.SPECIAL_NAMES.Contains(prop.name))
+                {
+                    dataGrid_PrimaryInfo.Rows.Add(new object[] { prop.name, prop.type, prop.value });
+                }
+            }
+
+            checkBox_Composite.Checked = asset.isComposite();
+            foreach (Asset a in this.asset.getSubAssets())
+            {
+                treeView_subAssets.Nodes.Add( a.getTreeNode() );
+            }
+
+            foreach(AttachedFile file in asset.AttachedFiles)
+            {
+                attachmentList.Items.Add(file.path);
             }
         }
 
-        private void button5_Click(object sender, EventArgs e)
+        private void checkBox_isPhysical_CheckedChanged(object sender, EventArgs e)
         {
-            if (openFileDialog1.ShowDialog() == System.Windows.Forms.DialogResult.OK)
-                attachmentList.Items.Add(openFileDialog1.FileName);
+            sensibleAssetProps.Visible = checkBox_isPhysical.Checked;
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void checkBox_isHuman_CheckedChanged(object sender, EventArgs e)
         {
-            if (RemoveConfirmationBox.ShowConfirmation() == System.Windows.Forms.DialogResult.Yes)
-                attachmentList.Items.RemoveAt(attachmentList.SelectedIndex);
+            humanAssetProps.Visible = checkBox_isHuman.Checked;
         }
 
-        private void attachmentList_SelectedIndexChanged(object sender, EventArgs e)
+        private void button3_Click(object sender, EventArgs e)
         {
-            deleteFileBut.Enabled = attachmentList.Focused && attachmentList.SelectedItem != null;
-        }
+            DivanDataContext.Instance.Properties.DeleteAllOnSubmit(asset.Properties);
+            asset.Properties.Clear();
+            DivanDataContext.Instance.SubmitChanges();
 
+            DivanDataContext.Instance.Properties.InsertOnSubmit(new Property(Asset.UID_STRING, textBox_UID.Text, asset));
+            DivanDataContext.Instance.Properties.InsertOnSubmit(new Property(Asset.NAME_STRING, textBox_Name.Text, asset));
+
+            asset.isHuman = checkBox_isHuman.Checked;
+            if (asset.isHuman)
+            {
+                DivanDataContext.Instance.Properties.InsertOnSubmit(new Property(Asset.FIRST_NAME_STRING, textBox_FirstName.Text, asset));
+                DivanDataContext.Instance.Properties.InsertOnSubmit(new Property(Asset.LAST_NAME_STRING, textBox_LastName.Text, asset));
+                DivanDataContext.Instance.Properties.InsertOnSubmit(new Property(Asset.NATIONAL_ID_STRING, textBox_NationalID.Text, asset));
+                DivanDataContext.Instance.Properties.InsertOnSubmit(new Property(Asset.PERSONNEL_CODE_STRING, textBox_PersonnelCode.Text, asset));
+                DivanDataContext.Instance.Properties.InsertOnSubmit(new Property(Asset.HUMAN_DESCRIPTION_STRING, textBox_HumanDescription.Text, asset));
+            }
+            asset.isPhysical = checkBox_isPhysical.Checked;
+            if (asset.isPhysical)
+            {
+                DivanDataContext.Instance.Properties.InsertOnSubmit(new Property(Asset.PHYSICAL_DESCRIPTION_STRING, textBox_PhysicalDescription.Text, asset));
+            }
+            asset.isPortable = checkBox_isPortable.Checked;
+
+            for (int i = 0; i < dataGrid_PrimaryInfo.RowCount - 1; i++)
+            {
+                DivanDataContext.Instance.Properties.InsertOnSubmit(new Property((string)dataGrid_PrimaryInfo.Rows[i].Cells[0].Value, (string)dataGrid_PrimaryInfo.Rows[i].Cells[2].Value, asset, (string)dataGrid_PrimaryInfo.Rows[i].Cells[1].Value));
+            }
+
+            foreach (String fileName in attachmentList.Items)
+            {
+                // TODO: attached files need to be uploaded.
+                AttachedFile file = new AttachedFile();
+                file.Asset = asset;
+                file.path = fileName;
+                DivanDataContext.Instance.AttachedFiles.InsertOnSubmit(file);
+            }
+
+            DivanDataContext.Instance.SubmitChanges();
+        }
 
     }
 }

@@ -12,30 +12,78 @@ namespace Divan
 {
     public partial class AssetDetailsWindow : Form
     {
+        private Asset selectedAsset;
+
         public AssetDetailsWindow()
         {
             InitializeComponent();
         }
 
+        public AssetDetailsWindow(Asset asset): this()
+        {
+            this.selectedAsset = asset;
+        }
+
         private void NewAsset_Load(object sender, EventArgs e)
         {
-            propsGrid.Rows.Add(new object[] { "مشخصه", "azdst1" });
-            propsGrid.Rows.Add(new object[] { "نام", "خیابان آزادی" });
-            propsGrid.Rows.Add(new object[] { "مرکب", "بلی" });
-            propsGrid.Rows.Add(new object[] { "انسانی", "خیر" });
-            propsGrid.Rows.Add(new object[] { "ملموس", "بلی" });
-            propsGrid.Rows.Add(new object[] { "متغییر در زمان", "خیر" });
-            propsGrid.Rows.Add(new object[] { "مکان‌مند", "خیر" });
-            propsGrid.Rows.Add(new object[] { "عرض", "20m" });
-            propsGrid.Rows.Add(new object[] { "طول", "4km" });
+            fillPrimaryInfoGrid();
+            fillLabelInstancesGrid();
+            fillSubAssetTree();
+        }
 
-            labelsTree.ExpandAll();
-            subAssetsTree.ExpandAll();
+        private void fillSubAssetTree()
+        {
+            foreach (Asset asset in selectedAsset.getSubAssets())
+            {
+                treeView_subAsset.Nodes.Add(asset.getTreeNode());
+            }
+            treeView_subAsset.ExpandAll();
+        }
+
+        private void fillLabelInstancesGrid()
+        {
+            foreach (LabelInstance labelInstance in selectedAsset.LabelInstances)
+            {
+                Label label = labelInstance.Label;
+                string value = labelInstance.value;
+                dataGrid_labelInstance.Rows.Add(new object[] { label.name, value });
+                if (!label.setValue)
+                {
+                    DataGridViewRow row = dataGrid_labelInstance.Rows[dataGrid_labelInstance.Rows.Count - 1];
+                    row.Cells[1].Value = Label.UNASSANABLE_VALUE;
+                }
+            }
+        }
+
+        private void fillPrimaryInfoGrid()
+        {
+            dataGrid_primaryInfo.Rows.Add(new object[] { "شناسه", selectedAsset.UID });
+            dataGrid_primaryInfo.Rows.Add(new object[] { "نام", selectedAsset.Name });
+            if (selectedAsset.isHuman)
+            {
+                dataGrid_primaryInfo.Rows.Add(new object[] { "نام کوچک", selectedAsset.FirstName });
+                dataGrid_primaryInfo.Rows.Add(new object[] { "نام خانوادگی", selectedAsset.LastName });
+                dataGrid_primaryInfo.Rows.Add(new object[] { "کد ملی", selectedAsset.NationalID });
+                dataGrid_primaryInfo.Rows.Add(new object[] { "کد پرسنلی", selectedAsset.PersonnelCode });
+                dataGrid_primaryInfo.Rows.Add(new object[] { "توضیحات انسانی", selectedAsset.HumanDescription });
+            }
+            if (selectedAsset.isPhysical)
+            {
+                dataGrid_primaryInfo.Rows.Add(new object[] { "مشخصات ظاهری", selectedAsset.PhysicalDescription });
+            }
+
+            foreach (Property prop in selectedAsset.Properties)
+            {
+                if (!Asset.SPECIAL_NAMES.Contains(prop.name))
+                {
+                    dataGrid_primaryInfo.Rows.Add(new object[] { prop.name, prop.value });
+                }
+            }
         }
 
         private void edit_Click(object sender, EventArgs e)
         {
-            (new EditAssetWindow()).ShowDialog();
+            (new NewAssetWindow(selectedAsset)).ShowDialog();
         }
 
         private void delete_Click(object sender, EventArgs e)
@@ -72,6 +120,16 @@ namespace Divan
         {
             if (RemoveConfirmationBox.ShowConfirmation() == System.Windows.Forms.DialogResult.Yes)
                 DialogResult = System.Windows.Forms.DialogResult.Yes;
+        }
+
+        private void flowLayoutPanel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void groupBox2_Enter(object sender, EventArgs e)
+        {
+
         }
     }
 }

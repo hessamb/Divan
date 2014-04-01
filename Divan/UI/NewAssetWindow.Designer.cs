@@ -60,8 +60,6 @@
             this.labelSearchtxt = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
-            this.checkedListBox2 = new System.Windows.Forms.CheckedListBox();
-            this.checkedListBox1 = new System.Windows.Forms.CheckedListBox();
             this.checkBox_Composite = new System.Windows.Forms.CheckBox();
             this.GroupBox_subAssets = new System.Windows.Forms.GroupBox();
             this.removeSubAssetBut = new System.Windows.Forms.Button();
@@ -75,6 +73,14 @@
             this.button4 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.dataGrid_DefinerLabel = new System.Windows.Forms.DataGridView();
+            this.Check = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.LabelName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.LabelValue = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGrid_OtherLabel = new System.Windows.Forms.DataGridView();
+            this.dataGridViewCheckBoxColumn1 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.flowLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.humanAssetProps.SuspendLayout();
@@ -85,6 +91,8 @@
             this.GroupBox_subAssets.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGrid_DefinerLabel)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGrid_OtherLabel)).BeginInit();
             this.SuspendLayout();
             // 
             // flowLayoutPanel1
@@ -119,7 +127,7 @@
             this.panel1.Controls.Add(this.label8);
             this.panel1.Controls.Add(this.textBox_Name);
             this.panel1.Controls.Add(this.label1);
-            this.panel1.Location = new System.Drawing.Point(486, 14);
+            this.panel1.Location = new System.Drawing.Point(937, 14);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(467, 32);
             this.panel1.TabIndex = 0;
@@ -161,7 +169,7 @@
             this.checkBox_isHuman.AutoSize = true;
             this.checkBox_isHuman.Checked = true;
             this.checkBox_isHuman.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBox_isHuman.Location = new System.Drawing.Point(805, 52);
+            this.checkBox_isHuman.Location = new System.Drawing.Point(1256, 52);
             this.checkBox_isHuman.Name = "checkBox_isHuman";
             this.checkBox_isHuman.Size = new System.Drawing.Size(148, 18);
             this.checkBox_isHuman.TabIndex = 2;
@@ -181,7 +189,7 @@
             this.humanAssetProps.Controls.Add(this.label4);
             this.humanAssetProps.Controls.Add(this.textBox_FirstName);
             this.humanAssetProps.Controls.Add(this.label2);
-            this.humanAssetProps.Location = new System.Drawing.Point(486, 76);
+            this.humanAssetProps.Location = new System.Drawing.Point(937, 76);
             this.humanAssetProps.Name = "humanAssetProps";
             this.humanAssetProps.Size = new System.Drawing.Size(467, 102);
             this.humanAssetProps.TabIndex = 3;
@@ -272,7 +280,7 @@
             this.checkBox_isPhysical.AutoSize = true;
             this.checkBox_isPhysical.Checked = true;
             this.checkBox_isPhysical.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBox_isPhysical.Location = new System.Drawing.Point(806, 184);
+            this.checkBox_isPhysical.Location = new System.Drawing.Point(1257, 184);
             this.checkBox_isPhysical.Name = "checkBox_isPhysical";
             this.checkBox_isPhysical.Size = new System.Drawing.Size(147, 18);
             this.checkBox_isPhysical.TabIndex = 4;
@@ -284,7 +292,7 @@
             // 
             this.sensibleAssetProps.Controls.Add(this.textBox_PhysicalDescription);
             this.sensibleAssetProps.Controls.Add(this.label12);
-            this.sensibleAssetProps.Location = new System.Drawing.Point(486, 208);
+            this.sensibleAssetProps.Location = new System.Drawing.Point(937, 208);
             this.sensibleAssetProps.Name = "sensibleAssetProps";
             this.sensibleAssetProps.Size = new System.Drawing.Size(467, 70);
             this.sensibleAssetProps.TabIndex = 5;
@@ -309,7 +317,7 @@
             // checkBox_isPortable
             // 
             this.checkBox_isPortable.AutoSize = true;
-            this.checkBox_isPortable.Location = new System.Drawing.Point(802, 284);
+            this.checkBox_isPortable.Location = new System.Drawing.Point(1253, 284);
             this.checkBox_isPortable.Name = "checkBox_isPortable";
             this.checkBox_isPortable.Size = new System.Drawing.Size(151, 18);
             this.checkBox_isPortable.TabIndex = 6;
@@ -320,7 +328,7 @@
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.dataGrid_PrimaryInfo);
-            this.groupBox1.Location = new System.Drawing.Point(486, 308);
+            this.groupBox1.Location = new System.Drawing.Point(937, 308);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(467, 197);
             this.groupBox1.TabIndex = 8;
@@ -363,12 +371,12 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.dataGrid_OtherLabel);
+            this.groupBox2.Controls.Add(this.dataGrid_DefinerLabel);
             this.groupBox2.Controls.Add(this.labelSearchtxt);
             this.groupBox2.Controls.Add(this.label14);
             this.groupBox2.Controls.Add(this.label13);
-            this.groupBox2.Controls.Add(this.checkedListBox2);
-            this.groupBox2.Controls.Add(this.checkedListBox1);
-            this.groupBox2.Location = new System.Drawing.Point(13, 14);
+            this.groupBox2.Location = new System.Drawing.Point(464, 14);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(467, 172);
             this.groupBox2.TabIndex = 9;
@@ -401,42 +409,12 @@
             this.label13.TabIndex = 4;
             this.label13.Text = "برچسب‌های تعریف‌گر نوع دارایی:";
             // 
-            // checkedListBox2
-            // 
-            this.checkedListBox2.CheckOnClick = true;
-            this.checkedListBox2.FormattingEnabled = true;
-            this.checkedListBox2.Items.AddRange(new object[] {
-            "برچسب ۱",
-            "برچسب ۲",
-            "برچسب ۳",
-            "برچسب ۴",
-            "برچسب ۵",
-            "برچسب ۶",
-            "برچسب ۷"});
-            this.checkedListBox2.Location = new System.Drawing.Point(8, 75);
-            this.checkedListBox2.Name = "checkedListBox2";
-            this.checkedListBox2.Size = new System.Drawing.Size(222, 89);
-            this.checkedListBox2.TabIndex = 16;
-            // 
-            // checkedListBox1
-            // 
-            this.checkedListBox1.CheckOnClick = true;
-            this.checkedListBox1.Items.AddRange(new object[] {
-            "خودرو",
-            "ساختمان",
-            "سند",
-            "طلب مالی"});
-            this.checkedListBox1.Location = new System.Drawing.Point(238, 41);
-            this.checkedListBox1.Name = "checkedListBox1";
-            this.checkedListBox1.Size = new System.Drawing.Size(221, 123);
-            this.checkedListBox1.TabIndex = 14;
-            // 
             // checkBox_Composite
             // 
             this.checkBox_Composite.AutoSize = true;
             this.checkBox_Composite.Checked = true;
             this.checkBox_Composite.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBox_Composite.Location = new System.Drawing.Point(342, 192);
+            this.checkBox_Composite.Location = new System.Drawing.Point(793, 192);
             this.checkBox_Composite.Name = "checkBox_Composite";
             this.checkBox_Composite.Size = new System.Drawing.Size(138, 18);
             this.checkBox_Composite.TabIndex = 4;
@@ -449,7 +427,7 @@
             this.GroupBox_subAssets.Controls.Add(this.removeSubAssetBut);
             this.GroupBox_subAssets.Controls.Add(this.button1);
             this.GroupBox_subAssets.Controls.Add(this.treeView_subAssets);
-            this.GroupBox_subAssets.Location = new System.Drawing.Point(13, 216);
+            this.GroupBox_subAssets.Location = new System.Drawing.Point(464, 216);
             this.GroupBox_subAssets.Name = "GroupBox_subAssets";
             this.GroupBox_subAssets.Size = new System.Drawing.Size(467, 173);
             this.GroupBox_subAssets.TabIndex = 10;
@@ -500,7 +478,7 @@
             this.groupBox3.Controls.Add(this.attachmentList);
             this.groupBox3.Controls.Add(this.deleteFileBut);
             this.groupBox3.Controls.Add(this.button5);
-            this.groupBox3.Location = new System.Drawing.Point(13, 395);
+            this.groupBox3.Location = new System.Drawing.Point(464, 395);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(467, 90);
             this.groupBox3.TabIndex = 10;
@@ -549,7 +527,7 @@
             // 
             this.panel2.Controls.Add(this.button4);
             this.panel2.Controls.Add(this.button3);
-            this.panel2.Location = new System.Drawing.Point(13, 491);
+            this.panel2.Location = new System.Drawing.Point(-9, 14);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(467, 38);
             this.panel2.TabIndex = 11;
@@ -585,6 +563,80 @@
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
             // 
+            // dataGrid_DefinerLabel
+            // 
+            this.dataGrid_DefinerLabel.AllowUserToAddRows = false;
+            this.dataGrid_DefinerLabel.AllowUserToDeleteRows = false;
+            this.dataGrid_DefinerLabel.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGrid_DefinerLabel.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Check,
+            this.LabelName,
+            this.LabelValue});
+            this.dataGrid_DefinerLabel.Location = new System.Drawing.Point(237, 46);
+            this.dataGrid_DefinerLabel.MultiSelect = false;
+            this.dataGrid_DefinerLabel.Name = "dataGrid_DefinerLabel";
+            this.dataGrid_DefinerLabel.RowHeadersVisible = false;
+            this.dataGrid_DefinerLabel.Size = new System.Drawing.Size(223, 118);
+            this.dataGrid_DefinerLabel.TabIndex = 17;
+            // 
+            // Check
+            // 
+            this.Check.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Check.HeaderText = "";
+            this.Check.Name = "Check";
+            this.Check.Width = 5;
+            // 
+            // LabelName
+            // 
+            this.LabelName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.LabelName.HeaderText = "برچسب";
+            this.LabelName.Name = "LabelName";
+            this.LabelName.ReadOnly = true;
+            this.LabelName.Width = 72;
+            // 
+            // LabelValue
+            // 
+            this.LabelValue.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.LabelValue.HeaderText = "مقدار";
+            this.LabelValue.Name = "LabelValue";
+            // 
+            // dataGrid_OtherLabel
+            // 
+            this.dataGrid_OtherLabel.AllowUserToAddRows = false;
+            this.dataGrid_OtherLabel.AllowUserToDeleteRows = false;
+            this.dataGrid_OtherLabel.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGrid_OtherLabel.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewCheckBoxColumn1,
+            this.dataGridViewTextBoxColumn1,
+            this.dataGridViewTextBoxColumn2});
+            this.dataGrid_OtherLabel.Location = new System.Drawing.Point(8, 74);
+            this.dataGrid_OtherLabel.MultiSelect = false;
+            this.dataGrid_OtherLabel.Name = "dataGrid_OtherLabel";
+            this.dataGrid_OtherLabel.RowHeadersVisible = false;
+            this.dataGrid_OtherLabel.Size = new System.Drawing.Size(222, 90);
+            this.dataGrid_OtherLabel.TabIndex = 18;
+            // 
+            // dataGridViewCheckBoxColumn1
+            // 
+            this.dataGridViewCheckBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.dataGridViewCheckBoxColumn1.HeaderText = "";
+            this.dataGridViewCheckBoxColumn1.Name = "dataGridViewCheckBoxColumn1";
+            this.dataGridViewCheckBoxColumn1.Width = 5;
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.dataGridViewTextBoxColumn1.HeaderText = "برچسب";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            this.dataGridViewTextBoxColumn1.Width = 72;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewTextBoxColumn2.HeaderText = "مقدار";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            // 
             // NewAssetWindow
             // 
             this.AcceptButton = this.button3;
@@ -619,6 +671,8 @@
             this.GroupBox_subAssets.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGrid_DefinerLabel)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGrid_OtherLabel)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -653,8 +707,6 @@
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.CheckedListBox checkedListBox2;
-        private System.Windows.Forms.CheckedListBox checkedListBox1;
         private System.Windows.Forms.GroupBox GroupBox_subAssets;
         private System.Windows.Forms.Button removeSubAssetBut;
         private System.Windows.Forms.Button button1;
@@ -672,5 +724,13 @@
         private System.Windows.Forms.Button deleteFileBut;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
+        private System.Windows.Forms.DataGridView dataGrid_DefinerLabel;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn Check;
+        private System.Windows.Forms.DataGridViewTextBoxColumn LabelName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn LabelValue;
+        private System.Windows.Forms.DataGridView dataGrid_OtherLabel;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn dataGridViewCheckBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
     }
 }

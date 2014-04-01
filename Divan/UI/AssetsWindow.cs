@@ -18,8 +18,8 @@ namespace Divan
             AssetsWindow a = new AssetsWindow();
             a.select.Visible=a.cancel.Visible=a.cancel.Enabled= true;
             a.delete.Visible = a.edit.Visible = a.changeState.Visible = false;
-            a.assetsGrid.DoubleClick -= a.assetsGrid_DoubleClick;
-            a.assetsGrid.DoubleClick += a.select_Click; 
+            a.dataGrid_assets.DoubleClick -= a.assetsGrid_DoubleClick;
+            a.dataGrid_assets.DoubleClick += a.select_Click; 
 
             if (a.ShowDialog() == DialogResult.OK)
             {
@@ -43,13 +43,13 @@ namespace Divan
         {
             UIHelper.SetPlaceHolder(searchTxt, "جستجوی دارایی");
 
-            assetsGrid.AutoGenerateColumns = false;
-            assetsGrid.DataSource = AssetList.Instance.GetAll();
+            dataGrid_assets.AutoGenerateColumns = false;
+            dataGrid_assets.DataSource = AssetList.Instance.GetAll();
         }
 
         private void assetsGrid_SelectionChanged(object sender, EventArgs e)
         {
-            bool selected = assetsGrid.SelectedCells.Count > 0;
+            bool selected = dataGrid_assets.SelectedCells.Count > 0;
             edit.Enabled = delete.Enabled = selected;
             if (select.Visible)
                 select.Enabled = selected;
@@ -57,13 +57,14 @@ namespace Divan
 
         private void select_Click(object sender, EventArgs e)
         {
-           SelectedAsset = (string)assetsGrid.SelectedCells[0].OwningRow.Cells[0].Value;
+           SelectedAsset = (string)dataGrid_assets.SelectedCells[0].OwningRow.Cells[0].Value;
            DialogResult = System.Windows.Forms.DialogResult.OK;
         }
 
         private void edit_Click_1(object sender, EventArgs e)
         {
-            (new EditAssetWindow()).ShowDialog();
+            string uid = (string)dataGrid_assets.SelectedRows[0].Cells[0].Value;
+            (new NewAssetWindow(AssetList.Instance.GetByUid(uid))).ShowDialog();
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -78,7 +79,9 @@ namespace Divan
 
         private void button1_Click(object sender, EventArgs e)
         {
-            (new AssetDetailsWindow()).ShowDialog();
+            string uid = (string)dataGrid_assets.SelectedRows[0].Cells[0].Value;
+            Asset asset = AssetList.Instance.GetByUid(uid);
+            (new AssetDetailsWindow(asset)).ShowDialog();
         }
 
         private void assetsGrid_DoubleClick(object sender, EventArgs e)
@@ -94,8 +97,8 @@ namespace Divan
         private void فقطازلیستپاککنToolStripMenuItem_Click(object sender, EventArgs e)
         {
             HashSet<int> set = new HashSet<int>();
-            for (int i = 0; i < assetsGrid.SelectedCells.Count; i++)
-                set.Add(assetsGrid.SelectedCells[i].RowIndex);
+            for (int i = 0; i < dataGrid_assets.SelectedCells.Count; i++)
+                set.Add(dataGrid_assets.SelectedCells[i].RowIndex);
             int cnt = set.Count;
             string message = "";
             if (cnt > 1)
@@ -104,7 +107,7 @@ namespace Divan
             }
             else if (cnt == 1)
             {
-                string name = (string)assetsGrid.SelectedCells[0].OwningRow.Cells[1].Value;
+                string name = (string)dataGrid_assets.SelectedCells[0].OwningRow.Cells[1].Value;
                 message = "آیا از حذف دارایی «" + name + "» مطمئنید؟";
             }
             RemoveConfirmationBox.ShowConfirmation(message);

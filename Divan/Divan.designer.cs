@@ -54,9 +54,6 @@ namespace Divan
     partial void InsertLabelInstance(LabelInstance instance);
     partial void UpdateLabelInstance(LabelInstance instance);
     partial void DeleteLabelInstance(LabelInstance instance);
-    partial void InsertLabelPlugin(LabelPlugin instance);
-    partial void UpdateLabelPlugin(LabelPlugin instance);
-    partial void DeleteLabelPlugin(LabelPlugin instance);
     partial void InsertProperty(Property instance);
     partial void UpdateProperty(Property instance);
     partial void DeleteProperty(Property instance);
@@ -156,14 +153,6 @@ namespace Divan
 			get
 			{
 				return this.GetTable<LabelInstance>();
-			}
-		}
-		
-		public System.Data.Linq.Table<LabelPlugin> LabelPlugins
-		{
-			get
-			{
-				return this.GetTable<LabelPlugin>();
 			}
 		}
 		
@@ -1313,17 +1302,13 @@ namespace Divan
 		
 		private int _domainID;
 		
-		private string _autoUpdateCode;
-		
-		private System.Nullable<int> _pluginID;
+		private bool _isSplitter;
 		
 		private EntitySet<Action> _Actions;
 		
 		private EntitySet<LabelInstance> _LabelInstances;
 		
 		private EntityRef<LabelDomain> _LabelDomain;
-		
-		private EntityRef<LabelPlugin> _LabelPlugin;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -1333,14 +1318,12 @@ namespace Divan
     partial void OnIdChanged();
     partial void OnnameChanging(string value);
     partial void OnnameChanged();
-    partial void OnisChangableChanging(bool value);
-    partial void OnisChangableChanged();
+    partial void OnsetValueChanging(bool value);
+    partial void OnsetValueChanged();
     partial void OndomainIDChanging(int value);
     partial void OndomainIDChanged();
-    partial void OnautoUpdateCodeChanging(string value);
-    partial void OnautoUpdateCodeChanged();
-    partial void OnpluginIDChanging(System.Nullable<int> value);
-    partial void OnpluginIDChanged();
+    partial void OnisSplitterChanging(bool value);
+    partial void OnisSplitterChanged();
     #endregion
 		
 		public Label()
@@ -1348,7 +1331,6 @@ namespace Divan
 			this._Actions = new EntitySet<Action>(new Action<Action>(this.attach_Actions), new Action<Action>(this.detach_Actions));
 			this._LabelInstances = new EntitySet<LabelInstance>(new Action<LabelInstance>(this.attach_LabelInstances), new Action<LabelInstance>(this.detach_LabelInstances));
 			this._LabelDomain = default(EntityRef<LabelDomain>);
-			this._LabelPlugin = default(EntityRef<LabelPlugin>);
 			OnCreated();
 		}
 		
@@ -1392,8 +1374,8 @@ namespace Divan
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_isChangable", DbType="Bit NOT NULL")]
-		public bool isChangable
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="isChangable", Storage="_isChangable", DbType="Bit NOT NULL")]
+		public bool setValue
 		{
 			get
 			{
@@ -1403,11 +1385,11 @@ namespace Divan
 			{
 				if ((this._isChangable != value))
 				{
-					this.OnisChangableChanging(value);
+					this.OnsetValueChanging(value);
 					this.SendPropertyChanging();
 					this._isChangable = value;
-					this.SendPropertyChanged("isChangable");
-					this.OnisChangableChanged();
+					this.SendPropertyChanged("setValue");
+					this.OnsetValueChanged();
 				}
 			}
 		}
@@ -1436,46 +1418,22 @@ namespace Divan
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_autoUpdateCode", DbType="NChar(1000)")]
-		public string autoUpdateCode
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_isSplitter")]
+		public bool isSplitter
 		{
 			get
 			{
-				return this._autoUpdateCode;
+				return this._isSplitter;
 			}
 			set
 			{
-				if ((this._autoUpdateCode != value))
+				if ((this._isSplitter != value))
 				{
-					this.OnautoUpdateCodeChanging(value);
+					this.OnisSplitterChanging(value);
 					this.SendPropertyChanging();
-					this._autoUpdateCode = value;
-					this.SendPropertyChanged("autoUpdateCode");
-					this.OnautoUpdateCodeChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_pluginID", DbType="Int")]
-		public System.Nullable<int> pluginID
-		{
-			get
-			{
-				return this._pluginID;
-			}
-			set
-			{
-				if ((this._pluginID != value))
-				{
-					if (this._LabelPlugin.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnpluginIDChanging(value);
-					this.SendPropertyChanging();
-					this._pluginID = value;
-					this.SendPropertyChanged("pluginID");
-					this.OnpluginIDChanged();
+					this._isSplitter = value;
+					this.SendPropertyChanged("isSplitter");
+					this.OnisSplitterChanged();
 				}
 			}
 		}
@@ -1536,40 +1494,6 @@ namespace Divan
 						this._domainID = default(int);
 					}
 					this.SendPropertyChanged("LabelDomain");
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="LabelPlugin_Label", Storage="_LabelPlugin", ThisKey="pluginID", OtherKey="Id", IsForeignKey=true)]
-		public LabelPlugin LabelPlugin
-		{
-			get
-			{
-				return this._LabelPlugin.Entity;
-			}
-			set
-			{
-				LabelPlugin previousValue = this._LabelPlugin.Entity;
-				if (((previousValue != value) 
-							|| (this._LabelPlugin.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._LabelPlugin.Entity = null;
-						previousValue.Labels.Remove(this);
-					}
-					this._LabelPlugin.Entity = value;
-					if ((value != null))
-					{
-						value.Labels.Add(this);
-						this._pluginID = value.Id;
-					}
-					else
-					{
-						this._pluginID = default(Nullable<int>);
-					}
-					this.SendPropertyChanged("LabelPlugin");
 				}
 			}
 		}
@@ -1877,6 +1801,13 @@ namespace Divan
 			this._Label = default(EntityRef<Label>);
 			OnCreated();
 		}
+
+        public LabelInstance(int assetID, int labelID, string value): this()
+        {
+            this.assetID = assetID;
+            this.labelID = labelID;
+            this.value = value;
+        }
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", DbType="Int NOT NULL", IsPrimaryKey=true, IsDbGenerated=true)]
 		public int Id
@@ -2052,120 +1983,6 @@ namespace Divan
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.LabelPlugin")]
-	public partial class LabelPlugin : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _Id;
-		
-		private string _code;
-		
-		private EntitySet<Label> _Labels;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnIdChanging(int value);
-    partial void OnIdChanged();
-    partial void OncodeChanging(string value);
-    partial void OncodeChanged();
-    #endregion
-		
-		public LabelPlugin()
-		{
-			this._Labels = new EntitySet<Label>(new Action<Label>(this.attach_Labels), new Action<Label>(this.detach_Labels));
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", DbType="Int NOT NULL", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int Id
-		{
-			get
-			{
-				return this._Id;
-			}
-			set
-			{
-				if ((this._Id != value))
-				{
-					this.OnIdChanging(value);
-					this.SendPropertyChanging();
-					this._Id = value;
-					this.SendPropertyChanged("Id");
-					this.OnIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_code", DbType="NChar(1000) NOT NULL", CanBeNull=false)]
-		public string code
-		{
-			get
-			{
-				return this._code;
-			}
-			set
-			{
-				if ((this._code != value))
-				{
-					this.OncodeChanging(value);
-					this.SendPropertyChanging();
-					this._code = value;
-					this.SendPropertyChanged("code");
-					this.OncodeChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="LabelPlugin_Label", Storage="_Labels", ThisKey="Id", OtherKey="pluginID")]
-		public EntitySet<Label> Labels
-		{
-			get
-			{
-				return this._Labels;
-			}
-			set
-			{
-				this._Labels.Assign(value);
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-		
-		private void attach_Labels(Label entity)
-		{
-			this.SendPropertyChanging();
-			entity.LabelPlugin = this;
-		}
-		
-		private void detach_Labels(Label entity)
-		{
-			this.SendPropertyChanging();
-			entity.LabelPlugin = null;
 		}
 	}
 	

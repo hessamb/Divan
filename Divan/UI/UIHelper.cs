@@ -11,6 +11,12 @@ namespace Divan
     class UIHelper
     {
         private static Dictionary<TextBox, String> placeHolders = new Dictionary<TextBox, string>();
+        public static void disableCell(DataGridViewCell cell)
+        {
+            cell.ReadOnly = true;
+            cell.Style.ForeColor = Color.DarkGray;
+            cell.Style.BackColor = Color.LightGray;
+        }
         public static void SetPlaceHolder(TextBox textbox, String text)
         {
             placeHolders.Add(textbox, text);

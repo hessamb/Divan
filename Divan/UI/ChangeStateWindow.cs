@@ -12,24 +12,47 @@ namespace Divan
 {
     public partial class ChangeStateWindow : Form
     {
+        Asset selectedAsset;
         public ChangeStateWindow()
         {
             InitializeComponent();
         }
 
+        public ChangeStateWindow(Asset selectedAsset)
+            : this()
+        {
+            this.selectedAsset = selectedAsset;
+        }
+
+        private void fillPrimaryInfoGrid()
+        {
+            dataGrid_primaryInfo.Rows.Add(new object[] { "شناسه", selectedAsset.UID });
+            dataGrid_primaryInfo.Rows.Add(new object[] { "نام", selectedAsset.Name });
+            if (selectedAsset.isHuman)
+            {
+                dataGrid_primaryInfo.Rows.Add(new object[] { "نام کوچک", selectedAsset.FirstName });
+                dataGrid_primaryInfo.Rows.Add(new object[] { "نام خانوادگی", selectedAsset.LastName });
+                dataGrid_primaryInfo.Rows.Add(new object[] { "کد ملی", selectedAsset.NationalID });
+                dataGrid_primaryInfo.Rows.Add(new object[] { "کد پرسنلی", selectedAsset.PersonnelCode });
+                dataGrid_primaryInfo.Rows.Add(new object[] { "توضیحات انسانی", selectedAsset.HumanDescription });
+            }
+            if (selectedAsset.isPhysical)
+            {
+                dataGrid_primaryInfo.Rows.Add(new object[] { "مشخصات ظاهری", selectedAsset.PhysicalDescription });
+            }
+
+            foreach (Property prop in selectedAsset.Properties)
+            {
+                if (!Asset.SPECIAL_NAMES.Contains(prop.name))
+                {
+                    dataGrid_primaryInfo.Rows.Add(new object[] { prop.name, prop.value });
+                }
+            }
+        }
+
         private void NewAsset_Load(object sender, EventArgs e)
         {
-            propsGrid.Rows.Add(new object[] { "مشخصه", "azdst1" });
-            propsGrid.Rows.Add(new object[] { "نام", "خیابان آزادی" });
-            propsGrid.Rows.Add(new object[] { "مرکب", "بلی" });
-            propsGrid.Rows.Add(new object[] { "انسانی", "خیر" });
-            propsGrid.Rows.Add(new object[] { "ملموس", "بلی" });
-            propsGrid.Rows.Add(new object[] { "متغییر در زمان", "خیر" });
-            propsGrid.Rows.Add(new object[] { "مکان‌مند", "خیر" });
-            propsGrid.Rows.Add(new object[] { "عرض", "20m" });
-            propsGrid.Rows.Add(new object[] { "طول", "4km" });
-
-            labelsTree.ExpandAll();
+            fillPrimaryInfoGrid();
         }
 
         private void edit_Click(object sender, EventArgs e)
