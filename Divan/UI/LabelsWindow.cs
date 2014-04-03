@@ -40,7 +40,7 @@ namespace Divan
         private void assetForm_Load(object sender, EventArgs e)
         {
             UIHelper.SetPlaceHolder(searchTxt, "جستجوی برچسب");
-
+            
             labelsGrid.AutoGenerateColumns = false;
             labelsGrid.DataSource = LabelList.Instance.GetAll();
 
