@@ -22,7 +22,7 @@ namespace Divan
         }
 
         public virtual bool isDiscrete(){
-            return false;
+            return this.isOrdered!=null;
         }
 
         public virtual int compare(string value1, string value2)

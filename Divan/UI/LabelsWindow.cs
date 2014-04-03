@@ -62,7 +62,14 @@ namespace Divan
 
         private void edit_Click_1(object sender, EventArgs e)
         {
-            (new EditLabelWindow()).ShowDialog();
+            try
+            {
+                (new NewLabelWindow(getSelectedLabel())).ShowDialog();
+            }
+            catch
+            {
+
+            }
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -111,9 +118,12 @@ namespace Divan
             else if (cnt == 1)
             {
                 string name = (string)labelsGrid.SelectedCells[0].OwningRow.Cells[1].Value;
-                message = "آیا از حذف برچسب «" + name + "» مطمئنید؟";
+                message = "آیا از حذف برچسب " + name + " مطمئنید؟";
             }
-            RemoveConfirmationBox.ShowConfirmation(message);
+            if (RemoveConfirmationBox.ShowConfirmation(message) == DialogResult.OK)
+            {
+                DivanDataContext.Instance.Labels.DeleteOnSubmit(getSelectedLabel());
+            }
         }
 
         private void labelsGrid_CellContentDoubleClick_1(object sender, DataGridViewCellEventArgs e)

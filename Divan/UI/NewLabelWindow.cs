@@ -12,13 +12,41 @@ namespace Divan
 {
     public partial class NewLabelWindow : Form
     {
+        Label label;
         public NewLabelWindow()
         {
             InitializeComponent();
         }
 
+        public NewLabelWindow(Label label): this()
+        {
+            this.Text = "ویرایش برچسب";
+            this.label = label;
+        }
+
         private void NewAsset_Load(object sender, EventArgs e)
         {
+            if (label != null)
+            {
+                nameTxt.Text = label.name;
+                valueableOpt.Checked = label.setValue;
+                discreteRadio.Checked = label.LabelDomain.isDiscrete();
+                if (discreteRadio.Checked)
+                {
+                    IEnumerable<DiscreteDomainValue> values = label.LabelDomain.DiscreteDomainValues
+                        .OrderBy((DiscreteDomainValue value) => value.rank).AsEnumerable();
+                    foreach (DiscreteDomainValue value in values)
+                    {
+                        domainGrid.Rows.Add(value.value);
+                    }
+                    ordinalValues.Checked = label.LabelDomain.isOrdered ?? false;
+                }
+                else
+                {
+                    textBox_minValue.Text = Convert.ToString(label.LabelDomain.minValue);
+                    textBox_maxValue.Text = Convert.ToString(label.LabelDomain.maxValue);
+                }
+            }
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
@@ -67,9 +95,21 @@ namespace Divan
 
         private void button3_Click(object sender, EventArgs e)
         {
+            if (label != null)
+            {
+                DivanDataContext.Instance.DiscreteDomainValues.DeleteAllOnSubmit(label.LabelDomain.DiscreteDomainValues);
+                DivanDataContext.Instance.LabelDomains.DeleteOnSubmit(label.LabelDomain);
+            }
             if (unvalueableRadio.Checked)
             {
-                Label label = new Label(nameTxt.Text, false, checkBox_splitter.Checked, null);
+                if (label == null)
+                    label = new Label();
+
+                label.name = nameTxt.Text;
+                label.setValue = false;
+                label.isSplitter = checkBox_splitter.Checked;
+                label.LabelDomain = null;
+
                 string name = label.name;
                 DivanDataContext.Instance.Labels.InsertOnSubmit(label);
             }
@@ -78,7 +118,12 @@ namespace Divan
                 LabelDomain domain = new LabelDomain(Convert.ToDouble(textBox_minValue.Text),
                     Convert.ToDouble(textBox_maxValue.Text), null);
                 DivanDataContext.Instance.LabelDomains.InsertOnSubmit(domain);
-                Label label = new Label(nameTxt.Text, true, checkBox_splitter.Checked, domain);
+                if (label == null)
+                    label = new Label();
+                label.name = nameTxt.Text;
+                label.setValue = true;
+                label.isSplitter = checkBox_splitter.Checked;
+                label.LabelDomain = domain;
                 DivanDataContext.Instance.Labels.InsertOnSubmit(label);
             }
             else
@@ -94,7 +139,12 @@ namespace Divan
                     DivanDataContext.Instance.DiscreteDomainValues.InsertOnSubmit(value);
                 }
                 DivanDataContext.Instance.LabelDomains.InsertOnSubmit(domain);
-                Label label = new Label(nameTxt.Text, true, checkBox_splitter.Checked, domain);
+                if (label == null)
+                    label = new Label();
+                label.name = nameTxt.Text;
+                label.setValue = true;
+                label.isSplitter = checkBox_splitter.Checked;
+                label.LabelDomain = domain;
                 DivanDataContext.Instance.Labels.InsertOnSubmit(label);
             }
 

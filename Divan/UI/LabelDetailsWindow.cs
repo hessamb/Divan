@@ -59,7 +59,7 @@ namespace Divan
 
         private void edit_Click(object sender, EventArgs e)
         {
-            (new EditLabelWindow()).ShowDialog();
+            (new NewLabelWindow(label)).ShowDialog();
         }
 
         private void delete_Click(object sender, EventArgs e)
