@@ -7,9 +7,21 @@ namespace Divan
 {
     public partial class LabelDomain
     {
+
+        public LabelDomain(double? minValue, double? maxValue, bool? isOrdered)
+            : this()
+        {
+            this.minValue = minValue;
+            this.maxValue = maxValue;
+            this.isOrdered = isOrdered;
+        }
         public virtual bool IsValidValue(string value)
         {
             //TODO
+            return false;
+        }
+
+        public virtual bool isDiscrete(){
             return false;
         }
 

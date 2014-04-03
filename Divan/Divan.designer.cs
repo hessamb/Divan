@@ -998,6 +998,8 @@ namespace Divan
 		
 		private int _domainID;
 		
+		private System.Nullable<int> _rank;
+		
 		private EntityRef<LabelDomain> _LabelDomain;
 		
     #region Extensibility Method Definitions
@@ -1010,6 +1012,8 @@ namespace Divan
     partial void OnvalueChanged();
     partial void OndomainIDChanging(int value);
     partial void OndomainIDChanged();
+    partial void OnrankChanging(System.Nullable<int> value);
+    partial void OnrankChanged();
     #endregion
 		
 		public DiscreteDomainValue()
@@ -1078,6 +1082,26 @@ namespace Divan
 					this._domainID = value;
 					this.SendPropertyChanged("domainID");
 					this.OndomainIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_rank")]
+		public System.Nullable<int> rank
+		{
+			get
+			{
+				return this._rank;
+			}
+			set
+			{
+				if ((this._rank != value))
+				{
+					this.OnrankChanging(value);
+					this.SendPropertyChanging();
+					this._rank = value;
+					this.SendPropertyChanged("rank");
+					this.OnrankChanged();
 				}
 			}
 		}
@@ -1300,7 +1324,7 @@ namespace Divan
 		
 		private bool _isChangable;
 		
-		private int _domainID;
+		private System.Nullable<int> _domainID;
 		
 		private bool _isSplitter;
 		
@@ -1320,7 +1344,7 @@ namespace Divan
     partial void OnnameChanged();
     partial void OnsetValueChanging(bool value);
     partial void OnsetValueChanged();
-    partial void OndomainIDChanging(int value);
+    partial void OndomainIDChanging(System.Nullable<int> value);
     partial void OndomainIDChanged();
     partial void OnisSplitterChanging(bool value);
     partial void OnisSplitterChanged();
@@ -1394,8 +1418,8 @@ namespace Divan
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_domainID", DbType="Int NOT NULL")]
-		public int domainID
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_domainID", DbType="Int NULL")]
+		public System.Nullable<int> domainID
 		{
 			get
 			{
@@ -1418,7 +1442,7 @@ namespace Divan
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_isSplitter")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_isSplitter", DbType="Bit NOT NULL")]
 		public bool isSplitter
 		{
 			get
@@ -1491,7 +1515,7 @@ namespace Divan
 					}
 					else
 					{
-						this._domainID = default(int);
+						this._domainID = default(Nullable<int>);
 					}
 					this.SendPropertyChanged("LabelDomain");
 				}
@@ -1551,6 +1575,12 @@ namespace Divan
 		
 		private int _Id;
 		
+		private System.Nullable<double> _minValue;
+		
+		private System.Nullable<double> _maxValue;
+		
+		private System.Nullable<bool> _isOrdered;
+		
 		private EntitySet<DiscreteDomainValue> _DiscreteDomainValues;
 		
 		private EntitySet<Label> _Labels;
@@ -1561,6 +1591,12 @@ namespace Divan
     partial void OnCreated();
     partial void OnIdChanging(int value);
     partial void OnIdChanged();
+    partial void OnminValueChanging(System.Nullable<double> value);
+    partial void OnminValueChanged();
+    partial void OnmaxValueChanging(System.Nullable<double> value);
+    partial void OnmaxValueChanged();
+    partial void OnisOrderedChanging(System.Nullable<bool> value);
+    partial void OnisOrderedChanged();
     #endregion
 		
 		public LabelDomain()
@@ -1586,6 +1622,66 @@ namespace Divan
 					this._Id = value;
 					this.SendPropertyChanged("Id");
 					this.OnIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_minValue")]
+		public System.Nullable<double> minValue
+		{
+			get
+			{
+				return this._minValue;
+			}
+			set
+			{
+				if ((this._minValue != value))
+				{
+					this.OnminValueChanging(value);
+					this.SendPropertyChanging();
+					this._minValue = value;
+					this.SendPropertyChanged("minValue");
+					this.OnminValueChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_maxValue")]
+		public System.Nullable<double> maxValue
+		{
+			get
+			{
+				return this._maxValue;
+			}
+			set
+			{
+				if ((this._maxValue != value))
+				{
+					this.OnmaxValueChanging(value);
+					this.SendPropertyChanging();
+					this._maxValue = value;
+					this.SendPropertyChanged("maxValue");
+					this.OnmaxValueChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_isOrdered")]
+		public System.Nullable<bool> isOrdered
+		{
+			get
+			{
+				return this._isOrdered;
+			}
+			set
+			{
+				if ((this._isOrdered != value))
+				{
+					this.OnisOrderedChanging(value);
+					this.SendPropertyChanging();
+					this._isOrdered = value;
+					this.SendPropertyChanged("isOrdered");
+					this.OnisOrderedChanged();
 				}
 			}
 		}
@@ -1664,17 +1760,17 @@ namespace Divan
 	public partial class ContinuousDomain : LabelDomain
 	{
 		
-		private string _minValue;
+		private System.Nullable<double> _minValue;
 		
-		private string _maxValue;
+		private System.Nullable<double> _maxValue;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
     partial void OnCreated();
-    partial void OnminValueChanging(string value);
+    partial void OnminValueChanging(System.Nullable<double> value);
     partial void OnminValueChanged();
-    partial void OnmaxValueChanging(string value);
+    partial void OnmaxValueChanging(System.Nullable<double> value);
     partial void OnmaxValueChanged();
     #endregion
 		
@@ -1683,8 +1779,8 @@ namespace Divan
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="", Storage="_minValue", CanBeNull=false)]
-		public string minValue
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_minValue", DbType="real NULL")]
+		public System.Nullable<double> minValue
 		{
 			get
 			{
@@ -1703,8 +1799,8 @@ namespace Divan
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_maxValue", CanBeNull=false)]
-		public string maxValue
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_maxValue", DbType="real NULL")]
+		public System.Nullable<double> maxValue
 		{
 			get
 			{
@@ -1727,13 +1823,13 @@ namespace Divan
 	public partial class DiscreteDomain : LabelDomain
 	{
 		
-		private string _isOrdered;
+		private System.Nullable<bool> _isOrdered;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
     partial void OnCreated();
-    partial void OnisOrderedChanging(string value);
+    partial void OnisOrderedChanging(System.Nullable<bool> value);
     partial void OnisOrderedChanged();
     #endregion
 		
@@ -1742,8 +1838,8 @@ namespace Divan
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_isOrdered", CanBeNull=false)]
-		public string isOrdered
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_isOrdered")]
+		public System.Nullable<bool> isOrdered
 		{
 			get
 			{

@@ -32,10 +32,10 @@
         <elementListCompartment Id="d5dcf3e0-40a2-4ba2-bd2b-8353687008d8" absoluteBounds="8.89, 10.46, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="71ff5802-8df2-4462-893a-281eb8f9ea2b" absoluteBounds="3.375, 7.5, 2, 1.3862939453125014">
+    <classShape Id="71ff5802-8df2-4462-893a-281eb8f9ea2b" absoluteBounds="3.375, 7.5, 2, 1.5785953776041666">
       <DataClassMoniker Name="/DivanDataContext/DiscreteDomainValue" />
       <nestedChildShapes>
-        <elementListCompartment Id="713443b6-1630-4436-a394-a8765284857e" absoluteBounds="3.3899999999999997, 7.9600000000000009, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="713443b6-1630-4436-a394-a8765284857e" absoluteBounds="3.3899999999999997, 7.9600000000000009, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
     <classShape Id="58257945-5941-423e-99da-7ec83ec7a76b" absoluteBounds="6.125, 2.125, 2, 1.3862939453125014">
@@ -50,10 +50,10 @@
         <elementListCompartment Id="d86ee251-1e32-4bc1-bf48-71d033c30e16" absoluteBounds="6.14, 4.335, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="3e6612ce-b570-4bfd-8508-18234dca470e" absoluteBounds="3.375, 5.5, 2, 1.0016910807291666">
+    <classShape Id="3e6612ce-b570-4bfd-8508-18234dca470e" absoluteBounds="3.375, 5.5, 2, 1.5785953776041666">
       <DataClassMoniker Name="/DivanDataContext/LabelDomain" />
       <nestedChildShapes>
-        <elementListCompartment Id="67669b54-918f-47f0-acd6-fdfdffb3acf2" absoluteBounds="3.39, 5.96, 1.9700000000000002, 0.44169108072916663" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="67669b54-918f-47f0-acd6-fdfdffb3acf2" absoluteBounds="3.39, 5.96, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
     <classShape Id="3fe1ac3f-829d-497d-a92c-2bf753a8eea8" absoluteBounds="8.875, 5.875, 2, 1.5785953776041666">
@@ -68,7 +68,7 @@
         <elementListCompartment Id="c91c6775-bafa-4123-b580-24ba72a22685" absoluteBounds="8.89, 8.335, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <associationConnector edgePoints="[(8.125 : 9.25); (8.5 : 8.875); (8.5 : 3.72637291861979); (8.875 : 3.72637291861979)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+    <associationConnector edgePoints="[(8.09949961313101 : 9.25); (8.5 : 8.84949961313101); (8.5 : 4.07774983723958); (8.875 : 4.07774983723958)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/DivanDataContext/Asset/Asset_Action" />
       <nodes>
         <classShapeMoniker Id="e32eedac-d988-4114-bcd3-fd1030abe2fd" />
@@ -96,7 +96,7 @@
         <classShapeMoniker Id="8b0116c2-e75b-4fb1-8693-44a0b5488f90" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(4.375 : 6.50169108072917); (4.375 : 7.5)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+    <associationConnector edgePoints="[(4.9375 : 7.07859537760417); (4.9375 : 7.5)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/DivanDataContext/LabelDomain/LabelDomain_DiscreteDomainValue" />
       <nodes>
         <classShapeMoniker Id="3e6612ce-b570-4bfd-8508-18234dca470e" />
@@ -117,7 +117,7 @@
         <classShapeMoniker Id="3fe1ac3f-829d-497d-a92c-2bf753a8eea8" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(7.01321972531079 : 5.64589680989583); (7.01321972531079 : 6.1504259456259); (8.41666666666667 : 6.1504259456259 : JumpStart); (8.58333333333333 : 6.1504259456259 : JumpEnd); (8.875 : 6.1504259456259)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+    <associationConnector edgePoints="[(8.125 : 5.58323330739183); (8.6875 : 6.14573330739183); (8.6875 : 5.6875); (8.875 : 5.875)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/DivanDataContext/Label/Label_LabelInstance" />
       <nodes>
         <classShapeMoniker Id="e1b84c04-ef05-46f9-8a2f-4adc364a357c" />
@@ -131,13 +131,13 @@
         <classShapeMoniker Id="80e7d786-89dc-429e-a06c-97d510bc3e36" />
       </nodes>
     </associationConnector>
-    <inheritanceConnector edgePoints="[(5.375 : 5.94361098154105); (5.75 : 5.94361098154105); (5.75 : 7.09699625651042); (6.125 : 7.09699625651042)]" fixedFrom="NotFixed" fixedTo="NotFixed" TargetRelationshipDomainClassId="7a7fe09e-e9ef-4b01-9ff3-bde95e827b62">
+    <inheritanceConnector edgePoints="[(5.375 : 6.78929768880208); (6.125 : 6.78929768880208)]" fixedFrom="NotFixed" fixedTo="NotFixed" TargetRelationshipDomainClassId="7a7fe09e-e9ef-4b01-9ff3-bde95e827b62">
       <nodes>
         <classShapeMoniker Id="3e6612ce-b570-4bfd-8508-18234dca470e" />
         <classShapeMoniker Id="5e1eff67-324a-4007-a38d-b930410e250b" />
       </nodes>
     </inheritanceConnector>
-    <inheritanceConnector edgePoints="[(4.63822925299823 : 6.50169108072917); (4.63822925299823 : 7.3976); (5.4774 : 7.3976); (5.4774 : 7.8464); (7.125 : 7.8464); (7.125 : 8)]" fixedFrom="NotFixed" fixedTo="NotFixed" TargetRelationshipDomainClassId="7a7fe09e-e9ef-4b01-9ff3-bde95e827b62">
+    <inheritanceConnector edgePoints="[(4.375 : 7.07859537760417); (4.375 : 7.3976); (5.4774 : 7.3976); (5.4774 : 7.8464); (7.125 : 7.8464); (7.125 : 8)]" fixedFrom="NotFixed" fixedTo="NotFixed" TargetRelationshipDomainClassId="7a7fe09e-e9ef-4b01-9ff3-bde95e827b62">
       <nodes>
         <classShapeMoniker Id="3e6612ce-b570-4bfd-8508-18234dca470e" />
         <classShapeMoniker Id="a00b35dd-5527-4d14-a1e3-91f6c184c1a9" />

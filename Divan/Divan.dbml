@@ -43,6 +43,7 @@
       <Column Name="Id" AutoSync="Never" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="value" Type="System.String" DbType="NChar(100) NOT NULL" CanBeNull="false" />
       <Column Name="domainID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="rank" Type="System.Int32" CanBeNull="true" />
       <Association Name="LabelDomain_DiscreteDomainValue" Member="LabelDomain" ThisKey="domainID" OtherKey="Id" Type="LabelDomain" IsForeignKey="true" />
     </Type>
   </Table>
@@ -59,8 +60,8 @@
       <Column Name="Id" AutoSync="Never" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="name" Type="System.String" DbType="NChar(30) NOT NULL" CanBeNull="false" />
       <Column Name="setValue" Storage="_isChangable" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
-      <Column Name="domainID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="isSplitter" Type="System.Boolean" CanBeNull="false" />
+      <Column Name="domainID" Type="System.Int32" DbType="Int NULL" CanBeNull="true" />
+      <Column Name="isSplitter" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Association Name="Label_Action" Member="Actions" ThisKey="Id" OtherKey="labelID" Type="Action" />
       <Association Name="Label_LabelInstance" Member="LabelInstances" ThisKey="Id" OtherKey="labelID" Type="LabelInstance" />
       <Association Name="LabelDomain_Label" Member="LabelDomain" ThisKey="domainID" OtherKey="Id" Type="LabelDomain" IsForeignKey="true" />
@@ -69,14 +70,17 @@
   <Table Name="dbo.LabelDomain" Member="LabelDomains">
     <Type Name="LabelDomain">
       <Column Name="Id" AutoSync="Never" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="minValue" Type="System.Double" CanBeNull="true" />
+      <Column Name="maxValue" Type="System.Double" CanBeNull="true" />
+      <Column Name="isOrdered" Type="System.Boolean" CanBeNull="true" />
       <Association Name="LabelDomain_DiscreteDomainValue" Member="DiscreteDomainValues" ThisKey="Id" OtherKey="domainID" Type="DiscreteDomainValue" />
       <Association Name="LabelDomain_Label" Member="Labels" ThisKey="Id" OtherKey="domainID" Type="Label" />
       <Type Name="ContinuousDomain">
-        <Column Name="" Member="minValue" Type="System.String" CanBeNull="false" />
-        <Column Name="maxValue" Type="System.String" CanBeNull="false" />
+        <Column Name="minValue" Type="System.Double" DbType="real NULL" CanBeNull="true" />
+        <Column Name="maxValue" Type="System.Double" DbType="real NULL" CanBeNull="true" />
       </Type>
       <Type Name="DiscreteDomain">
-        <Column Name="isOrdered" Type="System.String" CanBeNull="false" />
+        <Column Name="isOrdered" Type="System.Boolean" CanBeNull="true" />
       </Type>
     </Type>
   </Table>

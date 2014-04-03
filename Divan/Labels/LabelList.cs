@@ -27,6 +27,21 @@ namespace Divan
             return labels.AsEnumerable();
         }
 
+        public Label getLabelById(int id)
+        {
+            var labels = from l in DivanDataContext.Instance.Labels
+                         where l.Id == id
+                         select l;
+            try
+            {
+                return labels.First();
+            }
+            catch
+            {
+                throw new Exception("Label Not Found!");
+            }
+        }
+
         public List<Label> GetResult(string query)
         {
             //TODO

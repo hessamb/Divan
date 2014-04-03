@@ -28,20 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.TreeNode treeNode7 = new System.Windows.Forms.TreeNode("سال خطکشی");
-            System.Windows.Forms.TreeNode treeNode8 = new System.Windows.Forms.TreeNode("خطکشی", new System.Windows.Forms.TreeNode[] {
-            treeNode7});
-            System.Windows.Forms.TreeNode treeNode9 = new System.Windows.Forms.TreeNode("تاریخ آسفالت");
-            System.Windows.Forms.TreeNode treeNode10 = new System.Windows.Forms.TreeNode("آسفالت", new System.Windows.Forms.TreeNode[] {
-            treeNode9});
-            System.Windows.Forms.TreeNode treeNode11 = new System.Windows.Forms.TreeNode("تابلو راهنما");
-            System.Windows.Forms.TreeNode treeNode12 = new System.Windows.Forms.TreeNode("خیابان", new System.Windows.Forms.TreeNode[] {
-            treeNode8,
-            treeNode10,
-            treeNode11});
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
+            this.unvalueableRadio = new System.Windows.Forms.RadioButton();
             this.valueableOpt = new System.Windows.Forms.RadioButton();
             this.label2 = new System.Windows.Forms.Label();
             this.nameTxt = new System.Windows.Forms.TextBox();
@@ -50,31 +39,23 @@
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
             this.distictProps = new System.Windows.Forms.Panel();
             this.label9 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.textBox_minValue = new System.Windows.Forms.TextBox();
+            this.textBox_maxValue = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.continiousProps = new System.Windows.Forms.Panel();
-            this.orderedValues = new System.Windows.Forms.RadioButton();
+            this.ordinalValues = new System.Windows.Forms.RadioButton();
             this.domainGrid = new System.Windows.Forms.DataGridView();
-            this.order = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MoveUp = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.MoveDown = new System.Windows.Forms.DataGridViewButtonColumn();
             this.radioButton3 = new System.Windows.Forms.RadioButton();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
+            this.continuousRadio = new System.Windows.Forms.RadioButton();
             this.label3 = new System.Windows.Forms.Label();
-            this.distinctOpt = new System.Windows.Forms.RadioButton();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.compositAsset = new System.Windows.Forms.CheckBox();
-            this.subAssets = new System.Windows.Forms.GroupBox();
-            this.subAssetsTree = new System.Windows.Forms.TreeView();
-            this.removeSubAssetBut = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.discreteRadio = new System.Windows.Forms.RadioButton();
+            this.checkBox_splitter = new System.Windows.Forms.CheckBox();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.button5 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
-            this.autoChangableCh = new System.Windows.Forms.CheckBox();
-            this.AutoChangableProps = new System.Windows.Forms.GroupBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
             this.flowLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.domainGroup.SuspendLayout();
@@ -82,9 +63,7 @@
             this.distictProps.SuspendLayout();
             this.continiousProps.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.domainGrid)).BeginInit();
-            this.subAssets.SuspendLayout();
             this.panel2.SuspendLayout();
-            this.AutoChangableProps.SuspendLayout();
             this.SuspendLayout();
             // 
             // flowLayoutPanel1
@@ -94,11 +73,7 @@
             this.flowLayoutPanel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.flowLayoutPanel1.Controls.Add(this.panel1);
             this.flowLayoutPanel1.Controls.Add(this.domainGroup);
-            this.flowLayoutPanel1.Controls.Add(this.checkBox1);
-            this.flowLayoutPanel1.Controls.Add(this.autoChangableCh);
-            this.flowLayoutPanel1.Controls.Add(this.AutoChangableProps);
-            this.flowLayoutPanel1.Controls.Add(this.compositAsset);
-            this.flowLayoutPanel1.Controls.Add(this.subAssets);
+            this.flowLayoutPanel1.Controls.Add(this.checkBox_splitter);
             this.flowLayoutPanel1.Controls.Add(this.panel2);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
@@ -106,12 +81,12 @@
             this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(23, 22, 23, 22);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Padding = new System.Windows.Forms.Padding(12, 11, 0, 0);
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(493, 718);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(493, 401);
             this.flowLayoutPanel1.TabIndex = 100;
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.radioButton1);
+            this.panel1.Controls.Add(this.unvalueableRadio);
             this.panel1.Controls.Add(this.valueableOpt);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.nameTxt);
@@ -121,15 +96,15 @@
             this.panel1.Size = new System.Drawing.Size(467, 30);
             this.panel1.TabIndex = 0;
             // 
-            // radioButton1
+            // unvalueableRadio
             // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Location = new System.Drawing.Point(8, 4);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(76, 18);
-            this.radioButton1.TabIndex = 4;
-            this.radioButton1.Text = "مقدارناپذیر";
-            this.radioButton1.UseVisualStyleBackColor = true;
+            this.unvalueableRadio.AutoSize = true;
+            this.unvalueableRadio.Location = new System.Drawing.Point(8, 4);
+            this.unvalueableRadio.Name = "unvalueableRadio";
+            this.unvalueableRadio.Size = new System.Drawing.Size(76, 18);
+            this.unvalueableRadio.TabIndex = 4;
+            this.unvalueableRadio.Text = "مقدارناپذیر";
+            this.unvalueableRadio.UseVisualStyleBackColor = true;
             // 
             // valueableOpt
             // 
@@ -174,9 +149,9 @@
             this.domainGroup.AutoSize = true;
             this.domainGroup.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.domainGroup.Controls.Add(this.flowLayoutPanel2);
-            this.domainGroup.Controls.Add(this.radioButton2);
+            this.domainGroup.Controls.Add(this.continuousRadio);
             this.domainGroup.Controls.Add(this.label3);
-            this.domainGroup.Controls.Add(this.distinctOpt);
+            this.domainGroup.Controls.Add(this.discreteRadio);
             this.domainGroup.Location = new System.Drawing.Point(9, 50);
             this.domainGroup.Name = "domainGroup";
             this.domainGroup.Padding = new System.Windows.Forms.Padding(3, 3, 3, 0);
@@ -201,8 +176,8 @@
             // distictProps
             // 
             this.distictProps.Controls.Add(this.label9);
-            this.distictProps.Controls.Add(this.textBox1);
-            this.distictProps.Controls.Add(this.textBox3);
+            this.distictProps.Controls.Add(this.textBox_minValue);
+            this.distictProps.Controls.Add(this.textBox_maxValue);
             this.distictProps.Controls.Add(this.label10);
             this.distictProps.Location = new System.Drawing.Point(3, 3);
             this.distictProps.Margin = new System.Windows.Forms.Padding(3, 3, 3, 0);
@@ -220,19 +195,19 @@
             this.label9.TabIndex = 2;
             this.label9.Text = "از:";
             // 
-            // textBox1
+            // textBox_minValue
             // 
-            this.textBox1.Location = new System.Drawing.Point(314, 0);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(111, 22);
-            this.textBox1.TabIndex = 1;
+            this.textBox_minValue.Location = new System.Drawing.Point(314, 0);
+            this.textBox_minValue.Name = "textBox_minValue";
+            this.textBox_minValue.Size = new System.Drawing.Size(111, 22);
+            this.textBox_minValue.TabIndex = 1;
             // 
-            // textBox3
+            // textBox_maxValue
             // 
-            this.textBox3.Location = new System.Drawing.Point(169, 0);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(113, 22);
-            this.textBox3.TabIndex = 2;
+            this.textBox_maxValue.Location = new System.Drawing.Point(169, 0);
+            this.textBox_maxValue.Name = "textBox_maxValue";
+            this.textBox_maxValue.Size = new System.Drawing.Size(113, 22);
+            this.textBox_maxValue.TabIndex = 2;
             // 
             // label10
             // 
@@ -245,7 +220,7 @@
             // 
             // continiousProps
             // 
-            this.continiousProps.Controls.Add(this.orderedValues);
+            this.continiousProps.Controls.Add(this.ordinalValues);
             this.continiousProps.Controls.Add(this.domainGrid);
             this.continiousProps.Controls.Add(this.radioButton3);
             this.continiousProps.Location = new System.Drawing.Point(3, 29);
@@ -254,43 +229,57 @@
             this.continiousProps.Size = new System.Drawing.Size(450, 172);
             this.continiousProps.TabIndex = 2;
             // 
-            // orderedValues
+            // ordinalValues
             // 
-            this.orderedValues.AutoSize = true;
-            this.orderedValues.Checked = true;
-            this.orderedValues.Location = new System.Drawing.Point(215, 0);
-            this.orderedValues.Name = "orderedValues";
-            this.orderedValues.Size = new System.Drawing.Size(112, 18);
-            this.orderedValues.TabIndex = 2;
-            this.orderedValues.TabStop = true;
-            this.orderedValues.Text = "مقادیر ترتیب دارند";
-            this.orderedValues.UseVisualStyleBackColor = true;
-            this.orderedValues.CheckedChanged += new System.EventHandler(this.orderedValues_CheckedChanged);
+            this.ordinalValues.AutoSize = true;
+            this.ordinalValues.Checked = true;
+            this.ordinalValues.Location = new System.Drawing.Point(215, 0);
+            this.ordinalValues.Name = "ordinalValues";
+            this.ordinalValues.Size = new System.Drawing.Size(112, 18);
+            this.ordinalValues.TabIndex = 2;
+            this.ordinalValues.TabStop = true;
+            this.ordinalValues.Text = "مقادیر ترتیب دارند";
+            this.ordinalValues.UseVisualStyleBackColor = true;
+            this.ordinalValues.CheckedChanged += new System.EventHandler(this.orderedValues_CheckedChanged);
             // 
             // domainGrid
             // 
+            this.domainGrid.AllowUserToOrderColumns = true;
             this.domainGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.domainGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.order,
-            this.name});
+            this.name,
+            this.MoveUp,
+            this.MoveDown});
             this.domainGrid.Location = new System.Drawing.Point(0, 28);
             this.domainGrid.Margin = new System.Windows.Forms.Padding(3, 3, 3, 0);
             this.domainGrid.Name = "domainGrid";
             this.domainGrid.Size = new System.Drawing.Size(450, 144);
             this.domainGrid.TabIndex = 3;
-            // 
-            // order
-            // 
-            this.order.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.order.HeaderText = "ترتیب";
-            this.order.Name = "order";
-            this.order.Width = 58;
+            this.domainGrid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.domainGrid_CellContentClick);
             // 
             // name
             // 
             this.name.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.name.HeaderText = "نام";
             this.name.Name = "name";
+            // 
+            // MoveUp
+            // 
+            this.MoveUp.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.MoveUp.HeaderText = "";
+            this.MoveUp.Name = "MoveUp";
+            this.MoveUp.Text = "^";
+            this.MoveUp.UseColumnTextForButtonValue = true;
+            this.MoveUp.Width = 22;
+            // 
+            // MoveDown
+            // 
+            this.MoveDown.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.MoveDown.HeaderText = "";
+            this.MoveDown.Name = "MoveDown";
+            this.MoveDown.Text = "v";
+            this.MoveDown.UseColumnTextForButtonValue = true;
+            this.MoveDown.Width = 22;
             // 
             // radioButton3
             // 
@@ -302,15 +291,15 @@
             this.radioButton3.Text = "مقادیر بی‌ترتیب اند";
             this.radioButton3.UseVisualStyleBackColor = true;
             // 
-            // radioButton2
+            // continuousRadio
             // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(252, 19);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(60, 18);
-            this.radioButton2.TabIndex = 2;
-            this.radioButton2.Text = "پیوسته";
-            this.radioButton2.UseVisualStyleBackColor = true;
+            this.continuousRadio.AutoSize = true;
+            this.continuousRadio.Location = new System.Drawing.Point(252, 19);
+            this.continuousRadio.Name = "continuousRadio";
+            this.continuousRadio.Size = new System.Drawing.Size(60, 18);
+            this.continuousRadio.TabIndex = 2;
+            this.continuousRadio.Text = "پیوسته";
+            this.continuousRadio.UseVisualStyleBackColor = true;
             // 
             // label3
             // 
@@ -321,126 +310,37 @@
             this.label3.TabIndex = 2;
             this.label3.Text = "فضای حالت:";
             // 
-            // distinctOpt
+            // discreteRadio
             // 
-            this.distinctOpt.AutoSize = true;
-            this.distinctOpt.Checked = true;
-            this.distinctOpt.Location = new System.Drawing.Point(318, 19);
-            this.distinctOpt.Name = "distinctOpt";
-            this.distinctOpt.Size = new System.Drawing.Size(68, 18);
-            this.distinctOpt.TabIndex = 1;
-            this.distinctOpt.TabStop = true;
-            this.distinctOpt.Text = "گسسته";
-            this.distinctOpt.UseVisualStyleBackColor = true;
-            this.distinctOpt.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
+            this.discreteRadio.AutoSize = true;
+            this.discreteRadio.Checked = true;
+            this.discreteRadio.Location = new System.Drawing.Point(318, 19);
+            this.discreteRadio.Name = "discreteRadio";
+            this.discreteRadio.Size = new System.Drawing.Size(68, 18);
+            this.discreteRadio.TabIndex = 1;
+            this.discreteRadio.TabStop = true;
+            this.discreteRadio.Text = "گسسته";
+            this.discreteRadio.UseVisualStyleBackColor = true;
+            this.discreteRadio.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
             // 
-            // checkBox1
+            // checkBox_splitter
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(255, 315);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(223, 18);
-            this.checkBox1.TabIndex = 2;
-            this.checkBox1.Text = "این برچسب از نوع تعریف‌گر دارایی است";
-            this.checkBox1.UseVisualStyleBackColor = true;
-            // 
-            // compositAsset
-            // 
-            this.compositAsset.AutoSize = true;
-            this.compositAsset.Checked = true;
-            this.compositAsset.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.compositAsset.Location = new System.Drawing.Point(331, 455);
-            this.compositAsset.Name = "compositAsset";
-            this.compositAsset.Size = new System.Drawing.Size(147, 18);
-            this.compositAsset.TabIndex = 5;
-            this.compositAsset.Text = "این برچسب مرکب است";
-            this.compositAsset.UseVisualStyleBackColor = true;
-            this.compositAsset.CheckedChanged += new System.EventHandler(this.compositAsset_CheckedChanged);
-            // 
-            // subAssets
-            // 
-            this.subAssets.Controls.Add(this.subAssetsTree);
-            this.subAssets.Controls.Add(this.removeSubAssetBut);
-            this.subAssets.Controls.Add(this.button1);
-            this.subAssets.Location = new System.Drawing.Point(11, 479);
-            this.subAssets.Name = "subAssets";
-            this.subAssets.Size = new System.Drawing.Size(467, 167);
-            this.subAssets.TabIndex = 6;
-            this.subAssets.TabStop = false;
-            this.subAssets.Text = "زیربرچسب‌ها:";
-            // 
-            // subAssetsTree
-            // 
-            this.subAssetsTree.Location = new System.Drawing.Point(8, 16);
-            this.subAssetsTree.Name = "subAssetsTree";
-            treeNode7.Name = "Node1";
-            treeNode7.Text = "سال خطکشی";
-            treeNode8.Name = "Node3";
-            treeNode8.Text = "خطکشی";
-            treeNode9.Name = "Node0";
-            treeNode9.Text = "تاریخ آسفالت";
-            treeNode10.Name = "Node4";
-            treeNode10.Text = "آسفالت";
-            treeNode11.Name = "Node5";
-            treeNode11.Text = "تابلو راهنما";
-            treeNode12.Name = "Node0";
-            treeNode12.Text = "خیابان";
-            this.subAssetsTree.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode12});
-            this.subAssetsTree.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.subAssetsTree.RightToLeftLayout = true;
-            this.subAssetsTree.Size = new System.Drawing.Size(382, 145);
-            this.subAssetsTree.TabIndex = 3;
-            // 
-            // removeSubAssetBut
-            // 
-            this.removeSubAssetBut.Enabled = false;
-            this.removeSubAssetBut.Image = global::Divan.Properties.Resources.delete;
-            this.removeSubAssetBut.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.removeSubAssetBut.Location = new System.Drawing.Point(396, 53);
-            this.removeSubAssetBut.Name = "removeSubAssetBut";
-            this.removeSubAssetBut.Size = new System.Drawing.Size(64, 25);
-            this.removeSubAssetBut.TabIndex = 2;
-            this.removeSubAssetBut.Text = "حذف";
-            this.removeSubAssetBut.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.removeSubAssetBut.UseVisualStyleBackColor = true;
-            this.removeSubAssetBut.Click += new System.EventHandler(this.removeSubAssetBut_Click);
-            // 
-            // button1
-            // 
-            this.button1.Image = global::Divan.Properties.Resources.add;
-            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button1.Location = new System.Drawing.Point(396, 22);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(64, 25);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "افزودن";
-            this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.checkBox_splitter.AutoSize = true;
+            this.checkBox_splitter.Location = new System.Drawing.Point(255, 315);
+            this.checkBox_splitter.Name = "checkBox_splitter";
+            this.checkBox_splitter.Size = new System.Drawing.Size(223, 18);
+            this.checkBox_splitter.TabIndex = 2;
+            this.checkBox_splitter.Text = "این برچسب از نوع تعریف‌گر دارایی است";
+            this.checkBox_splitter.UseVisualStyleBackColor = true;
             // 
             // panel2
             // 
-            this.panel2.Controls.Add(this.button5);
             this.panel2.Controls.Add(this.button4);
             this.panel2.Controls.Add(this.button3);
-            this.panel2.Location = new System.Drawing.Point(11, 652);
+            this.panel2.Location = new System.Drawing.Point(11, 339);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(467, 38);
             this.panel2.TabIndex = 8;
-            // 
-            // button5
-            // 
-            this.button5.Image = global::Divan.Properties.Resources.page_code;
-            this.button5.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button5.Location = new System.Drawing.Point(351, 9);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(116, 25);
-            this.button5.TabIndex = 1;
-            this.button5.Text = "ضمیمه کردن کد";
-            this.button5.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button5.UseVisualStyleBackColor = true;
-            this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // button4
             // 
@@ -467,39 +367,9 @@
             this.button3.Text = "تایید";
             this.button3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
-            // autoChangableCh
-            // 
-            this.autoChangableCh.AutoSize = true;
-            this.autoChangableCh.Checked = true;
-            this.autoChangableCh.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.autoChangableCh.Location = new System.Drawing.Point(147, 339);
-            this.autoChangableCh.Name = "autoChangableCh";
-            this.autoChangableCh.Size = new System.Drawing.Size(331, 18);
-            this.autoChangableCh.TabIndex = 3;
-            this.autoChangableCh.Text = "حالت این برچسب در طول زمان باید به صورت خودکار تغییر کند";
-            this.autoChangableCh.UseVisualStyleBackColor = true;
-            this.autoChangableCh.CheckedChanged += new System.EventHandler(this.autoChangableCh_CheckedChanged);
-            // 
-            // AutoChangableProps
-            // 
-            this.AutoChangableProps.Controls.Add(this.textBox2);
-            this.AutoChangableProps.Location = new System.Drawing.Point(11, 363);
-            this.AutoChangableProps.Name = "AutoChangableProps";
-            this.AutoChangableProps.Size = new System.Drawing.Size(467, 86);
-            this.AutoChangableProps.TabIndex = 4;
-            this.AutoChangableProps.TabStop = false;
-            this.AutoChangableProps.Text = "معادله یا کد تغییر مستمر";
-            // 
-            // textBox2
-            // 
-            this.textBox2.Location = new System.Drawing.Point(8, 21);
-            this.textBox2.Multiline = true;
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(453, 57);
-            this.textBox2.TabIndex = 0;
-            // 
-            // NewLabel
+            // NewLabelWindow
             // 
             this.AcceptButton = this.button3;
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
@@ -508,12 +378,12 @@
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.CancelButton = this.button4;
-            this.ClientSize = new System.Drawing.Size(493, 718);
+            this.ClientSize = new System.Drawing.Size(493, 401);
             this.Controls.Add(this.flowLayoutPanel1);
             this.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
-            this.Name = "NewLabel";
+            this.Name = "NewLabelWindow";
             this.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
@@ -532,10 +402,7 @@
             this.continiousProps.ResumeLayout(false);
             this.continiousProps.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.domainGrid)).EndInit();
-            this.subAssets.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
-            this.AutoChangableProps.ResumeLayout(false);
-            this.AutoChangableProps.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -547,37 +414,29 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.TextBox nameTxt;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.CheckBox checkBox_splitter;
         private System.Windows.Forms.GroupBox domainGroup;
         private System.Windows.Forms.DataGridView domainGrid;
-        private System.Windows.Forms.GroupBox subAssets;
-        private System.Windows.Forms.Button removeSubAssetBut;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.CheckBox compositAsset;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TreeView subAssetsTree;
-        private System.Windows.Forms.RadioButton radioButton2;
-        private System.Windows.Forms.RadioButton distinctOpt;
+        private System.Windows.Forms.RadioButton continuousRadio;
+        private System.Windows.Forms.RadioButton discreteRadio;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
         private System.Windows.Forms.Panel distictProps;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox textBox_minValue;
+        private System.Windows.Forms.TextBox textBox_maxValue;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Panel continiousProps;
-        private System.Windows.Forms.RadioButton orderedValues;
+        private System.Windows.Forms.RadioButton ordinalValues;
         private System.Windows.Forms.RadioButton radioButton3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn order;
-        private System.Windows.Forms.DataGridViewTextBoxColumn name;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.RadioButton radioButton1;
+        private System.Windows.Forms.RadioButton unvalueableRadio;
         private System.Windows.Forms.RadioButton valueableOpt;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.CheckBox autoChangableCh;
-        private System.Windows.Forms.GroupBox AutoChangableProps;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn name;
+        private System.Windows.Forms.DataGridViewButtonColumn MoveUp;
+        private System.Windows.Forms.DataGridViewButtonColumn MoveDown;
     }
 }

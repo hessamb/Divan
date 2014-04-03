@@ -18,8 +18,8 @@ namespace Divan
             LabelsWindow a = new LabelsWindow();
             a.select.Visible=a.cancel.Visible=a.cancel.Enabled= true;
             a.delete.Visible = a.edit.Visible = false;
-            a.assetsGrid.DoubleClick -= a.assetsGrid_DoubleClick;
-            a.assetsGrid.DoubleClick += a.select_Click;
+            a.labelsGrid.DoubleClick -= a.assetsGrid_DoubleClick;
+            a.labelsGrid.DoubleClick += a.select_Click;
             if (a.ShowDialog() == DialogResult.OK)
             {
                 return a.SelectedLabel;
@@ -41,28 +41,14 @@ namespace Divan
         {
             UIHelper.SetPlaceHolder(searchTxt, "جستجوی برچسب");
 
-            for (int i = 0; i < 5; i++)
-            {
-                TreeNode trafficLight = new TreeNode("چراغ راهنمایی چهارراه بهبودی");
-                TreeNode crossWalk = new TreeNode("خط‌کشی عابر پیاده چهارراه بهبودی");
-                TreeNode behboodi = new TreeNode("چهارراه بهبودی", new TreeNode[] { trafficLight, crossWalk });
-                TreeNode azadi = new TreeNode("خیابان آزادی", new TreeNode[] { behboodi });
-                azadi.ExpandAll();
-                //assetsTree.Nodes.Add(azadi);
-            }
+            labelsGrid.AutoGenerateColumns = false;
+            labelsGrid.DataSource = LabelList.Instance.GetAll();
 
-            for (int i = 0; i < 5; i++)
-            {
-                assetsGrid.Rows.Add(new object[] { "تعریف‌گر نوع دارایی", false, "", true });
-                assetsGrid.Rows.Add(new object[] { "خیابان", true, "گسسته", true });
-                assetsGrid.Rows.Add(new object[] { "خطکشی", true, "گسسته", true });
-                assetsGrid.Rows.Add(new object[] { "چراغ راهنمایی", true, "گسسته", false });
-            }
         }
 
         private void assetsGrid_SelectionChanged(object sender, EventArgs e)
         {
-            bool selected = assetsGrid.SelectedCells.Count > 0;
+            bool selected = labelsGrid.SelectedCells.Count > 0;
             edit.Enabled = delete.Enabled = selected;
             if (select.Visible)
                 select.Enabled = selected;
@@ -70,7 +56,7 @@ namespace Divan
 
         private void select_Click(object sender, EventArgs e)
         {
-           SelectedLabel = (string)assetsGrid.SelectedCells[0].OwningRow.Cells[0].Value;
+           SelectedLabel = (string)labelsGrid.SelectedCells[0].OwningRow.Cells[0].Value;
            DialogResult = System.Windows.Forms.DialogResult.OK;
         }
 
@@ -89,9 +75,21 @@ namespace Divan
             contextMenuStrip2.Show(delete, 0, 0);
         }
 
+        private Label getSelectedLabel()
+        {
+            int id = (int)labelsGrid.SelectedRows[0].Cells["id"].Value;
+            return LabelList.Instance.getLabelById(id);
+        }
+
         private void button1_Click(object sender, EventArgs e)
         {
-            (new LabelDetailsWindow()).ShowDialog();
+            try
+            {
+                (new LabelDetailsWindow(getSelectedLabel())).ShowDialog();
+            }
+            catch
+            {
+            }
         }
 
         private void assetsGrid_DoubleClick(object sender, EventArgs e)
@@ -102,8 +100,8 @@ namespace Divan
         private void فقطازلیستپاککنToolStripMenuItem_Click(object sender, EventArgs e)
         {
             HashSet<int> set = new HashSet<int>();
-            for (int i = 0; i < assetsGrid.SelectedCells.Count; i++)
-                set.Add(assetsGrid.SelectedCells[i].RowIndex);
+            for (int i = 0; i < labelsGrid.SelectedCells.Count; i++)
+                set.Add(labelsGrid.SelectedCells[i].RowIndex);
             int cnt = set.Count;
             string message = "";
             if (cnt > 1)
@@ -112,10 +110,15 @@ namespace Divan
             }
             else if (cnt == 1)
             {
-                string name = (string)assetsGrid.SelectedCells[0].OwningRow.Cells[1].Value;
+                string name = (string)labelsGrid.SelectedCells[0].OwningRow.Cells[1].Value;
                 message = "آیا از حذف برچسب «" + name + "» مطمئنید؟";
             }
             RemoveConfirmationBox.ShowConfirmation(message);
+        }
+
+        private void labelsGrid_CellContentDoubleClick_1(object sender, DataGridViewCellEventArgs e)
+        {
+            button1_Click(null, null);
         }
     }
 }

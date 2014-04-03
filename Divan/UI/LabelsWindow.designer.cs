@@ -32,11 +32,11 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.searchTxt = new System.Windows.Forms.TextBox();
-            this.assetsGrid = new System.Windows.Forms.DataGridView();
+            this.labelsGrid = new System.Windows.Forms.DataGridView();
             this.name = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.sensible = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.human = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.composition = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.setValue = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.domainModel = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.مشاهدهمشخصاتToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
@@ -53,7 +53,7 @@
             this.contextMenuStrip2 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.فقطازلیستپاککنToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.حذفازداخلداراییهایدیگرToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            ((System.ComponentModel.ISupportInitialize)(this.assetsGrid)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.labelsGrid)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
             this.contextMenuStrip2.SuspendLayout();
@@ -70,68 +70,71 @@
             this.searchTxt.Size = new System.Drawing.Size(506, 22);
             this.searchTxt.TabIndex = 4;
             // 
-            // assetsGrid
+            // labelsGrid
             // 
-            this.assetsGrid.AllowUserToAddRows = false;
-            this.assetsGrid.AllowUserToDeleteRows = false;
-            this.assetsGrid.AllowUserToResizeRows = false;
+            this.labelsGrid.AllowUserToAddRows = false;
+            this.labelsGrid.AllowUserToDeleteRows = false;
+            this.labelsGrid.AllowUserToResizeRows = false;
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.assetsGrid.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            this.assetsGrid.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.labelsGrid.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.labelsGrid.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.assetsGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.assetsGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.labelsGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.labelsGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.name,
-            this.sensible,
-            this.human,
-            this.composition});
-            this.assetsGrid.ContextMenuStrip = this.contextMenuStrip1;
-            this.assetsGrid.Location = new System.Drawing.Point(14, 58);
-            this.assetsGrid.Name = "assetsGrid";
-            this.assetsGrid.ReadOnly = true;
-            this.assetsGrid.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.id,
+            this.setValue,
+            this.domainModel});
+            this.labelsGrid.ContextMenuStrip = this.contextMenuStrip1;
+            this.labelsGrid.Location = new System.Drawing.Point(14, 58);
+            this.labelsGrid.Name = "labelsGrid";
+            this.labelsGrid.ReadOnly = true;
+            this.labelsGrid.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.assetsGrid.RowsDefaultCellStyle = dataGridViewCellStyle2;
-            this.assetsGrid.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.assetsGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.assetsGrid.Size = new System.Drawing.Size(506, 401);
-            this.assetsGrid.TabIndex = 0;
-            this.assetsGrid.SelectionChanged += new System.EventHandler(this.assetsGrid_SelectionChanged);
-            this.assetsGrid.DoubleClick += new System.EventHandler(this.assetsGrid_DoubleClick);
+            this.labelsGrid.RowsDefaultCellStyle = dataGridViewCellStyle2;
+            this.labelsGrid.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.labelsGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.labelsGrid.Size = new System.Drawing.Size(506, 401);
+            this.labelsGrid.TabIndex = 0;
+            this.labelsGrid.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.labelsGrid_CellContentDoubleClick_1);
+            this.labelsGrid.SelectionChanged += new System.EventHandler(this.assetsGrid_SelectionChanged);
             // 
             // name
             // 
             this.name.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.name.DataPropertyName = "name";
             this.name.HeaderText = "نام برچسب";
             this.name.Name = "name";
             this.name.ReadOnly = true;
             // 
-            // sensible
+            // id
             // 
-            this.sensible.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.sensible.HeaderText = "مقدارپذیر";
-            this.sensible.Name = "sensible";
-            this.sensible.ReadOnly = true;
-            this.sensible.Width = 57;
+            this.id.DataPropertyName = "Id";
+            this.id.HeaderText = "id";
+            this.id.Name = "id";
+            this.id.ReadOnly = true;
+            this.id.Visible = false;
             // 
-            // human
+            // setValue
             // 
-            this.human.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.human.HeaderText = "دامنه حالت";
-            this.human.Name = "human";
-            this.human.ReadOnly = true;
-            this.human.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.human.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.human.Width = 69;
+            this.setValue.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.setValue.DataPropertyName = "setValue";
+            this.setValue.HeaderText = "مقدارپذیر";
+            this.setValue.Name = "setValue";
+            this.setValue.ReadOnly = true;
+            this.setValue.Width = 57;
             // 
-            // composition
+            // domainModel
             // 
-            this.composition.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.composition.HeaderText = "مرکب";
-            this.composition.Name = "composition";
-            this.composition.ReadOnly = true;
-            this.composition.Width = 41;
+            this.domainModel.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.domainModel.DataPropertyName = "domainModel";
+            this.domainModel.HeaderText = "دامنه حالت";
+            this.domainModel.Name = "domainModel";
+            this.domainModel.ReadOnly = true;
+            this.domainModel.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.domainModel.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.domainModel.Width = 69;
             // 
             // contextMenuStrip1
             // 
@@ -141,26 +144,26 @@
             this.حذفToolStripMenuItem,
             this.ویرایشToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(168, 76);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(155, 76);
             // 
             // مشاهدهمشخصاتToolStripMenuItem
             // 
             this.مشاهدهمشخصاتToolStripMenuItem.Image = global::Divan.Properties.Resources.note;
             this.مشاهدهمشخصاتToolStripMenuItem.Name = "مشاهدهمشخصاتToolStripMenuItem";
-            this.مشاهدهمشخصاتToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
+            this.مشاهدهمشخصاتToolStripMenuItem.Size = new System.Drawing.Size(154, 22);
             this.مشاهدهمشخصاتToolStripMenuItem.Text = "مشاهده مشخصات";
             this.مشاهدهمشخصاتToolStripMenuItem.Click += new System.EventHandler(this.button1_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(164, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(151, 6);
             // 
             // حذفToolStripMenuItem
             // 
             this.حذفToolStripMenuItem.Image = global::Divan.Properties.Resources.delete;
             this.حذفToolStripMenuItem.Name = "حذفToolStripMenuItem";
-            this.حذفToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
+            this.حذفToolStripMenuItem.Size = new System.Drawing.Size(154, 22);
             this.حذفToolStripMenuItem.Text = "حذف";
             this.حذفToolStripMenuItem.Click += new System.EventHandler(this.delete_Click);
             // 
@@ -168,7 +171,7 @@
             // 
             this.ویرایشToolStripMenuItem.Image = global::Divan.Properties.Resources.pencil;
             this.ویرایشToolStripMenuItem.Name = "ویرایشToolStripMenuItem";
-            this.ویرایشToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
+            this.ویرایشToolStripMenuItem.Size = new System.Drawing.Size(154, 22);
             this.ویرایشToolStripMenuItem.Text = "ویرایش";
             this.ویرایشToolStripMenuItem.Click += new System.EventHandler(this.edit_Click_1);
             // 
@@ -293,23 +296,23 @@
             this.حذفازداخلداراییهایدیگرToolStripMenuItem});
             this.contextMenuStrip2.Name = "contextMenuStrip2";
             this.contextMenuStrip2.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.contextMenuStrip2.Size = new System.Drawing.Size(316, 48);
+            this.contextMenuStrip2.Size = new System.Drawing.Size(301, 48);
             // 
             // فقطازلیستپاککنToolStripMenuItem
             // 
             this.فقطازلیستپاککنToolStripMenuItem.Name = "فقطازلیستپاککنToolStripMenuItem";
-            this.فقطازلیستپاککنToolStripMenuItem.Size = new System.Drawing.Size(315, 22);
+            this.فقطازلیستپاککنToolStripMenuItem.Size = new System.Drawing.Size(300, 22);
             this.فقطازلیستپاککنToolStripMenuItem.Text = "فقط حذف از لیست";
             this.فقطازلیستپاککنToolStripMenuItem.Click += new System.EventHandler(this.فقطازلیستپاککنToolStripMenuItem_Click);
             // 
             // حذفازداخلداراییهایدیگرToolStripMenuItem
             // 
             this.حذفازداخلداراییهایدیگرToolStripMenuItem.Name = "حذفازداخلداراییهایدیگرToolStripMenuItem";
-            this.حذفازداخلداراییهایدیگرToolStripMenuItem.Size = new System.Drawing.Size(315, 22);
+            this.حذفازداخلداراییهایدیگرToolStripMenuItem.Size = new System.Drawing.Size(300, 22);
             this.حذفازداخلداراییهایدیگرToolStripMenuItem.Text = "حذف از لیست و داخل برچسب‌ها و دارایی‌های دیگر";
             this.حذفازداخلداراییهایدیگرToolStripMenuItem.Click += new System.EventHandler(this.فقطازلیستپاککنToolStripMenuItem_Click);
             // 
-            // Labels
+            // LabelsWindow
             // 
             this.AcceptButton = this.select;
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
@@ -319,17 +322,17 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.cancel);
             this.Controls.Add(this.select);
-            this.Controls.Add(this.assetsGrid);
+            this.Controls.Add(this.labelsGrid);
             this.Controls.Add(this.searchTxt);
             this.Controls.Add(this.flowLayoutPanel1);
             this.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.Name = "Labels";
+            this.Name = "LabelsWindow";
             this.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "برچسب‌ها";
             this.Load += new System.EventHandler(this.assetForm_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.assetsGrid)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.labelsGrid)).EndInit();
             this.contextMenuStrip1.ResumeLayout(false);
             this.flowLayoutPanel1.ResumeLayout(false);
             this.contextMenuStrip2.ResumeLayout(false);
@@ -341,7 +344,7 @@
         #endregion
 
         private System.Windows.Forms.TextBox searchTxt;
-        private System.Windows.Forms.DataGridView assetsGrid;
+        private System.Windows.Forms.DataGridView labelsGrid;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button delete;
         private System.Windows.Forms.Button edit;
@@ -350,10 +353,6 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn name;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn sensible;
-        private System.Windows.Forms.DataGridViewTextBoxColumn human;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn composition;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem مشاهدهمشخصاتToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
@@ -362,6 +361,10 @@
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip2;
         private System.Windows.Forms.ToolStripMenuItem فقطازلیستپاککنToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem حذفازداخلداراییهایدیگرToolStripMenuItem;
+        private System.Windows.Forms.DataGridViewTextBoxColumn name;
+        private System.Windows.Forms.DataGridViewTextBoxColumn id;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn setValue;
+        private System.Windows.Forms.DataGridViewTextBoxColumn domainModel;
 
     }
 }

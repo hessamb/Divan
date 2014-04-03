@@ -12,18 +12,49 @@ namespace Divan
 {
     public partial class LabelDetailsWindow : Form
     {
+
+        private Label label;
+
         public LabelDetailsWindow()
         {
             InitializeComponent();
         }
 
+        public LabelDetailsWindow(Label label)
+            : this()
+        {
+            this.label = label;
+        }
+
         private void NewAsset_Load(object sender, EventArgs e)
         {
-            domainGrid.Rows.Add(new object[] { "۱", "بد" });
-            domainGrid.Rows.Add(new object[] { "۲", "متوسط" });
-            domainGrid.Rows.Add(new object[] { "۳", "خوب" });
+            label_name.Text = "نام برچسب: " + label.name;
+            label_type.Text = "نوع برچسب: " + (label.setValue ? "مقدارپذیر" : "مقدارناپذیر");
+            label_domainModel.Text = "دامنه حالت: " + label.domainModel;
+            if (!label.setValue)
+            {
+                domainGroup.Visible = false;
+            }
+            else if (label.LabelDomain.isDiscrete())
+            {
+                label_continuousDomain.Visible = false;
+                domainGrid.Visible = true;
+                IEnumerable<DiscreteDomainValue> values = label.LabelDomain.DiscreteDomainValues.OrderBy((DiscreteDomainValue value) => value.rank).AsEnumerable();
 
-            labelsTree.ExpandAll();
+                domainGrid.AutoGenerateColumns = false;
+                domainGrid.DataSource = values;
+
+                domainGrid.Columns["rank"].Visible = (label.LabelDomain.isOrdered ?? false);
+            }
+            else
+            {
+                domainGrid.Visible = false;
+                label_continuousDomain.Visible = true;
+                label_continuousDomain.Text = "این برچسب هر عدد حقیقی از "
+                    + label.LabelDomain.minValue + " تا "
+                    + label.LabelDomain.maxValue + " را می‌پذیرد.";
+            }
+            splitterLabelGroup.Visible = label.isSplitter;
         }
 
         private void edit_Click(object sender, EventArgs e)
