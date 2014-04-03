@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -17,6 +18,37 @@ namespace Divan
             cell.Style.ForeColor = Color.DarkGray;
             cell.Style.BackColor = Color.LightGray;
         }
+        public static void searchGrid(DataGridView grid, string pattern)
+        {
+            foreach (DataGridViewRow row in grid.Rows)
+            {
+                CurrencyManager cm = (CurrencyManager)grid.BindingContext[grid.DataSource];
+                cm.SuspendBinding();
+                row.Visible = doesMatch(row, pattern);
+                cm.ResumeBinding();
+            }
+        }
+
+
+        private static bool doesMatch(DataGridViewRow row, string pattern)
+        {
+            foreach (string word in pattern.Split(" ".ToCharArray()))
+            {
+                bool matched = false;
+                foreach (DataGridViewCell cell in row.Cells)
+                {
+                    if (cell.Value is string && ((string)cell.Value).IndexOf(word) != -1)
+                    {
+                        matched = true;
+                        break;
+                    }
+                }
+                if (!matched)
+                    return false;
+            }
+            return true;
+        }
+
         public static void SetPlaceHolder(TextBox textbox, String text)
         {
             placeHolders.Add(textbox, text);

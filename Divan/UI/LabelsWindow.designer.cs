@@ -69,6 +69,7 @@
             this.searchTxt.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.searchTxt.Size = new System.Drawing.Size(506, 22);
             this.searchTxt.TabIndex = 4;
+            this.searchTxt.TextChanged += new System.EventHandler(this.searchTxt_TextChanged);
             // 
             // labelsGrid
             // 

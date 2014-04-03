@@ -130,5 +130,10 @@ namespace Divan
         {
             button1_Click(null, null);
         }
+
+        private void searchTxt_TextChanged(object sender, EventArgs e)
+        {
+            UIHelper.searchGrid(labelsGrid, searchTxt.Text);
+        }
     }
 }
