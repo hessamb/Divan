@@ -1374,7 +1374,7 @@ namespace Divan
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="isChangable", Storage="_isChangable", DbType="Bit NOT NULL")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_isChangable", DbType="Bit NOT NULL")]
 		public bool setValue
 		{
 			get
@@ -1801,13 +1801,6 @@ namespace Divan
 			this._Label = default(EntityRef<Label>);
 			OnCreated();
 		}
-
-        public LabelInstance(int assetID, int labelID, string value): this()
-        {
-            this.assetID = assetID;
-            this.labelID = labelID;
-            this.value = value;
-        }
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", DbType="Int NOT NULL", IsPrimaryKey=true, IsDbGenerated=true)]
 		public int Id

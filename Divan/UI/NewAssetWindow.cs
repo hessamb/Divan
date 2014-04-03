@@ -24,6 +24,7 @@ namespace Divan
         public NewAssetWindow(Asset asset)
             : this()
         {
+            this.Text = "ویرایش عملیات";
             this.asset = asset;
         }
 

@@ -7,6 +7,14 @@ namespace Divan
 {
     public partial class LabelInstance:Changable
     {
+
+        public LabelInstance(int assetId, int labelId, string value)
+        {
+            this.assetID = assetId;
+            this.labelID = labelId;
+            this.value = value;
+        }
+
         public List<ConsistancyRule> GetInconsistencies()
         {
             //TODO

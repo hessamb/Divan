@@ -39,9 +39,10 @@ namespace Divan
 
         private void button11_Click(object sender, EventArgs e)
         {
-            if (AssetsWindow.ShowAssets() != null)
+            String uid;
+            if ((uid = AssetsWindow.ShowAssets()) != null)
             {
-                (new ChangeStateWindow()).ShowDialog();
+                (new ChangeStateWindow(AssetList.Instance.GetByUid(uid))).ShowDialog();
             }
         }
 
