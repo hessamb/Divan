@@ -98,7 +98,7 @@
             this.labelsGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.labelsGrid.Size = new System.Drawing.Size(506, 401);
             this.labelsGrid.TabIndex = 0;
-            this.labelsGrid.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.labelsGrid_CellContentDoubleClick_1);
+            this.labelsGrid.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.labelsGrid_CellContentDoubleClick_1);
             this.labelsGrid.SelectionChanged += new System.EventHandler(this.assetsGrid_SelectionChanged);
             // 
             // name

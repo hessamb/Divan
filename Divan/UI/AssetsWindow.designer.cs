@@ -59,8 +59,6 @@
             this.isHuman = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.isPhysical = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.isPortable = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.parent = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGrid_assets)).BeginInit();
             this.rightClickMenuStrip.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
@@ -94,9 +92,7 @@
             this.NameColumn,
             this.isHuman,
             this.isPhysical,
-            this.isPortable,
-            this.id,
-            this.parent});
+            this.isPortable});
             this.dataGrid_assets.ContextMenuStrip = this.rightClickMenuStrip;
             this.dataGrid_assets.Location = new System.Drawing.Point(14, 59);
             this.dataGrid_assets.MultiSelect = false;
@@ -122,26 +118,26 @@
             this.ویرایشToolStripMenuItem});
             this.rightClickMenuStrip.Name = "contextMenuStrip1";
             this.rightClickMenuStrip.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.rightClickMenuStrip.Size = new System.Drawing.Size(168, 76);
+            this.rightClickMenuStrip.Size = new System.Drawing.Size(155, 76);
             // 
             // مشاهدهمشخصاتToolStripMenuItem
             // 
             this.مشاهدهمشخصاتToolStripMenuItem.Image = global::Divan.Properties.Resources.icon_package;
             this.مشاهدهمشخصاتToolStripMenuItem.Name = "مشاهدهمشخصاتToolStripMenuItem";
-            this.مشاهدهمشخصاتToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
+            this.مشاهدهمشخصاتToolStripMenuItem.Size = new System.Drawing.Size(154, 22);
             this.مشاهدهمشخصاتToolStripMenuItem.Text = "مشاهده مشخصات";
             this.مشاهدهمشخصاتToolStripMenuItem.Click += new System.EventHandler(this.button1_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(164, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(151, 6);
             // 
             // حذفToolStripMenuItem
             // 
             this.حذفToolStripMenuItem.Image = global::Divan.Properties.Resources.delete;
             this.حذفToolStripMenuItem.Name = "حذفToolStripMenuItem";
-            this.حذفToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
+            this.حذفToolStripMenuItem.Size = new System.Drawing.Size(154, 22);
             this.حذفToolStripMenuItem.Text = "حذف";
             this.حذفToolStripMenuItem.Click += new System.EventHandler(this.delete_Click);
             // 
@@ -149,7 +145,7 @@
             // 
             this.ویرایشToolStripMenuItem.Image = global::Divan.Properties.Resources.pencil;
             this.ویرایشToolStripMenuItem.Name = "ویرایشToolStripMenuItem";
-            this.ویرایشToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
+            this.ویرایشToolStripMenuItem.Size = new System.Drawing.Size(154, 22);
             this.ویرایشToolStripMenuItem.Text = "ویرایش";
             this.ویرایشToolStripMenuItem.Click += new System.EventHandler(this.edit_Click_1);
             // 
@@ -288,19 +284,19 @@
             this.حذفازداخلداراییهایدیگرToolStripMenuItem});
             this.howToDeleteMenuStrip.Name = "contextMenuStrip2";
             this.howToDeleteMenuStrip.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.howToDeleteMenuStrip.Size = new System.Drawing.Size(256, 48);
+            this.howToDeleteMenuStrip.Size = new System.Drawing.Size(246, 48);
             // 
             // فقطازلیستپاککنToolStripMenuItem
             // 
             this.فقطازلیستپاککنToolStripMenuItem.Name = "فقطازلیستپاککنToolStripMenuItem";
-            this.فقطازلیستپاککنToolStripMenuItem.Size = new System.Drawing.Size(255, 22);
+            this.فقطازلیستپاککنToolStripMenuItem.Size = new System.Drawing.Size(245, 22);
             this.فقطازلیستپاککنToolStripMenuItem.Text = "فقط حذف از لیست";
             this.فقطازلیستپاککنToolStripMenuItem.Click += new System.EventHandler(this.فقطازلیستپاککنToolStripMenuItem_Click_1);
             // 
             // حذفازداخلداراییهایدیگرToolStripMenuItem
             // 
             this.حذفازداخلداراییهایدیگرToolStripMenuItem.Name = "حذفازداخلداراییهایدیگرToolStripMenuItem";
-            this.حذفازداخلداراییهایدیگرToolStripMenuItem.Size = new System.Drawing.Size(255, 22);
+            this.حذفازداخلداراییهایدیگرToolStripMenuItem.Size = new System.Drawing.Size(245, 22);
             this.حذفازداخلداراییهایدیگرToolStripMenuItem.Text = "حذف از لیست و داخل دارایی‌های دیگر";
             this.حذفازداخلداراییهایدیگرToolStripMenuItem.Click += new System.EventHandler(this.فقطازلیستپاککنToolStripMenuItem_Click);
             // 
@@ -393,20 +389,6 @@
             this.isPortable.ReadOnly = true;
             this.isPortable.Width = 54;
             // 
-            // id
-            // 
-            this.id.DataPropertyName = "Id";
-            this.id.HeaderText = "Id";
-            this.id.Name = "id";
-            this.id.ReadOnly = true;
-            // 
-            // parent
-            // 
-            this.parent.DataPropertyName = "parentId";
-            this.parent.HeaderText = "parentId";
-            this.parent.Name = "parent";
-            this.parent.ReadOnly = true;
-            // 
             // AssetsWindow
             // 
             this.AcceptButton = this.select;
@@ -470,8 +452,6 @@
         private System.Windows.Forms.DataGridViewCheckBoxColumn isHuman;
         private System.Windows.Forms.DataGridViewCheckBoxColumn isPhysical;
         private System.Windows.Forms.DataGridViewCheckBoxColumn isPortable;
-        private System.Windows.Forms.DataGridViewTextBoxColumn id;
-        private System.Windows.Forms.DataGridViewTextBoxColumn parent;
 
     }
 }

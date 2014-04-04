@@ -171,7 +171,8 @@ namespace Divan
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
-            UIHelper.searchGrid(dataGrid_OtherLabel, labelSearchtxt.Text);
+            if (!labelSearchtxt.WordWrap) // It's not place holder
+                UIHelper.searchGrid(dataGrid_OtherLabel, labelSearchtxt.Text);
         }
 
         private void compositAsset_CheckedChanged(object sender, EventArgs e)
@@ -217,6 +218,7 @@ namespace Divan
             {
                 asset = new Asset();
                 DivanDataContext.Instance.Assets.InsertOnSubmit(asset);
+                DivanDataContext.Instance.SubmitChanges();
             }
             else
             {
@@ -242,7 +244,6 @@ namespace Divan
         {
             foreach (String fileName in attachmentList.Items)
             {
-                // TODO: attached files need to be uploaded.
                 AttachedFile file = new AttachedFile();
                 file.Asset = asset;
                 file.path = fileName;
@@ -322,6 +323,12 @@ namespace Divan
         private void flowLayoutPanel1_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private void dataGrid_OtherLabel_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            DataGridView grid = (DataGridView)sender;
+            grid.Rows[e.RowIndex].Cells[0].Value = true;
         }
 
     }

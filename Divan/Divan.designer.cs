@@ -2210,6 +2210,7 @@ namespace Divan
 			this._AttachedFiles = new EntitySet<AttachedFile>(new Action<AttachedFile>(this.attach_AttachedFiles), new Action<AttachedFile>(this.detach_AttachedFiles));
 			this._SubAssets = new EntitySet<Asset>(new Action<Asset>(this.attach_SubAssets), new Action<Asset>(this.detach_SubAssets));
 			this._Parent = default(EntityRef<Asset>);
+            this._visible = true;
 			OnCreated();
 		}
 		

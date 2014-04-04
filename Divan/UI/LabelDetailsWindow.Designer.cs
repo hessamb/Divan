@@ -34,6 +34,12 @@
             this.label_domainModel = new System.Windows.Forms.Label();
             this.label_type = new System.Windows.Forms.Label();
             this.label_name = new System.Windows.Forms.Label();
+            this.domainGroup = new System.Windows.Forms.GroupBox();
+            this.label_continuousDomain = new System.Windows.Forms.Label();
+            this.domainGrid = new System.Windows.Forms.DataGridView();
+            this.rank = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
             this.splitterLabelGroup = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -45,20 +51,16 @@
             this.contextMenuStrip2 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.فقطازلیستپاککنToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.حذفازداخلداراییهایدیگرToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
-            this.domainGrid = new System.Windows.Forms.DataGridView();
-            this.name = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.rank = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.label_continuousDomain = new System.Windows.Forms.Label();
-            this.domainGroup = new System.Windows.Forms.GroupBox();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.flowLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
+            this.domainGroup.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.domainGrid)).BeginInit();
             this.splitterLabelGroup.SuspendLayout();
             this.panel2.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
             this.contextMenuStrip2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.domainGrid)).BeginInit();
-            this.domainGroup.SuspendLayout();
+            this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // flowLayoutPanel1
@@ -81,9 +83,9 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.tableLayoutPanel1);
             this.panel1.Controls.Add(this.label_domainModel);
             this.panel1.Controls.Add(this.label_type);
-            this.panel1.Controls.Add(this.label_name);
             this.panel1.Location = new System.Drawing.Point(12, 14);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(467, 31);
@@ -101,7 +103,7 @@
             // label_type
             // 
             this.label_type.AutoSize = true;
-            this.label_type.Location = new System.Drawing.Point(153, 9);
+            this.label_type.Location = new System.Drawing.Point(127, 9);
             this.label_type.Name = "label_type";
             this.label_type.Size = new System.Drawing.Size(118, 14);
             this.label_type.TabIndex = 0;
@@ -109,13 +111,82 @@
             // 
             // label_name
             // 
-            this.label_name.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label_name.AutoSize = true;
-            this.label_name.Location = new System.Drawing.Point(358, 9);
+            this.label_name.Location = new System.Drawing.Point(93, 0);
             this.label_name.Name = "label_name";
             this.label_name.Size = new System.Drawing.Size(104, 14);
             this.label_name.TabIndex = 0;
             this.label_name.Text = "نام برچسب: خیابان";
+            this.label_name.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // domainGroup
+            // 
+            this.domainGroup.AutoSize = true;
+            this.domainGroup.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.domainGroup.Controls.Add(this.label_continuousDomain);
+            this.domainGroup.Controls.Add(this.domainGrid);
+            this.domainGroup.Controls.Add(this.flowLayoutPanel2);
+            this.domainGroup.Location = new System.Drawing.Point(-219, 51);
+            this.domainGroup.Name = "domainGroup";
+            this.domainGroup.Padding = new System.Windows.Forms.Padding(3, 3, 3, 0);
+            this.domainGroup.Size = new System.Drawing.Size(698, 182);
+            this.domainGroup.TabIndex = 2;
+            this.domainGroup.TabStop = false;
+            this.domainGroup.Text = "دامنه مقادیر";
+            // 
+            // label_continuousDomain
+            // 
+            this.label_continuousDomain.AutoSize = true;
+            this.label_continuousDomain.Location = new System.Drawing.Point(423, 23);
+            this.label_continuousDomain.Name = "label_continuousDomain";
+            this.label_continuousDomain.Size = new System.Drawing.Size(269, 14);
+            this.label_continuousDomain.TabIndex = 15;
+            this.label_continuousDomain.Text = "این برچسب هر عدد حقیقی از 0 تا 1000 را می‌پذیرد";
+            this.label_continuousDomain.Visible = false;
+            // 
+            // domainGrid
+            // 
+            this.domainGrid.AllowUserToAddRows = false;
+            this.domainGrid.AllowUserToDeleteRows = false;
+            this.domainGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.domainGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.rank,
+            this.name});
+            this.domainGrid.Location = new System.Drawing.Point(7, 23);
+            this.domainGrid.Margin = new System.Windows.Forms.Padding(3, 3, 3, 0);
+            this.domainGrid.Name = "domainGrid";
+            this.domainGrid.ReadOnly = true;
+            this.domainGrid.RowHeadersVisible = false;
+            this.domainGrid.Size = new System.Drawing.Size(454, 144);
+            this.domainGrid.TabIndex = 3;
+            // 
+            // rank
+            // 
+            this.rank.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.rank.DataPropertyName = "rank";
+            this.rank.HeaderText = "ترتیب";
+            this.rank.Name = "rank";
+            this.rank.ReadOnly = true;
+            this.rank.Width = 58;
+            // 
+            // name
+            // 
+            this.name.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.name.DataPropertyName = "value";
+            this.name.HeaderText = "نام";
+            this.name.Name = "name";
+            this.name.ReadOnly = true;
+            // 
+            // flowLayoutPanel2
+            // 
+            this.flowLayoutPanel2.AutoSize = true;
+            this.flowLayoutPanel2.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.flowLayoutPanel2.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.flowLayoutPanel2.Location = new System.Drawing.Point(7, 43);
+            this.flowLayoutPanel2.Margin = new System.Windows.Forms.Padding(3, 3, 3, 0);
+            this.flowLayoutPanel2.Name = "flowLayoutPanel2";
+            this.flowLayoutPanel2.Size = new System.Drawing.Size(0, 0);
+            this.flowLayoutPanel2.TabIndex = 14;
             // 
             // splitterLabelGroup
             // 
@@ -224,74 +295,20 @@
             this.حذفازداخلداراییهایدیگرToolStripMenuItem.Text = "حذف از لیست و داخل برچسب‌ها و دارایی‌های دیگر";
             this.حذفازداخلداراییهایدیگرToolStripMenuItem.Click += new System.EventHandler(this.فقطازلیستپاککنToolStripMenuItem_Click);
             // 
-            // flowLayoutPanel2
+            // tableLayoutPanel1
             // 
-            this.flowLayoutPanel2.AutoSize = true;
-            this.flowLayoutPanel2.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.flowLayoutPanel2.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.flowLayoutPanel2.Location = new System.Drawing.Point(7, 43);
-            this.flowLayoutPanel2.Margin = new System.Windows.Forms.Padding(3, 3, 3, 0);
-            this.flowLayoutPanel2.Name = "flowLayoutPanel2";
-            this.flowLayoutPanel2.Size = new System.Drawing.Size(0, 0);
-            this.flowLayoutPanel2.TabIndex = 14;
-            // 
-            // domainGrid
-            // 
-            this.domainGrid.AllowUserToAddRows = false;
-            this.domainGrid.AllowUserToDeleteRows = false;
-            this.domainGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.domainGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.rank,
-            this.name});
-            this.domainGrid.Location = new System.Drawing.Point(7, 23);
-            this.domainGrid.Margin = new System.Windows.Forms.Padding(3, 3, 3, 0);
-            this.domainGrid.Name = "domainGrid";
-            this.domainGrid.ReadOnly = true;
-            this.domainGrid.RowHeadersVisible = false;
-            this.domainGrid.Size = new System.Drawing.Size(454, 144);
-            this.domainGrid.TabIndex = 3;
-            // 
-            // name
-            // 
-            this.name.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.name.DataPropertyName = "value";
-            this.name.HeaderText = "نام";
-            this.name.Name = "name";
-            this.name.ReadOnly = true;
-            // 
-            // rank
-            // 
-            this.rank.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.rank.DataPropertyName = "rank";
-            this.rank.HeaderText = "ترتیب";
-            this.rank.Name = "rank";
-            this.rank.ReadOnly = true;
-            this.rank.Width = 58;
-            // 
-            // label_continuousDomain
-            // 
-            this.label_continuousDomain.AutoSize = true;
-            this.label_continuousDomain.Location = new System.Drawing.Point(423, 23);
-            this.label_continuousDomain.Name = "label_continuousDomain";
-            this.label_continuousDomain.Size = new System.Drawing.Size(269, 14);
-            this.label_continuousDomain.TabIndex = 15;
-            this.label_continuousDomain.Text = "این برچسب هر عدد حقیقی از 0 تا 1000 را می‌پذیرد";
-            this.label_continuousDomain.Visible = false;
-            // 
-            // domainGroup
-            // 
-            this.domainGroup.AutoSize = true;
-            this.domainGroup.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.domainGroup.Controls.Add(this.label_continuousDomain);
-            this.domainGroup.Controls.Add(this.domainGrid);
-            this.domainGroup.Controls.Add(this.flowLayoutPanel2);
-            this.domainGroup.Location = new System.Drawing.Point(-219, 51);
-            this.domainGroup.Name = "domainGroup";
-            this.domainGroup.Padding = new System.Windows.Forms.Padding(3, 3, 3, 0);
-            this.domainGroup.Size = new System.Drawing.Size(698, 182);
-            this.domainGroup.TabIndex = 2;
-            this.domainGroup.TabStop = false;
-            this.domainGroup.Text = "دامنه مقادیر";
+            this.tableLayoutPanel1.ColumnCount = 1;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.Controls.Add(this.label_name, 0, 0);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(267, 9);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.tableLayoutPanel1.RowCount = 1;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(200, 28);
+            this.tableLayoutPanel1.TabIndex = 1;
             // 
             // LabelDetailsWindow
             // 
@@ -317,14 +334,16 @@
             this.flowLayoutPanel1.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            this.domainGroup.ResumeLayout(false);
+            this.domainGroup.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.domainGrid)).EndInit();
             this.splitterLabelGroup.ResumeLayout(false);
             this.splitterLabelGroup.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.contextMenuStrip1.ResumeLayout(false);
             this.contextMenuStrip2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.domainGrid)).EndInit();
-            this.domainGroup.ResumeLayout(false);
-            this.domainGroup.PerformLayout();
+            this.tableLayoutPanel1.ResumeLayout(false);
+            this.tableLayoutPanel1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -354,5 +373,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn rank;
         private System.Windows.Forms.DataGridViewTextBoxColumn name;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
     }
 }

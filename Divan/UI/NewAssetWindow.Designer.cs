@@ -119,7 +119,6 @@
             this.flowLayoutPanel1.Padding = new System.Windows.Forms.Padding(12, 11, 0, 0);
             this.flowLayoutPanel1.Size = new System.Drawing.Size(968, 535);
             this.flowLayoutPanel1.TabIndex = 100;
-            this.flowLayoutPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.flowLayoutPanel1_Paint);
             // 
             // panel1
             // 
@@ -398,6 +397,7 @@
             this.dataGrid_OtherLabel.RowHeadersVisible = false;
             this.dataGrid_OtherLabel.Size = new System.Drawing.Size(222, 90);
             this.dataGrid_OtherLabel.TabIndex = 18;
+            this.dataGrid_OtherLabel.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGrid_OtherLabel_CellDoubleClick);
             // 
             // dataGridViewCheckBoxColumn1
             // 

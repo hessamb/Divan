@@ -23,10 +23,17 @@ namespace Divan
         {
             foreach (DataGridViewRow row in grid.Rows)
             {
-                CurrencyManager cm = (CurrencyManager)grid.BindingContext[grid.DataSource];
-                cm.SuspendBinding();
-                row.Visible = doesMatch(row, pattern);
-                cm.ResumeBinding();
+                if (grid.DataSource != null)
+                {
+                    CurrencyManager cm = (CurrencyManager)grid.BindingContext[grid.DataSource];
+                    cm.SuspendBinding();
+                    row.Visible = doesMatch(row, pattern);
+                    cm.ResumeBinding();
+                }
+                else
+                {
+                    row.Visible = doesMatch(row, pattern);
+                }
             }
         }
 
@@ -63,6 +70,7 @@ namespace Divan
             TextBox textBox = ((TextBox)sender);
             if (textBox.Text == "")
             {
+                textBox.WordWrap = true;
                 textBox.ForeColor = Color.Gray;
                 textBox.Text = placeHolders[textBox];
             }
@@ -77,6 +85,7 @@ namespace Divan
             TextBox textBox = ((TextBox)sender);
             if (textBox.Text == placeHolders[textBox])
             {
+                textBox.WordWrap = false;
                 textBox.Text = "";
                 textBox.ForeColor = Color.Black;
             }

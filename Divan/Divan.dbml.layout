@@ -110,7 +110,6 @@
         <classShapeMoniker Id="e1b84c04-ef05-46f9-8a2f-4adc364a357c" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(7.01321972531079 : 5.64589680989583); (7.01321972531079 : 6.1874995); (8.41666666666667 : 6.1874995 : JumpStart); (8.58333333333333 : 6.1874995 : JumpEnd); (8.875 : 6.1874995)]" fixedFrom="NotFixed" fixedTo="NotFixed">
     <associationConnector edgePoints="[(8.125 : 9.30707129442107); (8.65625 : 8.77582129442107); (8.65625 : 6.66429768880208); (8.875 : 6.66429768880208)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/DivanDataContext/Asset/Asset_LabelInstance" />
       <nodes>

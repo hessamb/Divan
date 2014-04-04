@@ -133,7 +133,8 @@ namespace Divan
 
         private void searchTxt_TextChanged(object sender, EventArgs e)
         {
-            UIHelper.searchGrid(labelsGrid, searchTxt.Text);
+            if (!searchTxt.WordWrap) // It's not place holder
+                UIHelper.searchGrid(labelsGrid, searchTxt.Text);
         }
     }
 }

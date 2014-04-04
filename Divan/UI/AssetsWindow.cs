@@ -49,6 +49,7 @@ namespace Divan
 
         private void reloadAssets(){
             dataGrid_assets.DataSource = AssetList.Instance.GetAllVisibles();
+            dataGrid_assets.Refresh();
         }
 
         private void assetsGrid_SelectionChanged(object sender, EventArgs e)
