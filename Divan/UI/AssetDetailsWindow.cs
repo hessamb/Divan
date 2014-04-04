@@ -33,7 +33,7 @@ namespace Divan
 
         private void fillSubAssetTree()
         {
-            foreach (Asset asset in selectedAsset.getSubAssets())
+            foreach (Asset asset in selectedAsset.GetSubAssets())
             {
                 treeView_subAsset.Nodes.Add(asset.getTreeNode());
             }
@@ -72,12 +72,9 @@ namespace Divan
                 dataGrid_primaryInfo.Rows.Add(new object[] { "مشخصات ظاهری", selectedAsset.PhysicalDescription });
             }
 
-            foreach (Property prop in selectedAsset.Properties)
+            foreach (Property prop in selectedAsset.OtherProperties)
             {
-                if (!Asset.SPECIAL_NAMES.Contains(prop.name))
-                {
-                    dataGrid_primaryInfo.Rows.Add(new object[] { prop.name, prop.value });
-                }
+                    dataGrid_primaryInfo.Rows.Add(new object[] { prop.Name, prop.Value });
             }
         }
 
@@ -98,7 +95,8 @@ namespace Divan
 
         private void subAssetsTree_DoubleClick(object sender, EventArgs e)
         {
-            (new AssetDetailsWindow()).ShowDialog();
+            if(treeView_subAsset.SelectedNode!=null)
+                (new AssetDetailsWindow(treeView_subAsset.SelectedNode.Tag as Asset)).ShowDialog();
         }
 
         private void button1_Click(object sender, EventArgs e)

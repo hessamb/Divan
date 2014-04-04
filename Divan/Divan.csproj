@@ -77,6 +77,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\AssetState.cs" />
+    <Compile Include="Assets\BaseAssetState.cs" />
+    <Compile Include="Assets\CompositeAssetState.cs" />
     <Compile Include="ChangeManagement\Action.cs" />
     <Compile Include="ChangeManagement\ActionExecuter.cs" />
     <Compile Include="ChangeManagement\ActionList.cs" />
@@ -116,7 +119,6 @@
     <Compile Include="ChangeManagement\Baseline.cs" />
     <Compile Include="ChangeManagement\Changable.cs" />
     <Compile Include="ChangeManagement\CompositeAction.cs" />
-    <Compile Include="Assets\CompositeAsset.cs" />
     <Compile Include="Labels\CompositeLabel.cs" />
     <Compile Include="UI\ConfirmationBox.cs">
       <SubType>Form</SubType>
@@ -393,11 +395,11 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Database.mdf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Database_log.ldf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <DependentUpon>Database.mdf</DependentUpon>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Icon1.ico" />
     <None Include="Resources\icon.png" />

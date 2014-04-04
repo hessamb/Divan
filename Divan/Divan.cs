@@ -1,6 +1,5 @@
 namespace Divan
 {
-
     partial class DivanDataContext
     {
         private static DivanDataContext instance;

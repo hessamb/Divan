@@ -24,11 +24,26 @@ namespace Divan
 
         public const String UNNAMED_ASSET = "بی‌نام";
 
+        private AssetState state;
+
+        partial void OnLoaded()
+        {
+            this.IsComposite = this.SubAssets.Count > 0;
+        }
+
+        //public Asset(bool composite)
+        //{
+        //    if (composite)
+        //        this.state = new CompositeAssetState(this);
+        //    else
+        //        this.state = new BaseAssetState(this);
+        //}
+
         public string UID
         {
             get
             {
-                return this.Properties.Single(p => p.name == UID_STRING).value;
+                return this.Properties.Single(p => p.Name == UID_STRING).Value;
             }
         }
 
@@ -38,7 +53,7 @@ namespace Divan
             {
                 try
                 {
-                    return this.Properties.Single(p => p.name == NAME_STRING).value;
+                    return this.Properties.Single(p => p.Name == NAME_STRING).Value;
                 }
                 catch
                 {
@@ -53,7 +68,7 @@ namespace Divan
             {
                 try
                 {
-                    return this.Properties.Single(p => p.name == FIRST_NAME_STRING).value;
+                    return this.Properties.Single(p => p.Name == FIRST_NAME_STRING).Value;
                 }
                 catch
                 {
@@ -68,7 +83,7 @@ namespace Divan
             {
                 try
                 {
-                    return this.Properties.Single(p => p.name == LAST_NAME_STRING).value;
+                    return this.Properties.Single(p => p.Name == LAST_NAME_STRING).Value;
                 }
                 catch
                 {
@@ -83,7 +98,7 @@ namespace Divan
             {
                 try
                 {
-                    return this.Properties.Single(p => p.name == NATIONAL_ID_STRING).value;
+                    return this.Properties.Single(p => p.Name == NATIONAL_ID_STRING).Value;
                 }
                 catch
                 {
@@ -98,7 +113,7 @@ namespace Divan
             {
                 try
                 {
-                    return this.Properties.Single(p => p.name == PERSONNEL_CODE_STRING).value;
+                    return this.Properties.Single(p => p.Name == PERSONNEL_CODE_STRING).Value;
                 }
                 catch
                 {
@@ -113,7 +128,7 @@ namespace Divan
             {
                 try
                 {
-                    return this.Properties.Single(p => p.name == HUMAN_DESCRIPTION_STRING).value;
+                    return this.Properties.Single(p => p.Name == HUMAN_DESCRIPTION_STRING).Value;
                 }
                 catch
                 {
@@ -128,7 +143,7 @@ namespace Divan
             {
                 try
                 {
-                    return this.Properties.Single(p => p.name == PHYSICAL_DESCRIPTION_STRING).value;
+                    return this.Properties.Single(p => p.Name == PHYSICAL_DESCRIPTION_STRING).Value;
                 }
                 catch
                 {
@@ -137,16 +152,25 @@ namespace Divan
             }
         }
 
-        public Boolean isComposite()
-        {
-            return true;
+        public Boolean IsComposite{
+            get{
+                return this.state.IsComposite();
+            }
+            set{
+                if (this.state!=null && value == this.state.IsComposite())
+                    return;
+                if(value)
+                    this.state=new CompositeAssetState(this);
+                else
+                    this.state = new BaseAssetState(this);
+            }
         }
 
-        public Asset[] getSubAssets()
+        public IEnumerable<Asset> GetSubAssets()
         {
-            //TODO
-            return new Asset[0];
+            return state.GetSubAssets();
         }
+
         public void Create()
         {
             //TODO
@@ -178,15 +202,34 @@ namespace Divan
         {
             //TODO
         }
+
         public TreeNode getTreeNode()
         {
             TreeNode result = new TreeNode(Name + " (" + UID + ")");
-            Asset[] subAssets = getSubAssets();
-            foreach(Asset asset in subAssets)
+            result.Tag = this;
+            foreach(Asset asset in GetSubAssets())
             {
                 result.Nodes.Add(asset.getTreeNode());
             }
             return result;
+        }
+
+        public void AddSubAsset(Asset asset)
+        {
+            this.state.AddSubAsset(asset);
+        }
+
+        public void RemoveSubAsset(Asset asset)
+        {
+            this.state.RemoveSubAsset(asset);
+        }
+
+        public IEnumerable<Property> OtherProperties
+        {
+            get
+            {
+                return this.Properties.Where(property => !SPECIAL_NAMES.Contains(property.Name));
+            }
         }
     }
 }

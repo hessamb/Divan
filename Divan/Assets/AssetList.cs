@@ -28,6 +28,15 @@ namespace Divan
             return assets.AsEnumerable();
         }
 
+        public IEnumerable<Asset> GetAllVisibles()
+        {
+            var assets = from a in DivanDataContext.Instance.Assets
+                         where a.visible==true
+                         select a;
+
+            return assets.AsEnumerable();
+        }
+
         public Asset GetById(int id)
         {
             var assets = from a in DivanDataContext.Instance.Assets

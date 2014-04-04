@@ -14,6 +14,7 @@ namespace Divan
     {
         private Asset asset;
         private List<Asset> subAssets = new List<Asset>();
+        private List<Asset> deletedSubAssets = new List<Asset>();
         private List<int> splitterLabelId, otherLabelId;
 
         public NewAssetWindow()
@@ -57,9 +58,12 @@ namespace Divan
 
         private void loadSubAssets()
         {
-            checkBox_Composite.Checked = asset.isComposite();
-            foreach (Asset a in this.asset.getSubAssets())
+            if (!asset.IsComposite)
+                return;
+            checkBox_Composite.Checked = true;
+            foreach (Asset a in this.asset.SubAssets)
             {
+                subAssets.Add(a);
                 treeView_subAssets.Nodes.Add(a.getTreeNode());
             }
             treeView_subAssets.ExpandAll();
@@ -90,12 +94,9 @@ namespace Divan
 
         private void loadProperties()
         {
-            foreach (Property prop in asset.Properties)
+            foreach (Property prop in asset.OtherProperties)
             {
-                if (!Asset.SPECIAL_NAMES.Contains(prop.name))
-                {
-                    dataGrid_PrimaryInfo.Rows.Add(new object[] { prop.name, prop.type, prop.value });
-                }
+                    dataGrid_PrimaryInfo.Rows.Add(new object[] { prop.Name, prop.Type, prop.Value });
             }
         }
 
@@ -149,22 +150,21 @@ namespace Divan
 
         private void treeView1_AfterSelect(object sender, TreeViewEventArgs e)
         {
-            removeSubAssetBut.Enabled = treeView_subAssets.Focused && treeView_subAssets.SelectedNode != null;
+            removeSubAssetBut.Enabled = treeView_subAssets.Focused && treeView_subAssets.SelectedNode != null && treeView_subAssets.SelectedNode.Parent==null;
         }
 
         private void subAssetsTree_Leave(object sender, EventArgs e)
         {
-            removeSubAssetBut.Enabled = treeView_subAssets.Focused && treeView_subAssets.SelectedNode != null;
+            removeSubAssetBut.Enabled = treeView_subAssets.Focused && treeView_subAssets.SelectedNode != null && treeView_subAssets.SelectedNode.Parent == null;
         }
 
         private void removeSubAssetBut_Click(object sender, EventArgs e)
         {
             if (RemoveConfirmationBox.ShowConfirmation() == System.Windows.Forms.DialogResult.Yes)
             {
-                string text = treeView_subAssets.SelectedNode.Text;
-                int index = text.LastIndexOf('(');
-                string uid = text.Substring(index + 1, text.Length - index - 2);
-                subAssets.Remove(AssetList.Instance.GetByUid(uid));
+                Asset sub = treeView_subAssets.SelectedNode.Tag as Asset;
+                subAssets.Remove(sub);
+                deletedSubAssets.Add(sub);
                 treeView_subAssets.SelectedNode.Remove();
             }
         }
@@ -235,6 +235,7 @@ namespace Divan
             saveAttachments();
 
             DivanDataContext.Instance.SubmitChanges();
+            
         }
 
         private void saveAttachments()
@@ -251,7 +252,13 @@ namespace Divan
 
         private void saveSubAssets()
         {
-            // TODO
+            if (!checkBox_Composite.Checked)
+                return;
+            asset.IsComposite = true;
+            foreach(TreeNode n in treeView_subAssets.Nodes)
+                asset.AddSubAsset((Asset)n.Tag);
+            foreach (Asset sub in deletedSubAssets)
+                asset.RemoveSubAsset(sub);
         }
 
         private void saveLabelInstances()

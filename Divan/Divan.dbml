@@ -10,21 +10,8 @@
       <Column Name="labelID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="assetID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Association Name="Action_Event" Member="Events" ThisKey="Id" OtherKey="ActionID" Type="Event" />
-      <Association Name="Asset_Action" Member="Asset" ThisKey="assetID" OtherKey="Id" Type="Asset" IsForeignKey="true" />
       <Association Name="Label_Action" Member="Label" ThisKey="labelID" OtherKey="Id" Type="Label" IsForeignKey="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.Asset" Member="Assets">
-    <Type Name="Asset">
-      <Column Name="Id" AutoSync="Never" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="isHuman" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
-      <Column Name="isPortable" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
-      <Column Name="isPhysical" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
-      <Association Name="Asset_Action" Member="Actions" ThisKey="Id" OtherKey="assetID" Type="Action" />
-      <Association Name="Asset_ConsistencyRule" Member="ConsistencyRules" ThisKey="Id" OtherKey="assetID" Type="ConsistencyRule" />
-      <Association Name="Asset_LabelInstance" Member="LabelInstances" ThisKey="Id" OtherKey="assetID" Type="LabelInstance" />
-      <Association Name="Asset_Property" Member="Properties" ThisKey="Id" OtherKey="assetID" Type="Property" />
-      <Association Name="Asset_AttachedFile" Member="AttachedFiles" ThisKey="Id" OtherKey="assetID" Type="AttachedFile" />
+      <Association Name="Asset_Action" Member="Asset" ThisKey="assetID" OtherKey="Id" Type="Asset" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.ConsistencyRule" Member="ConsistencyRules">
@@ -90,8 +77,8 @@
       <Column Name="labelID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="value" Type="System.String" DbType="NChar(100)" CanBeNull="true" />
       <Column Name="assetID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Association Name="Asset_LabelInstance" Member="Asset" ThisKey="assetID" OtherKey="Id" Type="Asset" IsForeignKey="true" />
       <Association Name="Label_LabelInstance" Member="Label" ThisKey="labelID" OtherKey="Id" Type="Label" IsForeignKey="true" />
+      <Association Name="Asset_LabelInstance" Member="Asset" ThisKey="assetID" OtherKey="Id" Type="Asset" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.Property" Member="Properties">
@@ -110,6 +97,23 @@
       <Column Name="path" Type="System.String" DbType="NChar(200) NOT NULL" CanBeNull="false" />
       <Column Name="assetID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Association Name="Asset_AttachedFile" Member="Asset" ThisKey="assetID" OtherKey="Id" Type="Asset" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Asset" Member="Assets">
+    <Type Name="Asset">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="isHuman" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="isPortable" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="isPhysical" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="parentId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="visible" Type="System.Boolean" DbType="BIT NOT NULL" CanBeNull="false" />
+      <Association Name="Asset_Action" Member="Actions" ThisKey="Id" OtherKey="assetID" Type="Action" />
+      <Association Name="Asset_ConsistencyRule" Member="ConsistencyRules" ThisKey="Id" OtherKey="assetID" Type="ConsistencyRule" />
+      <Association Name="Asset_LabelInstance" Member="LabelInstances" ThisKey="Id" OtherKey="assetID" Type="LabelInstance" />
+      <Association Name="Asset_Property" Member="Properties" ThisKey="Id" OtherKey="assetID" Type="Property" />
+      <Association Name="Asset_AttachedFile" Member="AttachedFiles" ThisKey="Id" OtherKey="assetID" Type="AttachedFile" />
+      <Association Name="Asset_Asset" Member="SubAssets" ThisKey="Id" OtherKey="parentId" Type="Asset" />
+      <Association Name="Asset_Asset" Member="Parent" ThisKey="parentId" OtherKey="Id" Type="Asset" IsForeignKey="true" />
     </Type>
   </Table>
 </Database>

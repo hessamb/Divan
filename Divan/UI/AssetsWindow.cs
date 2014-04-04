@@ -44,7 +44,11 @@ namespace Divan
             UIHelper.SetPlaceHolder(searchTxt, "جستجوی دارایی");
 
             dataGrid_assets.AutoGenerateColumns = false;
-            dataGrid_assets.DataSource = AssetList.Instance.GetAll();
+            reloadAssets();
+        }
+
+        private void reloadAssets(){
+            dataGrid_assets.DataSource = AssetList.Instance.GetAllVisibles();
         }
 
         private void assetsGrid_SelectionChanged(object sender, EventArgs e)
@@ -64,12 +68,14 @@ namespace Divan
         private void edit_Click_1(object sender, EventArgs e)
         {
             string uid = (string)dataGrid_assets.SelectedRows[0].Cells[0].Value;
-            (new NewAssetWindow(AssetList.Instance.GetByUid(uid))).ShowDialog();
+            if((new NewAssetWindow(AssetList.Instance.GetByUid(uid))).ShowDialog()==System.Windows.Forms.DialogResult.Yes)
+                reloadAssets();
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-            (new NewAssetWindow()).ShowDialog();
+            if((new NewAssetWindow()).ShowDialog()==System.Windows.Forms.DialogResult.Yes)
+                this.reloadAssets();
         }
 
         private void delete_Click(object sender, EventArgs e)
@@ -122,13 +128,40 @@ namespace Divan
                 }
                 DivanDataContext.Instance.SubmitChanges();
                 dataGrid_assets.DataSource = AssetList.Instance.GetAll();
-                dataGrid_assets.Update();
+                reloadAssets();
             }
         }
 
         private void assetsGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+            
+        }
 
+        private void فقطازلیستپاککنToolStripMenuItem_Click_1(object sender, EventArgs e)
+        {
+            int cnt = dataGrid_assets.SelectedRows.Count;
+            string message = "";
+            if (cnt > 1)
+            {
+                message = "آیا از حذف " + cnt + " دارایی انتخاب شده مطمئنید؟";
+            }
+            else if (cnt == 1)
+            {
+                string name = (string)dataGrid_assets.SelectedRows[0].Cells[1].Value;
+                message = "آیا از حذف دارایی " + name + " مطمئنید؟";
+            }
+            if (RemoveConfirmationBox.ShowConfirmation(message) == DialogResult.Yes)
+            {
+                foreach (DataGridViewRow row in dataGrid_assets.SelectedRows)
+                {
+                    string uid = (string)row.Cells[0].Value;
+                    Asset rowAsset = AssetList.Instance.GetByUid(uid);
+                    rowAsset.visible=false;
+                }
+                DivanDataContext.Instance.SubmitChanges();
+                dataGrid_assets.DataSource = AssetList.Instance.GetAll();
+                reloadAssets();
+            }
         }
     }
 }

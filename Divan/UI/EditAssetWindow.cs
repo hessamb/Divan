@@ -45,8 +45,8 @@ namespace Divan
                 }
             }
 
-            checkBox_Composite.Checked = asset.isComposite();
-            foreach (Asset a in this.asset.getSubAssets())
+            checkBox_Composite.Checked = asset.IsComposite;
+            foreach (Asset a in this.asset.GetSubAssets())
             {
                 treeView_subAssets.Nodes.Add( a.getTreeNode() );
             }
@@ -107,6 +107,11 @@ namespace Divan
             }
 
             DivanDataContext.Instance.SubmitChanges();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            
         }
 
     }
