@@ -18,6 +18,7 @@ namespace Divan
             cell.Style.ForeColor = Color.DarkGray;
             cell.Style.BackColor = Color.LightGray;
         }
+
         public static void searchGrid(DataGridView grid, string pattern)
         {
             foreach (DataGridViewRow row in grid.Rows)
@@ -78,6 +79,38 @@ namespace Divan
             {
                 textBox.Text = "";
                 textBox.ForeColor = Color.Black;
+            }
+        }
+
+        public static void errorBox(IWin32Window parent, string message)
+        {
+            const string TITLE = "خطا";
+            MessageBox.Show(parent, message, TITLE, new MessageBoxButtons(), MessageBoxIcon.Error);
+        }
+
+        public static class Validation
+        {
+            public static bool isNonEmpty(String text)
+            {
+                return text != null && text.Trim().Count() > 0;
+            }
+
+            public static bool isDouble(String text)
+            {
+                try
+                {
+                    Convert.ToDouble(text);
+                    return true;
+                }
+                catch
+                {
+                    return false;
+                }
+            }
+
+            public static bool isDisntinct(List<String> list)
+            {
+                return list.Distinct().AsEnumerable().Count() == list.Count;
             }
         }
     }

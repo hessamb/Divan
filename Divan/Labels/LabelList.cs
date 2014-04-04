@@ -20,6 +20,21 @@ namespace Divan
             }
         }
 
+        public Label labelByName(string name)
+        {
+            var labels = from l in DivanDataContext.Instance.Labels
+                         where l.name == name
+                         select l;
+            try
+            {
+                return labels.First();
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
         public IEnumerable<Label> GetAll()
         {
             var labels = from l in DivanDataContext.Instance.Labels

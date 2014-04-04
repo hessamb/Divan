@@ -93,8 +93,48 @@ namespace Divan
             }
         }
 
+        private bool areFieldsValidated()
+        {
+            if (error.GetError(nameTxt) != "")
+            {
+                return false;
+            }
+            Label label = LabelList.Instance.labelByName(nameTxt.Text);
+            if (label != null)
+            {
+                if (this.label == null || this.label.Id != label.Id) // If editing, previous name is allowed.
+                {
+                    error.SetError(nameTxt, "نام برچسب تکراری است");
+                    return false;
+                }
+            }
+            if (valueableOpt.Checked && continuousRadio.Checked)
+            {
+                if (error.GetError(textBox_minValue) != ""
+                    || error.GetError(textBox_maxValue) != "")
+                    return false;
+            }
+            if (valueableOpt.Checked && discreteRadio.Checked)
+            {
+                if (error.GetError(domainGrid) != "")
+                    return false;
+                foreach (DataGridViewRow row in domainGrid.Rows)
+                {
+                    if (!row.IsNewRow && !UIHelper.Validation.isNonEmpty((String)row.Cells["name"].Value))
+                        return false;
+                }
+            }
+            return true;
+        }
+
         private void button3_Click(object sender, EventArgs e)
         {
+            if (!areFieldsValidated())
+            {
+                UIHelper.errorBox(this, "لطفا خطاهای ورودی را رفع کنید");
+                this.DialogResult = DialogResult.None;
+                return;
+            }
             if (label != null)
             {
                 DivanDataContext.Instance.DiscreteDomainValues.DeleteAllOnSubmit(label.LabelDomain.DiscreteDomainValues);
@@ -149,6 +189,66 @@ namespace Divan
             }
 
             DivanDataContext.Instance.SubmitChanges();
+        }
+
+        private void nameTxt_Validating(object sender, CancelEventArgs e)
+        {
+            if (!UIHelper.Validation.isNonEmpty(nameTxt.Text))
+            {
+                error.SetError(nameTxt, "لطفا نام برچسب را مشخص کنید.");
+            }
+            else
+            {
+                error.SetError(nameTxt, "");
+            }
+        }
+
+        private void domainGrid_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
+        {
+            DataGridView grid = (DataGridView)sender;
+            DataGridViewCell cell = grid.Rows[e.RowIndex].Cells[e.ColumnIndex];
+            if (grid.Rows[e.RowIndex].IsNewRow)
+                return;
+            if (!UIHelper.Validation.isNonEmpty((String)e.FormattedValue))
+            {
+                cell.ErrorText = "لطفا یک مقدار معتبر برای دامنه وارد کنید.";
+            }
+            else
+            {
+                cell.ErrorText = "";
+            }
+        }
+
+        private void textBox_minValue_Validating(object sender, CancelEventArgs e)
+        {
+            TextBox textBox = (TextBox)sender;
+            if (!UIHelper.Validation.isDouble(textBox.Text))
+            {
+                error.SetError(textBox, "لطفا یک مقدار اعشاری معتبر وارد کنید.");
+            }
+            else
+            {
+                error.SetError(textBox, "");
+            }
+        }
+
+        private void domainGrid_Validating(object sender, CancelEventArgs e)
+        {
+            DataGridView grid = (DataGridView)sender;
+            List<String> list = new List<String>();
+            foreach (DataGridViewRow row in grid.Rows)
+            {
+                list.Add((String)row.Cells["name"].Value);
+            }
+
+            if (!UIHelper.Validation.isDisntinct(list))
+            {
+                error.SetError(grid, "مقادیر دامنه باید یکتا باشند.");
+            }
+            else
+            {
+                error.SetError(grid, "");
+            }
         }
 
     }

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.unvalueableRadio = new System.Windows.Forms.RadioButton();
@@ -56,6 +57,7 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.button4 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
+            this.error = new System.Windows.Forms.ErrorProvider(this.components);
             this.flowLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.domainGroup.SuspendLayout();
@@ -64,6 +66,7 @@
             this.continiousProps.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.domainGrid)).BeginInit();
             this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.error)).BeginInit();
             this.SuspendLayout();
             // 
             // flowLayoutPanel1
@@ -134,6 +137,7 @@
             this.nameTxt.Name = "nameTxt";
             this.nameTxt.Size = new System.Drawing.Size(138, 22);
             this.nameTxt.TabIndex = 0;
+            this.nameTxt.Validating += new System.ComponentModel.CancelEventHandler(this.nameTxt_Validating);
             // 
             // label1
             // 
@@ -201,18 +205,22 @@
             this.textBox_minValue.Name = "textBox_minValue";
             this.textBox_minValue.Size = new System.Drawing.Size(111, 22);
             this.textBox_minValue.TabIndex = 1;
+            this.textBox_minValue.Text = "0.0";
+            this.textBox_minValue.Validating += new System.ComponentModel.CancelEventHandler(this.textBox_minValue_Validating);
             // 
             // textBox_maxValue
             // 
-            this.textBox_maxValue.Location = new System.Drawing.Point(169, 0);
+            this.textBox_maxValue.Location = new System.Drawing.Point(153, 0);
             this.textBox_maxValue.Name = "textBox_maxValue";
             this.textBox_maxValue.Size = new System.Drawing.Size(113, 22);
             this.textBox_maxValue.TabIndex = 2;
+            this.textBox_maxValue.Text = "100.0";
+            this.textBox_maxValue.Validating += new System.ComponentModel.CancelEventHandler(this.textBox_minValue_Validating);
             // 
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(290, 3);
+            this.label10.Location = new System.Drawing.Point(274, 3);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(18, 14);
             this.label10.TabIndex = 2;
@@ -250,12 +258,14 @@
             this.name,
             this.MoveUp,
             this.MoveDown});
-            this.domainGrid.Location = new System.Drawing.Point(0, 28);
+            this.domainGrid.Location = new System.Drawing.Point(17, 28);
             this.domainGrid.Margin = new System.Windows.Forms.Padding(3, 3, 3, 0);
             this.domainGrid.Name = "domainGrid";
-            this.domainGrid.Size = new System.Drawing.Size(450, 144);
+            this.domainGrid.Size = new System.Drawing.Size(433, 144);
             this.domainGrid.TabIndex = 3;
             this.domainGrid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.domainGrid_CellContentClick);
+            this.domainGrid.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.domainGrid_CellValidating);
+            this.domainGrid.Validating += new System.ComponentModel.CancelEventHandler(this.domainGrid_Validating);
             // 
             // name
             // 
@@ -369,6 +379,11 @@
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
+            // error
+            // 
+            this.error.ContainerControl = this;
+            this.error.RightToLeft = true;
+            // 
             // NewLabelWindow
             // 
             this.AcceptButton = this.button3;
@@ -403,6 +418,7 @@
             this.continiousProps.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.domainGrid)).EndInit();
             this.panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.error)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -438,5 +454,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn name;
         private System.Windows.Forms.DataGridViewButtonColumn MoveUp;
         private System.Windows.Forms.DataGridViewButtonColumn MoveDown;
+        private System.Windows.Forms.ErrorProvider error;
     }
 }
