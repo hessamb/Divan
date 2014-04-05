@@ -33,6 +33,11 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.searchTxt = new System.Windows.Forms.TextBox();
             this.dataGrid_assets = new System.Windows.Forms.DataGridView();
+            this.UID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NameColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.isHuman = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.isPhysical = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.isPortable = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.rightClickMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.مشاهدهمشخصاتToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
@@ -54,11 +59,6 @@
             this.select = new System.Windows.Forms.Button();
             this.cancel = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
-            this.UID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NameColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.isHuman = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.isPhysical = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.isPortable = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGrid_assets)).BeginInit();
             this.rightClickMenuStrip.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
@@ -109,6 +109,50 @@
             this.dataGrid_assets.SelectionChanged += new System.EventHandler(this.assetsGrid_SelectionChanged);
             this.dataGrid_assets.DoubleClick += new System.EventHandler(this.assetsGrid_DoubleClick);
             // 
+            // UID
+            // 
+            this.UID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.UID.DataPropertyName = "UID";
+            this.UID.HeaderText = "شناسه";
+            this.UID.Name = "UID";
+            this.UID.ReadOnly = true;
+            this.UID.Width = 71;
+            // 
+            // NameColumn
+            // 
+            this.NameColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.NameColumn.DataPropertyName = "Name";
+            this.NameColumn.HeaderText = "نام";
+            this.NameColumn.Name = "NameColumn";
+            this.NameColumn.ReadOnly = true;
+            // 
+            // isHuman
+            // 
+            this.isHuman.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.isHuman.DataPropertyName = "isHuman";
+            this.isHuman.HeaderText = "انسانی";
+            this.isHuman.Name = "isHuman";
+            this.isHuman.ReadOnly = true;
+            this.isHuman.Width = 51;
+            // 
+            // isPhysical
+            // 
+            this.isPhysical.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.isPhysical.DataPropertyName = "isPhysical";
+            this.isPhysical.HeaderText = "فیزیکی";
+            this.isPhysical.Name = "isPhysical";
+            this.isPhysical.ReadOnly = true;
+            this.isPhysical.Width = 48;
+            // 
+            // isPortable
+            // 
+            this.isPortable.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.isPortable.DataPropertyName = "isPortable";
+            this.isPortable.HeaderText = "مکان‌مند";
+            this.isPortable.Name = "isPortable";
+            this.isPortable.ReadOnly = true;
+            this.isPortable.Width = 54;
+            // 
             // rightClickMenuStrip
             // 
             this.rightClickMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -118,26 +162,26 @@
             this.ویرایشToolStripMenuItem});
             this.rightClickMenuStrip.Name = "contextMenuStrip1";
             this.rightClickMenuStrip.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.rightClickMenuStrip.Size = new System.Drawing.Size(155, 76);
+            this.rightClickMenuStrip.Size = new System.Drawing.Size(168, 76);
             // 
             // مشاهدهمشخصاتToolStripMenuItem
             // 
             this.مشاهدهمشخصاتToolStripMenuItem.Image = global::Divan.Properties.Resources.icon_package;
             this.مشاهدهمشخصاتToolStripMenuItem.Name = "مشاهدهمشخصاتToolStripMenuItem";
-            this.مشاهدهمشخصاتToolStripMenuItem.Size = new System.Drawing.Size(154, 22);
+            this.مشاهدهمشخصاتToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
             this.مشاهدهمشخصاتToolStripMenuItem.Text = "مشاهده مشخصات";
             this.مشاهدهمشخصاتToolStripMenuItem.Click += new System.EventHandler(this.button1_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(151, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(164, 6);
             // 
             // حذفToolStripMenuItem
             // 
             this.حذفToolStripMenuItem.Image = global::Divan.Properties.Resources.delete;
             this.حذفToolStripMenuItem.Name = "حذفToolStripMenuItem";
-            this.حذفToolStripMenuItem.Size = new System.Drawing.Size(154, 22);
+            this.حذفToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
             this.حذفToolStripMenuItem.Text = "حذف";
             this.حذفToolStripMenuItem.Click += new System.EventHandler(this.delete_Click);
             // 
@@ -145,7 +189,7 @@
             // 
             this.ویرایشToolStripMenuItem.Image = global::Divan.Properties.Resources.pencil;
             this.ویرایشToolStripMenuItem.Name = "ویرایشToolStripMenuItem";
-            this.ویرایشToolStripMenuItem.Size = new System.Drawing.Size(154, 22);
+            this.ویرایشToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
             this.ویرایشToolStripMenuItem.Text = "ویرایش";
             this.ویرایشToolStripMenuItem.Click += new System.EventHandler(this.edit_Click_1);
             // 
@@ -159,6 +203,7 @@
             this.radioButton1.Size = new System.Drawing.Size(110, 18);
             this.radioButton1.TabIndex = 7;
             this.radioButton1.TabStop = true;
+            this.radioButton1.Tag = "null";
             this.radioButton1.Text = "همه‌ی خصوصیات";
             this.radioButton1.UseVisualStyleBackColor = true;
             // 
@@ -179,6 +224,7 @@
             this.radioButton2.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.radioButton2.Size = new System.Drawing.Size(39, 18);
             this.radioButton2.TabIndex = 8;
+            this.radioButton2.Tag = "\"NameColumn\"";
             this.radioButton2.Text = "نام";
             this.radioButton2.UseVisualStyleBackColor = true;
             // 
@@ -190,6 +236,7 @@
             this.radioButton3.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.radioButton3.Size = new System.Drawing.Size(64, 18);
             this.radioButton3.TabIndex = 9;
+            this.radioButton3.Tag = "\"UID\"";
             this.radioButton3.Text = "شناسه";
             this.radioButton3.UseVisualStyleBackColor = true;
             // 
@@ -284,19 +331,19 @@
             this.حذفازداخلداراییهایدیگرToolStripMenuItem});
             this.howToDeleteMenuStrip.Name = "contextMenuStrip2";
             this.howToDeleteMenuStrip.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.howToDeleteMenuStrip.Size = new System.Drawing.Size(246, 48);
+            this.howToDeleteMenuStrip.Size = new System.Drawing.Size(256, 48);
             // 
             // فقطازلیستپاککنToolStripMenuItem
             // 
             this.فقطازلیستپاککنToolStripMenuItem.Name = "فقطازلیستپاککنToolStripMenuItem";
-            this.فقطازلیستپاککنToolStripMenuItem.Size = new System.Drawing.Size(245, 22);
+            this.فقطازلیستپاککنToolStripMenuItem.Size = new System.Drawing.Size(255, 22);
             this.فقطازلیستپاککنToolStripMenuItem.Text = "فقط حذف از لیست";
             this.فقطازلیستپاککنToolStripMenuItem.Click += new System.EventHandler(this.فقطازلیستپاککنToolStripMenuItem_Click_1);
             // 
             // حذفازداخلداراییهایدیگرToolStripMenuItem
             // 
             this.حذفازداخلداراییهایدیگرToolStripMenuItem.Name = "حذفازداخلداراییهایدیگرToolStripMenuItem";
-            this.حذفازداخلداراییهایدیگرToolStripMenuItem.Size = new System.Drawing.Size(245, 22);
+            this.حذفازداخلداراییهایدیگرToolStripMenuItem.Size = new System.Drawing.Size(255, 22);
             this.حذفازداخلداراییهایدیگرToolStripMenuItem.Text = "حذف از لیست و داخل دارایی‌های دیگر";
             this.حذفازداخلداراییهایدیگرToolStripMenuItem.Click += new System.EventHandler(this.فقطازلیستپاککنToolStripMenuItem_Click);
             // 
@@ -344,50 +391,6 @@
             this.label2.TabIndex = 17;
             this.label2.Text = "لطفا دارایی مورد نظر را انتخاب کنید.";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // UID
-            // 
-            this.UID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.UID.DataPropertyName = "UID";
-            this.UID.HeaderText = "شناسه";
-            this.UID.Name = "UID";
-            this.UID.ReadOnly = true;
-            this.UID.Width = 71;
-            // 
-            // NameColumn
-            // 
-            this.NameColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.NameColumn.DataPropertyName = "Name";
-            this.NameColumn.HeaderText = "نام";
-            this.NameColumn.Name = "NameColumn";
-            this.NameColumn.ReadOnly = true;
-            // 
-            // isHuman
-            // 
-            this.isHuman.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.isHuman.DataPropertyName = "isHuman";
-            this.isHuman.HeaderText = "انسانی";
-            this.isHuman.Name = "isHuman";
-            this.isHuman.ReadOnly = true;
-            this.isHuman.Width = 51;
-            // 
-            // isPhysical
-            // 
-            this.isPhysical.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.isPhysical.DataPropertyName = "isPhysical";
-            this.isPhysical.HeaderText = "فیزیکی";
-            this.isPhysical.Name = "isPhysical";
-            this.isPhysical.ReadOnly = true;
-            this.isPhysical.Width = 48;
-            // 
-            // isPortable
-            // 
-            this.isPortable.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.isPortable.DataPropertyName = "isPortable";
-            this.isPortable.HeaderText = "مکان‌مند";
-            this.isPortable.Name = "isPortable";
-            this.isPortable.ReadOnly = true;
-            this.isPortable.Width = 54;
             // 
             // AssetsWindow
             // 

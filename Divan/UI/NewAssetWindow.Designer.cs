@@ -54,6 +54,9 @@
             this.checkBox_isPortable = new System.Windows.Forms.CheckBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dataGrid_PrimaryInfo = new System.Windows.Forms.DataGridView();
+            this.name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.type = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.value = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.dataGrid_OtherLabel = new System.Windows.Forms.DataGridView();
             this.dataGridViewCheckBoxColumn1 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
@@ -80,9 +83,6 @@
             this.button3 = new System.Windows.Forms.Button();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
-            this.name = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.type = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.value = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.flowLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.humanAssetProps.SuspendLayout();
@@ -347,6 +347,29 @@
             this.dataGrid_PrimaryInfo.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGrid_PrimaryInfo_CellEndEdit);
             this.dataGrid_PrimaryInfo.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.dataGrid_PrimaryInfo_CellValidating);
             // 
+            // name
+            // 
+            this.name.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.name.HeaderText = "نام";
+            this.name.Name = "name";
+            // 
+            // type
+            // 
+            this.type.HeaderText = "نوع";
+            this.type.Items.AddRange(new object[] {
+            "عدد",
+            "رشته",
+            "بلی/خیر"});
+            this.type.Name = "type";
+            this.type.Width = 70;
+            // 
+            // value
+            // 
+            this.value.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.value.HeaderText = "مقدار";
+            this.value.Name = "value";
+            this.value.Width = 58;
+            // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.dataGrid_OtherLabel);
@@ -378,6 +401,7 @@
             this.dataGrid_OtherLabel.TabIndex = 18;
             this.dataGrid_OtherLabel.CellBeginEdit += new System.Windows.Forms.DataGridViewCellCancelEventHandler(this.dataGrid_OtherLabel_CellBeginEdit);
             this.dataGrid_OtherLabel.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGrid_OtherLabel_CellDoubleClick);
+            this.dataGrid_OtherLabel.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.dataGrid_OtherLabel_CellValidating);
             // 
             // dataGridViewCheckBoxColumn1
             // 
@@ -621,29 +645,6 @@
             // 
             this.errorProvider.ContainerControl = this;
             this.errorProvider.RightToLeft = true;
-            // 
-            // name
-            // 
-            this.name.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.name.HeaderText = "نام";
-            this.name.Name = "name";
-            // 
-            // type
-            // 
-            this.type.HeaderText = "نوع";
-            this.type.Items.AddRange(new object[] {
-            "عدد",
-            "رشته",
-            "بلی/خیر"});
-            this.type.Name = "type";
-            this.type.Width = 70;
-            // 
-            // value
-            // 
-            this.value.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.value.HeaderText = "مقدار";
-            this.value.Name = "value";
-            this.value.Width = 58;
             // 
             // NewAssetWindow
             // 

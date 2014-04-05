@@ -19,32 +19,34 @@ namespace Divan
             cell.Style.BackColor = Color.LightGray;
         }
 
-        public static void searchGrid(DataGridView grid, string pattern)
-        {
+        public static void searchGrid(DataGridView grid, string pattern, string columnName = null)
+        { // Passing null as columnName results in all columns search.
             foreach (DataGridViewRow row in grid.Rows)
             {
                 if (grid.DataSource != null)
                 {
                     CurrencyManager cm = (CurrencyManager)grid.BindingContext[grid.DataSource];
                     cm.SuspendBinding();
-                    row.Visible = doesMatch(row, pattern);
+                    row.Visible = doesMatch(row, pattern, columnName);
                     cm.ResumeBinding();
                 }
                 else
                 {
-                    row.Visible = doesMatch(row, pattern);
+                    row.Visible = doesMatch(row, pattern, columnName);
                 }
             }
         }
 
 
-        private static bool doesMatch(DataGridViewRow row, string pattern)
+        private static bool doesMatch(DataGridViewRow row, string pattern, string columnName)
         {
             foreach (string word in pattern.Split(" ".ToCharArray()))
             {
                 bool matched = false;
                 foreach (DataGridViewCell cell in row.Cells)
                 {
+                    if (columnName != null && cell.OwningColumn.Name != columnName)
+                        continue;
                     if (cell.Value is string && ((string)cell.Value).IndexOf(word) != -1)
                     {
                         matched = true;

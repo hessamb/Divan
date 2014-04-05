@@ -478,5 +478,15 @@ namespace Divan
                 row.Cells[2].ErrorText = "";
         }
 
+        private void dataGrid_OtherLabel_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
+        {
+            DataGridView grid = (DataGridView)sender;
+            DataGridViewCell cell = grid.Rows[e.RowIndex].Cells[e.ColumnIndex];
+            if (!UIHelper.Validation.isNonEmpty((String)cell.Value))
+                cell.ErrorText = "لطفا یک مقدار معتبر وارد کنید";
+            else
+                cell.ErrorText = "";
+        }
+
     }
 }
