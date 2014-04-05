@@ -66,7 +66,7 @@ namespace Divan
 
         private void button1_Click(object sender, EventArgs e)
         {
-            string a = ActionsWindow.ShowActions().name;
+            string a = ActionsWindow.ShowActions();
             if(a!=null){
                 subActionList.Items.Add(a);
             }
