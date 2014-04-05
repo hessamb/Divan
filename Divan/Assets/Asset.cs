@@ -171,9 +171,9 @@ namespace Divan
             return state.GetSubAssets();
         }
 
-        public void Create()
+        partial void OnCreated()
         {
-            //TODO
+            this.visible = true;
         }
 
         public void Destroy()
@@ -230,6 +230,16 @@ namespace Divan
             {
                 return this.Properties.Where(property => !SPECIAL_NAMES.Contains(property.Name));
             }
+        }
+
+        public bool pathExists(Asset asset)
+        {
+            if (this.Id == asset.Id)
+                return true;
+            foreach(Asset subAsset in GetSubAssets())
+                if (subAsset.pathExists(asset))
+                    return true;
+            return false;
         }
     }
 }

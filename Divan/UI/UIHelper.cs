@@ -94,7 +94,13 @@ namespace Divan
         public static void errorBox(IWin32Window parent, string message)
         {
             const string TITLE = "خطا";
-            MessageBox.Show(parent, message, TITLE, new MessageBoxButtons(), MessageBoxIcon.Error);
+            MessageBox.Show(parent, message, TITLE, new MessageBoxButtons(), MessageBoxIcon.Error, MessageBoxDefaultButton.Button1, MessageBoxOptions.RtlReading);
+        }
+
+        public static void warningBox(IWin32Window parent, string message)
+        {
+            const string TITLE = "اخطار";
+            MessageBox.Show(parent, message, TITLE, new MessageBoxButtons(), MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1 ,MessageBoxOptions.RtlReading);
         }
 
         
@@ -154,6 +160,19 @@ namespace Divan
             public static bool isDisntinct(List<String> list)
             {
                 return list.Distinct().AsEnumerable().Count() == list.Count;
+            }
+
+            public static bool isInteger(string value)
+            {
+                try
+                {
+                    Convert.ToInt32(value);
+                    return true;
+                }
+                catch
+                {
+                    return false;
+                }
             }
         }
     }

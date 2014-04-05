@@ -7,6 +7,18 @@ namespace Divan
 {
     public partial class LabelDomain
     {
+        public static bool isCompatible(string type, string value)
+        {
+            if (type == "رشته")
+                return true;
+            else if (type == "عدد")
+                return UIHelper.Validation.isInteger(value);
+            else if (type == "بلی/خیر")
+                return value == "بلی" || value == "خیر";
+            else
+                return value == type;
+        }
+
         public LabelDomain(float? minValue, float? maxValue, bool? isOrdered)
             : this()
         {

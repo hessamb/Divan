@@ -20,6 +20,8 @@ namespace Divan
         public NewAssetWindow()
         {
             InitializeComponent();
+            UIHelper.Validation.ValidateNotEmpty(textBox_Name, errorProvider);
+            UIHelper.Validation.ValidateNotEmpty(textBox_UID, errorProvider);
         }
 
         public NewAssetWindow(Asset asset)
@@ -32,6 +34,21 @@ namespace Divan
         private void humanAssetCh_CheckedChanged(object sender, EventArgs e)
         {
             humanAssetProps.Visible = checkBox_isHuman.Checked;
+
+            if (checkBox_isHuman.Checked)
+            {
+                UIHelper.Validation.ValidateNotEmpty(textBox_FirstName, errorProvider);
+                UIHelper.Validation.ValidateNotEmpty(textBox_NationalID, errorProvider);
+                UIHelper.Validation.ValidateNotEmpty(textBox_PersonnelCode, errorProvider);
+                UIHelper.Validation.ValidateNotEmpty(textBox_LastName, errorProvider);
+            }
+            else
+            {
+                UIHelper.Validation.CancelValidateNotEmpty(textBox_FirstName);
+                UIHelper.Validation.CancelValidateNotEmpty(textBox_LastName);
+                UIHelper.Validation.CancelValidateNotEmpty(textBox_NationalID);
+                UIHelper.Validation.CancelValidateNotEmpty(textBox_PersonnelCode);
+            }
         }
 
         private void checkBox2_CheckedChanged(object sender, EventArgs e)
@@ -146,6 +163,11 @@ namespace Divan
             {
                 loadFields();
             }
+            else
+            {
+                checkBox_isHuman.Checked = true;
+                checkBox_isPhysical.Checked = true;
+            }
         }
 
         private void treeView1_AfterSelect(object sender, TreeViewEventArgs e)
@@ -190,15 +212,34 @@ namespace Divan
             Asset subAsset = AssetList.Instance.GetByUid(assetUid);
             if (!subAssets.Contains(subAsset))
             {
+                if (asset != null && subAsset.Id == asset.Id)
+                {
+                    UIHelper.warningBox(this, "یک دارایی نمی‌تواند زیرداریی خودش باشد.");
+                    return;
+                }
+                if (asset != null && subAsset.pathExists(asset))
+                {
+                    UIHelper.warningBox(this, "امکان اضافه شدن دارایی انتخاب شده وجود ندارد.\nاضافه کردن دارایی انتخاب شده موجب ایجاد دور در ساختار دارایی‌ها می‌شود.");
+                    return;
+                }
                 subAssets.Add(subAsset);
-                treeView_subAssets.Nodes.Add(subAsset.getTreeNode());
+                
+                int index = treeView_subAssets.Nodes.Add(subAsset.getTreeNode());
+                treeView_subAssets.Nodes[index].Expand();
             }
         }
 
         private void button5_Click(object sender, EventArgs e)
         {
             if (openFileDialog1.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
                 attachmentList.Items.Add(openFileDialog1.FileName);
+                List<String> files = new List<String>();
+                for(int i=0 ; i<attachmentList.Items.Count ; i++)
+                    files.Add( (string)attachmentList.Items[i] );
+                if (!UIHelper.Validation.isDisntinct(files))
+                    attachmentList.Items.RemoveAt( attachmentList.Items.Count-1 );
+            }
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -212,8 +253,61 @@ namespace Divan
             deleteFileBut.Enabled = attachmentList.Focused && attachmentList.SelectedItem != null;
         }
 
+        private bool areFieldsValidated()
+        {
+            bool result = true;
+            if (!UIHelper.Validation.DoNotEmptyValidation(textBox_Name))
+                result = false;
+            if (!UIHelper.Validation.DoNotEmptyValidation(textBox_UID))
+                result = false;
+            if (checkBox_isHuman.Checked)
+            {
+                if (!UIHelper.Validation.DoNotEmptyValidation(textBox_FirstName))
+                    result = false;
+                if (!UIHelper.Validation.DoNotEmptyValidation(textBox_LastName))
+                    result = false;
+                if (!UIHelper.Validation.DoNotEmptyValidation(textBox_NationalID))
+                    result = false;
+                if (!UIHelper.Validation.DoNotEmptyValidation(textBox_PersonnelCode))
+                    result = false;
+            }
+            foreach(DataGridViewRow row in dataGrid_PrimaryInfo.Rows){
+                if (row.IsNewRow)
+                    continue;
+                foreach (DataGridViewCell cell in row.Cells)
+                {
+                    if (!UIHelper.Validation.isNonEmpty((String)cell.Value))
+                    {
+                        cell.ErrorText = "لطفا یک مقدار معتبر وارد کنید.";
+                        result = false;
+                    }
+                    else if (cell.ErrorText != "")
+                        result = false;
+                }
+            }
+            foreach (DataGridView grid in new DataGridView[] { dataGrid_DefinerLabel, dataGrid_OtherLabel })
+            {
+                foreach (DataGridViewRow row in grid.Rows)
+                {
+                    if (((Boolean)row.Cells[0].Value) && !UIHelper.Validation.isNonEmpty((String)row.Cells[2].Value))
+                    {
+                        row.Cells[2].ErrorText = "لطفا یک مقدار وارد کنید.";
+                        result = false;
+                    }
+                }
+            }
+            return result;
+
+        }
+
         private void approveClicked(object sender, EventArgs e)
         {
+            if (!areFieldsValidated())
+            {
+                UIHelper.errorBox(this, "لطفا خطاهای ورودی را رفع کنید");
+                this.DialogResult = DialogResult.None;
+                return;
+            }
             if (asset == null)
             {
                 asset = new Asset();
@@ -315,24 +409,63 @@ namespace Divan
             asset.isPortable = checkBox_isPortable.Checked;
         }
 
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
-        private void flowLayoutPanel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
         private void dataGrid_OtherLabel_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             DataGridView grid = (DataGridView)sender;
             grid.Rows[e.RowIndex].Cells[0].Value = true;
         }
 
-        private void textBox_Name_Validating(object sender, CancelEventArgs e)
+        private void dataGrid_OtherLabel_CellBeginEdit(object sender, DataGridViewCellCancelEventArgs e)
         {
+            DataGridView grid = (DataGridView)sender;
+            grid.Rows[e.RowIndex].Cells[0].Value = true;
+        }
+
+        private void dataGrid_PrimaryInfo_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
+        {
+            DataGridView grid = (DataGridView)sender;
+            if (grid.Rows[e.RowIndex].IsNewRow)
+                return;
+            DataGridViewRow row = grid.Rows[e.RowIndex];
+            DataGridViewCell cell = row.Cells[e.ColumnIndex];
+            if (!UIHelper.Validation.isNonEmpty((String)e.FormattedValue))
+            {
+                cell.ErrorText = "لطفا یک مقدار مشخص کنید";
+                return;
+            }
+            cell.ErrorText = "";
+            if (e.ColumnIndex == 0)
+            {
+                return;
+            }
+            String type = (String)row.Cells[1].Value;
+            String value = (String)row.Cells[2].Value;
+
+            if (!UIHelper.Validation.isNonEmpty(type)
+                || !UIHelper.Validation.isNonEmpty(value))
+                return;
+            if (!LabelDomain.isCompatible(type, value))
+                row.Cells[2].ErrorText = "لطفا یک مقدار معتبر وارد کنید";
+            else
+                row.Cells[2].ErrorText = "";
+        }
+
+        private void dataGrid_PrimaryInfo_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+            DataGridView grid = (DataGridView)sender;
+            if (grid.Rows[e.RowIndex].IsNewRow)
+                return;
+            DataGridViewRow row = grid.Rows[e.RowIndex];
+            String type = (String)row.Cells[1].Value;
+            String value = (String)row.Cells[2].Value;
+
+            if (!UIHelper.Validation.isNonEmpty(type)
+                || !UIHelper.Validation.isNonEmpty(value))
+                return;
+            if (!LabelDomain.isCompatible(type, value))
+                row.Cells[2].ErrorText = "لطفا یک مقدار معتبر وارد کنید";
+            else
+                row.Cells[2].ErrorText = "";
         }
 
     }

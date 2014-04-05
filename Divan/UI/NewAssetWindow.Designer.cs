@@ -54,9 +54,6 @@
             this.checkBox_isPortable = new System.Windows.Forms.CheckBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dataGrid_PrimaryInfo = new System.Windows.Forms.DataGridView();
-            this.name = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.type = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.value = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.dataGrid_OtherLabel = new System.Windows.Forms.DataGridView();
             this.dataGridViewCheckBoxColumn1 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
@@ -82,7 +79,10 @@
             this.button4 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
+            this.name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.type = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.value = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.flowLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.humanAssetProps.SuspendLayout();
@@ -95,7 +95,7 @@
             this.GroupBox_subAssets.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             this.SuspendLayout();
             // 
             // flowLayoutPanel1
@@ -136,7 +136,7 @@
             // 
             // textBox_UID
             // 
-            this.textBox_UID.Location = new System.Drawing.Point(8, 3);
+            this.textBox_UID.Location = new System.Drawing.Point(16, 3);
             this.textBox_UID.Name = "textBox_UID";
             this.textBox_UID.Size = new System.Drawing.Size(138, 22);
             this.textBox_UID.TabIndex = 2;
@@ -144,11 +144,11 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(154, 6);
+            this.label8.Location = new System.Drawing.Point(157, 6);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(85, 14);
+            this.label8.Size = new System.Drawing.Size(50, 14);
             this.label8.TabIndex = 2;
-            this.label8.Text = "شناسه دارایی:";
+            this.label8.Text = "شناسه:";
             // 
             // textBox_Name
             // 
@@ -156,7 +156,6 @@
             this.textBox_Name.Name = "textBox_Name";
             this.textBox_Name.Size = new System.Drawing.Size(138, 22);
             this.textBox_Name.TabIndex = 0;
-            this.textBox_Name.Validating += new System.ComponentModel.CancelEventHandler(this.textBox_Name_Validating);
             // 
             // label1
             // 
@@ -170,8 +169,6 @@
             // checkBox_isHuman
             // 
             this.checkBox_isHuman.AutoSize = true;
-            this.checkBox_isHuman.Checked = true;
-            this.checkBox_isHuman.CheckState = System.Windows.Forms.CheckState.Checked;
             this.checkBox_isHuman.Location = new System.Drawing.Point(805, 52);
             this.checkBox_isHuman.Name = "checkBox_isHuman";
             this.checkBox_isHuman.Size = new System.Drawing.Size(148, 18);
@@ -199,7 +196,7 @@
             // 
             // textBox_PersonnelCode
             // 
-            this.textBox_PersonnelCode.Location = new System.Drawing.Point(8, 32);
+            this.textBox_PersonnelCode.Location = new System.Drawing.Point(16, 32);
             this.textBox_PersonnelCode.Name = "textBox_PersonnelCode";
             this.textBox_PersonnelCode.Size = new System.Drawing.Size(138, 22);
             this.textBox_PersonnelCode.TabIndex = 7;
@@ -207,7 +204,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(154, 36);
+            this.label6.Location = new System.Drawing.Point(157, 36);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(68, 14);
             this.label6.TabIndex = 6;
@@ -248,7 +245,7 @@
             // 
             // textBox_LastName
             // 
-            this.textBox_LastName.Location = new System.Drawing.Point(8, 4);
+            this.textBox_LastName.Location = new System.Drawing.Point(16, 4);
             this.textBox_LastName.Name = "textBox_LastName";
             this.textBox_LastName.Size = new System.Drawing.Size(138, 22);
             this.textBox_LastName.TabIndex = 5;
@@ -256,7 +253,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(154, 8);
+            this.label4.Location = new System.Drawing.Point(158, 8);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(76, 14);
             this.label4.TabIndex = 4;
@@ -281,8 +278,6 @@
             // checkBox_isPhysical
             // 
             this.checkBox_isPhysical.AutoSize = true;
-            this.checkBox_isPhysical.Checked = true;
-            this.checkBox_isPhysical.CheckState = System.Windows.Forms.CheckState.Checked;
             this.checkBox_isPhysical.Location = new System.Drawing.Point(806, 184);
             this.checkBox_isPhysical.Name = "checkBox_isPhysical";
             this.checkBox_isPhysical.Size = new System.Drawing.Size(147, 18);
@@ -349,28 +344,8 @@
             this.dataGrid_PrimaryInfo.Name = "dataGrid_PrimaryInfo";
             this.dataGrid_PrimaryInfo.Size = new System.Drawing.Size(451, 166);
             this.dataGrid_PrimaryInfo.TabIndex = 13;
-            this.dataGrid_PrimaryInfo.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
-            // 
-            // name
-            // 
-            this.name.HeaderText = "نام";
-            this.name.Name = "name";
-            this.name.Width = 120;
-            // 
-            // type
-            // 
-            this.type.HeaderText = "نوع";
-            this.type.Items.AddRange(new object[] {
-            "عدد",
-            "رشته",
-            "بلی/خیر"});
-            this.type.Name = "type";
-            this.type.Width = 70;
-            // 
-            // value
-            // 
-            this.value.HeaderText = "مقدار";
-            this.value.Name = "value";
+            this.dataGrid_PrimaryInfo.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGrid_PrimaryInfo_CellEndEdit);
+            this.dataGrid_PrimaryInfo.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.dataGrid_PrimaryInfo_CellValidating);
             // 
             // groupBox2
             // 
@@ -401,6 +376,7 @@
             this.dataGrid_OtherLabel.RowHeadersVisible = false;
             this.dataGrid_OtherLabel.Size = new System.Drawing.Size(222, 90);
             this.dataGrid_OtherLabel.TabIndex = 18;
+            this.dataGrid_OtherLabel.CellBeginEdit += new System.Windows.Forms.DataGridViewCellCancelEventHandler(this.dataGrid_OtherLabel_CellBeginEdit);
             this.dataGrid_OtherLabel.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGrid_OtherLabel_CellDoubleClick);
             // 
             // dataGridViewCheckBoxColumn1
@@ -641,9 +617,33 @@
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
             // 
-            // errorProvider1
+            // errorProvider
             // 
-            this.errorProvider1.ContainerControl = this;
+            this.errorProvider.ContainerControl = this;
+            this.errorProvider.RightToLeft = true;
+            // 
+            // name
+            // 
+            this.name.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.name.HeaderText = "نام";
+            this.name.Name = "name";
+            // 
+            // type
+            // 
+            this.type.HeaderText = "نوع";
+            this.type.Items.AddRange(new object[] {
+            "عدد",
+            "رشته",
+            "بلی/خیر"});
+            this.type.Name = "type";
+            this.type.Width = 70;
+            // 
+            // value
+            // 
+            this.value.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.value.HeaderText = "مقدار";
+            this.value.Name = "value";
+            this.value.Width = 58;
             // 
             // NewAssetWindow
             // 
@@ -681,7 +681,7 @@
             this.GroupBox_subAssets.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -720,9 +720,6 @@
         private System.Windows.Forms.Button removeSubAssetBut;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.TreeView treeView_subAssets;
-        private System.Windows.Forms.DataGridViewTextBoxColumn name;
-        private System.Windows.Forms.DataGridViewComboBoxColumn type;
-        private System.Windows.Forms.DataGridViewTextBoxColumn value;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button3;
@@ -741,6 +738,9 @@
         private System.Windows.Forms.DataGridViewCheckBoxColumn dataGridViewCheckBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
-        private System.Windows.Forms.ErrorProvider errorProvider1;
+        private System.Windows.Forms.ErrorProvider errorProvider;
+        private System.Windows.Forms.DataGridViewTextBoxColumn name;
+        private System.Windows.Forms.DataGridViewComboBoxColumn type;
+        private System.Windows.Forms.DataGridViewTextBoxColumn value;
     }
 }
