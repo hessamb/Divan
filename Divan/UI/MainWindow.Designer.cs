@@ -504,7 +504,7 @@
             this.groupBox4.Controls.Add(this.button15);
             this.groupBox4.Location = new System.Drawing.Point(14, 370);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(646, 97);
+            this.groupBox4.Size = new System.Drawing.Size(646, 141);
             this.groupBox4.TabIndex = 4;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "گزارش‌گیری";
@@ -535,6 +535,7 @@
             // 
             // button16
             // 
+            this.button16.Enabled = false;
             this.button16.Image = global::Divan.Properties.Resources.page_script;
             this.button16.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button16.Location = new System.Drawing.Point(170, 34);
@@ -548,6 +549,7 @@
             // 
             // button14
             // 
+            this.button14.Enabled = false;
             this.button14.Image = global::Divan.Properties.Resources.note;
             this.button14.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button14.Location = new System.Drawing.Point(278, 34);
@@ -561,6 +563,7 @@
             // 
             // button15
             // 
+            this.button15.Enabled = false;
             this.button15.Image = global::Divan.Properties.Resources.icon_package;
             this.button15.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button15.Location = new System.Drawing.Point(386, 34);
@@ -574,9 +577,10 @@
             // 
             // button18
             // 
+            this.button18.Enabled = false;
             this.button18.Image = global::Divan.Properties.Resources.icon_settings;
             this.button18.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button18.Location = new System.Drawing.Point(507, 483);
+            this.button18.Location = new System.Drawing.Point(508, 518);
             this.button18.Name = "button18";
             this.button18.Size = new System.Drawing.Size(128, 42);
             this.button18.TabIndex = 17;
@@ -589,7 +593,7 @@
             this.button19.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.button19.Image = global::Divan.Properties.Resources.cross;
             this.button19.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button19.Location = new System.Drawing.Point(14, 483);
+            this.button19.Location = new System.Drawing.Point(14, 518);
             this.button19.Name = "button19";
             this.button19.Size = new System.Drawing.Size(61, 42);
             this.button19.TabIndex = 18;
@@ -602,11 +606,11 @@
             // 
             this.button20.Image = global::Divan.Properties.Resources.icon_clock;
             this.button20.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button20.Location = new System.Drawing.Point(-46, 34);
+            this.button20.Location = new System.Drawing.Point(349, 82);
             this.button20.Name = "button20";
-            this.button20.Size = new System.Drawing.Size(102, 42);
+            this.button20.Size = new System.Drawing.Size(138, 42);
             this.button20.TabIndex = 16;
-            this.button20.Text = "بازه زمانی";
+            this.button20.Text = "گزارش ناسازگاری";
             this.button20.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.button20.UseVisualStyleBackColor = true;
             this.button20.Click += new System.EventHandler(this.button17_Click);
@@ -615,7 +619,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(672, 541);
+            this.ClientSize = new System.Drawing.Size(672, 572);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.button19);

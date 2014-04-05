@@ -12,8 +12,8 @@ namespace Divan
 {
     public partial class ActionsWindow : Form
     {
-        public string SelectedAction { get; set; }
-        public static string ShowActions()
+        public Action SelectedAction { get; set; }
+        public static Action ShowActions()
         {
             ActionsWindow a = new ActionsWindow();
             a.select.Visible = a.cancel.Visible = a.cancel.Enabled = true;
@@ -60,8 +60,8 @@ namespace Divan
 
         private void select_Click(object sender, EventArgs e)
         {
-            SelectedAction = (string)actionsGrid.SelectedCells[0].OwningRow.Cells[0].Value;
-           DialogResult = System.Windows.Forms.DialogResult.OK;
+            SelectedAction = actionsGrid.SelectedRows[0].DataBoundItem as Action;
+            DialogResult = System.Windows.Forms.DialogResult.OK;
         }
 
         private void edit_Click_1(object sender, EventArgs e)

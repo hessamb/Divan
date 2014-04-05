@@ -32,7 +32,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.searchTxt = new System.Windows.Forms.TextBox();
-            this.assetsGrid = new System.Windows.Forms.DataGridView();
+            this.eventsGrid = new System.Windows.Forms.DataGridView();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.مشاهدهمشخصاتToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
@@ -47,7 +47,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.eventName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.name = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            ((System.ComponentModel.ISupportInitialize)(this.assetsGrid)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.eventsGrid)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
@@ -63,33 +63,33 @@
             this.searchTxt.Size = new System.Drawing.Size(506, 22);
             this.searchTxt.TabIndex = 1;
             // 
-            // assetsGrid
+            // eventsGrid
             // 
-            this.assetsGrid.AllowUserToAddRows = false;
-            this.assetsGrid.AllowUserToDeleteRows = false;
-            this.assetsGrid.AllowUserToResizeRows = false;
+            this.eventsGrid.AllowUserToAddRows = false;
+            this.eventsGrid.AllowUserToDeleteRows = false;
+            this.eventsGrid.AllowUserToResizeRows = false;
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.assetsGrid.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            this.assetsGrid.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.eventsGrid.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.eventsGrid.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.assetsGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.assetsGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.eventsGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.eventsGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.eventName,
             this.name});
-            this.assetsGrid.ContextMenuStrip = this.contextMenuStrip1;
-            this.assetsGrid.Location = new System.Drawing.Point(14, 58);
-            this.assetsGrid.Name = "assetsGrid";
-            this.assetsGrid.ReadOnly = true;
-            this.assetsGrid.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.eventsGrid.ContextMenuStrip = this.contextMenuStrip1;
+            this.eventsGrid.Location = new System.Drawing.Point(14, 58);
+            this.eventsGrid.Name = "eventsGrid";
+            this.eventsGrid.ReadOnly = true;
+            this.eventsGrid.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.assetsGrid.RowsDefaultCellStyle = dataGridViewCellStyle2;
-            this.assetsGrid.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.assetsGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.assetsGrid.Size = new System.Drawing.Size(506, 386);
-            this.assetsGrid.TabIndex = 2;
-            this.assetsGrid.SelectionChanged += new System.EventHandler(this.assetsGrid_SelectionChanged);
-            this.assetsGrid.DoubleClick += new System.EventHandler(this.assetsGrid_DoubleClick);
+            this.eventsGrid.RowsDefaultCellStyle = dataGridViewCellStyle2;
+            this.eventsGrid.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.eventsGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.eventsGrid.Size = new System.Drawing.Size(506, 386);
+            this.eventsGrid.TabIndex = 2;
+            this.eventsGrid.SelectionChanged += new System.EventHandler(this.assetsGrid_SelectionChanged);
+            this.eventsGrid.DoubleClick += new System.EventHandler(this.assetsGrid_DoubleClick);
             // 
             // contextMenuStrip1
             // 
@@ -232,6 +232,7 @@
             // eventName
             // 
             this.eventName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.eventName.DataPropertyName = "Name";
             this.eventName.HeaderText = "نام رخداد";
             this.eventName.Name = "eventName";
             this.eventName.ReadOnly = true;
@@ -239,11 +240,12 @@
             // name
             // 
             this.name.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.name.DataPropertyName = "Action.name";
             this.name.HeaderText = "نام عملیات";
             this.name.Name = "name";
             this.name.ReadOnly = true;
             // 
-            // Events
+            // EventsWindow
             // 
             this.AcceptButton = this.select;
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
@@ -253,17 +255,17 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.cancel);
             this.Controls.Add(this.select);
-            this.Controls.Add(this.assetsGrid);
+            this.Controls.Add(this.eventsGrid);
             this.Controls.Add(this.searchTxt);
             this.Controls.Add(this.flowLayoutPanel1);
             this.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.Name = "Events";
+            this.Name = "EventsWindow";
             this.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "رخداد‌ها";
             this.Load += new System.EventHandler(this.assetForm_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.assetsGrid)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.eventsGrid)).EndInit();
             this.contextMenuStrip1.ResumeLayout(false);
             this.flowLayoutPanel1.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -274,7 +276,7 @@
         #endregion
 
         private System.Windows.Forms.TextBox searchTxt;
-        private System.Windows.Forms.DataGridView assetsGrid;
+        private System.Windows.Forms.DataGridView eventsGrid;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button delete;
         private System.Windows.Forms.Button select;

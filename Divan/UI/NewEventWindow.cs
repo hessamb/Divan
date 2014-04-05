@@ -12,6 +12,8 @@ namespace Divan
 {
     public partial class NewEventWindow : Form
     {
+        Action selectedAction;
+
         public NewEventWindow()
         {
             InitializeComponent();
@@ -19,7 +21,12 @@ namespace Divan
 
         private void button2_Click(object sender, EventArgs e)
         {
-            ActionsWindow.ShowActions();
+            var action = ActionsWindow.ShowActions();
+            if (action != null)
+            {
+                selectedAction = action;
+                actionLabel.Text = "عملیات: " + action.name;
+            }
         }
     }
 }

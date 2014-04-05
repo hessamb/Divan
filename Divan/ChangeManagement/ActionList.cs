@@ -8,14 +8,14 @@ namespace Divan
 {
     public class ActionList
     {
-        private static AssetList instance;
+        private static ActionList instance;
 
-        public static AssetList Instance
+        public static ActionList Instance
         {
             get
             {
                 if (instance == null)
-                    instance = new AssetList();
+                    instance = new ActionList();
                 return instance;
             }
         }
