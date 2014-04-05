@@ -17,8 +17,16 @@ namespace Divan
 
         public override int compare(string value1, string value2)
         {
-            //TODO
-            return base.compare(value1, value2);
+            try
+            {
+                double val1 = Convert.ToDouble(value1);
+                double val2 = Convert.ToDouble(value2);
+                return Math.Sign(val1 - val2);
+            }
+            catch
+            {
+                return 0;
+            }
         }
 
         public override bool isDiscrete()
@@ -28,8 +36,15 @@ namespace Divan
 
         public override bool IsValidValue(string value)
         {
-            //TODO
-            return base.IsValidValue(value);
+            try
+            {
+                double val = Convert.ToDouble(value);
+                return (val >= minValue && val <= maxValue);
+            }
+            catch
+            {
+                return false;
+            }
         }
     }
 }

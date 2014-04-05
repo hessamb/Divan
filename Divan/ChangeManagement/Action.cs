@@ -63,7 +63,9 @@ namespace Divan
 
         public void Destroy()
         {
-            //TODO
+            DivanDataContext.Instance.SubActions.DeleteAllOnSubmit(this.SubActionsM2M);
+            DivanDataContext.Instance.Actions.DeleteOnSubmit(this);
+            DivanDataContext.Instance.SubmitChanges();
         }
 
         public override String ToString()

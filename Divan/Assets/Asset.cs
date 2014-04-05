@@ -178,7 +178,9 @@ namespace Divan
 
         public void Destroy()
         {
-            //TODO
+            this.RemoveFromOthers();
+            DivanDataContext.Instance.Assets.DeleteOnSubmit(this);
+            DivanDataContext.Instance.SubmitChanges();
         }
 
         public List<ConsistancyRule> GetInconsistencies()
@@ -187,20 +189,12 @@ namespace Divan
             return null;
         }
 
-        public List<AssetChangeRecord> GetHistory()
-        {
-            //TODO
-            return null;
-        }
-
-        public void restore(DateTime date)
-        {
-            //TODO
-        }
-
         public void RemoveFromOthers()
         {
-            //TODO
+            this.Parent.RemoveSubAsset(this);
+            foreach (Asset subAsset in this.GetSubAssets())
+                subAsset.Parent = null;
+            DivanDataContext.Instance.SubmitChanges();
         }
 
         public TreeNode getTreeNode()

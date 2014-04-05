@@ -82,16 +82,23 @@ namespace Divan
             return this.GetAllVisibles().GetEnumerator();
         }
 
-        public List<Asset> GetPortables()
+        public IEnumerable<Asset> GetPortables()
         {
-            //TODO
-            return null;
+            var assets = from a in DivanDataContext.Instance.Assets
+                         where a.isPortable == true
+                         select a;
+            return assets.AsEnumerable();
         }
 
-        public List<Asset> GetResult(AssetQuery qury)
+        public IEnumerable<Asset> GetResult(AssetQuery query)
         {
-            //TODO
-            return null;
+            var assets = from a in DivanDataContext.Instance.Assets
+                         where (a.Name.Contains(query.Expression)
+                         || a.UID.Contains(query.Expression))
+                         && a.Name.Contains(query.NameConstraint)
+                         && a.UID.Contains(query.UidConstraint)
+                         select a;
+            return assets.AsEnumerable();
         }
     }
 }
