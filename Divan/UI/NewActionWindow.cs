@@ -12,6 +12,10 @@ namespace Divan
 {
     public partial class NewActionWindow : Form
     {
+        Asset asset;
+        Label label;
+        Action action;
+
         public NewActionWindow()
         {
             InitializeComponent();
@@ -40,25 +44,67 @@ namespace Divan
 
         private void button2_Click(object sender, EventArgs e)
         {
-            AssetsWindow.ShowAssets();
+            String uid = AssetsWindow.ShowAssets();
+            if (uid == null)
+                return;
+            asset = AssetList.Instance.GetByUid(uid);
+            label_asset.Text = "دارایی: " + asset.Name;
+            label_label.Text = "برچسب: " + asset.Name + " > انتخاب کنید";
+            button_selectLabel.Enabled = true;
+            textBox_value.Enabled = false;
+            textBox_value.Text = "";
         }
 
         private void button6_Click(object sender, EventArgs e)
         {
-            LabelsWindow.ShowLabels();
+            label = LabelsWindow.ShowLabels(asset);
+            if (label == null)
+                return;
+            LabelInstance labelInstance = asset.getLabelInstance(label);
+            label_label.Text = "برچسب: " + asset.Name + " > " + label.name;
+            textBox_value.Text = labelInstance.value;
+            textBox_value.Enabled = true;
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            //string a = ActionsWindow.ShowActions();
-            //if(a!=null){
-            //    subActionList.Items.Add(a);
-            //}
+            Action a = ActionsWindow.ShowActions();
+            if(a!=null){
+                subActionList.Items.Add(a);
+            }
         }
 
         private void subActionList_SelectedIndexChanged(object sender, EventArgs e)
         {
             removeSubAssetBut.Enabled = subActionList.SelectedItem != null;
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            if (action == null)
+            {
+                action = new Action();
+                DivanDataContext.Instance.Actions.InsertOnSubmit(action);
+            }
+            action.name = nameTxt.Text;
+            action.Label = label;
+            action.Asset = asset;
+            action.value = textBox_value.Text;
+            action.needsAutoRun = autoRunable.Checked;
+            action.autoRunPeriod = Convert.ToInt32(textBox_period.Text);
+
+            if (compositAsset.Checked)
+            {
+                for (int i = 0; i < subActionList.Items.Count; i++)
+                {
+                    Action item = (Action)subActionList.Items[i];
+                    SubAction subAction = new SubAction();
+                    subAction.Parent = action;
+                    subAction.Child = item;
+                    DivanDataContext.Instance.SubActions.InsertOnSubmit(subAction);
+                }
+            }
+            DivanDataContext.Instance.SubmitChanges();
         }
     }
 }

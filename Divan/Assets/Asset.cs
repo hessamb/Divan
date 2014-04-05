@@ -232,6 +232,28 @@ namespace Divan
             }
         }
 
+        public IEnumerable<Label> getLabels()
+        {
+            var labels = from l in this.LabelInstances
+                         select l.Label;
+            return labels;
+        }
+
+        public LabelInstance getLabelInstance(Label label)
+        {
+            var labelInstances = from l in DivanDataContext.Instance.LabelInstances
+                                 where l.Label == label && l.Asset == this
+                                 select l;
+            try
+            {
+                return labelInstances.First();
+            }
+            catch
+            {
+                throw new Exception("LabelInstance Not Found!");
+            }
+        }
+
         public bool pathExists(Asset asset)
         {
             if (this.Id == asset.Id)

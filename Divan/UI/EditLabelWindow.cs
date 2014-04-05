@@ -49,10 +49,10 @@ namespace Divan
 
         private void button1_Click(object sender, EventArgs e)
         {
-            string ns=LabelsWindow.ShowLabels();
+            Label ns=LabelsWindow.ShowLabels();
             if (ns != null)
             {
-                subAssetsTree.Nodes.Add(ns);
+                subAssetsTree.Nodes.Add(ns.name);
             }
         }
 
