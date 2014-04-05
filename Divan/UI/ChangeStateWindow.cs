@@ -60,10 +60,10 @@ namespace Divan
             foreach (LabelInstance label in labels)
             {
                 DataGridView grid = dataGrid_Label;
-                grid.Rows.Add(new object[] { label.Label.name, label.Label.setValue ? label.value : Label.UNASSANABLE_VALUE });
+                int index = grid.Rows.Add(new object[] { label.Label.name, label.Label.setValue ? label.value : Label.UNASSANABLE_VALUE });
                 if (!label.Label.setValue)
                 {
-                    UIHelper.disableCell(grid.Rows[grid.Rows.Count - 1].Cells[2]);
+                    UIHelper.disableCell(grid.Rows[index].Cells[1]);
                 }
                 labelId.Add(label.Id);
             }
@@ -113,14 +113,11 @@ namespace Divan
 
         private void okBtn_Click(object sender, EventArgs e)
         {
-            IEnumerable<LabelInstance> labels = selectedAsset.LabelInstances;
-            labelId = new List<int>();
-
             for (int i = 0; i < labelId.Count; i++)
             {
                 int id = labelId[i];
                 var labelInstance = from label in DivanDataContext.Instance.LabelInstances
-                                    where label.labelID == id && label.assetID == selectedAsset.Id
+                                    where label.Id == id
                                     select label;
                 try
                 {
