@@ -18,8 +18,8 @@ namespace Divan
             EventsWindow a = new EventsWindow();
             a.select.Visible = a.cancel.Visible = a.cancel.Enabled = true;
             a.delete.Visible = a.runBut.Visible = false;
-            a.assetsGrid.DoubleClick -= a.assetsGrid_DoubleClick;
-            a.assetsGrid.DoubleClick += a.select_Click;
+            a.eventsGrid.DoubleClick -= a.assetsGrid_DoubleClick;
+            a.eventsGrid.DoubleClick += a.select_Click;
             if (a.ShowDialog() == DialogResult.OK)
             {
                 return a.SelectedAction;
@@ -40,18 +40,19 @@ namespace Divan
         private void assetForm_Load(object sender, EventArgs e)
         {
             UIHelper.SetPlaceHolder(searchTxt, "جستجوی رخداد");
+            eventsGrid.AutoGenerateColumns = false;
+            reloadEvents();
+        }
 
-            for (int i = 0; i < 3; i++)
-            {
-                assetsGrid.Rows.Add(new object[] { "سال جدید", "افزایش سن" });
-                assetsGrid.Rows.Add(new object[] { "فرسوده شدن", "ثبت فرسودگی" });
-                assetsGrid.Rows.Add(new object[] { "خرید", "پرکردن موجودی انبار" });
-            }
+        private void reloadEvents()
+        {
+            eventsGrid.DataSource = EventList.Instance.GetAll();
+            eventsGrid.Refresh();
         }
 
         private void assetsGrid_SelectionChanged(object sender, EventArgs e)
         {
-            bool selected = assetsGrid.SelectedCells.Count > 0;
+            bool selected = eventsGrid.SelectedCells.Count > 0;
             delete.Enabled = runBut.Enabled = selected;
             if (select.Visible)
                 select.Enabled = selected;
@@ -59,7 +60,7 @@ namespace Divan
 
         private void select_Click(object sender, EventArgs e)
         {
-            SelectedAction = (string)assetsGrid.SelectedCells[0].OwningRow.Cells[0].Value;
+            SelectedAction = (string)eventsGrid.SelectedCells[0].OwningRow.Cells[0].Value;
            DialogResult = System.Windows.Forms.DialogResult.OK;
         }
 
@@ -76,8 +77,8 @@ namespace Divan
         private void delete_Click(object sender, EventArgs e)
         {
             HashSet<int> set = new HashSet<int>();
-            for (int i = 0; i < assetsGrid.SelectedCells.Count; i++)
-                set.Add(assetsGrid.SelectedCells[i].RowIndex);
+            for (int i = 0; i < eventsGrid.SelectedCells.Count; i++)
+                set.Add(eventsGrid.SelectedCells[i].RowIndex);
             int cnt = set.Count;
             string message = "";
             if (cnt > 1)
@@ -86,7 +87,7 @@ namespace Divan
             }
             else if (cnt == 1)
             {
-                string name = (string)assetsGrid.SelectedCells[0].OwningRow.Cells[0].Value;
+                string name = (string)eventsGrid.SelectedCells[0].OwningRow.Cells[0].Value;
                 message = "آیا از حذف رخداد «" + name + "» مطمئنید؟";
             }
             RemoveConfirmationBox.ShowConfirmation(message);

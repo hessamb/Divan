@@ -32,9 +32,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.searchTxt = new System.Windows.Forms.TextBox();
-            this.assetsGrid = new System.Windows.Forms.DataGridView();
-            this.name = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.composition = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.actionsGrid = new System.Windows.Forms.DataGridView();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.مشاهدهمشخصاتToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
@@ -46,7 +44,10 @@
             this.select = new System.Windows.Forms.Button();
             this.cancel = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.assetsGrid)).BeginInit();
+            this.name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.assetName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.labelName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            ((System.ComponentModel.ISupportInitialize)(this.actionsGrid)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
@@ -62,48 +63,34 @@
             this.searchTxt.Size = new System.Drawing.Size(506, 22);
             this.searchTxt.TabIndex = 1;
             // 
-            // assetsGrid
+            // actionsGrid
             // 
-            this.assetsGrid.AllowUserToAddRows = false;
-            this.assetsGrid.AllowUserToDeleteRows = false;
-            this.assetsGrid.AllowUserToResizeRows = false;
+            this.actionsGrid.AllowUserToAddRows = false;
+            this.actionsGrid.AllowUserToDeleteRows = false;
+            this.actionsGrid.AllowUserToResizeRows = false;
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.assetsGrid.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            this.assetsGrid.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.actionsGrid.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.actionsGrid.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.assetsGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.assetsGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.actionsGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.actionsGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.name,
-            this.composition});
-            this.assetsGrid.ContextMenuStrip = this.contextMenuStrip1;
-            this.assetsGrid.Location = new System.Drawing.Point(14, 58);
-            this.assetsGrid.Name = "assetsGrid";
-            this.assetsGrid.ReadOnly = true;
-            this.assetsGrid.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.assetName,
+            this.labelName});
+            this.actionsGrid.ContextMenuStrip = this.contextMenuStrip1;
+            this.actionsGrid.Location = new System.Drawing.Point(14, 58);
+            this.actionsGrid.Name = "actionsGrid";
+            this.actionsGrid.ReadOnly = true;
+            this.actionsGrid.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.assetsGrid.RowsDefaultCellStyle = dataGridViewCellStyle2;
-            this.assetsGrid.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.assetsGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.assetsGrid.Size = new System.Drawing.Size(506, 386);
-            this.assetsGrid.TabIndex = 2;
-            this.assetsGrid.SelectionChanged += new System.EventHandler(this.assetsGrid_SelectionChanged);
-            this.assetsGrid.DoubleClick += new System.EventHandler(this.assetsGrid_DoubleClick);
-            // 
-            // name
-            // 
-            this.name.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.name.HeaderText = "نام عملیات";
-            this.name.Name = "name";
-            this.name.ReadOnly = true;
-            // 
-            // composition
-            // 
-            this.composition.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.composition.HeaderText = "مرکب";
-            this.composition.Name = "composition";
-            this.composition.ReadOnly = true;
-            this.composition.Width = 41;
+            this.actionsGrid.RowsDefaultCellStyle = dataGridViewCellStyle2;
+            this.actionsGrid.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.actionsGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.actionsGrid.Size = new System.Drawing.Size(506, 386);
+            this.actionsGrid.TabIndex = 2;
+            this.actionsGrid.SelectionChanged += new System.EventHandler(this.assetsGrid_SelectionChanged);
+            this.actionsGrid.DoubleClick += new System.EventHandler(this.assetsGrid_DoubleClick);
             // 
             // contextMenuStrip1
             // 
@@ -234,7 +221,29 @@
             this.label1.Text = "لطفا عملیات مورد نظر را انتخاب کنید.";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // Actions
+            // name
+            // 
+            this.name.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.name.DataPropertyName = "name";
+            this.name.HeaderText = "نام عملیات";
+            this.name.Name = "name";
+            this.name.ReadOnly = true;
+            // 
+            // assetName
+            // 
+            this.assetName.DataPropertyName = "asset.name";
+            this.assetName.HeaderText = "نام دارایی";
+            this.assetName.Name = "assetName";
+            this.assetName.ReadOnly = true;
+            // 
+            // labelName
+            // 
+            this.labelName.DataPropertyName = "label.name";
+            this.labelName.HeaderText = "نام برچسب";
+            this.labelName.Name = "labelName";
+            this.labelName.ReadOnly = true;
+            // 
+            // ActionsWindow
             // 
             this.AcceptButton = this.select;
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
@@ -244,17 +253,17 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.cancel);
             this.Controls.Add(this.select);
-            this.Controls.Add(this.assetsGrid);
+            this.Controls.Add(this.actionsGrid);
             this.Controls.Add(this.searchTxt);
             this.Controls.Add(this.flowLayoutPanel1);
             this.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.Name = "Actions";
+            this.Name = "ActionsWindow";
             this.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "عملیات‌ها";
             this.Load += new System.EventHandler(this.assetForm_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.assetsGrid)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.actionsGrid)).EndInit();
             this.contextMenuStrip1.ResumeLayout(false);
             this.flowLayoutPanel1.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -265,7 +274,7 @@
         #endregion
 
         private System.Windows.Forms.TextBox searchTxt;
-        private System.Windows.Forms.DataGridView assetsGrid;
+        private System.Windows.Forms.DataGridView actionsGrid;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button delete;
         private System.Windows.Forms.Button select;
@@ -278,7 +287,8 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripMenuItem حذفToolStripMenuItem;
         private System.Windows.Forms.DataGridViewTextBoxColumn name;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn composition;
+        private System.Windows.Forms.DataGridViewTextBoxColumn assetName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn labelName;
 
     }
 }

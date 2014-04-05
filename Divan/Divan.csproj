@@ -83,6 +83,7 @@
     <Compile Include="ChangeManagement\Action.cs" />
     <Compile Include="ChangeManagement\ActionExecuter.cs" />
     <Compile Include="ChangeManagement\ActionList.cs" />
+    <Compile Include="ChangeManagement\EventList.cs" />
     <Compile Include="Divan.cs">
       <DependentUpon>Divan.dbml</DependentUpon>
     </Compile>

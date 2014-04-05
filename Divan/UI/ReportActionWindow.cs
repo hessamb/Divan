@@ -30,7 +30,7 @@ namespace Divan
 
         private void button1_Click(object sender, EventArgs e)
         {
-            string ns = ActionsWindow.ShowActions();
+            string ns = ActionsWindow.ShowActions().name;
             if (ns != null)
             {
                 assetLabel.Text = ns;

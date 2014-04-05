@@ -32,11 +32,11 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.nameTxt = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
+            this.actionLabel = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.button4 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
             this.flowLayoutPanel1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -62,7 +62,7 @@
             // 
             this.panel3.Controls.Add(this.nameTxt);
             this.panel3.Controls.Add(this.label1);
-            this.panel3.Controls.Add(this.label2);
+            this.panel3.Controls.Add(this.actionLabel);
             this.panel3.Controls.Add(this.button2);
             this.panel3.Location = new System.Drawing.Point(15, 14);
             this.panel3.Name = "panel3";
@@ -85,49 +85,14 @@
             this.label1.TabIndex = 4;
             this.label1.Text = "نام رخداد:";
             // 
-            // label2
+            // actionLabel
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(332, 32);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(132, 14);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "عملیات: پر کردن موجودی";
-            // 
-            // panel2
-            // 
-            this.panel2.Controls.Add(this.button4);
-            this.panel2.Controls.Add(this.button3);
-            this.panel2.Location = new System.Drawing.Point(15, 71);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(467, 38);
-            this.panel2.TabIndex = 7;
-            // 
-            // button3
-            // 
-            this.button3.DialogResult = System.Windows.Forms.DialogResult.Yes;
-            this.button3.Image = global::Divan.Properties.Resources.accept;
-            this.button3.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button3.Location = new System.Drawing.Point(101, 9);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(87, 25);
-            this.button3.TabIndex = 2;
-            this.button3.Text = "تایید";
-            this.button3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button3.UseVisualStyleBackColor = true;
-            // 
-            // button4
-            // 
-            this.button4.DialogResult = System.Windows.Forms.DialogResult.No;
-            this.button4.Image = global::Divan.Properties.Resources.cross;
-            this.button4.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button4.Location = new System.Drawing.Point(7, 9);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(87, 25);
-            this.button4.TabIndex = 3;
-            this.button4.Text = "انصراف";
-            this.button4.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button4.UseVisualStyleBackColor = true;
+            this.actionLabel.Location = new System.Drawing.Point(130, 32);
+            this.actionLabel.Name = "actionLabel";
+            this.actionLabel.Size = new System.Drawing.Size(334, 14);
+            this.actionLabel.TabIndex = 1;
+            this.actionLabel.Text = "عملیات:";
+            this.actionLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // button2
             // 
@@ -142,7 +107,42 @@
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
-            // NewEvent
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.button4);
+            this.panel2.Controls.Add(this.button3);
+            this.panel2.Location = new System.Drawing.Point(15, 71);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(467, 38);
+            this.panel2.TabIndex = 7;
+            // 
+            // button4
+            // 
+            this.button4.DialogResult = System.Windows.Forms.DialogResult.No;
+            this.button4.Image = global::Divan.Properties.Resources.cross;
+            this.button4.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button4.Location = new System.Drawing.Point(7, 9);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(87, 25);
+            this.button4.TabIndex = 3;
+            this.button4.Text = "انصراف";
+            this.button4.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.button4.UseVisualStyleBackColor = true;
+            // 
+            // button3
+            // 
+            this.button3.DialogResult = System.Windows.Forms.DialogResult.Yes;
+            this.button3.Image = global::Divan.Properties.Resources.accept;
+            this.button3.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button3.Location = new System.Drawing.Point(101, 9);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(87, 25);
+            this.button3.TabIndex = 2;
+            this.button3.Text = "تایید";
+            this.button3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.button3.UseVisualStyleBackColor = true;
+            // 
+            // NewEventWindow
             // 
             this.AcceptButton = this.button3;
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
@@ -156,7 +156,7 @@
             this.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
-            this.Name = "NewEvent";
+            this.Name = "NewEventWindow";
             this.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
@@ -180,7 +180,7 @@
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.TextBox nameTxt;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label actionLabel;
         private System.Windows.Forms.Button button2;
     }
 }

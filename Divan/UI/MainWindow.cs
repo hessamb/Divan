@@ -53,7 +53,7 @@ namespace Divan
 
         private void button5_Click(object sender, EventArgs e)
         {
-            string a=ActionsWindow.ShowActions();
+            string a=ActionsWindow.ShowActions().name;
             if (a != null)
             {
                 MessageBox.Show("عملیات " + a + " با موفقیت اجرا شد.");

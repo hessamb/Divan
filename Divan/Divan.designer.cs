@@ -1301,9 +1301,9 @@ namespace Divan
 		
 		private int _Id;
 		
-		private System.Nullable<double> _minValue;
+		private System.Nullable<float> _minValue;
 		
-		private System.Nullable<double> _maxValue;
+		private System.Nullable<float> _maxValue;
 		
 		private System.Nullable<bool> _isOrdered;
 		
@@ -1317,9 +1317,9 @@ namespace Divan
     partial void OnCreated();
     partial void OnIdChanging(int value);
     partial void OnIdChanged();
-    partial void OnminValueChanging(System.Nullable<double> value);
+    partial void OnminValueChanging(System.Nullable<float> value);
     partial void OnminValueChanged();
-    partial void OnmaxValueChanging(System.Nullable<double> value);
+    partial void OnmaxValueChanging(System.Nullable<float> value);
     partial void OnmaxValueChanged();
     partial void OnisOrderedChanging(System.Nullable<bool> value);
     partial void OnisOrderedChanged();
@@ -1352,8 +1352,8 @@ namespace Divan
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_minValue")]
-		public System.Nullable<double> minValue
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_minValue", DbType="real")]
+		public System.Nullable<float> minValue
 		{
 			get
 			{
@@ -1372,8 +1372,8 @@ namespace Divan
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_maxValue")]
-		public System.Nullable<double> maxValue
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_maxValue", DbType="real")]
+		public System.Nullable<float> maxValue
 		{
 			get
 			{
@@ -1486,17 +1486,17 @@ namespace Divan
 	public partial class ContinuousDomain : LabelDomain
 	{
 		
-		private System.Nullable<double> _minValue;
+		private System.Nullable<float> _minValue;
 		
-		private System.Nullable<double> _maxValue;
+		private System.Nullable<float> _maxValue;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
     partial void OnCreated();
-    partial void OnminValueChanging(System.Nullable<double> value);
+    partial void OnminValueChanging(System.Nullable<float> value);
     partial void OnminValueChanged();
-    partial void OnmaxValueChanging(System.Nullable<double> value);
+    partial void OnmaxValueChanging(System.Nullable<float> value);
     partial void OnmaxValueChanged();
     #endregion
 		
@@ -1505,8 +1505,8 @@ namespace Divan
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_minValue", DbType="real NULL")]
-		public System.Nullable<double> minValue
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_minValue", DbType="real")]
+		public System.Nullable<float> minValue
 		{
 			get
 			{
@@ -1525,8 +1525,8 @@ namespace Divan
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_maxValue", DbType="real NULL")]
-		public System.Nullable<double> maxValue
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_maxValue", DbType="real")]
+		public System.Nullable<float> maxValue
 		{
 			get
 			{
@@ -2210,7 +2210,6 @@ namespace Divan
 			this._AttachedFiles = new EntitySet<AttachedFile>(new Action<AttachedFile>(this.attach_AttachedFiles), new Action<AttachedFile>(this.detach_AttachedFiles));
 			this._SubAssets = new EntitySet<Asset>(new Action<Asset>(this.attach_SubAssets), new Action<Asset>(this.detach_SubAssets));
 			this._Parent = default(EntityRef<Asset>);
-            this._visible = true;
 			OnCreated();
 		}
 		
