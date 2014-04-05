@@ -301,6 +301,8 @@ namespace Divan
                         result = false;
                 }
             }
+            if (errorProvider.GetError(dataGrid_PrimaryInfo) != "")
+                result = false;
             foreach (DataGridView grid in new DataGridView[] { dataGrid_DefinerLabel, dataGrid_OtherLabel })
             {
                 foreach (DataGridViewRow row in grid.Rows)
@@ -514,7 +516,19 @@ namespace Divan
 
         private void dataGrid_PrimaryInfo_Validating(object sender, CancelEventArgs e)
         {
-            
+            DataGridView grid = (DataGridView)sender;
+            List<String> names = new List<string>();
+            foreach (DataGridViewRow row in grid.Rows)
+            {
+                if (row.Cells[0].Value != null)
+                    names.Add((string)row.Cells[0].Value);
+            }
+            if (!UIHelper.Validation.isDisntinct(names))
+            {
+                errorProvider.SetError(grid, "مشخصات اولیه باید نام‌های یکتا داشته باشند.");
+            }
+            else
+                errorProvider.SetError(grid, "");
         }
 
     }

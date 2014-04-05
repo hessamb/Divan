@@ -341,9 +341,9 @@
             this.name,
             this.type,
             this.value});
-            this.dataGrid_PrimaryInfo.Location = new System.Drawing.Point(8, 24);
+            this.dataGrid_PrimaryInfo.Location = new System.Drawing.Point(16, 24);
             this.dataGrid_PrimaryInfo.Name = "dataGrid_PrimaryInfo";
-            this.dataGrid_PrimaryInfo.Size = new System.Drawing.Size(451, 166);
+            this.dataGrid_PrimaryInfo.Size = new System.Drawing.Size(443, 166);
             this.dataGrid_PrimaryInfo.TabIndex = 13;
             this.dataGrid_PrimaryInfo.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGrid_PrimaryInfo_CellEndEdit);
             this.dataGrid_PrimaryInfo.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.dataGrid_PrimaryInfo_CellValidating);
