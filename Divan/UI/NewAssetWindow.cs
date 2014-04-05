@@ -221,12 +221,18 @@ namespace Divan
             Asset subAsset = AssetList.Instance.GetByUid(assetUid);
             if (!subAssets.Contains(subAsset))
             {
-                if (asset != null && subAsset.Id == asset.Id)
+                if (subAsset.Parent != null && (asset==null || subAsset.Parent.Id!=asset.Id))
+                {
+                    UIHelper.warningBox(this, "یک دارایی نمی‌تواند در دو دارایی باشد.\n"
+                        + "دارایی انتخاب شده زیردارایی " + subAsset.Parent + " است.");
+                    return;
+                }
+                else if (asset != null && subAsset.Id == asset.Id)
                 {
                     UIHelper.warningBox(this, "یک دارایی نمی‌تواند زیرداریی خودش باشد.");
                     return;
                 }
-                if (asset != null && subAsset.pathExists(asset))
+                else if (asset != null && subAsset.pathExists(asset))
                 {
                     UIHelper.warningBox(this, "امکان اضافه شدن دارایی انتخاب شده وجود ندارد.\nاضافه کردن دارایی انتخاب شده موجب ایجاد دور در ساختار دارایی‌ها می‌شود.");
                     return;

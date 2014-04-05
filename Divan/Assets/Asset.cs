@@ -267,6 +267,10 @@ namespace Divan
                     return true;
             return false;
         }
-        
+
+        public override string ToString()
+        {
+            return this.Name;
+        }
     }
 }
