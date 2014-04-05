@@ -162,5 +162,19 @@ namespace Divan
                 reloadAssets();
             }
         }
+
+        private void searchTxt_TextChanged(object sender, EventArgs e)
+        {
+            if (searchTxt.WordWrap)
+                return;
+            RadioButton[] buttons = new RadioButton[] { radioButton_allProperties, radioButton_name, radioButton_uid};
+            foreach (RadioButton button in buttons)
+            {
+                if (button.Checked)
+                {
+                    UIHelper.searchGrid(dataGrid_assets, searchTxt.Text, (string)button.Tag);
+                }
+            }
+        }
     }
 }

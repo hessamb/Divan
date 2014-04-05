@@ -20,7 +20,7 @@ namespace Divan
             cell.Style.BackColor = Color.LightGray;
         }
 
-        public static void searchGrid(DataGridView grid, string pattern, string columnName = null)
+        public static void searchGrid(DataGridView grid, string pattern, string columnName = "")
         { // Passing null as columnName results in all columns search.
             foreach (DataGridViewRow row in grid.Rows)
             {
@@ -46,7 +46,7 @@ namespace Divan
                 bool matched = false;
                 foreach (DataGridViewCell cell in row.Cells)
                 {
-                    if (columnName != null && cell.OwningColumn.Name != columnName)
+                    if (columnName != "" && cell.OwningColumn.Name != columnName)
                         continue;
                     if (cell.Value is string && ((string)cell.Value).IndexOf(word) != -1)
                     {

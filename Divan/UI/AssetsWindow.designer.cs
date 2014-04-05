@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.searchTxt = new System.Windows.Forms.TextBox();
             this.dataGrid_assets = new System.Windows.Forms.DataGridView();
             this.UID = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -43,10 +43,10 @@
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.حذفToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ویرایشToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
+            this.radioButton_allProperties = new System.Windows.Forms.RadioButton();
             this.label1 = new System.Windows.Forms.Label();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
-            this.radioButton3 = new System.Windows.Forms.RadioButton();
+            this.radioButton_name = new System.Windows.Forms.RadioButton();
+            this.radioButton_uid = new System.Windows.Forms.RadioButton();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.button1 = new System.Windows.Forms.Button();
             this.changeState = new System.Windows.Forms.Button();
@@ -75,14 +75,15 @@
             this.searchTxt.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.searchTxt.Size = new System.Drawing.Size(357, 22);
             this.searchTxt.TabIndex = 4;
+            this.searchTxt.TextChanged += new System.EventHandler(this.searchTxt_TextChanged);
             // 
             // dataGrid_assets
             // 
             this.dataGrid_assets.AllowUserToAddRows = false;
             this.dataGrid_assets.AllowUserToDeleteRows = false;
             this.dataGrid_assets.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.dataGrid_assets.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.dataGrid_assets.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
             this.dataGrid_assets.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -99,8 +100,8 @@
             this.dataGrid_assets.Name = "dataGrid_assets";
             this.dataGrid_assets.ReadOnly = true;
             this.dataGrid_assets.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.dataGrid_assets.RowsDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.dataGrid_assets.RowsDefaultCellStyle = dataGridViewCellStyle4;
             this.dataGrid_assets.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.dataGrid_assets.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGrid_assets.Size = new System.Drawing.Size(731, 418);
@@ -162,26 +163,26 @@
             this.ویرایشToolStripMenuItem});
             this.rightClickMenuStrip.Name = "contextMenuStrip1";
             this.rightClickMenuStrip.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.rightClickMenuStrip.Size = new System.Drawing.Size(168, 76);
+            this.rightClickMenuStrip.Size = new System.Drawing.Size(155, 76);
             // 
             // مشاهدهمشخصاتToolStripMenuItem
             // 
             this.مشاهدهمشخصاتToolStripMenuItem.Image = global::Divan.Properties.Resources.icon_package;
             this.مشاهدهمشخصاتToolStripMenuItem.Name = "مشاهدهمشخصاتToolStripMenuItem";
-            this.مشاهدهمشخصاتToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
+            this.مشاهدهمشخصاتToolStripMenuItem.Size = new System.Drawing.Size(154, 22);
             this.مشاهدهمشخصاتToolStripMenuItem.Text = "مشاهده مشخصات";
             this.مشاهدهمشخصاتToolStripMenuItem.Click += new System.EventHandler(this.button1_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(164, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(151, 6);
             // 
             // حذفToolStripMenuItem
             // 
             this.حذفToolStripMenuItem.Image = global::Divan.Properties.Resources.delete;
             this.حذفToolStripMenuItem.Name = "حذفToolStripMenuItem";
-            this.حذفToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
+            this.حذفToolStripMenuItem.Size = new System.Drawing.Size(154, 22);
             this.حذفToolStripMenuItem.Text = "حذف";
             this.حذفToolStripMenuItem.Click += new System.EventHandler(this.delete_Click);
             // 
@@ -189,23 +190,23 @@
             // 
             this.ویرایشToolStripMenuItem.Image = global::Divan.Properties.Resources.pencil;
             this.ویرایشToolStripMenuItem.Name = "ویرایشToolStripMenuItem";
-            this.ویرایشToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
+            this.ویرایشToolStripMenuItem.Size = new System.Drawing.Size(154, 22);
             this.ویرایشToolStripMenuItem.Text = "ویرایش";
             this.ویرایشToolStripMenuItem.Click += new System.EventHandler(this.edit_Click_1);
             // 
-            // radioButton1
+            // radioButton_allProperties
             // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Checked = true;
-            this.radioButton1.Location = new System.Drawing.Point(142, 31);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.radioButton1.Size = new System.Drawing.Size(110, 18);
-            this.radioButton1.TabIndex = 7;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Tag = "null";
-            this.radioButton1.Text = "همه‌ی خصوصیات";
-            this.radioButton1.UseVisualStyleBackColor = true;
+            this.radioButton_allProperties.AutoSize = true;
+            this.radioButton_allProperties.Checked = true;
+            this.radioButton_allProperties.Location = new System.Drawing.Point(142, 31);
+            this.radioButton_allProperties.Name = "radioButton_allProperties";
+            this.radioButton_allProperties.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.radioButton_allProperties.Size = new System.Drawing.Size(110, 18);
+            this.radioButton_allProperties.TabIndex = 7;
+            this.radioButton_allProperties.TabStop = true;
+            this.radioButton_allProperties.Tag = "";
+            this.radioButton_allProperties.Text = "همه‌ی خصوصیات";
+            this.radioButton_allProperties.UseVisualStyleBackColor = true;
             // 
             // label1
             // 
@@ -216,29 +217,29 @@
             this.label1.TabIndex = 15;
             this.label1.Text = "جستجو بر اساس:";
             // 
-            // radioButton2
+            // radioButton_name
             // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(91, 31);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.radioButton2.Size = new System.Drawing.Size(39, 18);
-            this.radioButton2.TabIndex = 8;
-            this.radioButton2.Tag = "\"NameColumn\"";
-            this.radioButton2.Text = "نام";
-            this.radioButton2.UseVisualStyleBackColor = true;
+            this.radioButton_name.AutoSize = true;
+            this.radioButton_name.Location = new System.Drawing.Point(91, 31);
+            this.radioButton_name.Name = "radioButton_name";
+            this.radioButton_name.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.radioButton_name.Size = new System.Drawing.Size(39, 18);
+            this.radioButton_name.TabIndex = 8;
+            this.radioButton_name.Tag = "NameColumn";
+            this.radioButton_name.Text = "نام";
+            this.radioButton_name.UseVisualStyleBackColor = true;
             // 
-            // radioButton3
+            // radioButton_uid
             // 
-            this.radioButton3.AutoSize = true;
-            this.radioButton3.Location = new System.Drawing.Point(14, 32);
-            this.radioButton3.Name = "radioButton3";
-            this.radioButton3.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.radioButton3.Size = new System.Drawing.Size(64, 18);
-            this.radioButton3.TabIndex = 9;
-            this.radioButton3.Tag = "\"UID\"";
-            this.radioButton3.Text = "شناسه";
-            this.radioButton3.UseVisualStyleBackColor = true;
+            this.radioButton_uid.AutoSize = true;
+            this.radioButton_uid.Location = new System.Drawing.Point(14, 32);
+            this.radioButton_uid.Name = "radioButton_uid";
+            this.radioButton_uid.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.radioButton_uid.Size = new System.Drawing.Size(64, 18);
+            this.radioButton_uid.TabIndex = 9;
+            this.radioButton_uid.Tag = "UID";
+            this.radioButton_uid.Text = "شناسه";
+            this.radioButton_uid.UseVisualStyleBackColor = true;
             // 
             // flowLayoutPanel1
             // 
@@ -331,19 +332,19 @@
             this.حذفازداخلداراییهایدیگرToolStripMenuItem});
             this.howToDeleteMenuStrip.Name = "contextMenuStrip2";
             this.howToDeleteMenuStrip.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.howToDeleteMenuStrip.Size = new System.Drawing.Size(256, 48);
+            this.howToDeleteMenuStrip.Size = new System.Drawing.Size(246, 48);
             // 
             // فقطازلیستپاککنToolStripMenuItem
             // 
             this.فقطازلیستپاککنToolStripMenuItem.Name = "فقطازلیستپاککنToolStripMenuItem";
-            this.فقطازلیستپاککنToolStripMenuItem.Size = new System.Drawing.Size(255, 22);
+            this.فقطازلیستپاککنToolStripMenuItem.Size = new System.Drawing.Size(245, 22);
             this.فقطازلیستپاککنToolStripMenuItem.Text = "فقط حذف از لیست";
             this.فقطازلیستپاککنToolStripMenuItem.Click += new System.EventHandler(this.فقطازلیستپاککنToolStripMenuItem_Click_1);
             // 
             // حذفازداخلداراییهایدیگرToolStripMenuItem
             // 
             this.حذفازداخلداراییهایدیگرToolStripMenuItem.Name = "حذفازداخلداراییهایدیگرToolStripMenuItem";
-            this.حذفازداخلداراییهایدیگرToolStripMenuItem.Size = new System.Drawing.Size(255, 22);
+            this.حذفازداخلداراییهایدیگرToolStripMenuItem.Size = new System.Drawing.Size(245, 22);
             this.حذفازداخلداراییهایدیگرToolStripMenuItem.Text = "حذف از لیست و داخل دارایی‌های دیگر";
             this.حذفازداخلداراییهایدیگرToolStripMenuItem.Click += new System.EventHandler(this.فقطازلیستپاککنToolStripMenuItem_Click);
             // 
@@ -403,9 +404,9 @@
             this.Controls.Add(this.cancel);
             this.Controls.Add(this.select);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.radioButton3);
-            this.Controls.Add(this.radioButton2);
-            this.Controls.Add(this.radioButton1);
+            this.Controls.Add(this.radioButton_uid);
+            this.Controls.Add(this.radioButton_name);
+            this.Controls.Add(this.radioButton_allProperties);
             this.Controls.Add(this.dataGrid_assets);
             this.Controls.Add(this.searchTxt);
             this.Controls.Add(this.flowLayoutPanel1);
@@ -429,10 +430,10 @@
 
         private System.Windows.Forms.TextBox searchTxt;
         private System.Windows.Forms.DataGridView dataGrid_assets;
-        private System.Windows.Forms.RadioButton radioButton1;
+        private System.Windows.Forms.RadioButton radioButton_allProperties;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.RadioButton radioButton2;
-        private System.Windows.Forms.RadioButton radioButton3;
+        private System.Windows.Forms.RadioButton radioButton_name;
+        private System.Windows.Forms.RadioButton radioButton_uid;
         private System.Windows.Forms.Button select;
         private System.Windows.Forms.Button cancel;
         private System.Windows.Forms.ContextMenuStrip rightClickMenuStrip;
