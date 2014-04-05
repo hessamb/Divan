@@ -73,7 +73,7 @@ namespace Divan
         private void reloadLabels()
         {
             if (this.asset == null)
-                labelsGrid.DataSource = LabelList.Instance.GetAll();
+                labelsGrid.DataSource = LabelList.Instance.GetAllVisibles();
             else
             {
                 BindingSource source = new BindingSource();
@@ -155,15 +155,14 @@ namespace Divan
             }
             else if (cnt == 1)
             {
-                string name = labelsGrid.SelectedCells[0].OwningRow.Cells[1].Value.ToString();
+                string name = labelsGrid.SelectedRows[0].Cells[0].Value.ToString();
                 message = "آیا از حذف برچسب " + name + " مطمئنید؟";
             }
             if (RemoveConfirmationBox.ShowConfirmation(message) == DialogResult.Yes)
             {
                 foreach (DataGridViewRow r in labelsGrid.SelectedRows)
                 {
-                    //TODO: make invisible
-                    //(r.DataBoundItem as Label);
+                    (r.DataBoundItem as Label).visible = false;
                 }
                 DivanDataContext.Instance.SubmitChanges();
                 reloadLabels();

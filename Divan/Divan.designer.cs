@@ -1121,6 +1121,8 @@ namespace Divan
 		
 		private bool _isSplitter;
 		
+		private bool _visible;
+		
 		private EntitySet<Action> _Actions;
 		
 		private EntitySet<LabelInstance> _LabelInstances;
@@ -1141,6 +1143,8 @@ namespace Divan
     partial void OndomainIDChanged();
     partial void OnisSplitterChanging(bool value);
     partial void OnisSplitterChanged();
+    partial void OnvisibleChanging(bool value);
+    partial void OnvisibleChanged();
     #endregion
 		
 		public Label()
@@ -1251,6 +1255,26 @@ namespace Divan
 					this._isSplitter = value;
 					this.SendPropertyChanged("isSplitter");
 					this.OnisSplitterChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_visible", DbType="BIT NOT NULL")]
+		public bool visible
+		{
+			get
+			{
+				return this._visible;
+			}
+			set
+			{
+				if ((this._visible != value))
+				{
+					this.OnvisibleChanging(value);
+					this.SendPropertyChanging();
+					this._visible = value;
+					this.SendPropertyChanged("visible");
+					this.OnvisibleChanged();
 				}
 			}
 		}
@@ -1735,7 +1759,7 @@ namespace Divan
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_value", DbType="NChar(100)")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_value", DbType="NVarChar(100)")]
 		public string value
 		{
 			get

@@ -98,6 +98,19 @@ namespace Divan
 
         private void button3_Click(object sender, EventArgs e)
         {
+            button_selectAsset_Validating(null, null);
+            button_selectLabel_Validating(null, null);
+
+            if (errorProvider.GetError(button_selectLabel) != "" ||
+                errorProvider.GetError(button_selectAsset) != "" ||
+                !UIHelper.Validation.DoNotEmptyValidation(nameTxt) ||
+                !UIHelper.Validation.DoNotEmptyValidation(textBox_value))
+            {
+                UIHelper.errorBox(this, "لطفا خطاها را برطرف نمایید.");
+                this.DialogResult = System.Windows.Forms.DialogResult.None;
+                return;
+            }
+
             if (action == null)
             {
                 action = new Action();
@@ -126,6 +139,8 @@ namespace Divan
 
         private void NewActionWindow_Load(object sender, EventArgs e)
         {
+            UIHelper.Validation.ValidateNotEmpty(nameTxt, errorProvider);
+            UIHelper.Validation.ValidateNotEmpty(textBox_value, errorProvider);
         }
 
         private void button_selectAsset_Validating(object sender, CancelEventArgs e)
