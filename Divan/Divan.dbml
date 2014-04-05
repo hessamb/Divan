@@ -3,13 +3,15 @@
   <Table Name="dbo.Action" Member="Actions">
     <Type Name="Action">
       <Column Name="Id" AutoSync="Never" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="name" Type="System.String" DbType="NChar(30) NOT NULL" CanBeNull="false" />
-      <Column Name="value" Type="System.String" DbType="NChar(100)" CanBeNull="true" />
+      <Column Name="name" Type="System.String" DbType="NVarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="value" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
       <Column Name="needsAutoRun" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
       <Column Name="autoRunPeriod" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="labelID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="assetID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Association Name="Action_Event" Member="Events" ThisKey="Id" OtherKey="ActionID" Type="Event" />
+      <Association Name="Action_SubAction" Member="SuperActions" ThisKey="Id" OtherKey="childId" Type="SubAction" />
+      <Association Name="Action_SubAction1" Member="SubActions" ThisKey="Id" OtherKey="parentId" Type="SubAction" />
       <Association Name="Label_Action" Member="Label" ThisKey="labelID" OtherKey="Id" Type="Label" IsForeignKey="true" />
       <Association Name="Asset_Action" Member="Asset" ThisKey="assetID" OtherKey="Id" Type="Asset" IsForeignKey="true" />
     </Type>
@@ -17,9 +19,9 @@
   <Table Name="dbo.ConsistencyRule" Member="ConsistencyRules">
     <Type Name="ConsistencyRule">
       <Column Name="Id" AutoSync="Never" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="sValue" Type="System.String" DbType="NChar(30) NOT NULL" CanBeNull="false" />
-      <Column Name="mValue" Type="System.String" DbType="NChar(30) NOT NULL" CanBeNull="false" />
-      <Column Name="condition" Type="System.String" DbType="NChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="sValue" Type="System.String" DbType="NVarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="mValue" Type="System.String" DbType="NVarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="condition" Type="System.String" DbType="NVarChar(10) NOT NULL" CanBeNull="false" />
       <Column Name="importance" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="assetID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Association Name="Asset_ConsistencyRule" Member="Asset" ThisKey="assetID" OtherKey="Id" Type="Asset" IsForeignKey="true" />
@@ -28,7 +30,7 @@
   <Table Name="dbo.DiscreteDomainValue" Member="DiscreteDomainValues">
     <Type Name="DiscreteDomainValue">
       <Column Name="Id" AutoSync="Never" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="value" Type="System.String" DbType="NChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="value" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
       <Column Name="domainID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="rank" Type="System.Int32" CanBeNull="true" />
       <Association Name="LabelDomain_DiscreteDomainValue" Member="LabelDomain" ThisKey="domainID" OtherKey="Id" Type="LabelDomain" IsForeignKey="true" />
@@ -37,7 +39,7 @@
   <Table Name="dbo.Event" Member="Events">
     <Type Name="Event">
       <Column Name="Id" AutoSync="Never" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="Name" Type="System.String" DbType="NChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="ActionID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Association Name="Action_Event" Member="Action" ThisKey="ActionID" OtherKey="Id" Type="Action" IsForeignKey="true" />
     </Type>
@@ -45,7 +47,7 @@
   <Table Name="dbo.Label" Member="Labels">
     <Type Name="Label">
       <Column Name="Id" AutoSync="Never" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="name" Type="System.String" DbType="NChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="name" Type="System.String" DbType="NVarChar(30) NOT NULL" CanBeNull="false" />
       <Column Name="setValue" Storage="_isChangable" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="domainID" Type="System.Int32" DbType="Int NULL" CanBeNull="true" />
       <Column Name="isSplitter" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
@@ -84,9 +86,9 @@
   <Table Name="dbo.Property" Member="Properties">
     <Type Name="Property">
       <Column Name="Id" AutoSync="Never" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="name" Type="System.String" DbType="NChar(30) NOT NULL" CanBeNull="false" />
-      <Column Name="type" Type="System.String" DbType="NChar(10) NOT NULL" CanBeNull="false" />
-      <Column Name="value" Type="System.String" DbType="NChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="name" Type="System.String" DbType="NVarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="type" Type="System.String" DbType="NVarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="value" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
       <Column Name="assetID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Association Name="Asset_Property" Member="Asset" ThisKey="assetID" OtherKey="Id" Type="Asset" IsForeignKey="true" />
     </Type>
@@ -94,7 +96,7 @@
   <Table Name="dbo.AttachedFile" Member="AttachedFiles">
     <Type Name="AttachedFile">
       <Column Name="Id" AutoSync="Never" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="path" Type="System.String" DbType="NChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="path" Type="System.String" DbType="NVarChar(200) NOT NULL" CanBeNull="false" />
       <Column Name="assetID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Association Name="Asset_AttachedFile" Member="Asset" ThisKey="assetID" OtherKey="Id" Type="Asset" IsForeignKey="true" />
     </Type>
@@ -114,6 +116,15 @@
       <Association Name="Asset_AttachedFile" Member="AttachedFiles" ThisKey="Id" OtherKey="assetID" Type="AttachedFile" />
       <Association Name="Asset_Asset" Member="SubAssets" ThisKey="Id" OtherKey="parentId" Type="Asset" />
       <Association Name="Asset_Asset" Member="Parent" ThisKey="parentId" OtherKey="Id" Type="Asset" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.SubAction" Member="SubActions">
+    <Type Name="SubAction">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="parentId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="childId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Action_SubAction" Member="Child" ThisKey="childId" OtherKey="Id" Type="Action" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+      <Association Name="Action_SubAction1" Member="Parent" ThisKey="parentId" OtherKey="Id" Type="Action" IsForeignKey="true" />
     </Type>
   </Table>
 </Database>

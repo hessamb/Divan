@@ -14,13 +14,19 @@ namespace Divan
     {
         private Asset asset;
         public Label SelectedLabel { get; set; }
+        
+        private static void initializeSelectComponents(LabelsWindow window)
+        {
+            window.select.Visible = window.cancel.Visible = window.cancel.Enabled = true;
+            window.delete.Visible = window.edit.Visible = false;
+            window.labelsGrid.CellDoubleClick -= window.labelsGrid_CellContentDoubleClick_1;
+            window.labelsGrid.CellDoubleClick += window.select_Click;
+        }
+
         public static Label ShowLabels()
         {
             LabelsWindow a = new LabelsWindow();
-            a.select.Visible=a.cancel.Visible=a.cancel.Enabled= true;
-            a.delete.Visible = a.edit.Visible = false;
-            a.labelsGrid.DoubleClick -= a.assetsGrid_DoubleClick;
-            a.labelsGrid.DoubleClick += a.select_Click;
+            initializeSelectComponents(a);
             if (a.ShowDialog() == DialogResult.OK)
             {
                 return a.SelectedLabel;
@@ -31,10 +37,7 @@ namespace Divan
         public static Label ShowLabels(Asset asset)
         {
             LabelsWindow a = new LabelsWindow(asset);
-            a.select.Visible = a.cancel.Visible = a.cancel.Enabled = true;
-            a.delete.Visible = a.edit.Visible = false;
-            a.labelsGrid.DoubleClick -= a.assetsGrid_DoubleClick;
-            a.labelsGrid.DoubleClick += a.select_Click;
+            initializeSelectComponents(a);
             if (a.ShowDialog() == DialogResult.OK)
             {
                 return a.SelectedLabel;
@@ -65,7 +68,11 @@ namespace Divan
             if (this.asset == null)
                 labelsGrid.DataSource = LabelList.Instance.GetAll();
             else
-                labelsGrid.DataSource = asset.getLabels();
+            {
+                BindingSource source = new BindingSource();
+                source.DataSource = asset.getLabels();
+                labelsGrid.DataSource = source;
+            }
         }
 
         private void assetsGrid_SelectionChanged(object sender, EventArgs e)

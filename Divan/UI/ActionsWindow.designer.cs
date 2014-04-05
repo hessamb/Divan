@@ -47,6 +47,7 @@
             this.name = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.assetName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.labelName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Composite = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.actionsGrid)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
@@ -67,7 +68,6 @@
             // 
             this.actionsGrid.AllowUserToAddRows = false;
             this.actionsGrid.AllowUserToDeleteRows = false;
-            this.actionsGrid.AllowUserToResizeRows = false;
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.actionsGrid.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.actionsGrid.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -77,12 +77,14 @@
             this.actionsGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.name,
             this.assetName,
-            this.labelName});
+            this.labelName,
+            this.Composite});
             this.actionsGrid.ContextMenuStrip = this.contextMenuStrip1;
             this.actionsGrid.Location = new System.Drawing.Point(14, 58);
             this.actionsGrid.Name = "actionsGrid";
             this.actionsGrid.ReadOnly = true;
             this.actionsGrid.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.actionsGrid.RowHeadersVisible = false;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.actionsGrid.RowsDefaultCellStyle = dataGridViewCellStyle2;
             this.actionsGrid.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
@@ -99,26 +101,26 @@
             this.toolStripSeparator1,
             this.حذفToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(142, 54);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(135, 54);
             // 
             // مشاهدهمشخصاتToolStripMenuItem
             // 
             this.مشاهدهمشخصاتToolStripMenuItem.Image = global::Divan.Properties.Resources.action_go;
             this.مشاهدهمشخصاتToolStripMenuItem.Name = "مشاهدهمشخصاتToolStripMenuItem";
-            this.مشاهدهمشخصاتToolStripMenuItem.Size = new System.Drawing.Size(141, 22);
+            this.مشاهدهمشخصاتToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
             this.مشاهدهمشخصاتToolStripMenuItem.Text = "اعمال عملیات";
             this.مشاهدهمشخصاتToolStripMenuItem.Click += new System.EventHandler(this.button1_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(138, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(131, 6);
             // 
             // حذفToolStripMenuItem
             // 
             this.حذفToolStripMenuItem.Image = global::Divan.Properties.Resources.delete;
             this.حذفToolStripMenuItem.Name = "حذفToolStripMenuItem";
-            this.حذفToolStripMenuItem.Size = new System.Drawing.Size(141, 22);
+            this.حذفToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
             this.حذفToolStripMenuItem.Text = "حذف";
             this.حذفToolStripMenuItem.Click += new System.EventHandler(this.delete_Click);
             // 
@@ -231,17 +233,29 @@
             // 
             // assetName
             // 
-            this.assetName.DataPropertyName = "asset.name";
+            this.assetName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.assetName.DataPropertyName = "AssetName";
             this.assetName.HeaderText = "نام دارایی";
             this.assetName.Name = "assetName";
             this.assetName.ReadOnly = true;
+            this.assetName.Width = 81;
             // 
             // labelName
             // 
-            this.labelName.DataPropertyName = "label.name";
+            this.labelName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.labelName.DataPropertyName = "LabelName";
             this.labelName.HeaderText = "نام برچسب";
             this.labelName.Name = "labelName";
             this.labelName.ReadOnly = true;
+            this.labelName.Width = 90;
+            // 
+            // Composite
+            // 
+            this.Composite.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Composite.HeaderText = "مرکب";
+            this.Composite.Name = "Composite";
+            this.Composite.ReadOnly = true;
+            this.Composite.Width = 41;
             // 
             // ActionsWindow
             // 
@@ -274,7 +288,6 @@
         #endregion
 
         private System.Windows.Forms.TextBox searchTxt;
-        private System.Windows.Forms.DataGridView actionsGrid;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button delete;
         private System.Windows.Forms.Button select;
@@ -289,6 +302,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn name;
         private System.Windows.Forms.DataGridViewTextBoxColumn assetName;
         private System.Windows.Forms.DataGridViewTextBoxColumn labelName;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn Composite;
+        private System.Windows.Forms.DataGridView actionsGrid;
 
     }
 }

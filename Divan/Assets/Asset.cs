@@ -171,9 +171,9 @@ namespace Divan
             return state.GetSubAssets();
         }
 
-        public void Create()
+        partial void OnCreated()
         {
-            //TODO
+            this._visible = true;
         }
 
         public void Destroy()
@@ -236,7 +236,7 @@ namespace Divan
         {
             var labels = from l in this.LabelInstances
                          select l.Label;
-            return labels.AsEnumerable();
+            return labels;
         }
 
         public LabelInstance getLabelInstance(Label label)

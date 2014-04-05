@@ -34,15 +34,16 @@
             this.nameTxt = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.domainGroup = new System.Windows.Forms.GroupBox();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.label_asset = new System.Windows.Forms.Label();
+            this.label_label = new System.Windows.Forms.Label();
             this.textBox_value = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.button_selectLabel = new System.Windows.Forms.Button();
             this.button_selectAsset = new System.Windows.Forms.Button();
-            this.label_label = new System.Windows.Forms.Label();
-            this.label_asset = new System.Windows.Forms.Label();
             this.autoRunable = new System.Windows.Forms.CheckBox();
             this.runTime = new System.Windows.Forms.GroupBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.textBox_period = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.compositAsset = new System.Windows.Forms.CheckBox();
@@ -55,15 +56,14 @@
             this.button3 = new System.Windows.Forms.Button();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.مشاهدهمشخصاتToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.flowLayoutPanel1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.domainGroup.SuspendLayout();
+            this.tableLayoutPanel1.SuspendLayout();
             this.runTime.SuspendLayout();
             this.subAssets.SuspendLayout();
             this.panel2.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
-            this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // flowLayoutPanel1
@@ -128,6 +128,39 @@
             this.domainGroup.TabStop = false;
             this.domainGroup.Text = "مشخصات:";
             // 
+            // tableLayoutPanel1
+            // 
+            this.tableLayoutPanel1.ColumnCount = 1;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.Controls.Add(this.label_asset, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.label_label, 0, 1);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(129, 22);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 2;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 48.21429F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 51.78571F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(338, 56);
+            this.tableLayoutPanel1.TabIndex = 5;
+            // 
+            // label_asset
+            // 
+            this.label_asset.AutoSize = true;
+            this.label_asset.Location = new System.Drawing.Point(232, 0);
+            this.label_asset.Name = "label_asset";
+            this.label_asset.Size = new System.Drawing.Size(103, 14);
+            this.label_asset.TabIndex = 1;
+            this.label_asset.Text = "دارایی: انتخاب کنید";
+            // 
+            // label_label
+            // 
+            this.label_label.AutoSize = true;
+            this.label_label.Location = new System.Drawing.Point(177, 27);
+            this.label_label.Name = "label_label";
+            this.label_label.Size = new System.Drawing.Size(158, 14);
+            this.label_label.TabIndex = 1;
+            this.label_label.Text = "برچسب: دارایی را انتخاب کنید";
+            // 
             // textBox_value
             // 
             this.textBox_value.Enabled = false;
@@ -172,24 +205,6 @@
             this.button_selectAsset.UseVisualStyleBackColor = true;
             this.button_selectAsset.Click += new System.EventHandler(this.button2_Click);
             // 
-            // label_label
-            // 
-            this.label_label.AutoSize = true;
-            this.label_label.Location = new System.Drawing.Point(177, 27);
-            this.label_label.Name = "label_label";
-            this.label_label.Size = new System.Drawing.Size(158, 14);
-            this.label_label.TabIndex = 1;
-            this.label_label.Text = "برچسب: دارایی را انتخاب کنید";
-            // 
-            // label_asset
-            // 
-            this.label_asset.AutoSize = true;
-            this.label_asset.Location = new System.Drawing.Point(232, 0);
-            this.label_asset.Name = "label_asset";
-            this.label_asset.Size = new System.Drawing.Size(103, 14);
-            this.label_asset.TabIndex = 1;
-            this.label_asset.Text = "دارایی: انتخاب کنید";
-            // 
             // autoRunable
             // 
             this.autoRunable.AutoSize = true;
@@ -205,7 +220,7 @@
             // 
             // runTime
             // 
-            this.runTime.Controls.Add(this.textBox2);
+            this.runTime.Controls.Add(this.textBox_period);
             this.runTime.Controls.Add(this.label6);
             this.runTime.Controls.Add(this.label5);
             this.runTime.Location = new System.Drawing.Point(15, 191);
@@ -215,13 +230,13 @@
             this.runTime.TabStop = false;
             this.runTime.Text = "زمان اجرا:";
             // 
-            // textBox2
+            // textBox_period
             // 
-            this.textBox2.Location = new System.Drawing.Point(304, 21);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(70, 22);
-            this.textBox2.TabIndex = 1;
-            this.textBox2.Text = "30";
+            this.textBox_period.Location = new System.Drawing.Point(304, 21);
+            this.textBox_period.Name = "textBox_period";
+            this.textBox_period.Size = new System.Drawing.Size(70, 22);
+            this.textBox_period.TabIndex = 1;
+            this.textBox_period.Text = "30";
             // 
             // label6
             // 
@@ -354,21 +369,6 @@
             this.مشاهدهمشخصاتToolStripMenuItem.Size = new System.Drawing.Size(207, 22);
             this.مشاهدهمشخصاتToolStripMenuItem.Text = "مشاهده مشخصات زیربرچسب";
             // 
-            // tableLayoutPanel1
-            // 
-            this.tableLayoutPanel1.ColumnCount = 1;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Controls.Add(this.label_asset, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.label_label, 0, 1);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(129, 22);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 2;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 48.21429F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 51.78571F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(338, 56);
-            this.tableLayoutPanel1.TabIndex = 5;
-            // 
             // NewActionWindow
             // 
             this.AcceptButton = this.button3;
@@ -395,13 +395,13 @@
             this.panel3.PerformLayout();
             this.domainGroup.ResumeLayout(false);
             this.domainGroup.PerformLayout();
+            this.tableLayoutPanel1.ResumeLayout(false);
+            this.tableLayoutPanel1.PerformLayout();
             this.runTime.ResumeLayout(false);
             this.runTime.PerformLayout();
             this.subAssets.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.contextMenuStrip1.ResumeLayout(false);
-            this.tableLayoutPanel1.ResumeLayout(false);
-            this.tableLayoutPanel1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -432,7 +432,7 @@
         private System.Windows.Forms.ListBox subActionList;
         private System.Windows.Forms.CheckBox autoRunable;
         private System.Windows.Forms.GroupBox runTime;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox textBox_period;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;

@@ -331,7 +331,7 @@
             this.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "برچسب‌ها";
+            this.Text = "g";
             this.Load += new System.EventHandler(this.assetForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.labelsGrid)).EndInit();
             this.contextMenuStrip1.ResumeLayout(false);

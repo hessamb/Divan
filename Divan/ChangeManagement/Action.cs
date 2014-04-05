@@ -17,5 +17,10 @@ namespace Divan
         {
             //TODO
         }
+
+        public override String ToString()
+        {
+            return this.name;
+        }
     }
 }
