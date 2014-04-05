@@ -401,7 +401,6 @@
             this.dataGrid_OtherLabel.RowHeadersVisible = false;
             this.dataGrid_OtherLabel.Size = new System.Drawing.Size(222, 90);
             this.dataGrid_OtherLabel.TabIndex = 18;
-            this.dataGrid_OtherLabel.CellBeginEdit += new System.Windows.Forms.DataGridViewCellCancelEventHandler(this.dataGrid_OtherLabel_CellBeginEdit);
             this.dataGrid_OtherLabel.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGrid_OtherLabel_CellDoubleClick);
             this.dataGrid_OtherLabel.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.dataGrid_OtherLabel_CellValidating);
             // 
@@ -441,6 +440,7 @@
             this.dataGrid_DefinerLabel.RowHeadersVisible = false;
             this.dataGrid_DefinerLabel.Size = new System.Drawing.Size(223, 118);
             this.dataGrid_DefinerLabel.TabIndex = 17;
+            this.dataGrid_DefinerLabel.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGrid_OtherLabel_CellDoubleClick);
             this.dataGrid_DefinerLabel.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.dataGrid_OtherLabel_CellValidating);
             // 
             // Check
