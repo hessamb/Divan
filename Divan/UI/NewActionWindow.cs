@@ -71,22 +71,6 @@ namespace Divan
         {
             Action a = ActionsWindow.ShowActions();
             if(a!=null){
-                List<Action> al = new List<Action>();
-                al.Add(a);
-                int i = 0;
-                while (i < al.Count)
-                {
-                    a = al[i];
-                    foreach(var sub in a.SubActions){
-                        if (sub.Child == action || al.IndexOf(sub.Child) < i)
-                        {
-                            UIHelper.errorBox(this, "اضافه کردن این عملیات منجر به دور می‌شود.");
-                            break;
-                        }
-                        al.Add(sub.Child);
-                    }
-                    i++;
-                }
                 subActionList.Items.Add(a);
             }
         }
@@ -103,25 +87,23 @@ namespace Divan
 
             if (errorProvider.GetError(button_selectLabel) != "" ||
                 errorProvider.GetError(button_selectAsset) != "" ||
-                !UIHelper.Validation.DoNotEmptyValidation(nameTxt) ||
-                !UIHelper.Validation.DoNotEmptyValidation(textBox_value))
+                errorProvider.GetError(textBox_value) != "" ||
+                errorProvider.GetError(nameTxt) != "")
             {
-                UIHelper.errorBox(this, "لطفا خطاها را برطرف نمایید.");
+                UIHelper.errorBox(this, "لطفا خطاهای ورودی را رفع کنید");
                 this.DialogResult = System.Windows.Forms.DialogResult.None;
                 return;
             }
 
-            if (action == null)
-            {
-                action = new Action();
-                DivanDataContext.Instance.Actions.InsertOnSubmit(action);
-            }
+            action = new Action();
             action.name = nameTxt.Text;
             action.Label = label;
             action.Asset = asset;
             action.value = textBox_value.Text;
             action.needsAutoRun = autoRunable.Checked;
             action.autoRunPeriod = Convert.ToInt32(textBox_period.Text);
+
+            DivanDataContext.Instance.Actions.InsertOnSubmit(action);
 
             if (compositAsset.Checked)
             {
@@ -165,6 +147,16 @@ namespace Divan
             {
                 errorProvider.SetError(button_selectLabel, "");
             }
+        }
+
+        private void textBox_value_Validated(object sender, EventArgs e)
+        {
+            if (!UIHelper.Validation.isNonEmpty(textBox_value.Text))
+                return; // Error already provided in validating
+            if (!label.LabelDomain.IsValidValue(textBox_value.Text))
+                errorProvider.SetError(textBox_value, "مقدار وارد شده در دامنه مقادیر برچسب " + label.name + " نیست.");
+            else
+                errorProvider.SetError(textBox_value, "");
         }
     }
 }

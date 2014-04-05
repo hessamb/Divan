@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +7,7 @@ using System.Text;
 
 namespace Divan
 {
-    public partial class LabelList
+    public partial class LabelList: IEnumerable
     {
         private static LabelList instance;
 
@@ -62,6 +63,11 @@ namespace Divan
             {
                 throw new Exception("Label Not Found!");
             }
+        }
+
+        public IEnumerator GetEnumerator()
+        {
+            return this.GetAllVisibles().GetEnumerator();
         }
 
         public List<Label> GetResult(string query)

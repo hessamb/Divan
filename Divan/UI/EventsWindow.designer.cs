@@ -33,6 +33,8 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.searchTxt = new System.Windows.Forms.TextBox();
             this.eventsGrid = new System.Windows.Forms.DataGridView();
+            this.eventName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.name = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.مشاهدهمشخصاتToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
@@ -45,8 +47,6 @@
             this.select = new System.Windows.Forms.Button();
             this.cancel = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.eventName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.name = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.eventsGrid)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
@@ -62,6 +62,7 @@
             this.searchTxt.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.searchTxt.Size = new System.Drawing.Size(506, 22);
             this.searchTxt.TabIndex = 1;
+            this.searchTxt.TextChanged += new System.EventHandler(this.searchTxt_TextChanged);
             // 
             // eventsGrid
             // 
@@ -91,6 +92,22 @@
             this.eventsGrid.SelectionChanged += new System.EventHandler(this.assetsGrid_SelectionChanged);
             this.eventsGrid.DoubleClick += new System.EventHandler(this.assetsGrid_DoubleClick);
             // 
+            // eventName
+            // 
+            this.eventName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.eventName.DataPropertyName = "Name";
+            this.eventName.HeaderText = "نام رخداد";
+            this.eventName.Name = "eventName";
+            this.eventName.ReadOnly = true;
+            // 
+            // name
+            // 
+            this.name.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.name.DataPropertyName = "ActionName";
+            this.name.HeaderText = "نام عملیات";
+            this.name.Name = "name";
+            this.name.ReadOnly = true;
+            // 
             // contextMenuStrip1
             // 
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -99,26 +116,26 @@
             this.حذفToolStripMenuItem,
             this.ویرایشToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(168, 76);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(155, 76);
             // 
             // مشاهدهمشخصاتToolStripMenuItem
             // 
             this.مشاهدهمشخصاتToolStripMenuItem.Image = global::Divan.Properties.Resources.note;
             this.مشاهدهمشخصاتToolStripMenuItem.Name = "مشاهدهمشخصاتToolStripMenuItem";
-            this.مشاهدهمشخصاتToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
+            this.مشاهدهمشخصاتToolStripMenuItem.Size = new System.Drawing.Size(154, 22);
             this.مشاهدهمشخصاتToolStripMenuItem.Text = "مشاهده مشخصات";
             this.مشاهدهمشخصاتToolStripMenuItem.Click += new System.EventHandler(this.button1_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(164, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(151, 6);
             // 
             // حذفToolStripMenuItem
             // 
             this.حذفToolStripMenuItem.Image = global::Divan.Properties.Resources.delete;
             this.حذفToolStripMenuItem.Name = "حذفToolStripMenuItem";
-            this.حذفToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
+            this.حذفToolStripMenuItem.Size = new System.Drawing.Size(154, 22);
             this.حذفToolStripMenuItem.Text = "حذف";
             this.حذفToolStripMenuItem.Click += new System.EventHandler(this.delete_Click);
             // 
@@ -126,7 +143,7 @@
             // 
             this.ویرایشToolStripMenuItem.Image = global::Divan.Properties.Resources.pencil;
             this.ویرایشToolStripMenuItem.Name = "ویرایشToolStripMenuItem";
-            this.ویرایشToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
+            this.ویرایشToolStripMenuItem.Size = new System.Drawing.Size(154, 22);
             this.ویرایشToolStripMenuItem.Text = "ویرایش";
             this.ویرایشToolStripMenuItem.Click += new System.EventHandler(this.edit_Click_1);
             // 
@@ -228,22 +245,6 @@
             this.label1.TabIndex = 7;
             this.label1.Text = "لطفا رخداد مورد نظر را انتخاب کنید.";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // eventName
-            // 
-            this.eventName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.eventName.DataPropertyName = "Name";
-            this.eventName.HeaderText = "نام رخداد";
-            this.eventName.Name = "eventName";
-            this.eventName.ReadOnly = true;
-            // 
-            // name
-            // 
-            this.name.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.name.DataPropertyName = "ActionName";
-            this.name.HeaderText = "نام عملیات";
-            this.name.Name = "name";
-            this.name.ReadOnly = true;
             // 
             // EventsWindow
             // 

@@ -43,6 +43,7 @@
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.مشاهدهمشخصاتToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.button_attachments = new System.Windows.Forms.Button();
             this.changeState = new System.Windows.Forms.Button();
             this.delete = new System.Windows.Forms.Button();
             this.edit = new System.Windows.Forms.Button();
@@ -199,6 +200,7 @@
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.button_attachments);
             this.panel2.Controls.Add(this.changeState);
             this.panel2.Controls.Add(this.delete);
             this.panel2.Controls.Add(this.edit);
@@ -207,6 +209,20 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(467, 38);
             this.panel2.TabIndex = 11;
+            // 
+            // button_attachments
+            // 
+            this.button_attachments.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.button_attachments.Image = global::Divan.Properties.Resources.icon_package_get;
+            this.button_attachments.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button_attachments.Location = new System.Drawing.Point(85, 9);
+            this.button_attachments.Name = "button_attachments";
+            this.button_attachments.Size = new System.Drawing.Size(113, 25);
+            this.button_attachments.TabIndex = 24;
+            this.button_attachments.Text = "فایل‌های ضمیمه";
+            this.button_attachments.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.button_attachments.UseVisualStyleBackColor = true;
+            this.button_attachments.Click += new System.EventHandler(this.button1_Click_1);
             // 
             // changeState
             // 
@@ -341,5 +357,6 @@
         private System.Windows.Forms.DataGridView dataGrid_labelInstance;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private System.Windows.Forms.Button button_attachments;
     }
 }

@@ -36,14 +36,36 @@ namespace Divan
                 return subActions.Any();
             }
         }
+
+        public IEnumerable<Action> SubActions
+        {
+            get
+            {
+                var subActions = from sa in DivanDataContext.Instance.SubActions
+                                 where sa.parentId == this.Id
+                                 select sa.Child;
+                return subActions.AsEnumerable();
+            }
+        }
+
         public virtual void Run()
         {
-            //TODO
+            LabelInstance labelInstance = Asset.getLabelInstance(Label);
+            labelInstance.value = value;
+            if (Composite)
+            {
+                foreach (Action action in SubActions)
+                {
+                    action.Run();
+                }
+            }
         }
 
         public void Destroy()
         {
-            //TODO
+            DivanDataContext.Instance.SubActions.DeleteAllOnSubmit(this.SubActionsM2M);
+            DivanDataContext.Instance.Actions.DeleteOnSubmit(this);
+            DivanDataContext.Instance.SubmitChanges();
         }
 
         public override String ToString()

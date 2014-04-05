@@ -59,13 +59,7 @@
             this.value = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.dataGrid_OtherLabel = new System.Windows.Forms.DataGridView();
-            this.dataGridViewCheckBoxColumn1 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGrid_DefinerLabel = new System.Windows.Forms.DataGridView();
-            this.Check = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.LabelName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.LabelValue = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.labelSearchtxt = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
@@ -83,6 +77,14 @@
             this.button3 = new System.Windows.Forms.Button();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
+            this.dataGridViewCheckBoxColumn1 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Check = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.LabelName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.LabelValue = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.id2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.flowLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.humanAssetProps.SuspendLayout();
@@ -233,6 +235,7 @@
             this.textBox_NationalID.Name = "textBox_NationalID";
             this.textBox_NationalID.Size = new System.Drawing.Size(138, 22);
             this.textBox_NationalID.TabIndex = 6;
+            this.textBox_NationalID.Validating += new System.ComponentModel.CancelEventHandler(this.textBox_NationalID_Validating);
             // 
             // label5
             // 
@@ -340,12 +343,13 @@
             this.name,
             this.type,
             this.value});
-            this.dataGrid_PrimaryInfo.Location = new System.Drawing.Point(8, 24);
+            this.dataGrid_PrimaryInfo.Location = new System.Drawing.Point(16, 24);
             this.dataGrid_PrimaryInfo.Name = "dataGrid_PrimaryInfo";
-            this.dataGrid_PrimaryInfo.Size = new System.Drawing.Size(451, 166);
+            this.dataGrid_PrimaryInfo.Size = new System.Drawing.Size(443, 166);
             this.dataGrid_PrimaryInfo.TabIndex = 13;
             this.dataGrid_PrimaryInfo.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGrid_PrimaryInfo_CellEndEdit);
             this.dataGrid_PrimaryInfo.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.dataGrid_PrimaryInfo_CellValidating);
+            this.dataGrid_PrimaryInfo.Validating += new System.ComponentModel.CancelEventHandler(this.dataGrid_PrimaryInfo_Validating);
             // 
             // name
             // 
@@ -392,37 +396,17 @@
             this.dataGrid_OtherLabel.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewCheckBoxColumn1,
             this.dataGridViewTextBoxColumn1,
-            this.dataGridViewTextBoxColumn2});
+            this.dataGridViewTextBoxColumn2,
+            this.id});
             this.dataGrid_OtherLabel.Location = new System.Drawing.Point(8, 74);
             this.dataGrid_OtherLabel.MultiSelect = false;
             this.dataGrid_OtherLabel.Name = "dataGrid_OtherLabel";
             this.dataGrid_OtherLabel.RowHeadersVisible = false;
             this.dataGrid_OtherLabel.Size = new System.Drawing.Size(222, 90);
             this.dataGrid_OtherLabel.TabIndex = 18;
-            this.dataGrid_OtherLabel.CellBeginEdit += new System.Windows.Forms.DataGridViewCellCancelEventHandler(this.dataGrid_OtherLabel_CellBeginEdit);
             this.dataGrid_OtherLabel.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGrid_OtherLabel_CellDoubleClick);
+            this.dataGrid_OtherLabel.CellValidated += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGrid_OtherLabel_CellValidated);
             this.dataGrid_OtherLabel.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.dataGrid_OtherLabel_CellValidating);
-            // 
-            // dataGridViewCheckBoxColumn1
-            // 
-            this.dataGridViewCheckBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.dataGridViewCheckBoxColumn1.HeaderText = "";
-            this.dataGridViewCheckBoxColumn1.Name = "dataGridViewCheckBoxColumn1";
-            this.dataGridViewCheckBoxColumn1.Width = 5;
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.dataGridViewTextBoxColumn1.HeaderText = "برچسب";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.ReadOnly = true;
-            this.dataGridViewTextBoxColumn1.Width = 72;
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            this.dataGridViewTextBoxColumn2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.dataGridViewTextBoxColumn2.HeaderText = "مقدار";
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
             // 
             // dataGrid_DefinerLabel
             // 
@@ -432,34 +416,16 @@
             this.dataGrid_DefinerLabel.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Check,
             this.LabelName,
-            this.LabelValue});
+            this.LabelValue,
+            this.id2});
             this.dataGrid_DefinerLabel.Location = new System.Drawing.Point(237, 46);
             this.dataGrid_DefinerLabel.MultiSelect = false;
             this.dataGrid_DefinerLabel.Name = "dataGrid_DefinerLabel";
             this.dataGrid_DefinerLabel.RowHeadersVisible = false;
             this.dataGrid_DefinerLabel.Size = new System.Drawing.Size(223, 118);
             this.dataGrid_DefinerLabel.TabIndex = 17;
-            // 
-            // Check
-            // 
-            this.Check.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.Check.HeaderText = "";
-            this.Check.Name = "Check";
-            this.Check.Width = 5;
-            // 
-            // LabelName
-            // 
-            this.LabelName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.LabelName.HeaderText = "برچسب";
-            this.LabelName.Name = "LabelName";
-            this.LabelName.ReadOnly = true;
-            this.LabelName.Width = 72;
-            // 
-            // LabelValue
-            // 
-            this.LabelValue.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.LabelValue.HeaderText = "مقدار";
-            this.LabelValue.Name = "LabelValue";
+            this.dataGrid_DefinerLabel.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGrid_OtherLabel_CellDoubleClick);
+            this.dataGrid_DefinerLabel.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.dataGrid_OtherLabel_CellValidating);
             // 
             // labelSearchtxt
             // 
@@ -646,6 +612,62 @@
             this.errorProvider.ContainerControl = this;
             this.errorProvider.RightToLeft = true;
             // 
+            // dataGridViewCheckBoxColumn1
+            // 
+            this.dataGridViewCheckBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.dataGridViewCheckBoxColumn1.HeaderText = "";
+            this.dataGridViewCheckBoxColumn1.Name = "dataGridViewCheckBoxColumn1";
+            this.dataGridViewCheckBoxColumn1.Width = 5;
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.dataGridViewTextBoxColumn1.HeaderText = "برچسب";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            this.dataGridViewTextBoxColumn1.Width = 72;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewTextBoxColumn2.HeaderText = "مقدار";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            // 
+            // id
+            // 
+            this.id.HeaderText = "id";
+            this.id.Name = "id";
+            this.id.ReadOnly = true;
+            this.id.Visible = false;
+            // 
+            // Check
+            // 
+            this.Check.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Check.HeaderText = "";
+            this.Check.Name = "Check";
+            this.Check.Width = 5;
+            // 
+            // LabelName
+            // 
+            this.LabelName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.LabelName.HeaderText = "برچسب";
+            this.LabelName.Name = "LabelName";
+            this.LabelName.ReadOnly = true;
+            this.LabelName.Width = 72;
+            // 
+            // LabelValue
+            // 
+            this.LabelValue.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.LabelValue.HeaderText = "مقدار";
+            this.LabelValue.Name = "LabelValue";
+            // 
+            // id2
+            // 
+            this.id2.HeaderText = "id";
+            this.id2.Name = "id2";
+            this.id2.ReadOnly = true;
+            this.id2.Visible = false;
+            // 
             // NewAssetWindow
             // 
             this.AcceptButton = this.button3;
@@ -732,16 +754,18 @@
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.DataGridView dataGrid_DefinerLabel;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn Check;
-        private System.Windows.Forms.DataGridViewTextBoxColumn LabelName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn LabelValue;
         private System.Windows.Forms.DataGridView dataGrid_OtherLabel;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn dataGridViewCheckBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private System.Windows.Forms.ErrorProvider errorProvider;
         private System.Windows.Forms.DataGridViewTextBoxColumn name;
         private System.Windows.Forms.DataGridViewComboBoxColumn type;
         private System.Windows.Forms.DataGridViewTextBoxColumn value;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn dataGridViewCheckBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn id;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn Check;
+        private System.Windows.Forms.DataGridViewTextBoxColumn LabelName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn LabelValue;
+        private System.Windows.Forms.DataGridViewTextBoxColumn id2;
     }
 }

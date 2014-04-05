@@ -406,7 +406,7 @@ namespace Divan
 		}
 		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Action_SubAction", Storage="_SuperActions", ThisKey="Id", OtherKey="childId")]
-		public EntitySet<SubAction> SuperActions
+		public EntitySet<SubAction> SuperActionsM2M
 		{
 			get
 			{
@@ -419,7 +419,7 @@ namespace Divan
 		}
 		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Action_SubAction1", Storage="_SubActions", ThisKey="Id", OtherKey="parentId")]
-		public EntitySet<SubAction> SubActions
+		public EntitySet<SubAction> SubActionsM2M
 		{
 			get
 			{
@@ -2668,7 +2668,7 @@ namespace Divan
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", DbType="Int NOT NULL", IsPrimaryKey=true, IsDbGenerated=true)]
 		public int Id
 		{
 			get
@@ -2753,12 +2753,12 @@ namespace Divan
 					if ((previousValue != null))
 					{
 						this._Child.Entity = null;
-						previousValue.SuperActions.Remove(this);
+						previousValue.SuperActionsM2M.Remove(this);
 					}
 					this._Child.Entity = value;
 					if ((value != null))
 					{
-						value.SuperActions.Add(this);
+						value.SuperActionsM2M.Add(this);
 						this._childId = value.Id;
 					}
 					else
@@ -2787,12 +2787,12 @@ namespace Divan
 					if ((previousValue != null))
 					{
 						this._Parent.Entity = null;
-						previousValue.SubActions.Remove(this);
+						previousValue.SubActionsM2M.Remove(this);
 					}
 					this._Parent.Entity = value;
 					if ((value != null))
 					{
-						value.SubActions.Add(this);
+						value.SubActionsM2M.Add(this);
 						this._parentId = value.Id;
 					}
 					else

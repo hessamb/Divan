@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +7,7 @@ using System.Text;
 
 namespace Divan
 {
-    public class AssetList
+    public class AssetList: IEnumerable
     {
         private static AssetList instance;
 
@@ -76,16 +77,28 @@ namespace Divan
             }
         }
 
-        public List<Asset> GetPortables()
+        public IEnumerator GetEnumerator()
         {
-            //TODO
-            return null;
+            return this.GetAllVisibles().GetEnumerator();
         }
 
-        public List<Asset> GetResult(AssetQuery qury)
+        public IEnumerable<Asset> GetPortables()
         {
-            //TODO
-            return null;
+            var assets = from a in DivanDataContext.Instance.Assets
+                         where a.isPortable == true
+                         select a;
+            return assets.AsEnumerable();
+        }
+
+        public IEnumerable<Asset> GetResult(AssetQuery query)
+        {
+            var assets = from a in DivanDataContext.Instance.Assets
+                         where (a.Name.Contains(query.Expression)
+                         || a.UID.Contains(query.Expression))
+                         && a.Name.Contains(query.NameConstraint)
+                         && a.UID.Contains(query.UidConstraint)
+                         select a;
+            return assets.AsEnumerable();
         }
     }
 }

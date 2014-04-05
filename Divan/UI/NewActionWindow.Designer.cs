@@ -170,6 +170,7 @@
             this.textBox_value.Name = "textBox_value";
             this.textBox_value.Size = new System.Drawing.Size(353, 22);
             this.textBox_value.TabIndex = 3;
+            this.textBox_value.Validated += new System.EventHandler(this.textBox_value_Validated);
             // 
             // label4
             // 

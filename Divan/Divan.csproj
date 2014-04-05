@@ -79,6 +79,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\AssetState.cs" />
+    <Compile Include="Assets\AttachedFile.cs" />
     <Compile Include="Assets\BaseAssetState.cs" />
     <Compile Include="Assets\CompositeAssetState.cs" />
     <Compile Include="ChangeManagement\Action.cs" />
@@ -96,6 +97,12 @@
     <Compile Include="Reports\ActionReportGenerator.cs" />
     <Compile Include="Assets\Asset.cs" />
     <Compile Include="ChangeManagement\AssetChangeRecord.cs" />
+    <Compile Include="UI\AssetAttachementViewer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\AssetAttachementViewer.Designer.cs">
+      <DependentUpon>AssetAttachementViewer.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\AssetHistoryWindow.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -288,6 +295,9 @@
     <None Include="Divan.dbml.layout">
       <DependentUpon>Divan.dbml</DependentUpon>
     </None>
+    <EmbeddedResource Include="UI\AssetAttachementViewer.resx">
+      <DependentUpon>AssetAttachementViewer.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\AssetHistoryWindow.resx">
       <DependentUpon>AssetHistoryWindow.cs</DependentUpon>
     </EmbeddedResource>

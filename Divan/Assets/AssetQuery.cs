@@ -23,5 +23,21 @@ namespace Divan
             set { expression = value; }
         }
 
+        public string NameConstraint
+        {
+            get
+            {
+                return (Domain == "name") ? Expression : "";
+            }
+        }
+
+        public string UidConstraint
+        {
+            get
+            {
+                return (Domain == "uid") ? Expression : "";
+            }
+        }
+
     }
 }

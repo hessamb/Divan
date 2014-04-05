@@ -38,13 +38,14 @@
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
             this.labelSearchText = new System.Windows.Forms.TextBox();
             this.dataGrid_Label = new System.Windows.Forms.DataGridView();
-            this.LabelName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.LabelValue = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel2 = new System.Windows.Forms.Panel();
             this.cancelBtn = new System.Windows.Forms.Button();
             this.okBtn = new System.Windows.Forms.Button();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.مشاهدهمشخصاتToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.LabelName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.LabelValue = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.flowLayoutPanel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGrid_primaryInfo)).BeginInit();
@@ -146,27 +147,15 @@
             this.dataGrid_Label.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGrid_Label.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.LabelName,
-            this.LabelValue});
+            this.LabelValue,
+            this.id});
             this.dataGrid_Label.Location = new System.Drawing.Point(6, 53);
             this.dataGrid_Label.MultiSelect = false;
             this.dataGrid_Label.Name = "dataGrid_Label";
             this.dataGrid_Label.RowHeadersVisible = false;
             this.dataGrid_Label.Size = new System.Drawing.Size(453, 212);
             this.dataGrid_Label.TabIndex = 18;
-            // 
-            // LabelName
-            // 
-            this.LabelName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.LabelName.HeaderText = "برچسب";
-            this.LabelName.Name = "LabelName";
-            this.LabelName.ReadOnly = true;
-            this.LabelName.Width = 72;
-            // 
-            // LabelValue
-            // 
-            this.LabelValue.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.LabelValue.HeaderText = "مقدار";
-            this.LabelValue.Name = "LabelValue";
+            this.dataGrid_Label.CellValidated += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGrid_Label_CellValidated);
             // 
             // panel2
             // 
@@ -220,6 +209,27 @@
             this.مشاهدهمشخصاتToolStripMenuItem.Text = "مشاهده مشخصات زیردارایی";
             this.مشاهدهمشخصاتToolStripMenuItem.Click += new System.EventHandler(this.مشاهدهمشخصاتToolStripMenuItem_Click);
             // 
+            // LabelName
+            // 
+            this.LabelName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.LabelName.HeaderText = "برچسب";
+            this.LabelName.Name = "LabelName";
+            this.LabelName.ReadOnly = true;
+            this.LabelName.Width = 72;
+            // 
+            // LabelValue
+            // 
+            this.LabelValue.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.LabelValue.HeaderText = "مقدار";
+            this.LabelValue.Name = "LabelValue";
+            // 
+            // id
+            // 
+            this.id.HeaderText = "id";
+            this.id.Name = "id";
+            this.id.ReadOnly = true;
+            this.id.Visible = false;
+            // 
             // ChangeStateWindow
             // 
             this.AcceptButton = this.okBtn;
@@ -270,5 +280,6 @@
         private System.Windows.Forms.DataGridView dataGrid_Label;
         private System.Windows.Forms.DataGridViewTextBoxColumn LabelName;
         private System.Windows.Forms.DataGridViewTextBoxColumn LabelValue;
+        private System.Windows.Forms.DataGridViewTextBoxColumn id;
     }
 }

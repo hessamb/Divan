@@ -4,7 +4,8 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
- 
+using System.Text.RegularExpressions;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Divan
@@ -17,9 +18,10 @@ namespace Divan
             cell.ReadOnly = true;
             cell.Style.ForeColor = Color.DarkGray;
             cell.Style.BackColor = Color.LightGray;
+            cell.Style.SelectionBackColor = Color.LightBlue;
         }
 
-        public static void searchGrid(DataGridView grid, string pattern, string columnName = null)
+        public static void searchGrid(DataGridView grid, string pattern, string columnName = "")
         { // Passing null as columnName results in all columns search.
             foreach (DataGridViewRow row in grid.Rows)
             {
@@ -45,7 +47,7 @@ namespace Divan
                 bool matched = false;
                 foreach (DataGridViewCell cell in row.Cells)
                 {
-                    if (columnName != null && cell.OwningColumn.Name != columnName)
+                    if (columnName != "" && cell.OwningColumn.Name != columnName)
                         continue;
                     if (cell.Value is string && ((string)cell.Value).IndexOf(word) != -1)
                     {
@@ -121,7 +123,14 @@ namespace Divan
             public static void ValidateNotEmpty(TextBox textBox, ErrorProvider errorProvider)
             {
                 textBox.Validating += textBox_Validating;
-                controlsErrorProviders.Add(textBox, errorProvider);
+                try
+                {
+                    controlsErrorProviders.Add(textBox, errorProvider);
+                }
+                catch
+                {
+                    // textBox exists in dictionary
+                }
             }
 
             public static void CancelValidateNotEmpty(TextBox textBox)
@@ -175,6 +184,11 @@ namespace Divan
                 {
                     return false;
                 }
+            }
+
+            public static bool isValidNationalID(string text)
+            {
+                return Regex.Match(text, @"^\d{10}$").Success;
             }
         }
     }

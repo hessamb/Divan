@@ -24,6 +24,11 @@ namespace Divan
         public void RunAction()
         {
             this.Action.Run();
-        }   
+        }
+
+        public override string ToString()
+        {
+            return this.Name;
+        }
     }
 }

@@ -29,6 +29,8 @@ namespace Divan
             fillPrimaryInfoGrid();
             fillLabelInstancesGrid();
             fillSubAssetTree();
+            if (!selectedAsset.AttachedFiles.Any())
+                button_attachments.Enabled = false;
         }
 
         private void fillSubAssetTree()
@@ -128,6 +130,11 @@ namespace Divan
         private void groupBox2_Enter(object sender, EventArgs e)
         {
 
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            new AssetAttachementViewer(selectedAsset).ShowDialog();
         }
     }
 }
