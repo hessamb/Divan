@@ -90,11 +90,21 @@ namespace Divan
                 string name = (string)eventsGrid.SelectedCells[0].OwningRow.Cells[0].Value;
                 message = "آیا از حذف رخداد «" + name + "» مطمئنید؟";
             }
-            RemoveConfirmationBox.ShowConfirmation(message);
+            if (RemoveConfirmationBox.ShowConfirmation(message) == System.Windows.Forms.DialogResult.Yes)
+            {
+                foreach (DataGridViewRow r in eventsGrid.SelectedRows)
+                {
+                    DivanDataContext.Instance.Events.DeleteOnSubmit(r.DataBoundItem as Event);
+                }
+                DivanDataContext.Instance.SubmitChanges();
+                reloadEvents();
+            };
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
+            Event ev = eventsGrid.SelectedRows[0].DataBoundItem as Event;
+            ev.RunAction();
             MessageBox.Show("عملیات مربوط به این رخداد با موفقیت اجرا شد.");
         }
 

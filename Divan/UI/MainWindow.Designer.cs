@@ -504,7 +504,7 @@
             this.groupBox4.Controls.Add(this.button15);
             this.groupBox4.Location = new System.Drawing.Point(14, 370);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(646, 141);
+            this.groupBox4.Size = new System.Drawing.Size(646, 144);
             this.groupBox4.TabIndex = 4;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "گزارش‌گیری";
@@ -580,7 +580,7 @@
             this.button18.Enabled = false;
             this.button18.Image = global::Divan.Properties.Resources.icon_settings;
             this.button18.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button18.Location = new System.Drawing.Point(508, 518);
+            this.button18.Location = new System.Drawing.Point(508, 526);
             this.button18.Name = "button18";
             this.button18.Size = new System.Drawing.Size(128, 42);
             this.button18.TabIndex = 17;
@@ -593,7 +593,7 @@
             this.button19.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.button19.Image = global::Divan.Properties.Resources.cross;
             this.button19.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button19.Location = new System.Drawing.Point(14, 518);
+            this.button19.Location = new System.Drawing.Point(14, 526);
             this.button19.Name = "button19";
             this.button19.Size = new System.Drawing.Size(61, 42);
             this.button19.TabIndex = 18;
@@ -611,7 +611,6 @@
             this.button20.Size = new System.Drawing.Size(138, 42);
             this.button20.TabIndex = 16;
             this.button20.Text = "گزارش ناسازگاری";
-            this.button20.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.button20.UseVisualStyleBackColor = true;
             this.button20.Click += new System.EventHandler(this.button17_Click);
             // 
@@ -619,7 +618,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(672, 572);
+            this.ClientSize = new System.Drawing.Size(672, 580);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.button19);

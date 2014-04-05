@@ -226,7 +226,7 @@
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(202, 14);
             this.label1.TabIndex = 7;
-            this.label1.Text = "لطفا رویداد مورد نظر را انتخاب کنید.";
+            this.label1.Text = "لطفا رخداد مورد نظر را انتخاب کنید.";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // eventName
@@ -240,7 +240,7 @@
             // name
             // 
             this.name.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.name.DataPropertyName = "Action.name";
+            this.name.DataPropertyName = "ActionName";
             this.name.HeaderText = "نام عملیات";
             this.name.Name = "name";
             this.name.ReadOnly = true;

@@ -128,7 +128,6 @@ namespace Divan
                     DivanDataContext.Instance.Assets.DeleteOnSubmit(rowAsset);
                 }
                 DivanDataContext.Instance.SubmitChanges();
-                dataGrid_assets.DataSource = AssetList.Instance.GetAll();
                 reloadAssets();
             }
         }
@@ -160,7 +159,6 @@ namespace Divan
                     rowAsset.visible=false;
                 }
                 DivanDataContext.Instance.SubmitChanges();
-                dataGrid_assets.DataSource = AssetList.Instance.GetAll();
                 reloadAssets();
             }
         }

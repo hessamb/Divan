@@ -8,6 +8,14 @@ namespace Divan
 {
     public partial class Event
     {
+        public string ActionName
+        {
+            get
+            {
+                return Action.name;
+            }
+        }
+
         public void Create()
         {
             //TODO
@@ -15,7 +23,7 @@ namespace Divan
 
         public void RunAction()
         {
-            //TODO
+            this.Action.Run();
         }   
     }
 }

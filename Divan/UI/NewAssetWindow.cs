@@ -331,5 +331,9 @@ namespace Divan
             grid.Rows[e.RowIndex].Cells[0].Value = true;
         }
 
+        private void textBox_Name_Validating(object sender, CancelEventArgs e)
+        {
+        }
+
     }
 }

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.nameTxt = new System.Windows.Forms.TextBox();
@@ -37,9 +38,11 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.button4 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
+            this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
             this.flowLayoutPanel1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             this.SuspendLayout();
             // 
             // flowLayoutPanel1
@@ -75,6 +78,7 @@
             this.nameTxt.Name = "nameTxt";
             this.nameTxt.Size = new System.Drawing.Size(138, 22);
             this.nameTxt.TabIndex = 1;
+            this.nameTxt.Validating += new System.ComponentModel.CancelEventHandler(this.nameTxt_Validating);
             // 
             // label1
             // 
@@ -87,9 +91,9 @@
             // 
             // actionLabel
             // 
-            this.actionLabel.Location = new System.Drawing.Point(130, 32);
+            this.actionLabel.Location = new System.Drawing.Point(143, 32);
             this.actionLabel.Name = "actionLabel";
-            this.actionLabel.Size = new System.Drawing.Size(334, 14);
+            this.actionLabel.Size = new System.Drawing.Size(321, 14);
             this.actionLabel.TabIndex = 1;
             this.actionLabel.Text = "عملیات:";
             this.actionLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -98,7 +102,7 @@
             // 
             this.button2.Image = global::Divan.Properties.Resources.page_script;
             this.button2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button2.Location = new System.Drawing.Point(9, 27);
+            this.button2.Location = new System.Drawing.Point(22, 27);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(115, 25);
             this.button2.TabIndex = 1;
@@ -106,6 +110,7 @@
             this.button2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.button2.Validating += new System.ComponentModel.CancelEventHandler(this.button2_Validating);
             // 
             // panel2
             // 
@@ -141,6 +146,12 @@
             this.button3.Text = "تایید";
             this.button3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
+            // errorProvider
+            // 
+            this.errorProvider.ContainerControl = this;
+            this.errorProvider.RightToLeft = true;
             // 
             // NewEventWindow
             // 
@@ -166,6 +177,7 @@
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             this.panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -182,5 +194,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label actionLabel;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.ErrorProvider errorProvider;
     }
 }

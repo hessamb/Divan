@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.textBox_UID = new System.Windows.Forms.TextBox();
@@ -81,6 +82,7 @@
             this.button4 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.flowLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.humanAssetProps.SuspendLayout();
@@ -93,6 +95,7 @@
             this.GroupBox_subAssets.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // flowLayoutPanel1
@@ -153,6 +156,7 @@
             this.textBox_Name.Name = "textBox_Name";
             this.textBox_Name.Size = new System.Drawing.Size(138, 22);
             this.textBox_Name.TabIndex = 0;
+            this.textBox_Name.Validating += new System.ComponentModel.CancelEventHandler(this.textBox_Name_Validating);
             // 
             // label1
             // 
@@ -637,6 +641,10 @@
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
             // 
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
+            // 
             // NewAssetWindow
             // 
             this.AcceptButton = this.button3;
@@ -673,6 +681,7 @@
             this.GroupBox_subAssets.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -732,5 +741,6 @@
         private System.Windows.Forms.DataGridViewCheckBoxColumn dataGridViewCheckBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
     }
 }
