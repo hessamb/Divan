@@ -54,8 +54,14 @@ namespace Divan
                              on a.Id equals p.assetID
                          where p.name == Asset.UID_STRING && p.value == uid
                          select a;
-            int k = assets.Count();
-            return getFirst(assets);
+            try
+            {
+                return getFirst(assets);
+            }
+            catch
+            {
+                return null;
+            }
         }
 
         private Asset getFirst(IQueryable<Asset> assets)

@@ -260,6 +260,16 @@ namespace Divan
                 result = false;
             if (!UIHelper.Validation.DoNotEmptyValidation(textBox_UID))
                 result = false;
+            else
+            {
+                string uid = textBox_UID.Text;
+                Asset uidAsset = AssetList.Instance.GetByUid(uid);
+                if (uidAsset != null && (asset == null || uidAsset.Id != asset.Id))
+                {
+                    errorProvider.SetError(textBox_UID, "این شناسه تکراری است");
+                    result = false;
+                }
+            }
             if (checkBox_isHuman.Checked)
             {
                 if (!UIHelper.Validation.DoNotEmptyValidation(textBox_FirstName))
