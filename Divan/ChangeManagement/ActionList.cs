@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Divan
 {
-    public class ActionList
+    public class ActionList: IEnumerable
     {
         private static ActionList instance;
 
@@ -41,6 +42,11 @@ namespace Divan
                           where a.name.Contains(query)
                           select a;
             return actions.AsEnumerable();
+        }
+
+        public IEnumerator GetEnumerator()
+        {
+            return this.GetAll().GetEnumerator();
         }
     }
 }

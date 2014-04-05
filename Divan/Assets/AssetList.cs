@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Divan
 {
-    public class AssetList
+    public class AssetList: IEnumerable
     {
         private static AssetList instance;
 
@@ -74,6 +75,11 @@ namespace Divan
             {
                 throw new Exception("Asset Not Found!");
             }
+        }
+
+        public IEnumerator GetEnumerator()
+        {
+            return this.GetAllVisibles().GetEnumerator();
         }
 
         public List<Asset> GetPortables()
