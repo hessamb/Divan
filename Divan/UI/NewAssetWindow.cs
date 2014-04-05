@@ -5,7 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
+ 
 using System.Windows.Forms;
 
 namespace Divan
@@ -346,6 +346,7 @@ namespace Divan
 
         private void saveAttachments()
         {
+            DivanDataContext.Instance.AttachedFiles.DeleteAllOnSubmit(asset.AttachedFiles);
             foreach (String fileName in attachmentList.Items)
             {
                 AttachedFile file = new AttachedFile();
