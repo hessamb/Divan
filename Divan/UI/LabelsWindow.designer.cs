@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.searchTxt = new System.Windows.Forms.TextBox();
             this.labelsGrid = new System.Windows.Forms.DataGridView();
             this.name = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -76,8 +76,8 @@
             this.labelsGrid.AllowUserToAddRows = false;
             this.labelsGrid.AllowUserToDeleteRows = false;
             this.labelsGrid.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.labelsGrid.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.labelsGrid.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
             this.labelsGrid.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -92,8 +92,8 @@
             this.labelsGrid.Name = "labelsGrid";
             this.labelsGrid.ReadOnly = true;
             this.labelsGrid.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.labelsGrid.RowsDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.labelsGrid.RowsDefaultCellStyle = dataGridViewCellStyle4;
             this.labelsGrid.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.labelsGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.labelsGrid.Size = new System.Drawing.Size(506, 401);
@@ -297,7 +297,7 @@
             this.حذفازداخلداراییهایدیگرToolStripMenuItem});
             this.contextMenuStrip2.Name = "contextMenuStrip2";
             this.contextMenuStrip2.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.contextMenuStrip2.Size = new System.Drawing.Size(301, 48);
+            this.contextMenuStrip2.Size = new System.Drawing.Size(301, 70);
             // 
             // فقطازلیستپاککنToolStripMenuItem
             // 
@@ -311,7 +311,7 @@
             this.حذفازداخلداراییهایدیگرToolStripMenuItem.Name = "حذفازداخلداراییهایدیگرToolStripMenuItem";
             this.حذفازداخلداراییهایدیگرToolStripMenuItem.Size = new System.Drawing.Size(300, 22);
             this.حذفازداخلداراییهایدیگرToolStripMenuItem.Text = "حذف از لیست و داخل برچسب‌ها و دارایی‌های دیگر";
-            this.حذفازداخلداراییهایدیگرToolStripMenuItem.Click += new System.EventHandler(this.فقطازلیستپاککنToolStripMenuItem_Click);
+            this.حذفازداخلداراییهایدیگرToolStripMenuItem.Click += new System.EventHandler(this.حذفازداخلداراییهایدیگرToolStripMenuItem_Click);
             // 
             // LabelsWindow
             // 
@@ -331,7 +331,7 @@
             this.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "g";
+            this.Text = "برچسب‌ها";
             this.Load += new System.EventHandler(this.assetForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.labelsGrid)).EndInit();
             this.contextMenuStrip1.ResumeLayout(false);

@@ -239,6 +239,16 @@ namespace Divan
             return labels;
         }
 
+        public IEnumerable<Label> getValuableLabels()
+        {
+            var labels = from l in this.LabelInstances
+                         where l.Label.setValue==true
+                         select l.Label;
+            if(labels.Count()>0)
+                return labels;
+            return new Label[0];
+        }
+
         public LabelInstance getLabelInstance(Label label)
         {
             var labelInstances = from l in DivanDataContext.Instance.LabelInstances
@@ -263,5 +273,6 @@ namespace Divan
                     return true;
             return false;
         }
+        
     }
 }

@@ -48,6 +48,7 @@ namespace Divan
             if (uid == null)
                 return;
             asset = AssetList.Instance.GetByUid(uid);
+            label = null;
             label_asset.Text = "دارایی: " + asset.Name;
             label_label.Text = "برچسب: " + asset.Name + " > انتخاب کنید";
             button_selectLabel.Enabled = true;
@@ -57,7 +58,7 @@ namespace Divan
 
         private void button6_Click(object sender, EventArgs e)
         {
-            label = LabelsWindow.ShowLabels(asset);
+            label = LabelsWindow.ShowLabels(asset, true);
             if (label == null)
                 return;
             LabelInstance labelInstance = asset.getLabelInstance(label);
@@ -70,6 +71,22 @@ namespace Divan
         {
             Action a = ActionsWindow.ShowActions();
             if(a!=null){
+                List<Action> al = new List<Action>();
+                al.Add(a);
+                int i = 0;
+                while (i < al.Count)
+                {
+                    a = al[i];
+                    foreach(var sub in a.SubActions){
+                        if (sub.Child == action || al.IndexOf(sub.Child) < i)
+                        {
+                            UIHelper.errorBox(this, "اضافه کردن این عملیات منجر به دور می‌شود.");
+                            break;
+                        }
+                        al.Add(sub.Child);
+                    }
+                    i++;
+                }
                 subActionList.Items.Add(a);
             }
         }
@@ -105,6 +122,34 @@ namespace Divan
                 }
             }
             DivanDataContext.Instance.SubmitChanges();
+        }
+
+        private void NewActionWindow_Load(object sender, EventArgs e)
+        {
+        }
+
+        private void button_selectAsset_Validating(object sender, CancelEventArgs e)
+        {
+            if (asset == null)
+            {
+                errorProvider.SetError(button_selectAsset, "انتخاب دارایی اجباری است.");
+            }
+            else
+            {
+                errorProvider.SetError(button_selectAsset, "");
+            }
+        }
+
+        private void button_selectLabel_Validating(object sender, CancelEventArgs e)
+        {
+            if (label == null)
+            {
+                errorProvider.SetError(button_selectLabel, "انتخاب برچسب اجباری است.");
+            }
+            else
+            {
+                errorProvider.SetError(button_selectLabel, "");
+            }
         }
     }
 }

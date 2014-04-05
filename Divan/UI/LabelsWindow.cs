@@ -13,6 +13,7 @@ namespace Divan
     public partial class LabelsWindow : Form
     {
         private Asset asset;
+        private bool valueables;
         public Label SelectedLabel { get; set; }
         
         private static void initializeSelectComponents(LabelsWindow window)
@@ -34,9 +35,9 @@ namespace Divan
             return null;
         }
 
-        public static Label ShowLabels(Asset asset)
+        public static Label ShowLabels(Asset asset, bool valueables=false)
         {
-            LabelsWindow a = new LabelsWindow(asset);
+            LabelsWindow a = new LabelsWindow(asset, valueables);
             initializeSelectComponents(a);
             if (a.ShowDialog() == DialogResult.OK)
             {
@@ -50,9 +51,10 @@ namespace Divan
             InitializeComponent();
         }
 
-        public LabelsWindow(Asset asset): this()
+        public LabelsWindow(Asset asset, bool valueables=false): this()
         {
             this.asset = asset;
+            this.valueables = valueables;
         }
 
         private void assetsTree_AfterSelect(object sender, TreeViewEventArgs e)
@@ -65,12 +67,17 @@ namespace Divan
             UIHelper.SetPlaceHolder(searchTxt, "جستجوی برچسب");
             
             labelsGrid.AutoGenerateColumns = false;
+            reloadLabels();
+        }
+
+        private void reloadLabels()
+        {
             if (this.asset == null)
                 labelsGrid.DataSource = LabelList.Instance.GetAll();
             else
             {
                 BindingSource source = new BindingSource();
-                source.DataSource = asset.getLabels();
+                source.DataSource = valueables ? asset.getValuableLabels() : asset.getLabels();
                 labelsGrid.DataSource = source;
             }
         }
@@ -93,7 +100,8 @@ namespace Divan
         {
             try
             {
-                (new NewLabelWindow(getSelectedLabel())).ShowDialog();
+                if((new NewLabelWindow(getSelectedLabel())).ShowDialog()==System.Windows.Forms.DialogResult.Yes)
+                    reloadLabels();
             }
             catch
             {
@@ -103,7 +111,8 @@ namespace Divan
 
         private void button3_Click(object sender, EventArgs e)
         {
-            (new NewLabelWindow()).ShowDialog();
+            if((new NewLabelWindow()).ShowDialog()==System.Windows.Forms.DialogResult.Yes)
+                reloadLabels();
         }
 
         private void delete_Click(object sender, EventArgs e)
@@ -146,13 +155,18 @@ namespace Divan
             }
             else if (cnt == 1)
             {
-                string name = (string)labelsGrid.SelectedCells[0].OwningRow.Cells[1].Value;
+                string name = labelsGrid.SelectedCells[0].OwningRow.Cells[1].Value.ToString();
                 message = "آیا از حذف برچسب " + name + " مطمئنید؟";
             }
-            if (RemoveConfirmationBox.ShowConfirmation(message) == DialogResult.OK)
+            if (RemoveConfirmationBox.ShowConfirmation(message) == DialogResult.Yes)
             {
-                DivanDataContext.Instance.Labels.DeleteOnSubmit(getSelectedLabel());
+                foreach (DataGridViewRow r in labelsGrid.SelectedRows)
+                {
+                    //TODO: make invisible
+                    //(r.DataBoundItem as Label);
+                }
                 DivanDataContext.Instance.SubmitChanges();
+                reloadLabels();
             }
         }
 
@@ -165,6 +179,33 @@ namespace Divan
         {
             if (!searchTxt.WordWrap) // It's not place holder
                 UIHelper.searchGrid(labelsGrid, searchTxt.Text);
+        }
+
+        private void حذفازداخلداراییهایدیگرToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            HashSet<int> set = new HashSet<int>();
+            for (int i = 0; i < labelsGrid.SelectedCells.Count; i++)
+                set.Add(labelsGrid.SelectedCells[i].RowIndex);
+            int cnt = set.Count;
+            string message = "";
+            if (cnt > 1)
+            {
+                message = "آیا از حذف " + cnt + " برچسب انتخاب شده مطمئنید؟";
+            }
+            else if (cnt == 1)
+            {
+                string name = labelsGrid.SelectedCells[0].OwningRow.Cells[1].Value.ToString();
+                message = "آیا از حذف برچسب " + name + " مطمئنید؟";
+            }
+            if (RemoveConfirmationBox.ShowConfirmation(message) == DialogResult.Yes)
+            {
+                foreach (DataGridViewRow r in labelsGrid.SelectedRows)
+                {
+                    DivanDataContext.Instance.Labels.DeleteOnSubmit(r.DataBoundItem as Label);
+                }
+                DivanDataContext.Instance.SubmitChanges();
+                reloadLabels();
+            }
         }
     }
 }
