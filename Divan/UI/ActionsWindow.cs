@@ -84,13 +84,15 @@ namespace Divan
             string message = "";
             if (cnt > 1)
             {
-                message = "آیا از حذف " + cnt + " عملیات انتخاب شده مطمئنید؟";
+                message += "آیا از حذف " + cnt + " عملیات انتخاب شده مطمئنید؟";
             }
             else if (cnt == 1)
             {
                 string name = (string)actionsGrid.SelectedCells[0].OwningRow.Cells[0].Value;
-                message = "آیا از حذف عملیات «" + name + "» مطمئنید؟";
+                message += "آیا از حذف عملیات «" + name + "» مطمئنید؟";
             }
+            else
+                return;
 
             if (RemoveConfirmationBox.ShowConfirmation(message) == System.Windows.Forms.DialogResult.Yes)
             {
@@ -110,7 +112,13 @@ namespace Divan
 
         private void button1_Click(object sender, EventArgs e)
         {
+            getSelectedAction().Run();
             MessageBox.Show("عملیات با موفقیت اجرا شد.");
+        }
+
+        private Action getSelectedAction()
+        {
+            return (Action)actionsGrid.SelectedRows[0].DataBoundItem;
         }
 
         private void assetsGrid_DoubleClick(object sender, EventArgs e)

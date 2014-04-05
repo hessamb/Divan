@@ -439,6 +439,7 @@
             this.dataGrid_DefinerLabel.RowHeadersVisible = false;
             this.dataGrid_DefinerLabel.Size = new System.Drawing.Size(223, 118);
             this.dataGrid_DefinerLabel.TabIndex = 17;
+            this.dataGrid_DefinerLabel.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.dataGrid_OtherLabel_CellValidating);
             // 
             // Check
             // 

@@ -71,22 +71,6 @@ namespace Divan
         {
             Action a = ActionsWindow.ShowActions();
             if(a!=null){
-                List<Action> al = new List<Action>();
-                al.Add(a);
-                int i = 0;
-                while (i < al.Count)
-                {
-                    a = al[i];
-                    foreach(var sub in a.SubActions){
-                        if (sub.Child == action || al.IndexOf(sub.Child) < i)
-                        {
-                            UIHelper.errorBox(this, "اضافه کردن این عملیات منجر به دور می‌شود.");
-                            break;
-                        }
-                        al.Add(sub.Child);
-                    }
-                    i++;
-                }
                 subActionList.Items.Add(a);
             }
         }
@@ -111,17 +95,15 @@ namespace Divan
                 return;
             }
 
-            if (action == null)
-            {
-                action = new Action();
-                DivanDataContext.Instance.Actions.InsertOnSubmit(action);
-            }
+            action = new Action();
             action.name = nameTxt.Text;
             action.Label = label;
             action.Asset = asset;
             action.value = textBox_value.Text;
             action.needsAutoRun = autoRunable.Checked;
             action.autoRunPeriod = Convert.ToInt32(textBox_period.Text);
+
+            DivanDataContext.Instance.Actions.InsertOnSubmit(action);
 
             if (compositAsset.Checked)
             {

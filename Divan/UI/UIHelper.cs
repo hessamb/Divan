@@ -121,7 +121,14 @@ namespace Divan
             public static void ValidateNotEmpty(TextBox textBox, ErrorProvider errorProvider)
             {
                 textBox.Validating += textBox_Validating;
-                controlsErrorProviders.Add(textBox, errorProvider);
+                try
+                {
+                    controlsErrorProviders.Add(textBox, errorProvider);
+                }
+                catch
+                {
+                    // textBox exists in dictionary
+                }
             }
 
             public static void CancelValidateNotEmpty(TextBox textBox)

@@ -12,8 +12,8 @@ namespace Divan
 {
     public partial class EventsWindow : Form
     {
-        public string SelectedAction { get; set; }
-        public static string ShowEvents()
+        public Event SelectedEvent { get; set; }
+        public static Event ShowEvents()
         {
             EventsWindow a = new EventsWindow();
             a.select.Visible = a.cancel.Visible = a.cancel.Enabled = true;
@@ -22,7 +22,7 @@ namespace Divan
             a.eventsGrid.DoubleClick += a.select_Click;
             if (a.ShowDialog() == DialogResult.OK)
             {
-                return a.SelectedAction;
+                return a.SelectedEvent;
             }
             return null;
         }
@@ -60,7 +60,7 @@ namespace Divan
 
         private void select_Click(object sender, EventArgs e)
         {
-            SelectedAction = (string)eventsGrid.SelectedCells[0].OwningRow.Cells[0].Value;
+            SelectedEvent = (Event)eventsGrid.SelectedRows[0].DataBoundItem;
            DialogResult = System.Windows.Forms.DialogResult.OK;
         }
 
@@ -111,6 +111,14 @@ namespace Divan
         private void assetsGrid_DoubleClick(object sender, EventArgs e)
         {
             button1_Click(null, null);
+        }
+
+        private void searchTxt_TextChanged(object sender, EventArgs e)
+        {
+            if (!searchTxt.WordWrap)
+            {
+                UIHelper.searchGrid(eventsGrid, searchTxt.Text);
+            }
         }
     }
 }

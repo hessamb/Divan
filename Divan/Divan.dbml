@@ -10,8 +10,8 @@
       <Column Name="labelID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="assetID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Association Name="Action_Event" Member="Events" ThisKey="Id" OtherKey="ActionID" Type="Event" />
-      <Association Name="Action_SubAction" Member="SuperActions" ThisKey="Id" OtherKey="childId" Type="SubAction" />
-      <Association Name="Action_SubAction1" Member="SubActions" ThisKey="Id" OtherKey="parentId" Type="SubAction" />
+      <Association Name="Action_SubAction" Member="SuperActionsM2M" Storage="_SuperActions" ThisKey="Id" OtherKey="childId" Type="SubAction" />
+      <Association Name="Action_SubAction1" Member="SubActionsM2M" Storage="_SubActions" ThisKey="Id" OtherKey="parentId" Type="SubAction" />
       <Association Name="Label_Action" Member="Label" ThisKey="labelID" OtherKey="Id" Type="Label" IsForeignKey="true" />
       <Association Name="Asset_Action" Member="Asset" ThisKey="assetID" OtherKey="Id" Type="Asset" IsForeignKey="true" />
     </Type>
@@ -121,7 +121,7 @@
   </Table>
   <Table Name="dbo.SubAction" Member="SubActions">
     <Type Name="SubAction">
-      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Id" AutoSync="Never" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="parentId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="childId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Association Name="Action_SubAction" Member="Child" ThisKey="childId" OtherKey="Id" Type="Action" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />

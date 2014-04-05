@@ -56,6 +56,7 @@ namespace Divan
             Action a = ActionsWindow.ShowActions();
             if (a != null)
             {
+                a.Run();
                 MessageBox.Show("عملیات " + a + " با موفقیت اجرا شد.");
             }
         }
@@ -70,12 +71,13 @@ namespace Divan
             (new NewEventWindow()).ShowDialog();
         }
 
-        private void button9_Click(object sender, EventArgs e)
+        private void button9_Click(object sender, EventArgs eventArg)
         {
-            string a=Divan.EventsWindow.ShowEvents();
-            if (a != null)
+            Event e=Divan.EventsWindow.ShowEvents();
+            if (e != null)
             {
-                MessageBox.Show("عملیات مربوط به رویداد " + a + " با موفقیت اجرا شد.");
+                e.RunAction();
+                MessageBox.Show("عملیات مربوط به رویداد " + e + " با موفقیت اجرا شد.");
             }
            
         }

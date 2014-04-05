@@ -328,6 +328,7 @@ namespace Divan
             {
                 DivanDataContext.Instance.Properties.DeleteAllOnSubmit(asset.Properties);
                 DivanDataContext.Instance.LabelInstances.DeleteAllOnSubmit(asset.LabelInstances);
+                DivanDataContext.Instance.AttachedFiles.DeleteAllOnSubmit(asset.AttachedFiles);
 
                 asset.Properties.Clear();
                 asset.LabelInstances.Clear();
@@ -481,8 +482,15 @@ namespace Divan
         private void dataGrid_OtherLabel_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
         {
             DataGridView grid = (DataGridView)sender;
-            DataGridViewCell cell = grid.Rows[e.RowIndex].Cells[e.ColumnIndex];
-            if (!UIHelper.Validation.isNonEmpty((String)cell.Value))
+            DataGridViewRow row = grid.Rows[e.RowIndex];
+            DataGridViewCell cell = row.Cells[e.ColumnIndex];
+            if (e.ColumnIndex==0)
+            {
+                if (!((bool)e.FormattedValue))
+                    row.Cells[2].ErrorText = "";
+                return;
+            }
+            if (((bool)row.Cells[0].Value) && !UIHelper.Validation.isNonEmpty((string)e.FormattedValue))
                 cell.ErrorText = "لطفا یک مقدار معتبر وارد کنید";
             else
                 cell.ErrorText = "";

@@ -139,6 +139,7 @@ namespace Divan
             {
                 DivanDataContext.Instance.DiscreteDomainValues.DeleteAllOnSubmit(label.LabelDomain.DiscreteDomainValues);
                 DivanDataContext.Instance.LabelDomains.DeleteOnSubmit(label.LabelDomain);
+                DivanDataContext.Instance.SubmitChanges();
             }
             if (unvalueableRadio.Checked)
             {

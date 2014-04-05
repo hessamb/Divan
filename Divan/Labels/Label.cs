@@ -28,9 +28,9 @@ namespace Divan
             this.isSplitter = isSplitter;
             this.LabelDomain = domain;
         }
-        public void Create()
+        partial void OnCreated()
         {
-            //TODO
+            this.visible = true;
         }
 
         public void Destroy()

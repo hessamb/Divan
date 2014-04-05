@@ -73,14 +73,8 @@
             this.button11 = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.button17 = new System.Windows.Forms.Button();
-            this.button16 = new System.Windows.Forms.Button();
-            this.button14 = new System.Windows.Forms.Button();
-            this.button15 = new System.Windows.Forms.Button();
-            this.button18 = new System.Windows.Forms.Button();
-            this.button19 = new System.Windows.Forms.Button();
             this.button20 = new System.Windows.Forms.Button();
+            this.button19 = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -118,19 +112,19 @@
             // 
             this.تعریفداراییجدیدToolStripMenuItem.Image = global::Divan.Properties.Resources.icon_package_add;
             this.تعریفداراییجدیدToolStripMenuItem.Name = "تعریفداراییجدیدToolStripMenuItem";
-            this.تعریفداراییجدیدToolStripMenuItem.Size = new System.Drawing.Size(166, 22);
+            this.تعریفداراییجدیدToolStripMenuItem.Size = new System.Drawing.Size(160, 22);
             this.تعریفداراییجدیدToolStripMenuItem.Text = "تعریف دارایی جدید";
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(163, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(157, 6);
             // 
             // مشاهدهداراییهاToolStripMenuItem
             // 
             this.مشاهدهداراییهاToolStripMenuItem.Image = global::Divan.Properties.Resources.list_packages;
             this.مشاهدهداراییهاToolStripMenuItem.Name = "مشاهدهداراییهاToolStripMenuItem";
-            this.مشاهدهداراییهاToolStripMenuItem.Size = new System.Drawing.Size(166, 22);
+            this.مشاهدهداراییهاToolStripMenuItem.Size = new System.Drawing.Size(160, 22);
             this.مشاهدهداراییهاToolStripMenuItem.Text = "مشاهده دارایی‌ها";
             // 
             // برچسبهاToolStripMenuItem
@@ -140,26 +134,26 @@
             this.toolStripSeparator2,
             this.مشاهدهبرچسبهاToolStripMenuItem});
             this.برچسبهاToolStripMenuItem.Name = "برچسبهاToolStripMenuItem";
-            this.برچسبهاToolStripMenuItem.Size = new System.Drawing.Size(67, 20);
+            this.برچسبهاToolStripMenuItem.Size = new System.Drawing.Size(63, 20);
             this.برچسبهاToolStripMenuItem.Text = "برچسب‌ها";
             // 
             // تعریفبرچسبجدیدToolStripMenuItem
             // 
             this.تعریفبرچسبجدیدToolStripMenuItem.Image = global::Divan.Properties.Resources.note_new;
             this.تعریفبرچسبجدیدToolStripMenuItem.Name = "تعریفبرچسبجدیدToolStripMenuItem";
-            this.تعریفبرچسبجدیدToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
+            this.تعریفبرچسبجدیدToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
             this.تعریفبرچسبجدیدToolStripMenuItem.Text = "تعریف برچسب جدید";
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(170, 6);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(160, 6);
             // 
             // مشاهدهبرچسبهاToolStripMenuItem
             // 
             this.مشاهدهبرچسبهاToolStripMenuItem.Image = global::Divan.Properties.Resources.list_note;
             this.مشاهدهبرچسبهاToolStripMenuItem.Name = "مشاهدهبرچسبهاToolStripMenuItem";
-            this.مشاهدهبرچسبهاToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
+            this.مشاهدهبرچسبهاToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
             this.مشاهدهبرچسبهاToolStripMenuItem.Text = "مشاهده برچسب‌ها";
             // 
             // تغییراتToolStripMenuItem
@@ -173,50 +167,50 @@
             this.گزارشوقوعرخدادToolStripMenuItem,
             this.مشاهدهرخدادهاToolStripMenuItem});
             this.تغییراتToolStripMenuItem.Name = "تغییراتToolStripMenuItem";
-            this.تغییراتToolStripMenuItem.Size = new System.Drawing.Size(97, 20);
+            this.تغییراتToolStripMenuItem.Size = new System.Drawing.Size(88, 20);
             this.تغییراتToolStripMenuItem.Text = "مدیریت تغییرات";
             // 
             // تعریفعملیاتجدیدToolStripMenuItem
             // 
             this.تعریفعملیاتجدیدToolStripMenuItem.Image = global::Divan.Properties.Resources.page_script;
             this.تعریفعملیاتجدیدToolStripMenuItem.Name = "تعریفعملیاتجدیدToolStripMenuItem";
-            this.تعریفعملیاتجدیدToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
+            this.تعریفعملیاتجدیدToolStripMenuItem.Size = new System.Drawing.Size(160, 22);
             this.تعریفعملیاتجدیدToolStripMenuItem.Text = "تعریف عملیات جدید‍";
             // 
             // اعمالعملیاتToolStripMenuItem
             // 
             this.اعمالعملیاتToolStripMenuItem.Name = "اعمالعملیاتToolStripMenuItem";
-            this.اعمالعملیاتToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
+            this.اعمالعملیاتToolStripMenuItem.Size = new System.Drawing.Size(160, 22);
             this.اعمالعملیاتToolStripMenuItem.Text = "اعمال عملیات";
             // 
             // مشاهدهعملیاتهاToolStripMenuItem
             // 
             this.مشاهدهعملیاتهاToolStripMenuItem.Name = "مشاهدهعملیاتهاToolStripMenuItem";
-            this.مشاهدهعملیاتهاToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
+            this.مشاهدهعملیاتهاToolStripMenuItem.Size = new System.Drawing.Size(160, 22);
             this.مشاهدهعملیاتهاToolStripMenuItem.Text = "مشاهده عملیات‌ها";
             // 
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(169, 6);
+            this.toolStripSeparator3.Size = new System.Drawing.Size(157, 6);
             // 
             // تعریفرخدادجدیدToolStripMenuItem
             // 
             this.تعریفرخدادجدیدToolStripMenuItem.Image = global::Divan.Properties.Resources.page_tag_blue;
             this.تعریفرخدادجدیدToolStripMenuItem.Name = "تعریفرخدادجدیدToolStripMenuItem";
-            this.تعریفرخدادجدیدToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
+            this.تعریفرخدادجدیدToolStripMenuItem.Size = new System.Drawing.Size(160, 22);
             this.تعریفرخدادجدیدToolStripMenuItem.Text = "تعریف رخداد جدید";
             // 
             // گزارشوقوعرخدادToolStripMenuItem
             // 
             this.گزارشوقوعرخدادToolStripMenuItem.Name = "گزارشوقوعرخدادToolStripMenuItem";
-            this.گزارشوقوعرخدادToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
+            this.گزارشوقوعرخدادToolStripMenuItem.Size = new System.Drawing.Size(160, 22);
             this.گزارشوقوعرخدادToolStripMenuItem.Text = "گزارش وقوع رخداد";
             // 
             // مشاهدهرخدادهاToolStripMenuItem
             // 
             this.مشاهدهرخدادهاToolStripMenuItem.Name = "مشاهدهرخدادهاToolStripMenuItem";
-            this.مشاهدهرخدادهاToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
+            this.مشاهدهرخدادهاToolStripMenuItem.Size = new System.Drawing.Size(160, 22);
             this.مشاهدهرخدادهاToolStripMenuItem.Text = "مشاهده رخدادها";
             // 
             // گزارشToolStripMenuItem
@@ -227,31 +221,31 @@
             this.گزارشبراساسیکعملیاتToolStripMenuItem,
             this.گزارشToolStripMenuItem1});
             this.گزارشToolStripMenuItem.Name = "گزارشToolStripMenuItem";
-            this.گزارشToolStripMenuItem.Size = new System.Drawing.Size(73, 20);
+            this.گزارشToolStripMenuItem.Size = new System.Drawing.Size(75, 20);
             this.گزارشToolStripMenuItem.Text = "گزارش‌گیری";
             // 
             // گزارشبراساسداراییToolStripMenuItem
             // 
             this.گزارشبراساسداراییToolStripMenuItem.Name = "گزارشبراساسداراییToolStripMenuItem";
-            this.گزارشبراساسداراییToolStripMenuItem.Size = new System.Drawing.Size(219, 22);
+            this.گزارشبراساسداراییToolStripMenuItem.Size = new System.Drawing.Size(213, 22);
             this.گزارشبراساسداراییToolStripMenuItem.Text = "گزارش بر اساس یک دارایی";
             // 
             // گزارشبراساسیکبرچسبToolStripMenuItem
             // 
             this.گزارشبراساسیکبرچسبToolStripMenuItem.Name = "گزارشبراساسیکبرچسبToolStripMenuItem";
-            this.گزارشبراساسیکبرچسبToolStripMenuItem.Size = new System.Drawing.Size(219, 22);
+            this.گزارشبراساسیکبرچسبToolStripMenuItem.Size = new System.Drawing.Size(213, 22);
             this.گزارشبراساسیکبرچسبToolStripMenuItem.Text = "گزارش بر اساس یک برچسب";
             // 
             // گزارشبراساسیکعملیاتToolStripMenuItem
             // 
             this.گزارشبراساسیکعملیاتToolStripMenuItem.Name = "گزارشبراساسیکعملیاتToolStripMenuItem";
-            this.گزارشبراساسیکعملیاتToolStripMenuItem.Size = new System.Drawing.Size(219, 22);
+            this.گزارشبراساسیکعملیاتToolStripMenuItem.Size = new System.Drawing.Size(213, 22);
             this.گزارشبراساسیکعملیاتToolStripMenuItem.Text = "گزارش بر اساس یک عملیات";
             // 
             // گزارشToolStripMenuItem1
             // 
             this.گزارشToolStripMenuItem1.Name = "گزارشToolStripMenuItem1";
-            this.گزارشToolStripMenuItem1.Size = new System.Drawing.Size(219, 22);
+            this.گزارشToolStripMenuItem1.Size = new System.Drawing.Size(213, 22);
             this.گزارشToolStripMenuItem1.Text = "گزارش بر اساس یک بازه زمانی";
             // 
             // تنظیماتToolStripMenuItem
@@ -262,33 +256,33 @@
             this.toolStripSeparator4,
             this.تنظیماتToolStripMenuItem1});
             this.تنظیماتToolStripMenuItem.Name = "تنظیماتToolStripMenuItem";
-            this.تنظیماتToolStripMenuItem.Size = new System.Drawing.Size(62, 20);
+            this.تنظیماتToolStripMenuItem.Size = new System.Drawing.Size(55, 20);
             this.تنظیماتToolStripMenuItem.Text = "تنظیمات";
             // 
             // ایجادنقطهمبداToolStripMenuItem
             // 
             this.ایجادنقطهمبداToolStripMenuItem.Image = global::Divan.Properties.Resources.icon_clock;
             this.ایجادنقطهمبداToolStripMenuItem.Name = "ایجادنقطهمبداToolStripMenuItem";
-            this.ایجادنقطهمبداToolStripMenuItem.Size = new System.Drawing.Size(195, 22);
+            this.ایجادنقطهمبداToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
             this.ایجادنقطهمبداToolStripMenuItem.Text = "ایجاد نقطه مبدا";
             // 
             // بازگشتبهیکنقطهمبداToolStripMenuItem
             // 
             this.بازگشتبهیکنقطهمبداToolStripMenuItem.Image = global::Divan.Properties.Resources.icon_history;
             this.بازگشتبهیکنقطهمبداToolStripMenuItem.Name = "بازگشتبهیکنقطهمبداToolStripMenuItem";
-            this.بازگشتبهیکنقطهمبداToolStripMenuItem.Size = new System.Drawing.Size(195, 22);
+            this.بازگشتبهیکنقطهمبداToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
             this.بازگشتبهیکنقطهمبداToolStripMenuItem.Text = "بازگشت به یک نقطه مبدا";
             // 
             // toolStripSeparator4
             // 
             this.toolStripSeparator4.Name = "toolStripSeparator4";
-            this.toolStripSeparator4.Size = new System.Drawing.Size(192, 6);
+            this.toolStripSeparator4.Size = new System.Drawing.Size(180, 6);
             // 
             // تنظیماتToolStripMenuItem1
             // 
             this.تنظیماتToolStripMenuItem1.Image = global::Divan.Properties.Resources.icon_settings;
             this.تنظیماتToolStripMenuItem1.Name = "تنظیماتToolStripMenuItem1";
-            this.تنظیماتToolStripMenuItem1.Size = new System.Drawing.Size(195, 22);
+            this.تنظیماتToolStripMenuItem1.Size = new System.Drawing.Size(183, 22);
             this.تنظیماتToolStripMenuItem1.Text = "تنظیمات";
             // 
             // groupBox1
@@ -424,8 +418,7 @@
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(128, 42);
             this.button5.TabIndex = 6;
-            this.button5.Text = "اعمال تغییرات";
-            this.button5.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.button5.Text = "اعمال عملیات";
             this.button5.UseVisualStyleBackColor = true;
             this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
@@ -496,104 +489,32 @@
             // 
             // groupBox4
             // 
-            this.groupBox4.Controls.Add(this.label1);
             this.groupBox4.Controls.Add(this.button20);
-            this.groupBox4.Controls.Add(this.button17);
-            this.groupBox4.Controls.Add(this.button16);
-            this.groupBox4.Controls.Add(this.button14);
-            this.groupBox4.Controls.Add(this.button15);
             this.groupBox4.Location = new System.Drawing.Point(14, 370);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(646, 144);
+            this.groupBox4.Size = new System.Drawing.Size(646, 82);
             this.groupBox4.TabIndex = 4;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "گزارش‌گیری";
             // 
-            // label1
+            // button20
             // 
-            this.label1.Image = global::Divan.Properties.Resources.page_text;
-            this.label1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.label1.Location = new System.Drawing.Point(493, 48);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(132, 14);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "گزارش بر اساس یک:";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // button17
-            // 
-            this.button17.Image = global::Divan.Properties.Resources.icon_clock;
-            this.button17.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button17.Location = new System.Drawing.Point(62, 34);
-            this.button17.Name = "button17";
-            this.button17.Size = new System.Drawing.Size(102, 42);
-            this.button17.TabIndex = 16;
-            this.button17.Text = "بازه زمانی";
-            this.button17.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button17.UseVisualStyleBackColor = true;
-            this.button17.Click += new System.EventHandler(this.button17_Click);
-            // 
-            // button16
-            // 
-            this.button16.Enabled = false;
-            this.button16.Image = global::Divan.Properties.Resources.page_script;
-            this.button16.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button16.Location = new System.Drawing.Point(170, 34);
-            this.button16.Name = "button16";
-            this.button16.Size = new System.Drawing.Size(102, 42);
-            this.button16.TabIndex = 15;
-            this.button16.Text = "عملیات خاص";
-            this.button16.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button16.UseVisualStyleBackColor = true;
-            this.button16.Click += new System.EventHandler(this.button16_Click);
-            // 
-            // button14
-            // 
-            this.button14.Enabled = false;
-            this.button14.Image = global::Divan.Properties.Resources.note;
-            this.button14.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button14.Location = new System.Drawing.Point(278, 34);
-            this.button14.Name = "button14";
-            this.button14.Size = new System.Drawing.Size(102, 42);
-            this.button14.TabIndex = 14;
-            this.button14.Text = "برچسب خاص";
-            this.button14.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button14.UseVisualStyleBackColor = true;
-            this.button14.Click += new System.EventHandler(this.button14_Click);
-            // 
-            // button15
-            // 
-            this.button15.Enabled = false;
-            this.button15.Image = global::Divan.Properties.Resources.icon_package;
-            this.button15.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button15.Location = new System.Drawing.Point(386, 34);
-            this.button15.Name = "button15";
-            this.button15.Size = new System.Drawing.Size(101, 42);
-            this.button15.TabIndex = 13;
-            this.button15.Text = "دارایی خاص";
-            this.button15.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button15.UseVisualStyleBackColor = true;
-            this.button15.Click += new System.EventHandler(this.button15_Click);
-            // 
-            // button18
-            // 
-            this.button18.Enabled = false;
-            this.button18.Image = global::Divan.Properties.Resources.icon_settings;
-            this.button18.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button18.Location = new System.Drawing.Point(508, 526);
-            this.button18.Name = "button18";
-            this.button18.Size = new System.Drawing.Size(128, 42);
-            this.button18.TabIndex = 17;
-            this.button18.Text = "تنظیمات";
-            this.button18.UseVisualStyleBackColor = true;
-            this.button18.Click += new System.EventHandler(this.button18_Click);
+            this.button20.Image = global::Divan.Properties.Resources.icon_clock;
+            this.button20.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button20.Location = new System.Drawing.Point(483, 25);
+            this.button20.Name = "button20";
+            this.button20.Size = new System.Drawing.Size(138, 42);
+            this.button20.TabIndex = 16;
+            this.button20.Text = "گزارش ناسازگاری‌ها";
+            this.button20.UseVisualStyleBackColor = true;
+            this.button20.Click += new System.EventHandler(this.button17_Click);
             // 
             // button19
             // 
             this.button19.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.button19.Image = global::Divan.Properties.Resources.cross;
             this.button19.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button19.Location = new System.Drawing.Point(14, 526);
+            this.button19.Location = new System.Drawing.Point(14, 458);
             this.button19.Name = "button19";
             this.button19.Size = new System.Drawing.Size(61, 42);
             this.button19.TabIndex = 18;
@@ -602,33 +523,21 @@
             this.button19.UseVisualStyleBackColor = true;
             this.button19.Click += new System.EventHandler(this.button19_Click);
             // 
-            // button20
-            // 
-            this.button20.Image = global::Divan.Properties.Resources.icon_clock;
-            this.button20.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button20.Location = new System.Drawing.Point(349, 82);
-            this.button20.Name = "button20";
-            this.button20.Size = new System.Drawing.Size(138, 42);
-            this.button20.TabIndex = 16;
-            this.button20.Text = "گزارش ناسازگاری";
-            this.button20.UseVisualStyleBackColor = true;
-            this.button20.Click += new System.EventHandler(this.button17_Click);
-            // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(672, 580);
+            this.ClientSize = new System.Drawing.Size(672, 508);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.button19);
-            this.Controls.Add(this.button18);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.menuStrip1);
             this.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
             this.Name = "MainWindow";
             this.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -691,12 +600,6 @@
         private System.Windows.Forms.Button button13;
         private System.Windows.Forms.Button button12;
         private System.Windows.Forms.GroupBox groupBox4;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button button17;
-        private System.Windows.Forms.Button button16;
-        private System.Windows.Forms.Button button14;
-        private System.Windows.Forms.Button button15;
-        private System.Windows.Forms.Button button18;
         private System.Windows.Forms.Button button19;
         private System.Windows.Forms.Button button20;
 
