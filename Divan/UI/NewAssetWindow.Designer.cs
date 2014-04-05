@@ -233,6 +233,7 @@
             this.textBox_NationalID.Name = "textBox_NationalID";
             this.textBox_NationalID.Size = new System.Drawing.Size(138, 22);
             this.textBox_NationalID.TabIndex = 6;
+            this.textBox_NationalID.Validating += new System.ComponentModel.CancelEventHandler(this.textBox_NationalID_Validating);
             // 
             // label5
             // 
@@ -346,6 +347,7 @@
             this.dataGrid_PrimaryInfo.TabIndex = 13;
             this.dataGrid_PrimaryInfo.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGrid_PrimaryInfo_CellEndEdit);
             this.dataGrid_PrimaryInfo.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.dataGrid_PrimaryInfo_CellValidating);
+            this.dataGrid_PrimaryInfo.Validating += new System.ComponentModel.CancelEventHandler(this.dataGrid_PrimaryInfo_Validating);
             // 
             // name
             // 

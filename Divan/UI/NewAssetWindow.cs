@@ -38,7 +38,6 @@ namespace Divan
             if (checkBox_isHuman.Checked)
             {
                 UIHelper.Validation.ValidateNotEmpty(textBox_FirstName, errorProvider);
-                UIHelper.Validation.ValidateNotEmpty(textBox_NationalID, errorProvider);
                 UIHelper.Validation.ValidateNotEmpty(textBox_PersonnelCode, errorProvider);
                 UIHelper.Validation.ValidateNotEmpty(textBox_LastName, errorProvider);
             }
@@ -46,7 +45,6 @@ namespace Divan
             {
                 UIHelper.Validation.CancelValidateNotEmpty(textBox_FirstName);
                 UIHelper.Validation.CancelValidateNotEmpty(textBox_LastName);
-                UIHelper.Validation.CancelValidateNotEmpty(textBox_NationalID);
                 UIHelper.Validation.CancelValidateNotEmpty(textBox_PersonnelCode);
             }
         }
@@ -276,8 +274,16 @@ namespace Divan
                     result = false;
                 if (!UIHelper.Validation.DoNotEmptyValidation(textBox_LastName))
                     result = false;
-                if (!UIHelper.Validation.DoNotEmptyValidation(textBox_NationalID))
+                if (!UIHelper.Validation.isNonEmpty(textBox_NationalID.Text))
+                {
+                    errorProvider.SetError(textBox_NationalID, "این مورد الزامی است.");
                     result = false;
+                }
+                else if (!UIHelper.Validation.isValidNationalID(textBox_NationalID.Text))
+                {
+                    errorProvider.SetError(textBox_NationalID, "لطفا یک کد ملی ده رقمی معتبر وارد کنید.");
+                    result = false;
+                }
                 if (!UIHelper.Validation.DoNotEmptyValidation(textBox_PersonnelCode))
                     result = false;
             }
@@ -494,6 +500,21 @@ namespace Divan
                 cell.ErrorText = "لطفا یک مقدار معتبر وارد کنید";
             else
                 cell.ErrorText = "";
+        }
+
+        private void textBox_NationalID_Validating(object sender, CancelEventArgs e)
+        {
+            if (!UIHelper.Validation.isNonEmpty(textBox_NationalID.Text))
+                errorProvider.SetError(textBox_NationalID, "این مورد ضروری است.");
+            else if (!UIHelper.Validation.isValidNationalID(textBox_NationalID.Text))
+                errorProvider.SetError(textBox_NationalID, "لطفا یک کد ملی ده رقمی معتبر وارد کنید.");
+            else
+                errorProvider.SetError(textBox_NationalID, "");
+        }
+
+        private void dataGrid_PrimaryInfo_Validating(object sender, CancelEventArgs e)
+        {
+            
         }
 
     }
