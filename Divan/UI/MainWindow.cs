@@ -53,11 +53,11 @@ namespace Divan
 
         private void button5_Click(object sender, EventArgs e)
         {
-            string a=ActionsWindow.ShowActions();
-            if (a != null)
-            {
-                MessageBox.Show("عملیات " + a + " با موفقیت اجرا شد.");
-            }
+            //string a=ActionsWindow.ShowActions();
+            //if (a != null)
+            //{
+            //    MessageBox.Show("عملیات " + a + " با موفقیت اجرا شد.");
+            //}
         }
 
         private void button7_Click(object sender, EventArgs e)
