@@ -56,6 +56,7 @@
             this.button3 = new System.Windows.Forms.Button();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.مشاهدهمشخصاتToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
             this.flowLayoutPanel1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.domainGroup.SuspendLayout();
@@ -64,6 +65,7 @@
             this.subAssets.SuspendLayout();
             this.panel2.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             this.SuspendLayout();
             // 
             // flowLayoutPanel1
@@ -135,18 +137,18 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.Controls.Add(this.label_asset, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.label_label, 0, 1);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(129, 22);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(142, 22);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 48.21429F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 51.78571F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(338, 56);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(325, 56);
             this.tableLayoutPanel1.TabIndex = 5;
             // 
             // label_asset
             // 
             this.label_asset.AutoSize = true;
-            this.label_asset.Location = new System.Drawing.Point(232, 0);
+            this.label_asset.Location = new System.Drawing.Point(219, 0);
             this.label_asset.Name = "label_asset";
             this.label_asset.Size = new System.Drawing.Size(103, 14);
             this.label_asset.TabIndex = 1;
@@ -155,7 +157,7 @@
             // label_label
             // 
             this.label_label.AutoSize = true;
-            this.label_label.Location = new System.Drawing.Point(177, 27);
+            this.label_label.Location = new System.Drawing.Point(164, 27);
             this.label_label.Name = "label_label";
             this.label_label.Size = new System.Drawing.Size(158, 14);
             this.label_label.TabIndex = 1;
@@ -164,9 +166,9 @@
             // textBox_value
             // 
             this.textBox_value.Enabled = false;
-            this.textBox_value.Location = new System.Drawing.Point(8, 84);
+            this.textBox_value.Location = new System.Drawing.Point(21, 84);
             this.textBox_value.Name = "textBox_value";
-            this.textBox_value.Size = new System.Drawing.Size(366, 22);
+            this.textBox_value.Size = new System.Drawing.Size(353, 22);
             this.textBox_value.TabIndex = 3;
             // 
             // label4
@@ -183,7 +185,7 @@
             this.button_selectLabel.Enabled = false;
             this.button_selectLabel.Image = global::Divan.Properties.Resources.note;
             this.button_selectLabel.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button_selectLabel.Location = new System.Drawing.Point(8, 53);
+            this.button_selectLabel.Location = new System.Drawing.Point(21, 53);
             this.button_selectLabel.Name = "button_selectLabel";
             this.button_selectLabel.Size = new System.Drawing.Size(115, 25);
             this.button_selectLabel.TabIndex = 2;
@@ -191,12 +193,13 @@
             this.button_selectLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.button_selectLabel.UseVisualStyleBackColor = true;
             this.button_selectLabel.Click += new System.EventHandler(this.button6_Click);
+            this.button_selectLabel.Validating += new System.ComponentModel.CancelEventHandler(this.button_selectLabel_Validating);
             // 
             // button_selectAsset
             // 
             this.button_selectAsset.Image = global::Divan.Properties.Resources.icon_package;
             this.button_selectAsset.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button_selectAsset.Location = new System.Drawing.Point(8, 22);
+            this.button_selectAsset.Location = new System.Drawing.Point(21, 22);
             this.button_selectAsset.Name = "button_selectAsset";
             this.button_selectAsset.Size = new System.Drawing.Size(115, 25);
             this.button_selectAsset.TabIndex = 1;
@@ -204,12 +207,14 @@
             this.button_selectAsset.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.button_selectAsset.UseVisualStyleBackColor = true;
             this.button_selectAsset.Click += new System.EventHandler(this.button2_Click);
+            this.button_selectAsset.Validating += new System.ComponentModel.CancelEventHandler(this.button_selectAsset_Validating);
             // 
             // autoRunable
             // 
             this.autoRunable.AutoSize = true;
             this.autoRunable.Checked = true;
             this.autoRunable.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.autoRunable.Enabled = false;
             this.autoRunable.Location = new System.Drawing.Point(247, 167);
             this.autoRunable.Name = "autoRunable";
             this.autoRunable.Size = new System.Drawing.Size(235, 18);
@@ -223,6 +228,7 @@
             this.runTime.Controls.Add(this.textBox_period);
             this.runTime.Controls.Add(this.label6);
             this.runTime.Controls.Add(this.label5);
+            this.runTime.Enabled = false;
             this.runTime.Location = new System.Drawing.Point(15, 191);
             this.runTime.Name = "runTime";
             this.runTime.Size = new System.Drawing.Size(467, 51);
@@ -369,6 +375,11 @@
             this.مشاهدهمشخصاتToolStripMenuItem.Size = new System.Drawing.Size(207, 22);
             this.مشاهدهمشخصاتToolStripMenuItem.Text = "مشاهده مشخصات زیربرچسب";
             // 
+            // errorProvider
+            // 
+            this.errorProvider.ContainerControl = this;
+            this.errorProvider.RightToLeft = true;
+            // 
             // NewActionWindow
             // 
             this.AcceptButton = this.button3;
@@ -389,6 +400,7 @@
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "تعریف عملیات جدید";
+            this.Load += new System.EventHandler(this.NewActionWindow_Load);
             this.flowLayoutPanel1.ResumeLayout(false);
             this.flowLayoutPanel1.PerformLayout();
             this.panel3.ResumeLayout(false);
@@ -402,6 +414,7 @@
             this.subAssets.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.contextMenuStrip1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -436,5 +449,6 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.ErrorProvider errorProvider;
     }
 }

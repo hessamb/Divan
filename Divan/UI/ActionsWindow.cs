@@ -71,7 +71,8 @@ namespace Divan
 
         private void button3_Click(object sender, EventArgs e)
         {
-            (new NewActionWindow()).ShowDialog();
+            if((new NewActionWindow()).ShowDialog()==System.Windows.Forms.DialogResult.Yes)
+                reloadActions();
         }
 
         private void delete_Click(object sender, EventArgs e)
@@ -90,7 +91,21 @@ namespace Divan
                 string name = (string)actionsGrid.SelectedCells[0].OwningRow.Cells[0].Value;
                 message = "آیا از حذف عملیات «" + name + "» مطمئنید؟";
             }
-            RemoveConfirmationBox.ShowConfirmation(message);
+
+            if (RemoveConfirmationBox.ShowConfirmation(message) == System.Windows.Forms.DialogResult.Yes)
+            {
+                foreach (DataGridViewRow r in actionsGrid.SelectedRows)
+                {
+                    Action a = r.DataBoundItem as Action;
+                    var subs = from s in DivanDataContext.Instance.SubActions
+                               where s.Parent == a
+                               select s;
+                    DivanDataContext.Instance.SubActions.DeleteAllOnSubmit(subs);
+                    DivanDataContext.Instance.Actions.DeleteOnSubmit(a);
+                }
+                DivanDataContext.Instance.SubmitChanges();
+                reloadActions();
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -101,6 +116,17 @@ namespace Divan
         private void assetsGrid_DoubleClick(object sender, EventArgs e)
         {
             button1_Click(null, null);
+        }
+
+        private void searchTxt_TextChanged(object sender, EventArgs e)
+        {
+            if (!searchTxt.WordWrap)
+                UIHelper.searchGrid(actionsGrid, searchTxt.Text);
+        }
+
+        private void assetsGrid_DoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

@@ -47,6 +47,7 @@
             this.name = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.assetName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.labelName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.value = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Composite = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.actionsGrid)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
@@ -63,6 +64,7 @@
             this.searchTxt.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.searchTxt.Size = new System.Drawing.Size(506, 22);
             this.searchTxt.TabIndex = 1;
+            this.searchTxt.TextChanged += new System.EventHandler(this.searchTxt_TextChanged);
             // 
             // actionsGrid
             // 
@@ -78,6 +80,7 @@
             this.name,
             this.assetName,
             this.labelName,
+            this.value,
             this.Composite});
             this.actionsGrid.ContextMenuStrip = this.contextMenuStrip1;
             this.actionsGrid.Location = new System.Drawing.Point(14, 58);
@@ -91,8 +94,8 @@
             this.actionsGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.actionsGrid.Size = new System.Drawing.Size(506, 386);
             this.actionsGrid.TabIndex = 2;
+            this.actionsGrid.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.assetsGrid_DoubleClick);
             this.actionsGrid.SelectionChanged += new System.EventHandler(this.assetsGrid_SelectionChanged);
-            this.actionsGrid.DoubleClick += new System.EventHandler(this.assetsGrid_DoubleClick);
             // 
             // contextMenuStrip1
             // 
@@ -249,9 +252,17 @@
             this.labelName.ReadOnly = true;
             this.labelName.Width = 90;
             // 
+            // value
+            // 
+            this.value.DataPropertyName = "value";
+            this.value.HeaderText = "مقدار";
+            this.value.Name = "value";
+            this.value.ReadOnly = true;
+            // 
             // Composite
             // 
             this.Composite.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Composite.DataPropertyName = "Composite";
             this.Composite.HeaderText = "مرکب";
             this.Composite.Name = "Composite";
             this.Composite.ReadOnly = true;
@@ -299,11 +310,12 @@
         private System.Windows.Forms.ToolStripMenuItem مشاهدهمشخصاتToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripMenuItem حذفToolStripMenuItem;
+        private System.Windows.Forms.DataGridView actionsGrid;
         private System.Windows.Forms.DataGridViewTextBoxColumn name;
         private System.Windows.Forms.DataGridViewTextBoxColumn assetName;
         private System.Windows.Forms.DataGridViewTextBoxColumn labelName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn value;
         private System.Windows.Forms.DataGridViewCheckBoxColumn Composite;
-        private System.Windows.Forms.DataGridView actionsGrid;
 
     }
 }
