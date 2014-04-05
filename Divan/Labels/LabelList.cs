@@ -41,6 +41,13 @@ namespace Divan
                          select l;
             return labels.AsEnumerable();
         }
+        public IEnumerable<Label> GetAllVisibles()
+        {
+            var labels = from l in DivanDataContext.Instance.Labels
+                         where l.visible==true
+                         select l;
+            return labels.AsEnumerable();
+        }
 
         public Label getLabelById(int id)
         {
