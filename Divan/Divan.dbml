@@ -57,14 +57,14 @@
   <Table Name="dbo.LabelDomain" Member="LabelDomains">
     <Type Name="LabelDomain">
       <Column Name="Id" AutoSync="Never" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="minValue" Type="System.Double" CanBeNull="true" />
-      <Column Name="maxValue" Type="System.Double" CanBeNull="true" />
+      <Column Name="minValue" Type="System.Single" DbType="real" CanBeNull="true" />
+      <Column Name="maxValue" Type="System.Single" DbType="real" CanBeNull="true" />
       <Column Name="isOrdered" Type="System.Boolean" CanBeNull="true" />
       <Association Name="LabelDomain_DiscreteDomainValue" Member="DiscreteDomainValues" ThisKey="Id" OtherKey="domainID" Type="DiscreteDomainValue" />
       <Association Name="LabelDomain_Label" Member="Labels" ThisKey="Id" OtherKey="domainID" Type="Label" />
       <Type Name="ContinuousDomain">
-        <Column Name="minValue" Type="System.Double" DbType="real NULL" CanBeNull="true" />
-        <Column Name="maxValue" Type="System.Double" DbType="real NULL" CanBeNull="true" />
+        <Column Name="minValue" Type="System.Single" DbType="real" CanBeNull="true" />
+        <Column Name="maxValue" Type="System.Single" DbType="real" CanBeNull="true" />
       </Type>
       <Type Name="DiscreteDomain">
         <Column Name="isOrdered" Type="System.Boolean" CanBeNull="true" />

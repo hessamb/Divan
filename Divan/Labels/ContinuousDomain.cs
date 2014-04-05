@@ -9,7 +9,7 @@ namespace Divan
     public partial class ContinuousDomain:LabelDomain
     {
 
-        public ContinuousDomain(double minValue, double maxValue): base()
+        public ContinuousDomain(float minValue, float maxValue): base()
         {
             this.minValue = minValue;
             this.maxValue = maxValue;

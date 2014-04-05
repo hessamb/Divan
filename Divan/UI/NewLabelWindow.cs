@@ -155,8 +155,8 @@ namespace Divan
             }
             else if (!discreteRadio.Checked)
             {
-                LabelDomain domain = new LabelDomain(Convert.ToDouble(textBox_minValue.Text),
-                    Convert.ToDouble(textBox_maxValue.Text), null);
+                LabelDomain domain = new LabelDomain(float.Parse(textBox_minValue.Text),
+                    float.Parse(textBox_maxValue.Text), null);
                 DivanDataContext.Instance.LabelDomains.InsertOnSubmit(domain);
                 if (label == null)
                     label = new Label();

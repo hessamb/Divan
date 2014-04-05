@@ -8,22 +8,39 @@ namespace Divan
 {
     public class ActionList
     {
-        public List<Action> GetAll()
+        private static AssetList instance;
+
+        public static AssetList Instance
         {
-            //TODO
-            return null;
+            get
+            {
+                if (instance == null)
+                    instance = new AssetList();
+                return instance;
+            }
         }
 
-        public List<Action> GetAutoRunables()
+        public IEnumerable<Action> GetAll()
         {
-            //TODO
-            return null;
+            var actions = from a in DivanDataContext.Instance.Actions
+                          select a;
+            return actions.AsEnumerable();
         }
 
-        public List<Action> GetResult(string query)
+        public IEnumerable<Action> GetAutoRunables()
         {
-            //TODO
-            return null;
+            var actions = from a in DivanDataContext.Instance.Actions
+                          where a.needsAutoRun==true
+                          select a;
+            return actions.AsEnumerable();
+        }
+
+        public IEnumerable<Action> GetResult(string query)
+        {
+            var actions = from a in DivanDataContext.Instance.Actions
+                          where a.name.Contains(query)
+                          select a;
+            return actions.AsEnumerable();
         }
     }
 }

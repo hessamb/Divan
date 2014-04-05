@@ -7,8 +7,7 @@ namespace Divan
 {
     public partial class LabelDomain
     {
-
-        public LabelDomain(double? minValue, double? maxValue, bool? isOrdered)
+        public LabelDomain(float? minValue, float? maxValue, bool? isOrdered)
             : this()
         {
             this.minValue = minValue;
