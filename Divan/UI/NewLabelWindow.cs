@@ -158,6 +158,7 @@ namespace Divan
                 LabelDomain domain = new LabelDomain(Convert.ToDouble(textBox_minValue.Text),
                     Convert.ToDouble(textBox_maxValue.Text), null);
                 DivanDataContext.Instance.LabelDomains.InsertOnSubmit(domain);
+                DivanDataContext.Instance.SubmitChanges();
                 if (label == null)
                     label = new Label();
                 label.name = nameTxt.Text;
@@ -179,6 +180,7 @@ namespace Divan
                     DivanDataContext.Instance.DiscreteDomainValues.InsertOnSubmit(value);
                 }
                 DivanDataContext.Instance.LabelDomains.InsertOnSubmit(domain);
+                DivanDataContext.Instance.SubmitChanges();
                 if (label == null)
                     label = new Label();
                 label.name = nameTxt.Text;

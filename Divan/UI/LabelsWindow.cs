@@ -12,11 +12,26 @@ namespace Divan
 {
     public partial class LabelsWindow : Form
     {
-        public string SelectedLabel { get; set; }
-        public static string ShowLabels()
+        private Asset asset;
+        public Label SelectedLabel { get; set; }
+        public static Label ShowLabels()
         {
             LabelsWindow a = new LabelsWindow();
             a.select.Visible=a.cancel.Visible=a.cancel.Enabled= true;
+            a.delete.Visible = a.edit.Visible = false;
+            a.labelsGrid.DoubleClick -= a.assetsGrid_DoubleClick;
+            a.labelsGrid.DoubleClick += a.select_Click;
+            if (a.ShowDialog() == DialogResult.OK)
+            {
+                return a.SelectedLabel;
+            }
+            return null;
+        }
+
+        public static Label ShowLabels(Asset asset)
+        {
+            LabelsWindow a = new LabelsWindow(asset);
+            a.select.Visible = a.cancel.Visible = a.cancel.Enabled = true;
             a.delete.Visible = a.edit.Visible = false;
             a.labelsGrid.DoubleClick -= a.assetsGrid_DoubleClick;
             a.labelsGrid.DoubleClick += a.select_Click;
@@ -32,6 +47,11 @@ namespace Divan
             InitializeComponent();
         }
 
+        public LabelsWindow(Asset asset): this()
+        {
+            this.asset = asset;
+        }
+
         private void assetsTree_AfterSelect(object sender, TreeViewEventArgs e)
         {
 
@@ -42,8 +62,10 @@ namespace Divan
             UIHelper.SetPlaceHolder(searchTxt, "جستجوی برچسب");
             
             labelsGrid.AutoGenerateColumns = false;
-            labelsGrid.DataSource = LabelList.Instance.GetAll();
-
+            if (this.asset == null)
+                labelsGrid.DataSource = LabelList.Instance.GetAll();
+            else
+                labelsGrid.DataSource = asset.getLabels();
         }
 
         private void assetsGrid_SelectionChanged(object sender, EventArgs e)
@@ -56,7 +78,7 @@ namespace Divan
 
         private void select_Click(object sender, EventArgs e)
         {
-           SelectedLabel = (string)labelsGrid.SelectedCells[0].OwningRow.Cells[0].Value;
+           SelectedLabel = getSelectedLabel();
            DialogResult = System.Windows.Forms.DialogResult.OK;
         }
 
@@ -123,6 +145,7 @@ namespace Divan
             if (RemoveConfirmationBox.ShowConfirmation(message) == DialogResult.OK)
             {
                 DivanDataContext.Instance.Labels.DeleteOnSubmit(getSelectedLabel());
+                DivanDataContext.Instance.SubmitChanges();
             }
         }
 

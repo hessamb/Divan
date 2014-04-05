@@ -30,10 +30,10 @@ namespace Divan
 
         private void button1_Click(object sender, EventArgs e)
         {
-            string ns = LabelsWindow.ShowLabels();
+            Label ns = LabelsWindow.ShowLabels();
             if (ns != null)
             {
-                assetLabel.Text = ns;
+                assetLabel.Text = ns.name;
             }
         }
 

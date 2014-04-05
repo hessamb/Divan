@@ -231,5 +231,27 @@ namespace Divan
                 return this.Properties.Where(property => !SPECIAL_NAMES.Contains(property.Name));
             }
         }
+
+        public IEnumerable<Label> getLabels()
+        {
+            var labels = from l in this.LabelInstances
+                         select l.Label;
+            return labels.AsEnumerable();
+        }
+
+        public LabelInstance getLabelInstance(Label label)
+        {
+            var labelInstances = from l in DivanDataContext.Instance.LabelInstances
+                                 where l.Label == label && l.Asset == this
+                                 select l;
+            try
+            {
+                return labelInstances.First();
+            }
+            catch
+            {
+                throw new Exception("LabelInstance Not Found!");
+            }
+        }
     }
 }

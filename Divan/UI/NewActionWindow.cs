@@ -12,6 +12,9 @@ namespace Divan
 {
     public partial class NewActionWindow : Form
     {
+        Asset asset;
+        LabelInstance labelInstance;
+
         public NewActionWindow()
         {
             InitializeComponent();
@@ -40,12 +43,25 @@ namespace Divan
 
         private void button2_Click(object sender, EventArgs e)
         {
-            AssetsWindow.ShowAssets();
+            String uid = AssetsWindow.ShowAssets();
+            if (uid == null)
+                return;
+            asset = AssetList.Instance.GetByUid(uid);
+            label_asset.Text = "دارایی: " + asset.Name;
+            label_label.Text = "برچسب: " + asset.Name + " > انتخاب کنید";
+            button_selectLabel.Enabled = true;
+            textBox_value.Enabled = false;
+            textBox_value.Text = "";
         }
 
         private void button6_Click(object sender, EventArgs e)
         {
-            LabelsWindow.ShowLabels();
+            Label result = LabelsWindow.ShowLabels(asset);
+            if (result != null)
+                labelInstance = asset.getLabelInstance(result);
+            label_label.Text = "برچسب: " + asset.Name + " > " + result.name;
+            textBox_value.Text = labelInstance.value;
+            textBox_value.Enabled = true;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -59,6 +75,11 @@ namespace Divan
         private void subActionList_SelectedIndexChanged(object sender, EventArgs e)
         {
             removeSubAssetBut.Enabled = subActionList.SelectedItem != null;
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
