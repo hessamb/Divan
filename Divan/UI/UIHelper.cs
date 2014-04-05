@@ -187,7 +187,7 @@ namespace Divan
 
             public static bool isValidNationalID(string text)
             {
-                return Regex.Match(text, "\\d{10}").Success;
+                return Regex.Match(text, @"^\d{10}$").Success;
             }
         }
     }

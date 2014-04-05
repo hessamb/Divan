@@ -28,7 +28,28 @@ namespace Divan
         }
         public virtual bool IsValidValue(string value)
         {
-            //TODO
+            if (value == null)
+                return false;
+            if (this.isDiscrete())
+            {
+                foreach (DiscreteDomainValue val in this.DiscreteDomainValues)
+                    if (value == val.value)
+                        return true;
+            }
+            else
+            {
+                try
+                {
+                    const double EPSILON = 1e-8;
+                    double r = Convert.ToDouble(value);
+                    if (r >= this.minValue-EPSILON && r <= this.maxValue+EPSILON)
+                        return true;
+                }
+                catch
+                {
+                    return false;
+                }
+            }
             return false;
         }
 

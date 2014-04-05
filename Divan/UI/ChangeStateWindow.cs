@@ -60,7 +60,7 @@ namespace Divan
             foreach (LabelInstance label in labels)
             {
                 DataGridView grid = dataGrid_Label;
-                int index = grid.Rows.Add(new object[] { label.Label.name, label.Label.setValue ? label.value : Label.UNASSANABLE_VALUE });
+                int index = grid.Rows.Add(new object[] { label.Label.name, label.Label.setValue ? label.value : Label.UNASSANABLE_VALUE, label.labelID});
                 if (!label.Label.setValue)
                 {
                     UIHelper.disableCell(grid.Rows[index].Cells[1]);
@@ -113,6 +113,16 @@ namespace Divan
 
         private void okBtn_Click(object sender, EventArgs e)
         {
+            foreach (DataGridViewRow row in dataGrid_Label.Rows)
+            {
+                if (row.Cells[1].ErrorText != "")
+                {
+                    UIHelper.errorBox(this, "لطفا خطاهای ورودی را رفع کنید");
+                    labelSearchText.Text = "";
+                    this.DialogResult = DialogResult.None;
+                    return;
+                }
+            }
             for (int i = 0; i < labelId.Count; i++)
             {
                 int id = labelId[i];
@@ -136,6 +146,22 @@ namespace Divan
         {
             if (!labelSearchText.WordWrap) // It's not place holder
                 UIHelper.searchGrid(dataGrid_Label, labelSearchText.Text);
+        }
+
+        private void dataGrid_Label_CellValidated(object sender, DataGridViewCellEventArgs e)
+        {
+            DataGridView grid = (DataGridView)sender;
+            DataGridViewRow row = grid.Rows[e.RowIndex];
+            DataGridViewCell cell = row.Cells[1];
+            Label rowLabel = LabelList.Instance.getLabelById((int)row.Cells[2].Value);
+            if (!rowLabel.setValue)
+                return;
+            if (!UIHelper.Validation.isNonEmpty((string)cell.Value))
+                cell.ErrorText = "این مورد الزامی است";
+            else if (!rowLabel.LabelDomain.IsValidValue((string)cell.Value))
+                cell.ErrorText = "مقدار وارد شده در دامنه مقادیر برچسب " + rowLabel.name + " نیست.";
+            else
+                cell.ErrorText = "";
         }
     }
 }

@@ -89,20 +89,31 @@ namespace Divan
             foreach (LabelInstance labelInstance in asset.LabelInstances)
             {
                 int id = labelInstance.labelID;
-                int index = splitterLabelId.IndexOf(id);
-                if (index != -1)
+                if (labelInstance.Label.isSplitter)
                 {
+                    int index = splitterLabelId.IndexOf(id);
+                    if (index == -1) // Label is invisible
+                    {
+                        index = dataGrid_DefinerLabel.Rows.Add(new object[] { false, labelInstance.Label.name, "", labelInstance.labelID});
+                        splitterLabelId.Add(labelInstance.labelID);
+                        if (!labelInstance.Label.setValue)
+                            UIHelper.disableCell(dataGrid_DefinerLabel.Rows[index].Cells[2]);
+                    }
                     dataGrid_DefinerLabel.Rows[index].Cells[0].Value = true;
                     dataGrid_DefinerLabel.Rows[index].Cells[2].Value = labelInstance.value;
                 }
                 else
                 {
-                    index = otherLabelId.IndexOf(id);
-                    if (index != -1)
+                    int index = otherLabelId.IndexOf(id);
+                    if (index == -1) // Label is invisible
                     {
-                        dataGrid_OtherLabel.Rows[index].Cells[2].Value = labelInstance.value;
-                        dataGrid_OtherLabel.Rows[index].Cells[0].Value = true;
+                        index = dataGrid_DefinerLabel.Rows.Add(new object[] { false, labelInstance.Label.name, "", labelInstance.labelID});
+                        otherLabelId.Add(labelInstance.labelID);
+                        if (!labelInstance.Label.setValue)
+                            UIHelper.disableCell(dataGrid_DefinerLabel.Rows[index].Cells[2]);
                     }
+                    dataGrid_OtherLabel.Rows[index].Cells[2].Value = labelInstance.value;
+                    dataGrid_OtherLabel.Rows[index].Cells[0].Value = true;
                 }
             }
         }
@@ -132,7 +143,7 @@ namespace Divan
 
         private void loadLabels()
         {
-            IEnumerable<Label> labels = LabelList.Instance.GetAll();
+            IEnumerable<Label> labels = LabelList.Instance.GetAllVisibles();
             splitterLabelId = new List<int>();
             otherLabelId = new List<int>();
 
@@ -140,7 +151,7 @@ namespace Divan
             {
                 DataGridView grid = label.isSplitter ? dataGrid_DefinerLabel
                     : dataGrid_OtherLabel;
-                grid.Rows.Add(new object[] { false, label.name, label.setValue ? "" : Label.UNASSANABLE_VALUE });
+                grid.Rows.Add(new object[] { false, label.name, label.setValue ? "" : Label.UNASSANABLE_VALUE, label.Id});
                 if (!label.setValue)
                 {
                     UIHelper.disableCell( grid.Rows[grid.Rows.Count - 1].Cells[2] );
@@ -294,7 +305,7 @@ namespace Divan
                 {
                     if (!UIHelper.Validation.isNonEmpty((String)cell.Value))
                     {
-                        cell.ErrorText = "لطفا یک مقدار معتبر وارد کنید.";
+                        cell.ErrorText = "این مورد الزامی است.";
                         result = false;
                     }
                     else if (cell.ErrorText != "")
@@ -307,9 +318,8 @@ namespace Divan
             {
                 foreach (DataGridViewRow row in grid.Rows)
                 {
-                    if (((Boolean)row.Cells[0].Value) && !UIHelper.Validation.isNonEmpty((String)row.Cells[2].Value))
+                    if (row.Cells[2].ErrorText != "")
                     {
-                        row.Cells[2].ErrorText = "لطفا یک مقدار وارد کنید.";
                         result = false;
                     }
                 }
@@ -323,6 +333,7 @@ namespace Divan
             if (!areFieldsValidated())
             {
                 UIHelper.errorBox(this, "لطفا خطاهای ورودی را رفع کنید");
+                labelSearchtxt.Text = "";
                 this.DialogResult = DialogResult.None;
                 return;
             }
@@ -464,7 +475,7 @@ namespace Divan
                 || !UIHelper.Validation.isNonEmpty(value))
                 return;
             if (!LabelDomain.isCompatible(type, value))
-                row.Cells[2].ErrorText = "لطفا یک مقدار معتبر وارد کنید";
+                row.Cells[2].ErrorText = "این مورد الزامی است.";
             else
                 row.Cells[2].ErrorText = "";
         }
@@ -489,19 +500,7 @@ namespace Divan
 
         private void dataGrid_OtherLabel_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
         {
-            DataGridView grid = (DataGridView)sender;
-            DataGridViewRow row = grid.Rows[e.RowIndex];
-            DataGridViewCell cell = row.Cells[e.ColumnIndex];
-            if (e.ColumnIndex==0)
-            {
-                if (!((bool)e.FormattedValue))
-                    row.Cells[2].ErrorText = "";
-                return;
-            }
-            if (((bool)row.Cells[0].Value) && !UIHelper.Validation.isNonEmpty((string)e.FormattedValue))
-                cell.ErrorText = "لطفا یک مقدار معتبر وارد کنید";
-            else
-                cell.ErrorText = "";
+            
         }
 
         private void textBox_NationalID_Validating(object sender, CancelEventArgs e)
@@ -529,6 +528,29 @@ namespace Divan
             }
             else
                 errorProvider.SetError(grid, "");
+        }
+
+        private void dataGrid_OtherLabel_CellValidated(object sender, DataGridViewCellEventArgs e)
+        {
+            DataGridView grid = (DataGridView)sender;
+            DataGridViewRow row = grid.Rows[e.RowIndex];
+            DataGridViewCell cell = row.Cells[2];
+
+            bool selected = (bool)row.Cells[0].Value;
+            if (!selected)
+            {
+                cell.ErrorText = "";
+                return;
+            }
+            Label rowLabel = LabelList.Instance.getLabelById((int)row.Cells[3].Value);
+            if (!rowLabel.setValue)
+                return;
+            if (!UIHelper.Validation.isNonEmpty((string)cell.Value))
+                cell.ErrorText = "این مورد الزامی است.";
+            else if (!rowLabel.LabelDomain.IsValidValue((string)cell.Value))
+                cell.ErrorText = "مقدار وارد شده در دامنه مقادیر برچسب " + rowLabel.name + " نیست.";
+            else
+                cell.ErrorText = "";
         }
 
     }
