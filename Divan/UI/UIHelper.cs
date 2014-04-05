@@ -18,6 +18,7 @@ namespace Divan
             cell.ReadOnly = true;
             cell.Style.ForeColor = Color.DarkGray;
             cell.Style.BackColor = Color.LightGray;
+            cell.Style.SelectionBackColor = Color.LightBlue;
         }
 
         public static void searchGrid(DataGridView grid, string pattern, string columnName = "")

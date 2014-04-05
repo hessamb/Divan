@@ -90,7 +90,7 @@ namespace Divan
                 errorProvider.GetError(textBox_value) != "" ||
                 errorProvider.GetError(nameTxt) != "")
             {
-                UIHelper.errorBox(this, "لطفا خطاها را برطرف نمایید.");
+                UIHelper.errorBox(this, "لطفا خطاهای ورودی را رفع کنید");
                 this.DialogResult = System.Windows.Forms.DialogResult.None;
                 return;
             }
