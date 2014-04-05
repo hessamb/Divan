@@ -97,8 +97,42 @@ namespace Divan
             MessageBox.Show(parent, message, TITLE, new MessageBoxButtons(), MessageBoxIcon.Error);
         }
 
+        
         public static class Validation
         {
+            private static Dictionary<Control, ErrorProvider> controlsErrorProviders = new Dictionary<Control, ErrorProvider>();
+
+            private static event System.ComponentModel.CancelEventHandler myevent;
+
+            public static bool DoNotEmptyValidation(TextBox textBox)
+            {
+                textBox_Validating(textBox, null);
+                return controlsErrorProviders[textBox].GetError(textBox) == "";
+            }
+
+            public static void ValidateNotEmpty(TextBox textBox, ErrorProvider errorProvider)
+            {
+                textBox.Validating += textBox_Validating;
+                controlsErrorProviders.Add(textBox, errorProvider);
+            }
+
+            public static void CancelValidateNotEmpty(TextBox textBox)
+            {
+                textBox.Validating -= textBox_Validating;
+                controlsErrorProviders[textBox].SetError(textBox,"");
+                controlsErrorProviders.Remove(textBox);
+            }
+
+            static void textBox_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+            {
+                var textBox = sender as TextBox;
+                var errorProvider=controlsErrorProviders[textBox];
+                if (Validation.isNonEmpty(textBox.Text))
+                    errorProvider.SetError(textBox, "");
+                else
+                    errorProvider.SetError(textBox, "این مورد الزامی است.");
+            }
+
             public static bool isNonEmpty(String text)
             {
                 return text != null && text.Trim().Count() > 0;
