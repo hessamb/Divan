@@ -8,6 +8,8 @@ namespace Divan
     public partial class LabelInstance:Changable
     {
 
+        public const string VALUE_SPLITTER = " - ";
+
         public LabelInstance(int assetId, int labelId, string value)
         {
             this.assetID = assetId;

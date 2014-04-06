@@ -16,9 +16,12 @@ namespace Divan
             this.labelInstance = labelInstance;
         }
 
-        public String getValue()
+        public object getValue()
         {
-            return labelInstance.value;
+            if (labelInstance.Label.LabelDomain.isDiscrete())
+                return labelInstance.value;
+            else
+                return Convert.ToDouble(labelInstance.value);
         }
 
         public override bool equals(ConsistencyExpression ce)
@@ -47,6 +50,19 @@ namespace Divan
             }
         }
 
+        public override bool hasIN(ConsistencyExpression ce)
+        {
+            if (!(ce is StringConsistencyExpression))
+                return base.hasIN(ce);
+            StringConsistencyExpression sce = (ce as StringConsistencyExpression);
+            string[] vals = this.labelInstance.value.Split(new string[] { LabelInstance.VALUE_SPLITTER }, StringSplitOptions.None);
+            foreach (string val in vals)
+            {
+                if (val == sce.getValue())
+                    return true;
+            }
+            return false;
+        }
         public new static ConsistencyExpression parseTokens(string[] tokens, ref int k)
         {
             if (tokens[k] != "#")

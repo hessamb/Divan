@@ -27,6 +27,30 @@ namespace Divan
             else
                 return ce.equals(this);
         }
+
+        public override bool greaterThan(ConsistencyExpression ce)
+        {
+            if (!(this.getValue() is double))
+                return false;
+            double val = ((double)this.getValue());
+            if (ce is DoubleConsistencyExpression)
+            {
+                return val > (ce as DoubleConsistencyExpression).getValue();
+            }
+            else if (ce is PropertyConsistencyExpression)
+            {
+                PropertyConsistencyExpression pce = (ce as PropertyConsistencyExpression);
+                if (pce.getValue() is double)
+                    return val > (pce.getValue() as double?);
+                else
+                    return false;
+            }
+            else
+            {
+                return base.greaterThan(ce);
+            }
+        }
+
         public object getValue()
         {
             if (property.type == Property.DOUBLE_FORMAT_TYPE)
