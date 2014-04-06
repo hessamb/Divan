@@ -33,9 +33,37 @@ namespace Divan
                 return base.equals(ce);
             }
         }
+
+        public override bool greaterThan(ConsistencyExpression ce)
+        {
+            if (ce is DoubleConsistencyExpression)
+            {
+                return this.value > (ce as DoubleConsistencyExpression).value;
+            }
+            else if (ce is PropertyConsistencyExpression)
+            {
+                PropertyConsistencyExpression pce = (ce as PropertyConsistencyExpression);
+                if (pce.getValue() is double)
+                {
+                    return this.value > (pce.getValue() as double?);
+                }
+                else
+                    return false;
+            }
+            else
+            {
+                return base.greaterThan(ce);
+            }
+        }
+
         public DoubleConsistencyExpression(double value)
         {
             this.value = value;
+        }
+
+        public double getValue()
+        {
+            return value;
         }
 
         public new static ConsistencyExpression parseTokens(string[] tokens, ref int k)

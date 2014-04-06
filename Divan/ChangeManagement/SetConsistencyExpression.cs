@@ -15,6 +15,14 @@ namespace Divan
             this.members = members;
         }
 
+        public override bool hasIN(ConsistencyExpression ce)
+        {
+            foreach (ConsistencyExpression ceMember in members)
+                if (ceMember.equals(ce))
+                    return true;
+            return false;
+        }
+
         public override bool equals(ConsistencyExpression ce)
         {
             if (ce is SetConsistencyExpression)
