@@ -45,7 +45,6 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.button_attachments = new System.Windows.Forms.Button();
             this.changeState = new System.Windows.Forms.Button();
-            this.delete = new System.Windows.Forms.Button();
             this.edit = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.contextMenuStrip2 = new System.Windows.Forms.ContextMenuStrip(this.components);
@@ -188,13 +187,13 @@
             this.مشاهدهمشخصاتToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
             this.contextMenuStrip1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.contextMenuStrip1.Size = new System.Drawing.Size(205, 26);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(215, 26);
             // 
             // مشاهدهمشخصاتToolStripMenuItem
             // 
             this.مشاهدهمشخصاتToolStripMenuItem.Image = global::Divan.Properties.Resources.icon_package;
             this.مشاهدهمشخصاتToolStripMenuItem.Name = "مشاهدهمشخصاتToolStripMenuItem";
-            this.مشاهدهمشخصاتToolStripMenuItem.Size = new System.Drawing.Size(204, 22);
+            this.مشاهدهمشخصاتToolStripMenuItem.Size = new System.Drawing.Size(214, 22);
             this.مشاهدهمشخصاتToolStripMenuItem.Text = "مشاهده مشخصات زیردارایی";
             this.مشاهدهمشخصاتToolStripMenuItem.Click += new System.EventHandler(this.مشاهدهمشخصاتToolStripMenuItem_Click);
             // 
@@ -202,7 +201,6 @@
             // 
             this.panel2.Controls.Add(this.button_attachments);
             this.panel2.Controls.Add(this.changeState);
-            this.panel2.Controls.Add(this.delete);
             this.panel2.Controls.Add(this.edit);
             this.panel2.Controls.Add(this.button4);
             this.panel2.Location = new System.Drawing.Point(12, 568);
@@ -215,7 +213,7 @@
             this.button_attachments.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.button_attachments.Image = global::Divan.Properties.Resources.icon_package_get;
             this.button_attachments.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button_attachments.Location = new System.Drawing.Point(85, 9);
+            this.button_attachments.Location = new System.Drawing.Point(151, 9);
             this.button_attachments.Name = "button_attachments";
             this.button_attachments.Size = new System.Drawing.Size(113, 25);
             this.button_attachments.TabIndex = 24;
@@ -237,20 +235,6 @@
             this.changeState.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.changeState.UseVisualStyleBackColor = true;
             this.changeState.Click += new System.EventHandler(this.changeState_Click);
-            // 
-            // delete
-            // 
-            this.delete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.delete.Image = global::Divan.Properties.Resources.delete;
-            this.delete.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.delete.Location = new System.Drawing.Point(204, 9);
-            this.delete.Name = "delete";
-            this.delete.Size = new System.Drawing.Size(60, 25);
-            this.delete.TabIndex = 22;
-            this.delete.Text = "حذف";
-            this.delete.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.delete.UseVisualStyleBackColor = true;
-            this.delete.Click += new System.EventHandler(this.delete_Click);
             // 
             // edit
             // 
@@ -286,19 +270,19 @@
             this.حذفازداخلداراییهایدیگرToolStripMenuItem});
             this.contextMenuStrip2.Name = "contextMenuStrip2";
             this.contextMenuStrip2.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.contextMenuStrip2.Size = new System.Drawing.Size(246, 48);
+            this.contextMenuStrip2.Size = new System.Drawing.Size(256, 48);
             // 
             // فقطازلیستپاککنToolStripMenuItem
             // 
             this.فقطازلیستپاککنToolStripMenuItem.Name = "فقطازلیستپاککنToolStripMenuItem";
-            this.فقطازلیستپاککنToolStripMenuItem.Size = new System.Drawing.Size(245, 22);
+            this.فقطازلیستپاککنToolStripMenuItem.Size = new System.Drawing.Size(255, 22);
             this.فقطازلیستپاککنToolStripMenuItem.Text = "فقط حذف از لیست";
             this.فقطازلیستپاککنToolStripMenuItem.Click += new System.EventHandler(this.فقطازلیستپاککنToolStripMenuItem_Click);
             // 
             // حذفازداخلداراییهایدیگرToolStripMenuItem
             // 
             this.حذفازداخلداراییهایدیگرToolStripMenuItem.Name = "حذفازداخلداراییهایدیگرToolStripMenuItem";
-            this.حذفازداخلداراییهایدیگرToolStripMenuItem.Size = new System.Drawing.Size(245, 22);
+            this.حذفازداخلداراییهایدیگرToolStripMenuItem.Size = new System.Drawing.Size(255, 22);
             this.حذفازداخلداراییهایدیگرToolStripMenuItem.Text = "حذف از لیست و داخل دارایی‌های دیگر";
             this.حذفازداخلداراییهایدیگرToolStripMenuItem.Click += new System.EventHandler(this.فقطازلیستپاککنToolStripMenuItem_Click);
             // 
@@ -345,7 +329,6 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button edit;
-        private System.Windows.Forms.Button delete;
         private System.Windows.Forms.DataGridViewTextBoxColumn name;
         private System.Windows.Forms.DataGridViewTextBoxColumn value;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;

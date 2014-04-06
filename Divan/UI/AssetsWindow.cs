@@ -176,5 +176,10 @@ namespace Divan
                 }
             }
         }
+
+        private void radioButton_name_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

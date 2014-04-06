@@ -85,11 +85,6 @@ namespace Divan
             (new NewAssetWindow(selectedAsset)).ShowDialog();
         }
 
-        private void delete_Click(object sender, EventArgs e)
-        {
-            contextMenuStrip2.Show(delete, 0, 0);
-        }
-
         private void history_Click(object sender, EventArgs e)
         {
             (new AssetHistoryWindow()).ShowDialog();

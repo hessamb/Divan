@@ -394,7 +394,7 @@ namespace Divan
                 DataGridViewRow row = dataGrid_DefinerLabel.Rows[i];
                 if ((bool)row.Cells[0].Value)
                 {
-                    DivanDataContext.Instance.LabelInstances.InsertOnSubmit(
+                    asset.LabelInstances.Add(
                         new LabelInstance(asset.Id, splitterLabelId[i], (string)row.Cells[2].Value));
                 }
             }
