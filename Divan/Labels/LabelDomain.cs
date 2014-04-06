@@ -9,11 +9,11 @@ namespace Divan
     {
         public static bool isCompatible(string type, string value)
         {
-            if (type == "رشته")
+            if (type == Property.STRING_FORMAT_TYPE)
                 return true;
-            else if (type == "عدد")
-                return UIHelper.Validation.isInteger(value);
-            else if (type == "بلی/خیر")
+            else if (type == Property.DOUBLE_FORMAT_TYPE)
+                return UIHelper.Validation.isDouble(value);
+            else if (type == Property.BOOLEAN_FORMAT_TYPE)
                 return value == "بلی" || value == "خیر";
             else
                 return value == type;
@@ -30,11 +30,23 @@ namespace Divan
         {
             if (value == null)
                 return false;
-            if (this.isDiscrete())
+            else if (this.isDiscrete())
             {
-                foreach (DiscreteDomainValue val in this.DiscreteDomainValues)
-                    if (value == val.value)
-                        return true;
+                
+                string[] vals = value.Split(new string[]{" - "}, StringSplitOptions.None);
+                foreach (string word in vals)
+                {
+                    bool valid = false;
+                    foreach (DiscreteDomainValue val in this.DiscreteDomainValues)
+                        if (word == val.value)
+                        {
+                            valid = true;
+                            break;
+                        }
+                    if (!valid)
+                        return false;
+                }
+                return true;
             }
             else
             {
@@ -47,10 +59,9 @@ namespace Divan
                 }
                 catch
                 {
-                    return false;
                 }
+                return false;
             }
-            return false;
         }
 
         public virtual bool isDiscrete(){

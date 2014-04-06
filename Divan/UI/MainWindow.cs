@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Divan.UI;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -118,7 +119,7 @@ namespace Divan
 
         private void button17_Click(object sender, EventArgs e)
         {
-            (new ReportPeriod()).Show();
+            (new ReportInconsistencies()).Show();
         }
 
         private void button18_Click(object sender, EventArgs e)

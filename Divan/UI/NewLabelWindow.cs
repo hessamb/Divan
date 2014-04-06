@@ -216,6 +216,10 @@ namespace Divan
             {
                 cell.ErrorText = "لطفا یک مقدار معتبر برای دامنه وارد کنید.";
             }
+            else if ((e.FormattedValue as String).Contains(" - "))
+            {
+                cell.ErrorText = "کلمات تشکیل دهنده‌ی دامنه نمی‌توانند با - جدا شوند.";
+            }
             else
             {
                 cell.ErrorText = "";

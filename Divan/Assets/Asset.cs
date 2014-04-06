@@ -218,11 +218,26 @@ namespace Divan
             this.state.RemoveSubAsset(asset);
         }
 
-        public IEnumerable<Property> OtherProperties
+        public IEnumerable<Property> PrimaryInfos
         {
             get
             {
                 return this.Properties.Where(property => !SPECIAL_NAMES.Contains(property.Name));
+            }
+        }
+
+        public Property getProperty(string name)
+        {
+            var properties = from p in DivanDataContext.Instance.Properties
+                             where p.assetID == this.Id && p.Name == name
+                             select p;
+            try
+            {
+                return properties.First();
+            }
+            catch
+            {
+                return null;
             }
         }
 
@@ -271,6 +286,21 @@ namespace Divan
         public override string ToString()
         {
             return this.Name;
+        }
+
+        internal LabelInstance getLabelInstance(string labelName)
+        {
+            var labels = from l in DivanDataContext.Instance.LabelInstances
+                         where l.assetID == this.Id && l.Label.name == labelName
+                         select l;
+            try
+            {
+                return labels.First();
+            }
+            catch
+            {
+                return null;
+            }
         }
     }
 }

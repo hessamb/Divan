@@ -74,7 +74,7 @@ namespace Divan
                 dataGrid_primaryInfo.Rows.Add(new object[] { "مشخصات ظاهری", selectedAsset.PhysicalDescription });
             }
 
-            foreach (Property prop in selectedAsset.OtherProperties)
+            foreach (Property prop in selectedAsset.PrimaryInfos)
             {
                     dataGrid_primaryInfo.Rows.Add(new object[] { prop.Name, prop.Value });
             }

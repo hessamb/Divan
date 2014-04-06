@@ -7,11 +7,14 @@ namespace Divan
 {
     public partial class Property:Changable
     {
+        public const string DOUBLE_FORMAT_TYPE = "عدد";
+        public const string STRING_FORMAT_TYPE = "رشته";
+        public const string BOOLEAN_FORMAT_TYPE = "بلی/خیر";
         public string Value
         {
             get
             {
-                return this.value.TrimEnd();
+                return this.value;
             }
             set
             {
@@ -23,7 +26,7 @@ namespace Divan
         {
             get
             {
-                return this.name.TrimEnd();
+                return this.name;
             }
             set
             {
@@ -35,7 +38,7 @@ namespace Divan
         {
             get
             {
-                return this.type.TrimEnd();
+                return this.type;
             }
             set
             {
@@ -43,7 +46,7 @@ namespace Divan
             }
         }
 
-        public Property(string name, string value, Asset asset, string type = "رشته")
+        public Property(string name, string value, Asset asset, string type = STRING_FORMAT_TYPE)
         {
             this.name = name;
             this.value = value;

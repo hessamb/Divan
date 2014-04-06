@@ -120,7 +120,7 @@ namespace Divan
 
         private void loadProperties()
         {
-            foreach (Property prop in asset.OtherProperties)
+            foreach (Property prop in asset.PrimaryInfos)
             {
                     dataGrid_PrimaryInfo.Rows.Add(new object[] { prop.Name, prop.Type, prop.Value });
             }
@@ -354,6 +354,7 @@ namespace Divan
                 DivanDataContext.Instance.Properties.DeleteAllOnSubmit(asset.Properties);
                 DivanDataContext.Instance.LabelInstances.DeleteAllOnSubmit(asset.LabelInstances);
                 DivanDataContext.Instance.AttachedFiles.DeleteAllOnSubmit(asset.AttachedFiles);
+                DivanDataContext.Instance.ConsistencyRules.DeleteAllOnSubmit(asset.ConsistencyRules);
 
                 asset.Properties.Clear();
                 asset.LabelInstances.Clear();
@@ -365,9 +366,26 @@ namespace Divan
             saveLabelInstances();
             saveSubAssets();
             saveAttachments();
+            saveConsistencyRules();
 
             DivanDataContext.Instance.SubmitChanges();
             
+        }
+
+        private void saveConsistencyRules()
+        {
+            foreach (DataGridViewRow row in dataGrid_consistencyRules.Rows)
+            {
+                if (row.IsNewRow)
+                    continue;
+                ConsistencyRule rule = new ConsistencyRule();
+                rule.mValue = (String)row.Cells[0].Value;
+                rule.sValue = (String)row.Cells[2].Value;
+                rule.condition = (String)row.Cells[1].Value;
+                rule.importance = ConsistencyRule.getImportance((String)row.Cells[3].Value);
+                asset.ConsistencyRules.Add(rule);
+            }
+            DivanDataContext.Instance.SubmitChanges();
         }
 
         private void saveAttachments()
