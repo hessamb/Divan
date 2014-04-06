@@ -15,7 +15,7 @@ namespace Divan
         public const String FIRST_NAME_STRING = "FirstName",
             LAST_NAME_STRING = "LastName", NATIONAL_ID_STRING = "NationalId",
             PERSONNEL_CODE_STRING = "PersonnelCode", HUMAN_DESCRIPTION_STRING = "HumanDescription";
-        public const String PHYSICAL_DESCRIPTION_STRING = "PhysicalDescription";
+        public const String PHYSICAL_DESCRIPTION_STRING = "PhysicalDescription", LOCATION_STRING = "مکان";
 
         public readonly static String[] SPECIAL_NAMES = new String[]{UID_STRING, NAME_STRING,
             FIRST_NAME_STRING, LAST_NAME_STRING, NATIONAL_ID_STRING,

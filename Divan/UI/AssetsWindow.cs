@@ -68,8 +68,7 @@ namespace Divan
 
         private void edit_Click_1(object sender, EventArgs e)
         {
-            string uid = (string)dataGrid_assets.SelectedRows[0].Cells[0].Value;
-            if((new NewAssetWindow(AssetList.Instance.GetByUid(uid))).ShowDialog()==System.Windows.Forms.DialogResult.Yes)
+            if((new NewAssetWindow(dataGrid_assets.SelectedRows[0].DataBoundItem as Asset)).ShowDialog()==System.Windows.Forms.DialogResult.Yes)
                 reloadAssets();
         }
 
