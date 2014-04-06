@@ -128,8 +128,8 @@
       <Association Name="Action_SubAction1" Member="Parent" ThisKey="parentId" OtherKey="Id" Type="Action" IsForeignKey="true" />
     </Type>
   </Table>
-  <Table Name="dbo.GISRocord" Member="GISRocords">
-    <Type Name="GISRocord">
+  <Table Name="dbo.GISRecord" Member="GISRecords">
+    <Type Name="GISRecord">
       <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="UID" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="location" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />

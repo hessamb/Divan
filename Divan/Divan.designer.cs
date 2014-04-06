@@ -63,9 +63,9 @@ namespace Divan
     partial void InsertSubAction(SubAction instance);
     partial void UpdateSubAction(SubAction instance);
     partial void DeleteSubAction(SubAction instance);
-    partial void InsertGISRocord(GISRocord instance);
-    partial void UpdateGISRocord(GISRocord instance);
-    partial void DeleteGISRocord(GISRocord instance);
+    partial void InsertGISRecord(GISRecord instance);
+    partial void UpdateGISRecord(GISRecord instance);
+    partial void DeleteGISRecord(GISRecord instance);
     #endregion
 		
 		public DivanDataContext() : 
@@ -186,11 +186,11 @@ namespace Divan
 			}
 		}
 		
-		public System.Data.Linq.Table<GISRocord> GISRocords
+		public System.Data.Linq.Table<GISRecord> GISRecords
 		{
 			get
 			{
-				return this.GetTable<GISRocord>();
+				return this.GetTable<GISRecord>();
 			}
 		}
 	}
@@ -2836,8 +2836,8 @@ namespace Divan
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.GISRocord")]
-	public partial class GISRocord : INotifyPropertyChanging, INotifyPropertyChanged
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.GISRecord")]
+	public partial class GISRecord : INotifyPropertyChanging, INotifyPropertyChanged
 	{
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
@@ -2860,7 +2860,7 @@ namespace Divan
     partial void OnlocationChanged();
     #endregion
 		
-		public GISRocord()
+		public GISRecord()
 		{
 			OnCreated();
 		}

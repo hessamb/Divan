@@ -85,6 +85,12 @@
             this.button3 = new System.Windows.Forms.Button();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
+            this.dataGrid_consistencyRules = new System.Windows.Forms.DataGridView();
+            this.mValue = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.condition = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.sValue = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.importance = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.flowLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.humanAssetProps.SuspendLayout();
@@ -98,6 +104,8 @@
             this.groupBox3.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGrid_consistencyRules)).BeginInit();
+            this.groupBox4.SuspendLayout();
             this.SuspendLayout();
             // 
             // flowLayoutPanel1
@@ -111,10 +119,11 @@
             this.flowLayoutPanel1.Controls.Add(this.sensibleAssetProps);
             this.flowLayoutPanel1.Controls.Add(this.checkBox_isPortable);
             this.flowLayoutPanel1.Controls.Add(this.groupBox1);
+            this.flowLayoutPanel1.Controls.Add(this.groupBox3);
             this.flowLayoutPanel1.Controls.Add(this.groupBox2);
+            this.flowLayoutPanel1.Controls.Add(this.groupBox4);
             this.flowLayoutPanel1.Controls.Add(this.checkBox_Composite);
             this.flowLayoutPanel1.Controls.Add(this.GroupBox_subAssets);
-            this.flowLayoutPanel1.Controls.Add(this.groupBox3);
             this.flowLayoutPanel1.Controls.Add(this.panel2);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
@@ -122,7 +131,7 @@
             this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(23, 22, 23, 22);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Padding = new System.Windows.Forms.Padding(12, 11, 0, 0);
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(968, 535);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(968, 640);
             this.flowLayoutPanel1.TabIndex = 100;
             // 
             // panel1
@@ -397,7 +406,7 @@
             this.dataGridViewTextBoxColumn1,
             this.dataGridViewTextBoxColumn2,
             this.id});
-            this.dataGrid_OtherLabel.Location = new System.Drawing.Point(8, 75);
+            this.dataGrid_OtherLabel.Location = new System.Drawing.Point(8, 74);
             this.dataGrid_OtherLabel.MultiSelect = false;
             this.dataGrid_OtherLabel.Name = "dataGrid_OtherLabel";
             this.dataGrid_OtherLabel.RowHeadersVisible = false;
@@ -452,7 +461,6 @@
             this.dataGrid_DefinerLabel.Size = new System.Drawing.Size(223, 118);
             this.dataGrid_DefinerLabel.TabIndex = 17;
             this.dataGrid_DefinerLabel.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGrid_OtherLabel_CellDoubleClick);
-            this.dataGrid_DefinerLabel.CellValidated += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGrid_OtherLabel_CellValidated);
             this.dataGrid_DefinerLabel.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.dataGrid_OtherLabel_CellValidating);
             // 
             // Check
@@ -514,7 +522,7 @@
             this.checkBox_Composite.AutoSize = true;
             this.checkBox_Composite.Checked = true;
             this.checkBox_Composite.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBox_Composite.Location = new System.Drawing.Point(342, 192);
+            this.checkBox_Composite.Location = new System.Drawing.Point(342, 384);
             this.checkBox_Composite.Name = "checkBox_Composite";
             this.checkBox_Composite.Size = new System.Drawing.Size(138, 18);
             this.checkBox_Composite.TabIndex = 4;
@@ -527,9 +535,9 @@
             this.GroupBox_subAssets.Controls.Add(this.removeSubAssetBut);
             this.GroupBox_subAssets.Controls.Add(this.button1);
             this.GroupBox_subAssets.Controls.Add(this.treeView_subAssets);
-            this.GroupBox_subAssets.Location = new System.Drawing.Point(13, 216);
+            this.GroupBox_subAssets.Location = new System.Drawing.Point(13, 408);
             this.GroupBox_subAssets.Name = "GroupBox_subAssets";
-            this.GroupBox_subAssets.Size = new System.Drawing.Size(467, 173);
+            this.GroupBox_subAssets.Size = new System.Drawing.Size(467, 150);
             this.GroupBox_subAssets.TabIndex = 10;
             this.GroupBox_subAssets.TabStop = false;
             this.GroupBox_subAssets.Text = "زیردارایی‌ها:";
@@ -567,7 +575,7 @@
             this.treeView_subAssets.Name = "treeView_subAssets";
             this.treeView_subAssets.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.treeView_subAssets.RightToLeftLayout = true;
-            this.treeView_subAssets.Size = new System.Drawing.Size(376, 143);
+            this.treeView_subAssets.Size = new System.Drawing.Size(376, 122);
             this.treeView_subAssets.TabIndex = 18;
             this.treeView_subAssets.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView1_AfterSelect);
             this.treeView_subAssets.Enter += new System.EventHandler(this.subAssetsTree_Leave);
@@ -578,7 +586,7 @@
             this.groupBox3.Controls.Add(this.attachmentList);
             this.groupBox3.Controls.Add(this.deleteFileBut);
             this.groupBox3.Controls.Add(this.button5);
-            this.groupBox3.Location = new System.Drawing.Point(13, 395);
+            this.groupBox3.Location = new System.Drawing.Point(486, 511);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(467, 90);
             this.groupBox3.TabIndex = 10;
@@ -627,7 +635,7 @@
             // 
             this.panel2.Controls.Add(this.button4);
             this.panel2.Controls.Add(this.button3);
-            this.panel2.Location = new System.Drawing.Point(13, 491);
+            this.panel2.Location = new System.Drawing.Point(13, 564);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(467, 38);
             this.panel2.TabIndex = 11;
@@ -668,6 +676,72 @@
             this.errorProvider.ContainerControl = this;
             this.errorProvider.RightToLeft = true;
             // 
+            // dataGrid_consistencyRules
+            // 
+            this.dataGrid_consistencyRules.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGrid_consistencyRules.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.mValue,
+            this.condition,
+            this.sValue,
+            this.importance});
+            this.dataGrid_consistencyRules.Location = new System.Drawing.Point(3, 23);
+            this.dataGrid_consistencyRules.Name = "dataGrid_consistencyRules";
+            this.dataGrid_consistencyRules.Size = new System.Drawing.Size(461, 157);
+            this.dataGrid_consistencyRules.TabIndex = 0;
+            // 
+            // mValue
+            // 
+            this.mValue.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.mValue.HeaderText = "مقدار مورد سنجش";
+            this.mValue.Name = "mValue";
+            // 
+            // condition
+            // 
+            this.condition.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.condition.HeaderText = "عملگر";
+            this.condition.Items.AddRange(new object[] {
+            "==",
+            "!=",
+            "<",
+            ">",
+            "<=",
+            ">=",
+            "IN",
+            "NI",
+            "!IN",
+            "NI!"});
+            this.condition.Name = "condition";
+            this.condition.Width = 42;
+            // 
+            // sValue
+            // 
+            this.sValue.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.sValue.HeaderText = "مقدار مبنا";
+            this.sValue.Name = "sValue";
+            // 
+            // importance
+            // 
+            this.importance.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.importance.HeaderText = "اهمیت";
+            this.importance.Items.AddRange(new object[] {
+            "امن",
+            "بحرانی-امن",
+            "بحرانی",
+            "مهم",
+            "عادی"});
+            this.importance.Name = "importance";
+            this.importance.Width = 46;
+            // 
+            // groupBox4
+            // 
+            this.groupBox4.Controls.Add(this.dataGrid_consistencyRules);
+            this.groupBox4.Location = new System.Drawing.Point(13, 192);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(467, 186);
+            this.groupBox4.TabIndex = 1;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "قوانین سازگارسنجی";
+            // 
             // NewAssetWindow
             // 
             this.AcceptButton = this.button3;
@@ -675,7 +749,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScrollMargin = new System.Drawing.Size(0, 10);
             this.CancelButton = this.button4;
-            this.ClientSize = new System.Drawing.Size(968, 535);
+            this.ClientSize = new System.Drawing.Size(968, 640);
             this.Controls.Add(this.flowLayoutPanel1);
             this.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -705,6 +779,8 @@
             this.groupBox3.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGrid_consistencyRules)).EndInit();
+            this.groupBox4.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -767,5 +843,11 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn LabelName;
         private System.Windows.Forms.DataGridViewTextBoxColumn LabelValue;
         private System.Windows.Forms.DataGridViewTextBoxColumn id2;
+        private System.Windows.Forms.DataGridView dataGrid_consistencyRules;
+        private System.Windows.Forms.DataGridViewTextBoxColumn mValue;
+        private System.Windows.Forms.DataGridViewComboBoxColumn condition;
+        private System.Windows.Forms.DataGridViewTextBoxColumn sValue;
+        private System.Windows.Forms.DataGridViewComboBoxColumn importance;
+        private System.Windows.Forms.GroupBox groupBox4;
     }
 }

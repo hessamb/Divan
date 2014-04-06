@@ -103,7 +103,7 @@
         <classShapeMoniker Id="71ff5802-8df2-4462-893a-281eb8f9ea2b" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(5.15625 : 5.5); (5.15625 : 4.72439647265625); (6.125 : 4.72439647265625)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(5.15625 : 5.5); (5.15625 : 4.72439647265625); (6.125 : 4.72439647265625)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/DivanDataContext/LabelDomain/LabelDomain_Label" />
       <nodes>
         <classShapeMoniker Id="3e6612ce-b570-4bfd-8508-18234dca470e" />
@@ -137,7 +137,7 @@
         <classShapeMoniker Id="5e1eff67-324a-4007-a38d-b930410e250b" />
       </nodes>
     </inheritanceConnector>
-    <inheritanceConnector edgePoints="[(4.375 : 7.07859537760417); (4.375 : 7.3976); (4.85416666666667 : 7.3976 : JumpStart); (5.02083333333333 : 7.3976 : JumpEnd); (5.4774 : 7.3976); (5.4774 : 7.8464); (7.125 : 7.8464); (7.125 : 8)]" fixedFrom="NotFixed" fixedTo="NotFixed" TargetRelationshipDomainClassId="7a7fe09e-e9ef-4b01-9ff3-bde95e827b62">
+    <inheritanceConnector edgePoints="[(4.375 : 7.07859537760417); (4.375 : 7.3976); (5.4774 : 7.3976); (5.4774 : 7.8464); (7.125 : 7.8464); (7.125 : 8)]" fixedFrom="NotFixed" fixedTo="NotFixed" TargetRelationshipDomainClassId="7a7fe09e-e9ef-4b01-9ff3-bde95e827b62">
       <nodes>
         <classShapeMoniker Id="3e6612ce-b570-4bfd-8508-18234dca470e" />
         <classShapeMoniker Id="a00b35dd-5527-4d14-a1e3-91f6c184c1a9" />
@@ -218,7 +218,7 @@
       </nodes>
     </associationConnector>
     <classShape Id="38d330f0-bdd6-41a8-be70-9cae6a3a7303" absoluteBounds="2.875, 2.5, 2, 1.3862939453125">
-      <DataClassMoniker Name="/DivanDataContext/GISRocord" />
+      <DataClassMoniker Name="/DivanDataContext/GISRecord" />
       <nestedChildShapes>
         <elementListCompartment Id="f68e7170-695a-4300-b5d5-91aead5bd4c2" absoluteBounds="2.89, 2.96, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>

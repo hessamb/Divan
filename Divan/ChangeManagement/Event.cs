@@ -16,11 +16,6 @@ namespace Divan
             }
         }
 
-        public void Create()
-        {
-            //TODO
-        }
-
         public void RunAction()
         {
             this.Action.Run();

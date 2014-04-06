@@ -5,7 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
- 
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Divan
@@ -16,7 +16,7 @@ namespace Divan
         private List<Asset> subAssets = new List<Asset>();
         private List<Asset> deletedSubAssets = new List<Asset>();
         private List<int> splitterLabelId, otherLabelId;
-        string loc="";
+        private string loc = "";
 
         public NewAssetWindow()
         {
@@ -121,7 +121,7 @@ namespace Divan
 
         private void loadProperties()
         {
-            foreach (Property prop in asset.OtherProperties)
+            foreach (Property prop in asset.PrimaryInfos)
             {
                     dataGrid_PrimaryInfo.Rows.Add(new object[] { prop.Name, prop.Type, prop.Value });
             }
@@ -222,12 +222,18 @@ namespace Divan
             Asset subAsset = AssetList.Instance.GetByUid(assetUid);
             if (!subAssets.Contains(subAsset))
             {
-                if (asset != null && subAsset.Id == asset.Id)
+                if (subAsset.Parent != null && (asset==null || subAsset.Parent.Id!=asset.Id))
+                {
+                    UIHelper.warningBox(this, "یک دارایی نمی‌تواند در دو دارایی باشد.\n"
+                        + "دارایی انتخاب شده زیردارایی " + subAsset.Parent + " است.");
+                    return;
+                }
+                else if (asset != null && subAsset.Id == asset.Id)
                 {
                     UIHelper.warningBox(this, "یک دارایی نمی‌تواند زیرداریی خودش باشد.");
                     return;
                 }
-                if (asset != null && subAsset.pathExists(asset))
+                else if (asset != null && subAsset.pathExists(asset))
                 {
                     UIHelper.warningBox(this, "امکان اضافه شدن دارایی انتخاب شده وجود ندارد.\nاضافه کردن دارایی انتخاب شده موجب ایجاد دور در ساختار دارایی‌ها می‌شود.");
                     return;
@@ -349,12 +355,15 @@ namespace Divan
                 DivanDataContext.Instance.Properties.DeleteAllOnSubmit(asset.Properties);
                 DivanDataContext.Instance.LabelInstances.DeleteAllOnSubmit(asset.LabelInstances);
                 DivanDataContext.Instance.AttachedFiles.DeleteAllOnSubmit(asset.AttachedFiles);
+                DivanDataContext.Instance.ConsistencyRules.DeleteAllOnSubmit(asset.ConsistencyRules);
+
                 try
                 {
                     var locprop = asset.Properties.Single(p => p.name == Asset.LOCATION_STRING);
                     loc = locprop.value;
                 }
                 catch { }
+                
                 asset.Properties.Clear();
                 asset.LabelInstances.Clear();
                 DivanDataContext.Instance.SubmitChanges();
@@ -365,14 +374,30 @@ namespace Divan
             saveLabelInstances();
             saveSubAssets();
             saveAttachments();
+            saveConsistencyRules();
 
             DivanDataContext.Instance.SubmitChanges();
             
         }
 
+        private void saveConsistencyRules()
+        {
+            foreach (DataGridViewRow row in dataGrid_consistencyRules.Rows)
+            {
+                if (row.IsNewRow)
+                    continue;
+                ConsistencyRule rule = new ConsistencyRule();
+                rule.mValue = (String)row.Cells[0].Value;
+                rule.sValue = (String)row.Cells[2].Value;
+                rule.condition = (String)row.Cells[1].Value;
+                rule.importance = ConsistencyRule.getImportance((String)row.Cells[3].Value);
+                asset.ConsistencyRules.Add(rule);
+            }
+            DivanDataContext.Instance.SubmitChanges();
+        }
+
         private void saveAttachments()
         {
-            DivanDataContext.Instance.AttachedFiles.DeleteAllOnSubmit(asset.AttachedFiles);
             foreach (String fileName in attachmentList.Items)
             {
                 AttachedFile file = new AttachedFile();
@@ -400,7 +425,7 @@ namespace Divan
                 DataGridViewRow row = dataGrid_DefinerLabel.Rows[i];
                 if ((bool)row.Cells[0].Value)
                 {
-                    asset.LabelInstances.Add(
+                    DivanDataContext.Instance.LabelInstances.InsertOnSubmit(
                         new LabelInstance(asset.Id, splitterLabelId[i], (string)row.Cells[2].Value));
                 }
             }
@@ -450,11 +475,13 @@ namespace Divan
             {
                 try
                 {
-                    var gisr = DivanDataContext.Instance.GISRocords.Single(r => r.UID == asset.UID);
-                    loc=gisr.location;
-                }catch{}
+                    var gisr = DivanDataContext.Instance.GISRecords.Single(r => r.UID == asset.UID);
+                    loc = gisr.location;
+                }
+                catch { }
                 DivanDataContext.Instance.Properties.InsertOnSubmit(new Property(Asset.LOCATION_STRING, loc, asset));
             }
+
         }
 
         private void dataGrid_OtherLabel_CellDoubleClick(object sender, DataGridViewCellEventArgs e)

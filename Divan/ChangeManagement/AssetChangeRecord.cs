@@ -43,10 +43,5 @@ namespace Divan
             set { date = value; }
         }
 
-        public void restore()
-        {
-            //TODO
-        }
-
     }
 }

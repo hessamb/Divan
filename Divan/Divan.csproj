@@ -101,7 +101,17 @@
     <Compile Include="ChangeManagement\Action.cs" />
     <Compile Include="ChangeManagement\ActionExecuter.cs" />
     <Compile Include="ChangeManagement\ActionList.cs" />
+    <Compile Include="ChangeManagement\BooleanConsistencyExpression.cs" />
+    <Compile Include="ChangeManagement\ConsistencyExpression.cs" />
+    <Compile Include="ChangeManagement\ConsistencyRule.cs" />
+    <Compile Include="ChangeManagement\ConsistencyRulesList.cs" />
+    <Compile Include="ChangeManagement\DoubleConsistencyExpression.cs" />
     <Compile Include="ChangeManagement\EventList.cs" />
+    <Compile Include="ChangeManagement\IntegerConsistencyExpression.cs" />
+    <Compile Include="ChangeManagement\LabelInstanceConsistencyExpression.cs" />
+    <Compile Include="ChangeManagement\PropertyConsistencyExpression.cs" />
+    <Compile Include="ChangeManagement\SetConsistencyExpression.cs" />
+    <Compile Include="ChangeManagement\StringConsistencyExpression.cs" />
     <Compile Include="Divan.cs">
       <DependentUpon>Divan.dbml</DependentUpon>
     </Compile>
@@ -139,6 +149,12 @@
     </Compile>
     <Compile Include="UI\AssetDetailsWindow.Designer.cs">
       <DependentUpon>AssetDetailsWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\ReportInconsistencies.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\ReportInconsistencies.Designer.cs">
+      <DependentUpon>ReportInconsistencies.cs</DependentUpon>
     </Compile>
     <Compile Include="Users\AssetSupporter.cs" />
     <Compile Include="ChangeManagement\Baseline.cs" />
@@ -337,6 +353,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\LoginWindow.resx">
       <DependentUpon>LoginWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\ReportInconsistencies.resx">
+      <DependentUpon>ReportInconsistencies.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\SetingsWindow.resx">
       <DependentUpon>SetingsWindow.cs</DependentUpon>
