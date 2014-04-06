@@ -183,7 +183,7 @@ namespace Divan
             DivanDataContext.Instance.SubmitChanges();
         }
 
-        public List<ConsistancyRule> GetInconsistencies()
+        public List<ConsistencyRule> GetInconsistencies()
         {
             //TODO
             return null;

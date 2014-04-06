@@ -62,6 +62,15 @@ namespace Divan
             loadLabelInstances();
             loadSubAssets();
             loadAttachments();
+            loadConsistencyRules();
+        }
+
+        private void loadConsistencyRules()
+        {
+            foreach (ConsistencyRule cr in asset.ConsistencyRules)
+            {
+                dataGrid_consistencyRules.Rows.Add(new object[] {cr.mValue, cr.condition, cr.sValue, cr.Importance });
+            }
         }
 
         private void loadAttachments()
@@ -331,6 +340,46 @@ namespace Divan
                     }
                 }
             }
+
+            foreach (DataGridViewRow row in dataGrid_consistencyRules.Rows)
+            {
+                if (row.IsNewRow)
+                    continue;
+                ConsistencyExpression m = row.Cells[0].Value == null? null: ConsistencyExpression.parse(row.Cells[0].Value.ToString());
+                ConsistencyExpression s = row.Cells[0].Value == null ? null : ConsistencyExpression.parse(row.Cells[2].Value.ToString());
+                if (m == null)
+                {
+                    result = false;
+                    row.Cells[0].ErrorText = "مقدار این فیلد نامعتبر است.";
+                    continue;
+                }
+                else
+                {
+                    row.Cells[0].ErrorText = "";
+                }
+                if (s == null)
+                {
+                    result = false;
+                    row.Cells[2].ErrorText = "مقدار این فیلد نامعتبر است.";
+                    continue;
+                }
+                else
+                {
+                    row.Cells[2].ErrorText = "";
+                }
+                try
+                {
+                    bool res = (new ConsistencyRule() { mValue = row.Cells[0].Value.ToString(), sValue = row.Cells[2].Value.ToString(), condition = row.Cells[1].Value.ToString() }).Inconsistent;
+                    row.Cells[1].ErrorText="";
+                }
+                catch
+                {
+                    result = false;
+                    row.Cells[1].ErrorText = "این شرط با مقادیر سازگار نیست.";
+                }
+            }
+
+
             return result;
 
         }
@@ -368,7 +417,7 @@ namespace Divan
                 asset.LabelInstances.Clear();
                 DivanDataContext.Instance.SubmitChanges();
             }
-
+            
             savePrimaryInfos();
             saveProperties();
             saveLabelInstances();

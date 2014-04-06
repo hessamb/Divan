@@ -20,7 +20,27 @@ namespace Divan
             {
                 ConsistencyExpression mExp = ConsistencyExpression.parse(this.mValue);
                 ConsistencyExpression sExp = ConsistencyExpression.parse(this.sValue);
-                return !mExp.equals(sExp);
+                if (condition == "==")
+                    return !mExp.equals(sExp);
+                if (condition == "!=")
+                    return mExp.equals(sExp);
+                if (condition == "<")
+                    return !mExp.greaterThan(sExp);
+                if (condition == ">")
+                    return sExp.greaterEqual(mExp);
+                if (condition == "<=")
+                    return !mExp.greaterEqual(sExp);
+                if (condition == ">=")
+                    return sExp.greaterThan(mExp);
+                if (condition == "IN")
+                    return !sExp.hasIN(mExp);
+                if (condition == "!IN")
+                    return sExp.hasIN(mExp);
+                if (condition == "NI")
+                    return !mExp.hasIN(sExp);
+                if (condition == "!NI")
+                    return mExp.hasIN(sExp);
+                return true;
             }
         }
 
