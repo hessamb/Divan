@@ -135,9 +135,13 @@ namespace Divan
 
             public static void CancelValidateNotEmpty(TextBox textBox)
             {
-                textBox.Validating -= textBox_Validating;
-                controlsErrorProviders[textBox].SetError(textBox,"");
-                controlsErrorProviders.Remove(textBox);
+                try
+                {
+                    textBox.Validating -= textBox_Validating;
+                    controlsErrorProviders[textBox].SetError(textBox, "");
+                    controlsErrorProviders.Remove(textBox);
+                }
+                catch { }
             }
 
             static void textBox_Validating(object sender, System.ComponentModel.CancelEventArgs e)

@@ -324,7 +324,6 @@
             this.checkBox_isPortable.TabIndex = 6;
             this.checkBox_isPortable.Text = "این دارایی مکان‌مند است";
             this.checkBox_isPortable.UseVisualStyleBackColor = true;
-            this.checkBox_isPortable.CheckedChanged += new System.EventHandler(this.humanAssetCh_CheckedChanged);
             // 
             // groupBox1
             // 

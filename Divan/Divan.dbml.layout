@@ -103,7 +103,7 @@
         <classShapeMoniker Id="71ff5802-8df2-4462-893a-281eb8f9ea2b" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(4.375 : 5.5); (4.375 : 4.6874995); (6.125 : 4.6874995)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+    <associationConnector edgePoints="[(5.15625 : 5.5); (5.15625 : 4.72439647265625); (6.125 : 4.72439647265625)]" fixedFrom="Algorithm" fixedTo="Algorithm">
       <AssociationMoniker Name="/DivanDataContext/LabelDomain/LabelDomain_Label" />
       <nodes>
         <classShapeMoniker Id="3e6612ce-b570-4bfd-8508-18234dca470e" />
@@ -217,5 +217,11 @@
         <classShapeMoniker Id="a1edd0a5-1a2b-4b73-93bc-5b00354e7662" />
       </nodes>
     </associationConnector>
+    <classShape Id="38d330f0-bdd6-41a8-be70-9cae6a3a7303" absoluteBounds="2.875, 2.5, 2, 1.3862939453125">
+      <DataClassMoniker Name="/DivanDataContext/GISRocord" />
+      <nestedChildShapes>
+        <elementListCompartment Id="f68e7170-695a-4300-b5d5-91aead5bd4c2" absoluteBounds="2.89, 2.96, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
   </nestedChildShapes>
 </ordesignerObjectsDiagram>

@@ -16,6 +16,7 @@ namespace Divan
         private List<Asset> subAssets = new List<Asset>();
         private List<Asset> deletedSubAssets = new List<Asset>();
         private List<int> splitterLabelId, otherLabelId;
+        string loc="";
 
         public NewAssetWindow()
         {
@@ -348,7 +349,12 @@ namespace Divan
                 DivanDataContext.Instance.Properties.DeleteAllOnSubmit(asset.Properties);
                 DivanDataContext.Instance.LabelInstances.DeleteAllOnSubmit(asset.LabelInstances);
                 DivanDataContext.Instance.AttachedFiles.DeleteAllOnSubmit(asset.AttachedFiles);
-
+                try
+                {
+                    var locprop = asset.Properties.Single(p => p.name == Asset.LOCATION_STRING);
+                    loc = locprop.value;
+                }
+                catch { }
                 asset.Properties.Clear();
                 asset.LabelInstances.Clear();
                 DivanDataContext.Instance.SubmitChanges();
@@ -414,6 +420,8 @@ namespace Divan
         {
             for (int i = 0; i < dataGrid_PrimaryInfo.RowCount - 1; i++)
             {
+                if ((string)dataGrid_PrimaryInfo.Rows[i].Cells[0].Value == Asset.LOCATION_STRING)
+                    continue;
                 DivanDataContext.Instance.Properties.InsertOnSubmit(new Property((string)dataGrid_PrimaryInfo.Rows[i].Cells[0].Value, (string)dataGrid_PrimaryInfo.Rows[i].Cells[2].Value, asset, (string)dataGrid_PrimaryInfo.Rows[i].Cells[1].Value));
             }
         }
@@ -438,6 +446,15 @@ namespace Divan
                 DivanDataContext.Instance.Properties.InsertOnSubmit(new Property(Asset.PHYSICAL_DESCRIPTION_STRING, textBox_PhysicalDescription.Text, asset));
             }
             asset.isPortable = checkBox_isPortable.Checked;
+            if (asset.isPortable)
+            {
+                try
+                {
+                    var gisr = DivanDataContext.Instance.GISRocords.Single(r => r.UID == asset.UID);
+                    loc=gisr.location;
+                }catch{}
+                DivanDataContext.Instance.Properties.InsertOnSubmit(new Property(Asset.LOCATION_STRING, loc, asset));
+            }
         }
 
         private void dataGrid_OtherLabel_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
