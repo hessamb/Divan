@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+  <Product Id="FD841A58-AE33-4A9F-AC80-B50E0CBEA3AE" Name="Divan" Language="1033" Version="1.0.0.0" Manufacturer="Shahab-Hessam" UpgradeCode="DF759A19-F680-4FCE-A078-CC1DCA75C63F">
+    <Package Description="Test file in a Product" Comments="Simple test" InstallerVersion="200" Compressed="yes" />
+    <Media Id="1" Cabinet="simple.cab" EmbedCab="yes" />
+    <Directory Id="TARGETDIR" Name="SourceDir">
+      <Directory Id="ProgramFilesFolder" Name="PFiles">
+        <Directory Id="APPROOT" Name="Divan">
+          <Component Id="MainApp" DiskId="1" Guid="bfe72d16-b681-4a58-9a00-b96f1bbd0e1a">
+            <File Id="DATABASE.MDF" Name="Database.mdf" Source="$(var.Divan.TargetDir)\Database.mdf" />
+            <File Id="DIVAN.EXE" Name="Divan.exe" Source="$(var.Divan.TargetPath)" KeyPath="yes">
+              <Shortcut Id="desktopShortcut" Directory="DesktopFolder" Name="Divan" WorkingDirectory="INSTALLDIR" Advertise="yes" Icon="DesktopIcon.exe" IconIndex="0" />
+              <Shortcut Id="ExeShortcut" Directory="ProgramMenuDir" Name="Divan" Advertise="yes" Icon="StartMenuIcon.exe" IconIndex="0" />
+            </File>
+          </Component>
+        </Directory>
+      </Directory>
+      <Directory Id="DesktopFolder" />
+      <Directory Id="ProgramMenuFolder">
+        <Directory Id="ProgramMenuDir" Name="Divan">
+          <Component Id="StartMenuShortcuts" Guid="220524A2-2729-4961-801E-4337FCF0307A">
+            <RemoveFolder Id="ProgramMenuDir" On="uninstall" />
+            <RegistryValue Root="HKCU" Key="Software\Divan\Divan" Type="string" Value="" />
+            <Shortcut Id="UninstallProduct" Name="Uninstall Divan" Description="Uninstalls Divan" Target="[System64Folder]msiexec.exe" Arguments="/x [ProductCode]" />
+          </Component>
+        </Directory>
+      </Directory>
+    </Directory>
+    <Feature Id="DefaultFeature" Title="Main Feature" Level="1" ConfigurableDirectory='APPROOT'>
+      <ComponentRef Id="MainApp" />
+      <ComponentRef Id="StartMenuShortcuts" />
+    </Feature>
+    <UI />
+    <UIRef Id="WixUI_FeatureTree" />
+    <Icon Id="DesktopIcon.exe" SourceFile="$(var.Divan.TargetPath)" />
+    <Icon Id="StartMenuIcon.exe" SourceFile="$(var.Divan.TargetPath)" />
+  </Product>
+</Wix>

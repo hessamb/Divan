@@ -5,7 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
+ 
 using System.Windows.Forms;
 
 namespace Divan
@@ -62,11 +62,6 @@ namespace Divan
             (new NewLabelWindow(label)).ShowDialog();
         }
 
-        private void delete_Click(object sender, EventArgs e)
-        {
-            contextMenuStrip2.Show(delete,0,0);
-        }
-
         private void subAssetsTree_DoubleClick(object sender, EventArgs e)
         {
             (new LabelDetailsWindow()).ShowDialog();
@@ -82,10 +77,5 @@ namespace Divan
             subAssetsTree_DoubleClick(null, null);
         }
 
-        private void فقطازلیستپاککنToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            if (RemoveConfirmationBox.ShowConfirmation() == System.Windows.Forms.DialogResult.Yes)
-                DialogResult = System.Windows.Forms.DialogResult.Yes;
-        }
     }
 }
