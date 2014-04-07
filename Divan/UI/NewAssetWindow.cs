@@ -149,6 +149,10 @@ namespace Divan
             checkBox_isPhysical.Checked = asset.isPhysical;
             textBox_PhysicalDescription.Text = asset.PhysicalDescription;
             checkBox_isPortable.Checked = asset.isPortable;
+            insuranceCmb.Text = asset.Insurance;
+            insuranceTxt.Text = asset.InsuranceDescription;
+            documentCmb.Text = asset.Document;
+            documentTxt.Text = asset.DocumentDescription;
         }
 
         private void loadLabels()
@@ -186,6 +190,8 @@ namespace Divan
             {
                 checkBox_isHuman.Checked = true;
                 checkBox_isPhysical.Checked = true;
+                insuranceCmb.SelectedIndex = 1;
+                documentCmb.SelectedIndex = 1;
             }
         }
 
@@ -518,6 +524,10 @@ namespace Divan
             if (asset.isPhysical)
             {
                 DivanDataContext.Instance.Properties.InsertOnSubmit(new Property(Asset.PHYSICAL_DESCRIPTION_STRING, textBox_PhysicalDescription.Text, asset));
+                DivanDataContext.Instance.Properties.InsertOnSubmit(new Property(Asset.INSURANCE_STRING, insuranceCmb.Text, asset));
+                DivanDataContext.Instance.Properties.InsertOnSubmit(new Property(Asset.INSURANCE_DESC_STRING, insuranceTxt.Text, asset));
+                DivanDataContext.Instance.Properties.InsertOnSubmit(new Property(Asset.DOCUMENT_STRING, documentCmb.Text, asset));
+                DivanDataContext.Instance.Properties.InsertOnSubmit(new Property(Asset.DOCUMENT_DESC_STRING, documentTxt.Text, asset));
             }
             asset.isPortable = checkBox_isPortable.Checked;
             if (asset.isPortable)

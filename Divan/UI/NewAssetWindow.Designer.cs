@@ -49,7 +49,10 @@
             this.label2 = new System.Windows.Forms.Label();
             this.checkBox_isPhysical = new System.Windows.Forms.CheckBox();
             this.sensibleAssetProps = new System.Windows.Forms.Panel();
+            this.insuranceCmb = new System.Windows.Forms.ComboBox();
             this.textBox_PhysicalDescription = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.checkBox_isPortable = new System.Windows.Forms.CheckBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -91,6 +94,11 @@
             this.button3 = new System.Windows.Forms.Button();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
+            this.insuranceTxt = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.documentTxt = new System.Windows.Forms.TextBox();
+            this.documentCmb = new System.Windows.Forms.ComboBox();
             this.flowLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.humanAssetProps.SuspendLayout();
@@ -300,25 +308,63 @@
             // 
             // sensibleAssetProps
             // 
+            this.sensibleAssetProps.Controls.Add(this.documentCmb);
+            this.sensibleAssetProps.Controls.Add(this.documentTxt);
+            this.sensibleAssetProps.Controls.Add(this.insuranceCmb);
+            this.sensibleAssetProps.Controls.Add(this.insuranceTxt);
+            this.sensibleAssetProps.Controls.Add(this.label11);
             this.sensibleAssetProps.Controls.Add(this.textBox_PhysicalDescription);
+            this.sensibleAssetProps.Controls.Add(this.label10);
+            this.sensibleAssetProps.Controls.Add(this.label9);
+            this.sensibleAssetProps.Controls.Add(this.label3);
             this.sensibleAssetProps.Controls.Add(this.label12);
             this.sensibleAssetProps.Location = new System.Drawing.Point(486, 208);
             this.sensibleAssetProps.Name = "sensibleAssetProps";
-            this.sensibleAssetProps.Size = new System.Drawing.Size(467, 70);
+            this.sensibleAssetProps.Size = new System.Drawing.Size(467, 110);
             this.sensibleAssetProps.TabIndex = 5;
+            // 
+            // insuranceCmb
+            // 
+            this.insuranceCmb.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.insuranceCmb.FormattingEnabled = true;
+            this.insuranceCmb.Items.AddRange(new object[] {
+            "دارد",
+            "ندارد"});
+            this.insuranceCmb.Location = new System.Drawing.Point(350, 55);
+            this.insuranceCmb.Name = "insuranceCmb";
+            this.insuranceCmb.Size = new System.Drawing.Size(71, 22);
+            this.insuranceCmb.TabIndex = 11;
             // 
             // textBox_PhysicalDescription
             // 
             this.textBox_PhysicalDescription.Location = new System.Drawing.Point(8, 26);
             this.textBox_PhysicalDescription.Multiline = true;
             this.textBox_PhysicalDescription.Name = "textBox_PhysicalDescription";
-            this.textBox_PhysicalDescription.Size = new System.Drawing.Size(451, 37);
+            this.textBox_PhysicalDescription.Size = new System.Drawing.Size(451, 23);
             this.textBox_PhysicalDescription.TabIndex = 10;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(284, 58);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(60, 14);
+            this.label9.TabIndex = 2;
+            this.label9.Text = "شرح بیمه:";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(427, 60);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(32, 14);
+            this.label3.TabIndex = 2;
+            this.label3.Text = "بیمه:";
             // 
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(267, 3);
+            this.label12.Location = new System.Drawing.Point(278, 3);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(182, 14);
             this.label12.TabIndex = 2;
@@ -327,7 +373,7 @@
             // checkBox_isPortable
             // 
             this.checkBox_isPortable.AutoSize = true;
-            this.checkBox_isPortable.Location = new System.Drawing.Point(802, 284);
+            this.checkBox_isPortable.Location = new System.Drawing.Point(802, 324);
             this.checkBox_isPortable.Name = "checkBox_isPortable";
             this.checkBox_isPortable.Size = new System.Drawing.Size(151, 18);
             this.checkBox_isPortable.TabIndex = 6;
@@ -337,9 +383,9 @@
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.dataGrid_PrimaryInfo);
-            this.groupBox1.Location = new System.Drawing.Point(486, 308);
+            this.groupBox1.Location = new System.Drawing.Point(486, 348);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(467, 197);
+            this.groupBox1.Size = new System.Drawing.Size(467, 184);
             this.groupBox1.TabIndex = 8;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "مشخصات اولیه:";
@@ -351,9 +397,9 @@
             this.name,
             this.type,
             this.value});
-            this.dataGrid_PrimaryInfo.Location = new System.Drawing.Point(16, 24);
+            this.dataGrid_PrimaryInfo.Location = new System.Drawing.Point(8, 24);
             this.dataGrid_PrimaryInfo.Name = "dataGrid_PrimaryInfo";
-            this.dataGrid_PrimaryInfo.Size = new System.Drawing.Size(443, 166);
+            this.dataGrid_PrimaryInfo.Size = new System.Drawing.Size(451, 154);
             this.dataGrid_PrimaryInfo.TabIndex = 13;
             this.dataGrid_PrimaryInfo.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGrid_PrimaryInfo_CellEndEdit);
             this.dataGrid_PrimaryInfo.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.dataGrid_PrimaryInfo_CellValidating);
@@ -387,7 +433,7 @@
             this.groupBox3.Controls.Add(this.attachmentList);
             this.groupBox3.Controls.Add(this.deleteFileBut);
             this.groupBox3.Controls.Add(this.button5);
-            this.groupBox3.Location = new System.Drawing.Point(486, 511);
+            this.groupBox3.Location = new System.Drawing.Point(486, 538);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(467, 90);
             this.groupBox3.TabIndex = 10;
@@ -743,6 +789,53 @@
             this.errorProvider.ContainerControl = this;
             this.errorProvider.RightToLeft = true;
             // 
+            // insuranceTxt
+            // 
+            this.insuranceTxt.Location = new System.Drawing.Point(8, 55);
+            this.insuranceTxt.Multiline = true;
+            this.insuranceTxt.Name = "insuranceTxt";
+            this.insuranceTxt.Size = new System.Drawing.Size(270, 23);
+            this.insuranceTxt.TabIndex = 10;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(425, 88);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(34, 14);
+            this.label10.TabIndex = 2;
+            this.label10.Text = "سند:";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(284, 86);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(62, 14);
+            this.label11.TabIndex = 2;
+            this.label11.Text = "شرح سند:";
+            // 
+            // documentTxt
+            // 
+            this.documentTxt.Location = new System.Drawing.Point(8, 83);
+            this.documentTxt.Multiline = true;
+            this.documentTxt.Name = "documentTxt";
+            this.documentTxt.Size = new System.Drawing.Size(270, 23);
+            this.documentTxt.TabIndex = 10;
+            // 
+            // documentCmb
+            // 
+            this.documentCmb.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.documentCmb.FormattingEnabled = true;
+            this.documentCmb.Items.AddRange(new object[] {
+            "دارد",
+            "ندارد",
+            "موضوعیت ندارد"});
+            this.documentCmb.Location = new System.Drawing.Point(350, 83);
+            this.documentCmb.Name = "documentCmb";
+            this.documentCmb.Size = new System.Drawing.Size(71, 22);
+            this.documentCmb.TabIndex = 11;
+            // 
             // NewAssetWindow
             // 
             this.AcceptButton = this.button3;
@@ -850,5 +943,13 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn sValue;
         private System.Windows.Forms.DataGridViewComboBoxColumn importance;
         private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.ComboBox insuranceCmb;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.ComboBox documentCmb;
+        private System.Windows.Forms.TextBox documentTxt;
+        private System.Windows.Forms.TextBox insuranceTxt;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label label10;
     }
 }
