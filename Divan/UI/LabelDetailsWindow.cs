@@ -40,9 +40,11 @@ namespace Divan
                 label_continuousDomain.Visible = false;
                 domainGrid.Visible = true;
                 IEnumerable<DiscreteDomainValue> values = label.LabelDomain.DiscreteDomainValues.OrderBy((DiscreteDomainValue value) => value.rank).AsEnumerable();
+                BindingSource bindingSource = new BindingSource();
+                bindingSource.DataSource = values;
 
                 domainGrid.AutoGenerateColumns = false;
-                domainGrid.DataSource = values;
+                domainGrid.DataSource = bindingSource;
 
                 domainGrid.Columns["rank"].Visible = (label.LabelDomain.isOrdered ?? false);
             }
