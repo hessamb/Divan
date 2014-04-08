@@ -63,6 +63,8 @@
       <Column Name="minValue" Type="System.Single" DbType="real" CanBeNull="true" />
       <Column Name="maxValue" Type="System.Single" DbType="real" CanBeNull="true" />
       <Column Name="isOrdered" Type="System.Boolean" CanBeNull="true" />
+      <Column Name="descriteMin" Type="System.Int32" DbType="INT NULL" CanBeNull="true" />
+      <Column Name="descriteMax" Type="System.Int32" DbType="INT NULL" CanBeNull="true" />
       <Association Name="LabelDomain_DiscreteDomainValue" Member="DiscreteDomainValues" ThisKey="Id" OtherKey="domainID" Type="DiscreteDomainValue" />
       <Association Name="LabelDomain_Label" Member="Labels" ThisKey="Id" OtherKey="domainID" Type="Label" />
       <Type Name="ContinuousDomain">

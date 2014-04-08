@@ -185,7 +185,6 @@
     <Compile Include="UI\BaselinesWindow.designer.cs">
       <DependentUpon>BaselinesWindow.cs</DependentUpon>
     </Compile>
-    <Compile Include="Assets\ConsistancyRule.cs" />
     <Compile Include="Reports\ConsistencyReportGenerator.cs" />
     <Compile Include="Labels\ContinuousDomain.cs" />
     <Compile Include="Labels\DiscreteDomain.cs" />

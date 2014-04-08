@@ -37,16 +37,27 @@ namespace Divan
             }
             else if (label.LabelDomain.isDiscrete())
             {
-                label_continuousDomain.Visible = false;
-                domainGrid.Visible = true;
-                IEnumerable<DiscreteDomainValue> values = label.LabelDomain.DiscreteDomainValues.OrderBy((DiscreteDomainValue value) => value.rank).AsEnumerable();
+                if (label.LabelDomain.isNumeric())
+                {
+                    domainGrid.Visible = false;
+                    label_continuousDomain.Visible = true;
+                    label_continuousDomain.Text = "این برچسب هر عدد صحیحی از "
+                        + label.LabelDomain.descriteMin + " تا "
+                        + label.LabelDomain.descriteMax + " را می‌پذیرد.";
+                }
+                else
+                {
+                    label_continuousDomain.Visible = false;
+                    domainGrid.Visible = true;
+                    IEnumerable<DiscreteDomainValue> values = label.LabelDomain.DiscreteDomainValues.OrderBy((DiscreteDomainValue value) => value.rank).AsEnumerable();
                 BindingSource bindingSource = new BindingSource();
                 bindingSource.DataSource = values;
 
-                domainGrid.AutoGenerateColumns = false;
+                    domainGrid.AutoGenerateColumns = false;
                 domainGrid.DataSource = bindingSource;
 
-                domainGrid.Columns["rank"].Visible = (label.LabelDomain.isOrdered ?? false);
+                    domainGrid.Columns["rank"].Visible = (label.LabelDomain.isOrdered ?? false);
+                }
             }
             else
             {

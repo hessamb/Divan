@@ -41,6 +41,10 @@ namespace Divan
             if (selectedAsset.isPhysical)
             {
                 dataGrid_primaryInfo.Rows.Add(new object[] { "مشخصات ظاهری", selectedAsset.PhysicalDescription });
+                dataGrid_primaryInfo.Rows.Add(new object[] { "بیمه", selectedAsset.Insurance });
+                dataGrid_primaryInfo.Rows.Add(new object[] { "شرح بیمه", selectedAsset.InsuranceDescription });
+                dataGrid_primaryInfo.Rows.Add(new object[] { "سند", selectedAsset.Document });
+                dataGrid_primaryInfo.Rows.Add(new object[] { "شرح سند", selectedAsset.DocumentDescription });
             }
 
             foreach (Property prop in selectedAsset.Properties)

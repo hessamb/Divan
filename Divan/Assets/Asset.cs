@@ -15,12 +15,15 @@ namespace Divan
         public const String FIRST_NAME_STRING = "FirstName",
             LAST_NAME_STRING = "LastName", NATIONAL_ID_STRING = "NationalId",
             PERSONNEL_CODE_STRING = "PersonnelCode", HUMAN_DESCRIPTION_STRING = "HumanDescription";
-        public const String PHYSICAL_DESCRIPTION_STRING = "PhysicalDescription", LOCATION_STRING = "مکان";
+        public const String PHYSICAL_DESCRIPTION_STRING = "PhysicalDescription", LOCATION_STRING = "مکان"
+            , INSURANCE_STRING = "بیمه", INSURANCE_DESC_STRING = "شرح بیمه"
+            , DOCUMENT_STRING = "سند", DOCUMENT_DESC_STRING = "شرح سند";
 
         public readonly static String[] SPECIAL_NAMES = new String[]{UID_STRING, NAME_STRING,
             FIRST_NAME_STRING, LAST_NAME_STRING, NATIONAL_ID_STRING,
             PERSONNEL_CODE_STRING, HUMAN_DESCRIPTION_STRING,
-            PHYSICAL_DESCRIPTION_STRING};
+            PHYSICAL_DESCRIPTION_STRING, INSURANCE_STRING, INSURANCE_DESC_STRING,
+            DOCUMENT_STRING, DOCUMENT_DESC_STRING};
 
         public const String UNNAMED_ASSET = "بی‌نام";
 
@@ -151,6 +154,62 @@ namespace Divan
                 }
             }
         }
+        public string InsuranceDescription
+        {
+            get
+            {
+                try
+                {
+                    return this.Properties.Single(p => p.Name == INSURANCE_DESC_STRING).Value;
+                }
+                catch
+                {
+                    return "";
+                }
+            }
+        }
+        public string Insurance
+        {
+            get
+            {
+                try
+                {
+                    return this.Properties.Single(p => p.Name == INSURANCE_STRING).Value;
+                }
+                catch
+                {
+                    return "";
+                }
+            }
+        }
+        public string DocumentDescription
+        {
+            get
+            {
+                try
+                {
+                    return this.Properties.Single(p => p.Name == DOCUMENT_DESC_STRING).Value;
+                }
+                catch
+                {
+                    return "";
+                }
+            }
+        }
+        public string Document
+        {
+            get
+            {
+                try
+                {
+                    return this.Properties.Single(p => p.Name == DOCUMENT_STRING).Value;
+                }
+                catch
+                {
+                    return "";
+                }
+            }
+        }
 
         public Boolean IsComposite{
             get{
@@ -183,7 +242,7 @@ namespace Divan
             DivanDataContext.Instance.SubmitChanges();
         }
 
-        public List<ConsistancyRule> GetInconsistencies()
+        public List<ConsistencyRule> GetInconsistencies()
         {
             //TODO
             return null;

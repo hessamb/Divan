@@ -17,7 +17,7 @@ namespace Divan
             this.value = value;
         }
 
-        public List<ConsistancyRule> GetInconsistencies()
+        public List<ConsistencyRule> GetInconsistencies()
         {
             //TODO
             return null;

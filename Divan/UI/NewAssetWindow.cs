@@ -62,6 +62,15 @@ namespace Divan
             loadLabelInstances();
             loadSubAssets();
             loadAttachments();
+            loadConsistencyRules();
+        }
+
+        private void loadConsistencyRules()
+        {
+            foreach (ConsistencyRule cr in asset.ConsistencyRules)
+            {
+                dataGrid_consistencyRules.Rows.Add(new object[] {cr.mValue, cr.condition, cr.sValue, cr.Importance });
+            }
         }
 
         private void loadAttachments()
@@ -140,6 +149,10 @@ namespace Divan
             checkBox_isPhysical.Checked = asset.isPhysical;
             textBox_PhysicalDescription.Text = asset.PhysicalDescription;
             checkBox_isPortable.Checked = asset.isPortable;
+            insuranceCmb.Text = asset.Insurance;
+            insuranceTxt.Text = asset.InsuranceDescription;
+            documentCmb.Text = asset.Document;
+            documentTxt.Text = asset.DocumentDescription;
         }
 
         private void loadLabels()
@@ -177,6 +190,8 @@ namespace Divan
             {
                 checkBox_isHuman.Checked = true;
                 checkBox_isPhysical.Checked = true;
+                insuranceCmb.SelectedIndex = 1;
+                documentCmb.SelectedIndex = 1;
             }
         }
 
@@ -331,6 +346,46 @@ namespace Divan
                     }
                 }
             }
+
+            foreach (DataGridViewRow row in dataGrid_consistencyRules.Rows)
+            {
+                if (row.IsNewRow)
+                    continue;
+                ConsistencyExpression m = row.Cells[0].Value == null? null: ConsistencyExpression.parse(row.Cells[0].Value.ToString());
+                ConsistencyExpression s = row.Cells[0].Value == null ? null : ConsistencyExpression.parse(row.Cells[2].Value.ToString());
+                if (m == null)
+                {
+                    result = false;
+                    row.Cells[0].ErrorText = "مقدار این فیلد نامعتبر است.";
+                    continue;
+                }
+                else
+                {
+                    row.Cells[0].ErrorText = "";
+                }
+                if (s == null)
+                {
+                    result = false;
+                    row.Cells[2].ErrorText = "مقدار این فیلد نامعتبر است.";
+                    continue;
+                }
+                else
+                {
+                    row.Cells[2].ErrorText = "";
+                }
+                try
+                {
+                    bool res = (new ConsistencyRule() { mValue = row.Cells[0].Value.ToString(), sValue = row.Cells[2].Value.ToString(), condition = row.Cells[1].Value.ToString() }).Inconsistent;
+                    row.Cells[1].ErrorText="";
+                }
+                catch
+                {
+                    result = false;
+                    row.Cells[1].ErrorText = "این شرط با مقادیر سازگار نیست.";
+                }
+            }
+
+
             return result;
 
         }
@@ -368,7 +423,7 @@ namespace Divan
                 asset.LabelInstances.Clear();
                 DivanDataContext.Instance.SubmitChanges();
             }
-
+            
             savePrimaryInfos();
             saveProperties();
             saveLabelInstances();
@@ -469,6 +524,10 @@ namespace Divan
             if (asset.isPhysical)
             {
                 DivanDataContext.Instance.Properties.InsertOnSubmit(new Property(Asset.PHYSICAL_DESCRIPTION_STRING, textBox_PhysicalDescription.Text, asset));
+                DivanDataContext.Instance.Properties.InsertOnSubmit(new Property(Asset.INSURANCE_STRING, insuranceCmb.Text, asset));
+                DivanDataContext.Instance.Properties.InsertOnSubmit(new Property(Asset.INSURANCE_DESC_STRING, insuranceTxt.Text, asset));
+                DivanDataContext.Instance.Properties.InsertOnSubmit(new Property(Asset.DOCUMENT_STRING, documentCmb.Text, asset));
+                DivanDataContext.Instance.Properties.InsertOnSubmit(new Property(Asset.DOCUMENT_DESC_STRING, documentTxt.Text, asset));
             }
             asset.isPortable = checkBox_isPortable.Checked;
             if (asset.isPortable)

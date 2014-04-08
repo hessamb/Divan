@@ -19,11 +19,13 @@ namespace Divan
                 return value == type;
         }
 
-        public LabelDomain(float? minValue, float? maxValue, bool? isOrdered)
+        public LabelDomain(float? minValue, float? maxValue,int? distinctMin, int? distinctMax, bool? isOrdered)
             : this()
         {
             this.minValue = minValue;
             this.maxValue = maxValue;
+            this.descriteMin = distinctMin;
+            this.descriteMax = distinctMax;
             this.isOrdered = isOrdered;
         }
         public virtual bool IsValidValue(string value)
@@ -32,21 +34,35 @@ namespace Divan
                 return false;
             else if (this.isDiscrete())
             {
-                
-                string[] vals = value.Split(new string[]{" - "}, StringSplitOptions.None);
-                foreach (string word in vals)
+                if (this.isNumeric())
                 {
-                    bool valid = false;
-                    foreach (DiscreteDomainValue val in this.DiscreteDomainValues)
-                        if (word == val.value)
-                        {
-                            valid = true;
-                            break;
-                        }
-                    if (!valid)
+                    try
+                    {
+                        int val = int.Parse(value);
+                        return this.descriteMin <= val && this.descriteMax >= val;
+                    }
+                    catch
+                    {
                         return false;
+                    }
                 }
-                return true;
+                else
+                {
+                    string[] vals = value.Split(new string[] { " - " }, StringSplitOptions.None);
+                    foreach (string word in vals)
+                    {
+                        bool valid = false;
+                        foreach (DiscreteDomainValue val in this.DiscreteDomainValues)
+                            if (word == val.value)
+                            {
+                                valid = true;
+                                break;
+                            }
+                        if (!valid)
+                            return false;
+                    }
+                    return true;
+                }
             }
             else
             {
@@ -65,7 +81,12 @@ namespace Divan
         }
 
         public virtual bool isDiscrete(){
-            return this.isOrdered!=null;
+            return this.minValue==null;
+        }
+
+        public virtual bool isNumeric()
+        {
+            return this.minValue != null || this.descriteMin != null;
         }
 
         public virtual int compare(string value1, string value2)

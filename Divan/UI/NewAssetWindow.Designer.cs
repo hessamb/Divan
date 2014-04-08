@@ -49,7 +49,10 @@
             this.label2 = new System.Windows.Forms.Label();
             this.checkBox_isPhysical = new System.Windows.Forms.CheckBox();
             this.sensibleAssetProps = new System.Windows.Forms.Panel();
+            this.insuranceCmb = new System.Windows.Forms.ComboBox();
             this.textBox_PhysicalDescription = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.checkBox_isPortable = new System.Windows.Forms.CheckBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -57,6 +60,10 @@
             this.name = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.type = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.value = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.attachmentList = new System.Windows.Forms.ListBox();
+            this.deleteFileBut = new System.Windows.Forms.Button();
+            this.button5 = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.dataGrid_OtherLabel = new System.Windows.Forms.DataGridView();
             this.dataGridViewCheckBoxColumn1 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
@@ -71,41 +78,42 @@
             this.labelSearchtxt = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
-            this.checkBox_Composite = new System.Windows.Forms.CheckBox();
-            this.GroupBox_subAssets = new System.Windows.Forms.GroupBox();
-            this.removeSubAssetBut = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.treeView_subAssets = new System.Windows.Forms.TreeView();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.attachmentList = new System.Windows.Forms.ListBox();
-            this.deleteFileBut = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.dataGrid_consistencyRules = new System.Windows.Forms.DataGridView();
             this.mValue = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.condition = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.sValue = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.importance = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.checkBox_Composite = new System.Windows.Forms.CheckBox();
+            this.GroupBox_subAssets = new System.Windows.Forms.GroupBox();
+            this.removeSubAssetBut = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
+            this.treeView_subAssets = new System.Windows.Forms.TreeView();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.button4 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
+            this.insuranceTxt = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.documentTxt = new System.Windows.Forms.TextBox();
+            this.documentCmb = new System.Windows.Forms.ComboBox();
             this.flowLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.humanAssetProps.SuspendLayout();
             this.sensibleAssetProps.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGrid_PrimaryInfo)).BeginInit();
+            this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGrid_OtherLabel)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGrid_DefinerLabel)).BeginInit();
+            this.groupBox4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGrid_consistencyRules)).BeginInit();
             this.GroupBox_subAssets.SuspendLayout();
-            this.groupBox3.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGrid_consistencyRules)).BeginInit();
-            this.groupBox4.SuspendLayout();
             this.SuspendLayout();
             // 
             // flowLayoutPanel1
@@ -300,25 +308,63 @@
             // 
             // sensibleAssetProps
             // 
+            this.sensibleAssetProps.Controls.Add(this.documentCmb);
+            this.sensibleAssetProps.Controls.Add(this.documentTxt);
+            this.sensibleAssetProps.Controls.Add(this.insuranceCmb);
+            this.sensibleAssetProps.Controls.Add(this.insuranceTxt);
+            this.sensibleAssetProps.Controls.Add(this.label11);
             this.sensibleAssetProps.Controls.Add(this.textBox_PhysicalDescription);
+            this.sensibleAssetProps.Controls.Add(this.label10);
+            this.sensibleAssetProps.Controls.Add(this.label9);
+            this.sensibleAssetProps.Controls.Add(this.label3);
             this.sensibleAssetProps.Controls.Add(this.label12);
             this.sensibleAssetProps.Location = new System.Drawing.Point(486, 208);
             this.sensibleAssetProps.Name = "sensibleAssetProps";
-            this.sensibleAssetProps.Size = new System.Drawing.Size(467, 70);
+            this.sensibleAssetProps.Size = new System.Drawing.Size(467, 110);
             this.sensibleAssetProps.TabIndex = 5;
+            // 
+            // insuranceCmb
+            // 
+            this.insuranceCmb.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.insuranceCmb.FormattingEnabled = true;
+            this.insuranceCmb.Items.AddRange(new object[] {
+            "دارد",
+            "ندارد"});
+            this.insuranceCmb.Location = new System.Drawing.Point(350, 55);
+            this.insuranceCmb.Name = "insuranceCmb";
+            this.insuranceCmb.Size = new System.Drawing.Size(71, 22);
+            this.insuranceCmb.TabIndex = 11;
             // 
             // textBox_PhysicalDescription
             // 
             this.textBox_PhysicalDescription.Location = new System.Drawing.Point(8, 26);
             this.textBox_PhysicalDescription.Multiline = true;
             this.textBox_PhysicalDescription.Name = "textBox_PhysicalDescription";
-            this.textBox_PhysicalDescription.Size = new System.Drawing.Size(451, 37);
+            this.textBox_PhysicalDescription.Size = new System.Drawing.Size(451, 23);
             this.textBox_PhysicalDescription.TabIndex = 10;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(284, 58);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(60, 14);
+            this.label9.TabIndex = 2;
+            this.label9.Text = "شرح بیمه:";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(427, 60);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(32, 14);
+            this.label3.TabIndex = 2;
+            this.label3.Text = "بیمه:";
             // 
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(267, 3);
+            this.label12.Location = new System.Drawing.Point(278, 3);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(182, 14);
             this.label12.TabIndex = 2;
@@ -327,7 +373,7 @@
             // checkBox_isPortable
             // 
             this.checkBox_isPortable.AutoSize = true;
-            this.checkBox_isPortable.Location = new System.Drawing.Point(802, 284);
+            this.checkBox_isPortable.Location = new System.Drawing.Point(802, 324);
             this.checkBox_isPortable.Name = "checkBox_isPortable";
             this.checkBox_isPortable.Size = new System.Drawing.Size(151, 18);
             this.checkBox_isPortable.TabIndex = 6;
@@ -337,9 +383,9 @@
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.dataGrid_PrimaryInfo);
-            this.groupBox1.Location = new System.Drawing.Point(486, 308);
+            this.groupBox1.Location = new System.Drawing.Point(486, 348);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(467, 197);
+            this.groupBox1.Size = new System.Drawing.Size(467, 184);
             this.groupBox1.TabIndex = 8;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "مشخصات اولیه:";
@@ -351,9 +397,9 @@
             this.name,
             this.type,
             this.value});
-            this.dataGrid_PrimaryInfo.Location = new System.Drawing.Point(16, 24);
+            this.dataGrid_PrimaryInfo.Location = new System.Drawing.Point(8, 24);
             this.dataGrid_PrimaryInfo.Name = "dataGrid_PrimaryInfo";
-            this.dataGrid_PrimaryInfo.Size = new System.Drawing.Size(443, 166);
+            this.dataGrid_PrimaryInfo.Size = new System.Drawing.Size(451, 154);
             this.dataGrid_PrimaryInfo.TabIndex = 13;
             this.dataGrid_PrimaryInfo.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGrid_PrimaryInfo_CellEndEdit);
             this.dataGrid_PrimaryInfo.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.dataGrid_PrimaryInfo_CellValidating);
@@ -381,6 +427,56 @@
             this.value.HeaderText = "مقدار";
             this.value.Name = "value";
             this.value.Width = 58;
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.attachmentList);
+            this.groupBox3.Controls.Add(this.deleteFileBut);
+            this.groupBox3.Controls.Add(this.button5);
+            this.groupBox3.Location = new System.Drawing.Point(486, 538);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(467, 90);
+            this.groupBox3.TabIndex = 10;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "فایل‌های ضمیمه:";
+            // 
+            // attachmentList
+            // 
+            this.attachmentList.FormattingEnabled = true;
+            this.attachmentList.ItemHeight = 14;
+            this.attachmentList.Location = new System.Drawing.Point(8, 21);
+            this.attachmentList.Name = "attachmentList";
+            this.attachmentList.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.attachmentList.Size = new System.Drawing.Size(375, 60);
+            this.attachmentList.TabIndex = 18;
+            this.attachmentList.SelectedIndexChanged += new System.EventHandler(this.attachmentList_SelectedIndexChanged);
+            // 
+            // deleteFileBut
+            // 
+            this.deleteFileBut.Enabled = false;
+            this.deleteFileBut.Image = global::Divan.Properties.Resources.delete;
+            this.deleteFileBut.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.deleteFileBut.Location = new System.Drawing.Point(389, 53);
+            this.deleteFileBut.Name = "deleteFileBut";
+            this.deleteFileBut.Size = new System.Drawing.Size(71, 25);
+            this.deleteFileBut.TabIndex = 17;
+            this.deleteFileBut.Text = "حذف";
+            this.deleteFileBut.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.deleteFileBut.UseVisualStyleBackColor = true;
+            this.deleteFileBut.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // button5
+            // 
+            this.button5.Image = global::Divan.Properties.Resources.add;
+            this.button5.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button5.Location = new System.Drawing.Point(389, 22);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(71, 25);
+            this.button5.TabIndex = 16;
+            this.button5.Text = "افزودن";
+            this.button5.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // groupBox2
             // 
@@ -517,6 +613,73 @@
             this.label13.TabIndex = 4;
             this.label13.Text = "برچسب‌های تعریف‌گر نوع دارایی:";
             // 
+            // groupBox4
+            // 
+            this.groupBox4.Controls.Add(this.dataGrid_consistencyRules);
+            this.groupBox4.Location = new System.Drawing.Point(13, 192);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(467, 186);
+            this.groupBox4.TabIndex = 1;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "قوانین سازگارسنجی";
+            // 
+            // dataGrid_consistencyRules
+            // 
+            this.dataGrid_consistencyRules.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGrid_consistencyRules.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.mValue,
+            this.condition,
+            this.sValue,
+            this.importance});
+            this.dataGrid_consistencyRules.Location = new System.Drawing.Point(3, 23);
+            this.dataGrid_consistencyRules.Name = "dataGrid_consistencyRules";
+            this.dataGrid_consistencyRules.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.dataGrid_consistencyRules.Size = new System.Drawing.Size(461, 157);
+            this.dataGrid_consistencyRules.TabIndex = 0;
+            // 
+            // mValue
+            // 
+            this.mValue.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.mValue.HeaderText = "مقدار مورد سنجش";
+            this.mValue.Name = "mValue";
+            // 
+            // condition
+            // 
+            this.condition.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.condition.HeaderText = "عملگر";
+            this.condition.Items.AddRange(new object[] {
+            "==",
+            "!=",
+            "<",
+            ">",
+            "<=",
+            ">=",
+            "IN",
+            "NI",
+            "!IN",
+            "NI!"});
+            this.condition.Name = "condition";
+            this.condition.Width = 42;
+            // 
+            // sValue
+            // 
+            this.sValue.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.sValue.HeaderText = "مقدار مبنا";
+            this.sValue.Name = "sValue";
+            // 
+            // importance
+            // 
+            this.importance.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.importance.HeaderText = "اهمیت";
+            this.importance.Items.AddRange(new object[] {
+            "امن",
+            "بحرانی-امن",
+            "بحرانی",
+            "مهم",
+            "عادی"});
+            this.importance.Name = "importance";
+            this.importance.Width = 46;
+            // 
             // checkBox_Composite
             // 
             this.checkBox_Composite.AutoSize = true;
@@ -581,56 +744,6 @@
             this.treeView_subAssets.Enter += new System.EventHandler(this.subAssetsTree_Leave);
             this.treeView_subAssets.Leave += new System.EventHandler(this.subAssetsTree_Leave);
             // 
-            // groupBox3
-            // 
-            this.groupBox3.Controls.Add(this.attachmentList);
-            this.groupBox3.Controls.Add(this.deleteFileBut);
-            this.groupBox3.Controls.Add(this.button5);
-            this.groupBox3.Location = new System.Drawing.Point(486, 511);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(467, 90);
-            this.groupBox3.TabIndex = 10;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "فایل‌های ضمیمه:";
-            // 
-            // attachmentList
-            // 
-            this.attachmentList.FormattingEnabled = true;
-            this.attachmentList.ItemHeight = 14;
-            this.attachmentList.Location = new System.Drawing.Point(8, 21);
-            this.attachmentList.Name = "attachmentList";
-            this.attachmentList.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.attachmentList.Size = new System.Drawing.Size(375, 60);
-            this.attachmentList.TabIndex = 18;
-            this.attachmentList.SelectedIndexChanged += new System.EventHandler(this.attachmentList_SelectedIndexChanged);
-            // 
-            // deleteFileBut
-            // 
-            this.deleteFileBut.Enabled = false;
-            this.deleteFileBut.Image = global::Divan.Properties.Resources.delete;
-            this.deleteFileBut.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.deleteFileBut.Location = new System.Drawing.Point(389, 53);
-            this.deleteFileBut.Name = "deleteFileBut";
-            this.deleteFileBut.Size = new System.Drawing.Size(71, 25);
-            this.deleteFileBut.TabIndex = 17;
-            this.deleteFileBut.Text = "حذف";
-            this.deleteFileBut.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.deleteFileBut.UseVisualStyleBackColor = true;
-            this.deleteFileBut.Click += new System.EventHandler(this.button2_Click);
-            // 
-            // button5
-            // 
-            this.button5.Image = global::Divan.Properties.Resources.add;
-            this.button5.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button5.Location = new System.Drawing.Point(389, 22);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(71, 25);
-            this.button5.TabIndex = 16;
-            this.button5.Text = "افزودن";
-            this.button5.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button5.UseVisualStyleBackColor = true;
-            this.button5.Click += new System.EventHandler(this.button5_Click);
-            // 
             // panel2
             // 
             this.panel2.Controls.Add(this.button4);
@@ -676,71 +789,52 @@
             this.errorProvider.ContainerControl = this;
             this.errorProvider.RightToLeft = true;
             // 
-            // dataGrid_consistencyRules
+            // insuranceTxt
             // 
-            this.dataGrid_consistencyRules.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGrid_consistencyRules.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.mValue,
-            this.condition,
-            this.sValue,
-            this.importance});
-            this.dataGrid_consistencyRules.Location = new System.Drawing.Point(3, 23);
-            this.dataGrid_consistencyRules.Name = "dataGrid_consistencyRules";
-            this.dataGrid_consistencyRules.Size = new System.Drawing.Size(461, 157);
-            this.dataGrid_consistencyRules.TabIndex = 0;
+            this.insuranceTxt.Location = new System.Drawing.Point(8, 55);
+            this.insuranceTxt.Multiline = true;
+            this.insuranceTxt.Name = "insuranceTxt";
+            this.insuranceTxt.Size = new System.Drawing.Size(270, 23);
+            this.insuranceTxt.TabIndex = 10;
             // 
-            // mValue
+            // label10
             // 
-            this.mValue.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.mValue.HeaderText = "مقدار مورد سنجش";
-            this.mValue.Name = "mValue";
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(425, 88);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(34, 14);
+            this.label10.TabIndex = 2;
+            this.label10.Text = "سند:";
             // 
-            // condition
+            // label11
             // 
-            this.condition.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.condition.HeaderText = "عملگر";
-            this.condition.Items.AddRange(new object[] {
-            "==",
-            "!=",
-            "<",
-            ">",
-            "<=",
-            ">=",
-            "IN",
-            "NI",
-            "!IN",
-            "NI!"});
-            this.condition.Name = "condition";
-            this.condition.Width = 42;
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(284, 86);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(62, 14);
+            this.label11.TabIndex = 2;
+            this.label11.Text = "شرح سند:";
             // 
-            // sValue
+            // documentTxt
             // 
-            this.sValue.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.sValue.HeaderText = "مقدار مبنا";
-            this.sValue.Name = "sValue";
+            this.documentTxt.Location = new System.Drawing.Point(8, 83);
+            this.documentTxt.Multiline = true;
+            this.documentTxt.Name = "documentTxt";
+            this.documentTxt.Size = new System.Drawing.Size(270, 23);
+            this.documentTxt.TabIndex = 10;
             // 
-            // importance
+            // documentCmb
             // 
-            this.importance.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.importance.HeaderText = "اهمیت";
-            this.importance.Items.AddRange(new object[] {
-            "امن",
-            "بحرانی-امن",
-            "بحرانی",
-            "مهم",
-            "عادی"});
-            this.importance.Name = "importance";
-            this.importance.Width = 46;
-            // 
-            // groupBox4
-            // 
-            this.groupBox4.Controls.Add(this.dataGrid_consistencyRules);
-            this.groupBox4.Location = new System.Drawing.Point(13, 192);
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(467, 186);
-            this.groupBox4.TabIndex = 1;
-            this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "قوانین سازگارسنجی";
+            this.documentCmb.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.documentCmb.FormattingEnabled = true;
+            this.documentCmb.Items.AddRange(new object[] {
+            "دارد",
+            "ندارد",
+            "موضوعیت ندارد"});
+            this.documentCmb.Location = new System.Drawing.Point(350, 83);
+            this.documentCmb.Name = "documentCmb";
+            this.documentCmb.Size = new System.Drawing.Size(71, 22);
+            this.documentCmb.TabIndex = 11;
             // 
             // NewAssetWindow
             // 
@@ -771,16 +865,16 @@
             this.sensibleAssetProps.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGrid_PrimaryInfo)).EndInit();
+            this.groupBox3.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGrid_OtherLabel)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGrid_DefinerLabel)).EndInit();
+            this.groupBox4.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGrid_consistencyRules)).EndInit();
             this.GroupBox_subAssets.ResumeLayout(false);
-            this.groupBox3.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGrid_consistencyRules)).EndInit();
-            this.groupBox4.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -849,5 +943,13 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn sValue;
         private System.Windows.Forms.DataGridViewComboBoxColumn importance;
         private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.ComboBox insuranceCmb;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.ComboBox documentCmb;
+        private System.Windows.Forms.TextBox documentTxt;
+        private System.Windows.Forms.TextBox insuranceTxt;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label label10;
     }
 }

@@ -38,12 +38,17 @@
             this.label1 = new System.Windows.Forms.Label();
             this.domainGroup = new System.Windows.Forms.GroupBox();
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
-            this.distictProps = new System.Windows.Forms.Panel();
+            this.continiousProps = new System.Windows.Forms.Panel();
             this.label9 = new System.Windows.Forms.Label();
             this.textBox_minValue = new System.Windows.Forms.TextBox();
             this.textBox_maxValue = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
-            this.continiousProps = new System.Windows.Forms.Panel();
+            this.discSetPanel = new System.Windows.Forms.Panel();
+            this.discNumericalPanel = new System.Windows.Forms.Panel();
+            this.discMinValTxt = new System.Windows.Forms.NumericUpDown();
+            this.discMaxValTxt = new System.Windows.Forms.NumericUpDown();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
             this.ordinalValues = new System.Windows.Forms.RadioButton();
             this.domainGrid = new System.Windows.Forms.DataGridView();
             this.name = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -58,15 +63,26 @@
             this.button4 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.error = new System.Windows.Forms.ErrorProvider(this.components);
+            this.distinctProps = new System.Windows.Forms.FlowLayoutPanel();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.discNumbersRadio = new System.Windows.Forms.RadioButton();
+            this.label6 = new System.Windows.Forms.Label();
+            this.radioButton2 = new System.Windows.Forms.RadioButton();
+            this.label7 = new System.Windows.Forms.Label();
             this.flowLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.domainGroup.SuspendLayout();
             this.flowLayoutPanel2.SuspendLayout();
-            this.distictProps.SuspendLayout();
             this.continiousProps.SuspendLayout();
+            this.discSetPanel.SuspendLayout();
+            this.discNumericalPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.discMinValTxt)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.discMaxValTxt)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.domainGrid)).BeginInit();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.error)).BeginInit();
+            this.distinctProps.SuspendLayout();
+            this.panel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // flowLayoutPanel1
@@ -84,7 +100,7 @@
             this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(23, 22, 23, 22);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Padding = new System.Windows.Forms.Padding(12, 11, 0, 0);
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(493, 401);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(493, 597);
             this.flowLayoutPanel1.TabIndex = 100;
             // 
             // panel1
@@ -159,7 +175,7 @@
             this.domainGroup.Location = new System.Drawing.Point(9, 50);
             this.domainGroup.Name = "domainGroup";
             this.domainGroup.Padding = new System.Windows.Forms.Padding(3, 3, 3, 0);
-            this.domainGroup.Size = new System.Drawing.Size(469, 259);
+            this.domainGroup.Size = new System.Drawing.Size(469, 325);
             this.domainGroup.TabIndex = 1;
             this.domainGroup.TabStop = false;
             this.domainGroup.Text = "دامنه مقادیر";
@@ -168,27 +184,27 @@
             // 
             this.flowLayoutPanel2.AutoSize = true;
             this.flowLayoutPanel2.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.flowLayoutPanel2.Controls.Add(this.distictProps);
             this.flowLayoutPanel2.Controls.Add(this.continiousProps);
+            this.flowLayoutPanel2.Controls.Add(this.distinctProps);
             this.flowLayoutPanel2.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.flowLayoutPanel2.Location = new System.Drawing.Point(7, 43);
             this.flowLayoutPanel2.Margin = new System.Windows.Forms.Padding(3, 3, 3, 0);
             this.flowLayoutPanel2.Name = "flowLayoutPanel2";
-            this.flowLayoutPanel2.Size = new System.Drawing.Size(456, 201);
+            this.flowLayoutPanel2.Size = new System.Drawing.Size(456, 267);
             this.flowLayoutPanel2.TabIndex = 14;
             // 
-            // distictProps
+            // continiousProps
             // 
-            this.distictProps.Controls.Add(this.label9);
-            this.distictProps.Controls.Add(this.textBox_minValue);
-            this.distictProps.Controls.Add(this.textBox_maxValue);
-            this.distictProps.Controls.Add(this.label10);
-            this.distictProps.Location = new System.Drawing.Point(3, 3);
-            this.distictProps.Margin = new System.Windows.Forms.Padding(3, 3, 3, 0);
-            this.distictProps.Name = "distictProps";
-            this.distictProps.Size = new System.Drawing.Size(450, 23);
-            this.distictProps.TabIndex = 1;
-            this.distictProps.Visible = false;
+            this.continiousProps.Controls.Add(this.label9);
+            this.continiousProps.Controls.Add(this.textBox_minValue);
+            this.continiousProps.Controls.Add(this.textBox_maxValue);
+            this.continiousProps.Controls.Add(this.label10);
+            this.continiousProps.Location = new System.Drawing.Point(3, 3);
+            this.continiousProps.Margin = new System.Windows.Forms.Padding(3, 3, 3, 0);
+            this.continiousProps.Name = "continiousProps";
+            this.continiousProps.Size = new System.Drawing.Size(450, 23);
+            this.continiousProps.TabIndex = 1;
+            this.continiousProps.Visible = false;
             // 
             // label9
             // 
@@ -226,27 +242,98 @@
             this.label10.TabIndex = 2;
             this.label10.Text = "تا:";
             // 
-            // continiousProps
+            // discSetPanel
             // 
-            this.continiousProps.Controls.Add(this.ordinalValues);
-            this.continiousProps.Controls.Add(this.domainGrid);
-            this.continiousProps.Controls.Add(this.radioButton3);
-            this.continiousProps.Location = new System.Drawing.Point(3, 29);
-            this.continiousProps.Margin = new System.Windows.Forms.Padding(3, 3, 3, 0);
-            this.continiousProps.Name = "continiousProps";
-            this.continiousProps.Size = new System.Drawing.Size(450, 172);
-            this.continiousProps.TabIndex = 2;
+            this.discSetPanel.Controls.Add(this.radioButton3);
+            this.discSetPanel.Controls.Add(this.domainGrid);
+            this.discSetPanel.Controls.Add(this.label7);
+            this.discSetPanel.Controls.Add(this.ordinalValues);
+            this.discSetPanel.Location = new System.Drawing.Point(3, 60);
+            this.discSetPanel.Name = "discSetPanel";
+            this.discSetPanel.Size = new System.Drawing.Size(444, 172);
+            this.discSetPanel.TabIndex = 5;
+            // 
+            // discNumericalPanel
+            // 
+            this.discNumericalPanel.Controls.Add(this.discMinValTxt);
+            this.discNumericalPanel.Controls.Add(this.discMaxValTxt);
+            this.discNumericalPanel.Controls.Add(this.label4);
+            this.discNumericalPanel.Controls.Add(this.label5);
+            this.discNumericalPanel.Location = new System.Drawing.Point(3, 32);
+            this.discNumericalPanel.Name = "discNumericalPanel";
+            this.discNumericalPanel.Size = new System.Drawing.Size(444, 22);
+            this.discNumericalPanel.TabIndex = 4;
+            this.discNumericalPanel.Visible = false;
+            // 
+            // discMinValTxt
+            // 
+            this.discMinValTxt.Location = new System.Drawing.Point(309, 0);
+            this.discMinValTxt.Maximum = new decimal(new int[] {
+            2000000000,
+            0,
+            0,
+            0});
+            this.discMinValTxt.Minimum = new decimal(new int[] {
+            2000000000,
+            0,
+            0,
+            -2147483648});
+            this.discMinValTxt.Name = "discMinValTxt";
+            this.discMinValTxt.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.discMinValTxt.Size = new System.Drawing.Size(113, 22);
+            this.discMinValTxt.TabIndex = 8;
+            // 
+            // discMaxValTxt
+            // 
+            this.discMaxValTxt.Location = new System.Drawing.Point(150, 0);
+            this.discMaxValTxt.Maximum = new decimal(new int[] {
+            2000000000,
+            0,
+            0,
+            0});
+            this.discMaxValTxt.Minimum = new decimal(new int[] {
+            2000000000,
+            0,
+            0,
+            -2147483648});
+            this.discMaxValTxt.Name = "discMaxValTxt";
+            this.discMaxValTxt.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.discMaxValTxt.Size = new System.Drawing.Size(113, 22);
+            this.discMaxValTxt.TabIndex = 7;
+            this.discMaxValTxt.Value = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(430, 3);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(18, 14);
+            this.label4.TabIndex = 4;
+            this.label4.Text = "از:";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(271, 3);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(18, 14);
+            this.label5.TabIndex = 6;
+            this.label5.Text = "تا:";
             // 
             // ordinalValues
             // 
             this.ordinalValues.AutoSize = true;
             this.ordinalValues.Checked = true;
-            this.ordinalValues.Location = new System.Drawing.Point(215, 0);
+            this.ordinalValues.Location = new System.Drawing.Point(275, 2);
             this.ordinalValues.Name = "ordinalValues";
-            this.ordinalValues.Size = new System.Drawing.Size(112, 18);
+            this.ordinalValues.Size = new System.Drawing.Size(58, 18);
             this.ordinalValues.TabIndex = 2;
             this.ordinalValues.TabStop = true;
-            this.ordinalValues.Text = "مقادیر ترتیب دارند";
+            this.ordinalValues.Text = "باترتیب";
             this.ordinalValues.UseVisualStyleBackColor = true;
             this.ordinalValues.CheckedChanged += new System.EventHandler(this.orderedValues_CheckedChanged);
             // 
@@ -258,10 +345,10 @@
             this.name,
             this.MoveUp,
             this.MoveDown});
-            this.domainGrid.Location = new System.Drawing.Point(17, 28);
+            this.domainGrid.Location = new System.Drawing.Point(3, 27);
             this.domainGrid.Margin = new System.Windows.Forms.Padding(3, 3, 3, 0);
             this.domainGrid.Name = "domainGrid";
-            this.domainGrid.Size = new System.Drawing.Size(433, 144);
+            this.domainGrid.Size = new System.Drawing.Size(440, 144);
             this.domainGrid.TabIndex = 3;
             this.domainGrid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.domainGrid_CellContentClick);
             this.domainGrid.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.domainGrid_CellValidating);
@@ -294,11 +381,11 @@
             // radioButton3
             // 
             this.radioButton3.AutoSize = true;
-            this.radioButton3.Location = new System.Drawing.Point(333, 0);
+            this.radioButton3.Location = new System.Drawing.Point(339, 2);
             this.radioButton3.Name = "radioButton3";
-            this.radioButton3.Size = new System.Drawing.Size(117, 18);
+            this.radioButton3.Size = new System.Drawing.Size(66, 18);
             this.radioButton3.TabIndex = 1;
-            this.radioButton3.Text = "مقادیر بی‌ترتیب اند";
+            this.radioButton3.Text = "بی‌ترتیب";
             this.radioButton3.UseVisualStyleBackColor = true;
             // 
             // continuousRadio
@@ -336,7 +423,7 @@
             // checkBox_splitter
             // 
             this.checkBox_splitter.AutoSize = true;
-            this.checkBox_splitter.Location = new System.Drawing.Point(255, 315);
+            this.checkBox_splitter.Location = new System.Drawing.Point(255, 381);
             this.checkBox_splitter.Name = "checkBox_splitter";
             this.checkBox_splitter.Size = new System.Drawing.Size(223, 18);
             this.checkBox_splitter.TabIndex = 2;
@@ -347,7 +434,7 @@
             // 
             this.panel2.Controls.Add(this.button4);
             this.panel2.Controls.Add(this.button3);
-            this.panel2.Location = new System.Drawing.Point(11, 339);
+            this.panel2.Location = new System.Drawing.Point(11, 405);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(467, 38);
             this.panel2.TabIndex = 8;
@@ -384,6 +471,70 @@
             this.error.ContainerControl = this;
             this.error.RightToLeft = true;
             // 
+            // distinctProps
+            // 
+            this.distinctProps.AutoSize = true;
+            this.distinctProps.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.distinctProps.Controls.Add(this.panel3);
+            this.distinctProps.Controls.Add(this.discNumericalPanel);
+            this.distinctProps.Controls.Add(this.discSetPanel);
+            this.distinctProps.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.distinctProps.Location = new System.Drawing.Point(3, 29);
+            this.distinctProps.Name = "distinctProps";
+            this.distinctProps.Size = new System.Drawing.Size(450, 235);
+            this.distinctProps.TabIndex = 6;
+            // 
+            // panel3
+            // 
+            this.panel3.Controls.Add(this.discNumbersRadio);
+            this.panel3.Controls.Add(this.radioButton2);
+            this.panel3.Controls.Add(this.label6);
+            this.panel3.Location = new System.Drawing.Point(3, 3);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(444, 23);
+            this.panel3.TabIndex = 6;
+            // 
+            // discNumbersRadio
+            // 
+            this.discNumbersRadio.AutoSize = true;
+            this.discNumbersRadio.Location = new System.Drawing.Point(332, 2);
+            this.discNumbersRadio.Name = "discNumbersRadio";
+            this.discNumbersRadio.Size = new System.Drawing.Size(84, 18);
+            this.discNumbersRadio.TabIndex = 1;
+            this.discNumbersRadio.Text = "اعداد صحیح";
+            this.discNumbersRadio.UseVisualStyleBackColor = true;
+            this.discNumbersRadio.CheckedChanged += new System.EventHandler(this.discNumbersRadio_CheckedChanged);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(422, 4);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(26, 14);
+            this.label6.TabIndex = 2;
+            this.label6.Text = "نوع:";
+            // 
+            // radioButton2
+            // 
+            this.radioButton2.AutoSize = true;
+            this.radioButton2.Checked = true;
+            this.radioButton2.Location = new System.Drawing.Point(227, 2);
+            this.radioButton2.Name = "radioButton2";
+            this.radioButton2.Size = new System.Drawing.Size(99, 18);
+            this.radioButton2.TabIndex = 2;
+            this.radioButton2.TabStop = true;
+            this.radioButton2.Text = "مجموعه مقادیر";
+            this.radioButton2.UseVisualStyleBackColor = true;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(411, 4);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(37, 14);
+            this.label7.TabIndex = 4;
+            this.label7.Text = "ترتیب:";
+            // 
             // NewLabelWindow
             // 
             this.AcceptButton = this.button3;
@@ -393,7 +544,7 @@
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.CancelButton = this.button4;
-            this.ClientSize = new System.Drawing.Size(493, 401);
+            this.ClientSize = new System.Drawing.Size(493, 597);
             this.Controls.Add(this.flowLayoutPanel1);
             this.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -412,13 +563,21 @@
             this.domainGroup.ResumeLayout(false);
             this.domainGroup.PerformLayout();
             this.flowLayoutPanel2.ResumeLayout(false);
-            this.distictProps.ResumeLayout(false);
-            this.distictProps.PerformLayout();
+            this.flowLayoutPanel2.PerformLayout();
             this.continiousProps.ResumeLayout(false);
             this.continiousProps.PerformLayout();
+            this.discSetPanel.ResumeLayout(false);
+            this.discSetPanel.PerformLayout();
+            this.discNumericalPanel.ResumeLayout(false);
+            this.discNumericalPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.discMinValTxt)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.discMaxValTxt)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.domainGrid)).EndInit();
             this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.error)).EndInit();
+            this.distinctProps.ResumeLayout(false);
+            this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -440,12 +599,11 @@
         private System.Windows.Forms.RadioButton continuousRadio;
         private System.Windows.Forms.RadioButton discreteRadio;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
-        private System.Windows.Forms.Panel distictProps;
+        private System.Windows.Forms.Panel continiousProps;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TextBox textBox_minValue;
         private System.Windows.Forms.TextBox textBox_maxValue;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Panel continiousProps;
         private System.Windows.Forms.RadioButton ordinalValues;
         private System.Windows.Forms.RadioButton radioButton3;
         private System.Windows.Forms.RadioButton unvalueableRadio;
@@ -455,5 +613,17 @@
         private System.Windows.Forms.DataGridViewButtonColumn MoveUp;
         private System.Windows.Forms.DataGridViewButtonColumn MoveDown;
         private System.Windows.Forms.ErrorProvider error;
+        private System.Windows.Forms.Panel discSetPanel;
+        private System.Windows.Forms.Panel discNumericalPanel;
+        private System.Windows.Forms.NumericUpDown discMinValTxt;
+        private System.Windows.Forms.NumericUpDown discMaxValTxt;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.FlowLayoutPanel distinctProps;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.RadioButton discNumbersRadio;
+        private System.Windows.Forms.RadioButton radioButton2;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label7;
     }
 }

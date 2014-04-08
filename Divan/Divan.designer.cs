@@ -1409,6 +1409,10 @@ namespace Divan
 		
 		private System.Nullable<bool> _isOrdered;
 		
+		private System.Nullable<int> _descriteMin;
+		
+		private System.Nullable<int> _descriteMax;
+		
 		private EntitySet<DiscreteDomainValue> _DiscreteDomainValues;
 		
 		private EntitySet<Label> _Labels;
@@ -1425,6 +1429,10 @@ namespace Divan
     partial void OnmaxValueChanged();
     partial void OnisOrderedChanging(System.Nullable<bool> value);
     partial void OnisOrderedChanged();
+    partial void OndescriteMinChanging(System.Nullable<int> value);
+    partial void OndescriteMinChanged();
+    partial void OndescriteMaxChanging(System.Nullable<int> value);
+    partial void OndescriteMaxChanged();
     #endregion
 		
 		public LabelDomain()
@@ -1510,6 +1518,46 @@ namespace Divan
 					this._isOrdered = value;
 					this.SendPropertyChanged("isOrdered");
 					this.OnisOrderedChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_descriteMin", DbType="INT NULL")]
+		public System.Nullable<int> descriteMin
+		{
+			get
+			{
+				return this._descriteMin;
+			}
+			set
+			{
+				if ((this._descriteMin != value))
+				{
+					this.OndescriteMinChanging(value);
+					this.SendPropertyChanging();
+					this._descriteMin = value;
+					this.SendPropertyChanged("descriteMin");
+					this.OndescriteMinChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_descriteMax", DbType="INT NULL")]
+		public System.Nullable<int> descriteMax
+		{
+			get
+			{
+				return this._descriteMax;
+			}
+			set
+			{
+				if ((this._descriteMax != value))
+				{
+					this.OndescriteMaxChanging(value);
+					this.SendPropertyChanging();
+					this._descriteMax = value;
+					this.SendPropertyChanged("descriteMax");
+					this.OndescriteMaxChanged();
 				}
 			}
 		}

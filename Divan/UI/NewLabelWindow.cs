@@ -33,13 +33,22 @@ namespace Divan
                 discreteRadio.Checked = label.LabelDomain.isDiscrete();
                 if (discreteRadio.Checked)
                 {
-                    IEnumerable<DiscreteDomainValue> values = label.LabelDomain.DiscreteDomainValues
-                        .OrderBy((DiscreteDomainValue value) => value.rank).AsEnumerable();
-                    foreach (DiscreteDomainValue value in values)
+                    discNumbersRadio.Checked = label.LabelDomain.isNumeric();
+                    if (discNumbersRadio.Checked)
                     {
-                        domainGrid.Rows.Add(value.value);
+                        discMinValTxt.Value = (int)label.LabelDomain.descriteMin;
+                        discMaxValTxt.Value = (int)label.LabelDomain.descriteMax;
                     }
-                    ordinalValues.Checked = label.LabelDomain.isOrdered ?? false;
+                    else
+                    {
+                        IEnumerable<DiscreteDomainValue> values = label.LabelDomain.DiscreteDomainValues
+                            .OrderBy((DiscreteDomainValue value) => value.rank).AsEnumerable();
+                        foreach (DiscreteDomainValue value in values)
+                        {
+                            domainGrid.Rows.Add(value.value);
+                        }
+                        ordinalValues.Checked = label.LabelDomain.isOrdered ?? false;
+                    }
                 }
                 else
                 {
@@ -56,8 +65,8 @@ namespace Divan
 
         private void radioButton1_CheckedChanged(object sender, EventArgs e)
         {
-            distictProps.Visible = !discreteRadio.Checked;
-            continiousProps.Visible = discreteRadio.Checked;
+            continiousProps.Visible = !discreteRadio.Checked;
+            distinctProps.Visible = discreteRadio.Checked;
         }
 
         private void radioButton4_CheckedChanged(object sender, EventArgs e)
@@ -157,7 +166,7 @@ namespace Divan
             else if (!discreteRadio.Checked)
             {
                 LabelDomain domain = new LabelDomain(float.Parse(textBox_minValue.Text),
-                    float.Parse(textBox_maxValue.Text), null);
+                    float.Parse(textBox_maxValue.Text), null, null, null);
                 DivanDataContext.Instance.LabelDomains.InsertOnSubmit(domain);
                 DivanDataContext.Instance.SubmitChanges();
                 if (label == null)
@@ -170,25 +179,41 @@ namespace Divan
             }
             else
             {
-                LabelDomain domain = new LabelDomain(null, null, ordinalValues.Checked);
-                for (int i = 0; i < domainGrid.Rows.Count-1 ; i++)
+                if (discNumbersRadio.Checked)
                 {
-                    DataGridViewRow row = domainGrid.Rows[i];
-                    DiscreteDomainValue value = new DiscreteDomainValue();
-                    value.LabelDomain = domain;
-                    value.rank = i;
-                    value.value = (string)row.Cells[0].Value ?? "";
-                    DivanDataContext.Instance.DiscreteDomainValues.InsertOnSubmit(value);
+                    LabelDomain domain = new LabelDomain(null, null, (int)discMinValTxt.Value,(int)discMaxValTxt.Value,null);
+                    DivanDataContext.Instance.LabelDomains.InsertOnSubmit(domain);
+                    DivanDataContext.Instance.SubmitChanges();
+                    if (label == null)
+                        label = new Label();
+                    label.name = nameTxt.Text;
+                    label.setValue = true;
+                    label.isSplitter = checkBox_splitter.Checked;
+                    label.LabelDomain = domain;
+                    DivanDataContext.Instance.Labels.InsertOnSubmit(label);
                 }
-                DivanDataContext.Instance.LabelDomains.InsertOnSubmit(domain);
-                DivanDataContext.Instance.SubmitChanges();
-                if (label == null)
-                    label = new Label();
-                label.name = nameTxt.Text;
-                label.setValue = true;
-                label.isSplitter = checkBox_splitter.Checked;
-                label.LabelDomain = domain;
-                DivanDataContext.Instance.Labels.InsertOnSubmit(label);
+                else
+                {
+                    LabelDomain domain = new LabelDomain(null, null, null, null, ordinalValues.Checked);
+                    for (int i = 0; i < domainGrid.Rows.Count - 1; i++)
+                    {
+                        DataGridViewRow row = domainGrid.Rows[i];
+                        DiscreteDomainValue value = new DiscreteDomainValue();
+                        value.LabelDomain = domain;
+                        value.rank = i;
+                        value.value = (string)row.Cells[0].Value ?? "";
+                        DivanDataContext.Instance.DiscreteDomainValues.InsertOnSubmit(value);
+                    }
+                    DivanDataContext.Instance.LabelDomains.InsertOnSubmit(domain);
+                    DivanDataContext.Instance.SubmitChanges();
+                    if (label == null)
+                        label = new Label();
+                    label.name = nameTxt.Text;
+                    label.setValue = true;
+                    label.isSplitter = checkBox_splitter.Checked;
+                    label.LabelDomain = domain;
+                    DivanDataContext.Instance.Labels.InsertOnSubmit(label);
+                }
             }
 
             DivanDataContext.Instance.SubmitChanges();
@@ -256,6 +281,12 @@ namespace Divan
             {
                 error.SetError(grid, "");
             }
+        }
+
+        private void discNumbersRadio_CheckedChanged(object sender, EventArgs e)
+        {
+            discSetPanel.Visible = !discNumbersRadio.Checked;
+            discNumericalPanel.Visible = discNumbersRadio.Checked;
         }
 
     }
