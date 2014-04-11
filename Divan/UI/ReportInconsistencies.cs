@@ -26,10 +26,16 @@ namespace Divan.UI
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
+            DataGridView grid = (DataGridView)dataGrid_consistencies;
             foreach (DataGridViewRow row in dataGrid_consistencies.Rows)
             {
-                if (!(Boolean)row.Cells[3].Value)
+                if (!(Boolean)row.Cells[5].Value)
+                {
+                    CurrencyManager cm = (CurrencyManager)grid.BindingContext[grid.DataSource];
+                    cm.SuspendBinding();
                     row.Visible = !checkBox1.Checked;
+                    cm.ResumeBinding();
+                }
             }
         }
 

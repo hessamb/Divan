@@ -18,10 +18,56 @@ namespace Divan
 
         public object getValue()
         {
-            if (labelInstance.Label.LabelDomain.isDiscrete())
-                return labelInstance.value;
-            else
-                return Convert.ToDouble(labelInstance.value);
+            return labelInstance.getValue();
+        }
+
+        private bool arrayEquals(LabelInstanceConsistencyExpression lice)
+        {
+            if (!this.isMultipleValue() || !lice.isMultipleValue())
+                return false;
+            object[] arr1 = (object[])this.getValue();
+            object[] arr2 = (object[])lice.getValue();
+            if (arr1.Length != arr2.Length)
+                return false;
+            for (int i=0 ; i<arr1.Length ; i++){
+                bool found = false;
+                for (int j = i; j < arr2.Length; j++)
+                {
+                    if (arr1[i].Equals(arr2[j]))
+                    {
+                        object tmp = arr2[i];
+                        arr2[i] = arr2[j];
+                        arr2[j] = tmp;
+                        found = true;
+                        break;
+                    }
+                }
+                if (!found)
+                    return false;
+            }
+            return true;
+        }
+
+        public SetConsistencyExpression getSetExpression()
+        {
+            if (!this.isMultipleValue())
+                return null;
+            object[] arr = (object[]) this.getValue();
+            List<ConsistencyExpression> list = new List<ConsistencyExpression>();
+            foreach (object o in arr)
+            {
+                if (o is String)
+                    list.Add(new StringConsistencyExpression(o as String));
+                else
+                    list.Add(new DoubleConsistencyExpression((double)o));
+            }
+            return new SetConsistencyExpression(list);
+        }
+
+        public bool  isMultipleValue()
+        {
+            object value = this.getValue();
+            return (value is object[]) || (value is String[]) || (value is double[]);
         }
 
         public override bool equals(ConsistencyExpression ce)
@@ -29,20 +75,24 @@ namespace Divan
             if (ce is LabelInstanceConsistencyExpression)
             {
                 LabelInstanceConsistencyExpression lice = (ce as LabelInstanceConsistencyExpression);
-                return lice.getValue() == this.getValue();
+                if (this.isMultipleValue())
+                    return this.arrayEquals(lice); // Might use getSetExpression, but this one is more efficient.
+                else
+                    return lice.getValue().Equals(this.getValue());
             }
             else if (ce is StringConsistencyExpression)
             {
                 StringConsistencyExpression sce = (ce as StringConsistencyExpression);
-                return sce.getValue() == this.getValue();
+                return sce.getValue().Equals(this.getValue());
             }
             else if (ce is PropertyConsistencyExpression)
             {
                 PropertyConsistencyExpression pce = (ce as PropertyConsistencyExpression);
-                if (pce.getValue() is String)
-                    return this.getValue() == (String)pce.getValue();
-                else
-                    return false;
+                return pce.getValue().Equals(this.getValue());
+            }
+            else if (ce is SetConsistencyExpression)
+            {
+                return this.getSetExpression().equals(ce);
             }
             else
             {
@@ -52,14 +102,31 @@ namespace Divan
 
         public override bool hasIN(ConsistencyExpression ce)
         {
-            if (!(ce is StringConsistencyExpression))
-                return base.hasIN(ce);
-            StringConsistencyExpression sce = (ce as StringConsistencyExpression);
-            string[] vals = this.labelInstance.value.Split(new string[] { LabelInstance.VALUE_SPLITTER }, StringSplitOptions.None);
-            foreach (string val in vals)
+            if (!isMultipleValue())
             {
-                if (val == sce.getValue())
-                    return true;
+                return base.hasIN(ce);
+            }
+            object[] arr = (object[])this.getValue();
+            foreach (object o in arr)
+            {
+                if (ce is StringConsistencyExpression)
+                {
+                    if (o.Equals((ce as StringConsistencyExpression).getValue()))
+                    {
+                        return true;
+                    }
+                }
+                else if (ce is DoubleConsistencyExpression)
+                {
+                    if (o.Equals((ce as DoubleConsistencyExpression).getValue()))
+                    {
+                        return true;
+                    }
+                }
+                else
+                {
+                    return false;
+                }
             }
             return false;
         }

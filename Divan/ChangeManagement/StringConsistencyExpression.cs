@@ -21,20 +21,17 @@ namespace Divan
             if (ce is StringConsistencyExpression)
             {
                 StringConsistencyExpression sce = (ce as StringConsistencyExpression);
-                return sce.getValue() == this.getValue();
+                return sce.getValue().Equals(this.getValue());
             }
             else if (ce is LabelInstanceConsistencyExpression)
             {
                 LabelInstanceConsistencyExpression lice = (ce as LabelInstanceConsistencyExpression);
-                return lice.getValue() == this.getValue();
+                return lice.getValue().Equals(this.getValue());
             }
             else if (ce is PropertyConsistencyExpression)
             {
                 PropertyConsistencyExpression pce = (ce as PropertyConsistencyExpression);
-                if (pce.getValue() is String)
-                    return (pce.getValue() as String) == this.getValue();
-                else
-                    return false;
+                return this.getValue().Equals(pce.getValue());
             }
             else
             {
@@ -64,7 +61,12 @@ namespace Divan
             String value = "";
             for (int i = f; i <= k; i++)
             {
-                value += Regex.Unescape(tokens[i]);
+                String now = Regex.Unescape(tokens[i]);
+                if (i == f)
+                    now = now.Substring(1);
+                if (i == k)
+                    now = now.Substring(0, now.Length - 1);
+                value += now;
                 if (i!=k)
                     value += " ";
             }

@@ -25,13 +25,13 @@ namespace Divan
                 if (condition == "!=")
                     return mExp.equals(sExp);
                 if (condition == "<")
-                    return !mExp.greaterThan(sExp);
+                    return !sExp.greaterThan(mExp);
                 if (condition == ">")
-                    return sExp.greaterEqual(mExp);
+                    return !mExp.greaterThan(sExp);
                 if (condition == "<=")
-                    return !mExp.greaterEqual(sExp);
+                    return !sExp.greaterEqual(mExp);
                 if (condition == ">=")
-                    return sExp.greaterThan(mExp);
+                    return !mExp.greaterEqual(sExp);
                 if (condition == "IN")
                     return !sExp.hasIN(mExp);
                 if (condition == "!IN")
@@ -52,21 +52,22 @@ namespace Divan
             }
         }
 
-        public string Importance
+        public string ImportanceString
         {
             get
             {
                 switch (importance)
                 {
-                    case IMPORTANCE_SAFE: return "ایمن";
+                    case IMPORTANCE_SAFE: return "امن";
                     case IMPORTANCE_CRITICAL: return "بحرانی";
-                    case IMPORTANCE_SAFE_CRITICAL: return "بحرانی-ایمن";
+                    case IMPORTANCE_SAFE_CRITICAL: return "بحرانی-امن";
                     case IMPORTANCE_CARE: return "مهم";
                     case IMPORTANCE_REGULAR: return "عادی";
                     default: return "";
                 }
             }
         }
+
         public static int getImportance(string importanceText)
         {
             if (importanceText == "امن")

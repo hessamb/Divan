@@ -34,13 +34,19 @@ namespace Divan
                     bool found = false;
                     for (int j = i; j < sce.members.Count; j++)
                     {
-                        if (members[i].equals(sce.members[j]))
+                        try
                         {
-                            ConsistencyExpression tmp = sce.members[i];
-                            sce.members[i] = sce.members[j];
-                            sce.members[j] = tmp;
-                            found = true;
-                            break;
+                            if (members[i].equals(sce.members[j]))
+                            {
+                                ConsistencyExpression tmp = sce.members[i];
+                                sce.members[i] = sce.members[j];
+                                sce.members[j] = tmp;
+                                found = true;
+                                break;
+                            }
+                        }
+                        catch
+                        {
                         }
 
                     }
@@ -48,6 +54,11 @@ namespace Divan
                         return false;
                 }
                 return true;
+            }
+            else if (ce is LabelInstanceConsistencyExpression)
+            {
+                LabelInstanceConsistencyExpression lice = ce as LabelInstanceConsistencyExpression;
+                return lice.getSetExpression().equals(this);
             }
             else
             {

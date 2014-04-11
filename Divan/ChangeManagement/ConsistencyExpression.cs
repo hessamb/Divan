@@ -19,7 +19,7 @@ namespace Divan
 
         public bool greaterEqual(ConsistencyExpression ce)
         {
-            return equals(ce) || greaterThan(ce);
+            return greaterThan(ce) || equals(ce);
         }
 
         public virtual bool hasIN(ConsistencyExpression ce)

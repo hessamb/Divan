@@ -19,14 +19,7 @@ namespace Divan
             else if (ce is PropertyConsistencyExpression)
             {
                 PropertyConsistencyExpression pce = (ce as PropertyConsistencyExpression);
-                if (pce.getValue() is double)
-                {
-                    return (pce.getValue() as double?) == this.value;
-                }
-                else
-                {
-                    return false;
-                }
+                return pce.getValue().Equals(this.value);
             }
             else
             {

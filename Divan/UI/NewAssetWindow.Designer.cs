@@ -49,8 +49,13 @@
             this.label2 = new System.Windows.Forms.Label();
             this.checkBox_isPhysical = new System.Windows.Forms.CheckBox();
             this.sensibleAssetProps = new System.Windows.Forms.Panel();
+            this.documentCmb = new System.Windows.Forms.ComboBox();
+            this.documentTxt = new System.Windows.Forms.TextBox();
             this.insuranceCmb = new System.Windows.Forms.ComboBox();
+            this.insuranceTxt = new System.Windows.Forms.TextBox();
+            this.label11 = new System.Windows.Forms.Label();
             this.textBox_PhysicalDescription = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
@@ -83,7 +88,7 @@
             this.mValue = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.condition = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.sValue = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.importance = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.ImportanceString = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.checkBox_Composite = new System.Windows.Forms.CheckBox();
             this.GroupBox_subAssets = new System.Windows.Forms.GroupBox();
             this.removeSubAssetBut = new System.Windows.Forms.Button();
@@ -94,11 +99,6 @@
             this.button3 = new System.Windows.Forms.Button();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
-            this.insuranceTxt = new System.Windows.Forms.TextBox();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
-            this.documentTxt = new System.Windows.Forms.TextBox();
-            this.documentCmb = new System.Windows.Forms.ComboBox();
             this.flowLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.humanAssetProps.SuspendLayout();
@@ -323,6 +323,27 @@
             this.sensibleAssetProps.Size = new System.Drawing.Size(467, 110);
             this.sensibleAssetProps.TabIndex = 5;
             // 
+            // documentCmb
+            // 
+            this.documentCmb.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.documentCmb.FormattingEnabled = true;
+            this.documentCmb.Items.AddRange(new object[] {
+            "دارد",
+            "ندارد",
+            "موضوعیت ندارد"});
+            this.documentCmb.Location = new System.Drawing.Point(350, 83);
+            this.documentCmb.Name = "documentCmb";
+            this.documentCmb.Size = new System.Drawing.Size(71, 22);
+            this.documentCmb.TabIndex = 11;
+            // 
+            // documentTxt
+            // 
+            this.documentTxt.Location = new System.Drawing.Point(8, 83);
+            this.documentTxt.Multiline = true;
+            this.documentTxt.Name = "documentTxt";
+            this.documentTxt.Size = new System.Drawing.Size(270, 23);
+            this.documentTxt.TabIndex = 10;
+            // 
             // insuranceCmb
             // 
             this.insuranceCmb.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -335,6 +356,23 @@
             this.insuranceCmb.Size = new System.Drawing.Size(71, 22);
             this.insuranceCmb.TabIndex = 11;
             // 
+            // insuranceTxt
+            // 
+            this.insuranceTxt.Location = new System.Drawing.Point(8, 55);
+            this.insuranceTxt.Multiline = true;
+            this.insuranceTxt.Name = "insuranceTxt";
+            this.insuranceTxt.Size = new System.Drawing.Size(270, 23);
+            this.insuranceTxt.TabIndex = 10;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(284, 86);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(62, 14);
+            this.label11.TabIndex = 2;
+            this.label11.Text = "شرح سند:";
+            // 
             // textBox_PhysicalDescription
             // 
             this.textBox_PhysicalDescription.Location = new System.Drawing.Point(8, 26);
@@ -342,6 +380,15 @@
             this.textBox_PhysicalDescription.Name = "textBox_PhysicalDescription";
             this.textBox_PhysicalDescription.Size = new System.Drawing.Size(451, 23);
             this.textBox_PhysicalDescription.TabIndex = 10;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(425, 88);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(34, 14);
+            this.label10.TabIndex = 2;
+            this.label10.Text = "سند:";
             // 
             // label9
             // 
@@ -557,6 +604,7 @@
             this.dataGrid_DefinerLabel.Size = new System.Drawing.Size(223, 118);
             this.dataGrid_DefinerLabel.TabIndex = 17;
             this.dataGrid_DefinerLabel.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGrid_OtherLabel_CellDoubleClick);
+            this.dataGrid_DefinerLabel.CellValidated += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGrid_OtherLabel_CellValidated);
             this.dataGrid_DefinerLabel.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.dataGrid_OtherLabel_CellValidating);
             // 
             // Check
@@ -630,7 +678,7 @@
             this.mValue,
             this.condition,
             this.sValue,
-            this.importance});
+            this.ImportanceString});
             this.dataGrid_consistencyRules.Location = new System.Drawing.Point(3, 23);
             this.dataGrid_consistencyRules.Name = "dataGrid_consistencyRules";
             this.dataGrid_consistencyRules.RightToLeft = System.Windows.Forms.RightToLeft.No;
@@ -667,18 +715,18 @@
             this.sValue.HeaderText = "مقدار مبنا";
             this.sValue.Name = "sValue";
             // 
-            // importance
+            // ImportanceString
             // 
-            this.importance.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.importance.HeaderText = "اهمیت";
-            this.importance.Items.AddRange(new object[] {
+            this.ImportanceString.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.ImportanceString.HeaderText = "اهمیت";
+            this.ImportanceString.Items.AddRange(new object[] {
             "امن",
             "بحرانی-امن",
             "بحرانی",
             "مهم",
             "عادی"});
-            this.importance.Name = "importance";
-            this.importance.Width = 46;
+            this.ImportanceString.Name = "ImportanceString";
+            this.ImportanceString.Width = 46;
             // 
             // checkBox_Composite
             // 
@@ -789,53 +837,6 @@
             this.errorProvider.ContainerControl = this;
             this.errorProvider.RightToLeft = true;
             // 
-            // insuranceTxt
-            // 
-            this.insuranceTxt.Location = new System.Drawing.Point(8, 55);
-            this.insuranceTxt.Multiline = true;
-            this.insuranceTxt.Name = "insuranceTxt";
-            this.insuranceTxt.Size = new System.Drawing.Size(270, 23);
-            this.insuranceTxt.TabIndex = 10;
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(425, 88);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(34, 14);
-            this.label10.TabIndex = 2;
-            this.label10.Text = "سند:";
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(284, 86);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(62, 14);
-            this.label11.TabIndex = 2;
-            this.label11.Text = "شرح سند:";
-            // 
-            // documentTxt
-            // 
-            this.documentTxt.Location = new System.Drawing.Point(8, 83);
-            this.documentTxt.Multiline = true;
-            this.documentTxt.Name = "documentTxt";
-            this.documentTxt.Size = new System.Drawing.Size(270, 23);
-            this.documentTxt.TabIndex = 10;
-            // 
-            // documentCmb
-            // 
-            this.documentCmb.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.documentCmb.FormattingEnabled = true;
-            this.documentCmb.Items.AddRange(new object[] {
-            "دارد",
-            "ندارد",
-            "موضوعیت ندارد"});
-            this.documentCmb.Location = new System.Drawing.Point(350, 83);
-            this.documentCmb.Name = "documentCmb";
-            this.documentCmb.Size = new System.Drawing.Size(71, 22);
-            this.documentCmb.TabIndex = 11;
-            // 
             // NewAssetWindow
             // 
             this.AcceptButton = this.button3;
@@ -938,10 +939,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn LabelValue;
         private System.Windows.Forms.DataGridViewTextBoxColumn id2;
         private System.Windows.Forms.DataGridView dataGrid_consistencyRules;
-        private System.Windows.Forms.DataGridViewTextBoxColumn mValue;
-        private System.Windows.Forms.DataGridViewComboBoxColumn condition;
-        private System.Windows.Forms.DataGridViewTextBoxColumn sValue;
-        private System.Windows.Forms.DataGridViewComboBoxColumn importance;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.ComboBox insuranceCmb;
         private System.Windows.Forms.Label label9;
@@ -951,5 +948,9 @@
         private System.Windows.Forms.TextBox insuranceTxt;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.DataGridViewTextBoxColumn mValue;
+        private System.Windows.Forms.DataGridViewComboBoxColumn condition;
+        private System.Windows.Forms.DataGridViewTextBoxColumn sValue;
+        private System.Windows.Forms.DataGridViewComboBoxColumn ImportanceString;
     }
 }

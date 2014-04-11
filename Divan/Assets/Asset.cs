@@ -288,7 +288,7 @@ namespace Divan
         public Property getProperty(string name)
         {
             var properties = from p in DivanDataContext.Instance.Properties
-                             where p.assetID == this.Id && p.Name == name
+                             where p.assetID == this.Id && p.name == name
                              select p;
             try
             {

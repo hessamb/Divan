@@ -48,5 +48,34 @@ namespace Divan
             //TODO
         }
 
+
+        public object getValue()
+        {
+            LabelDomain domain = this.Label.LabelDomain;
+            if (domain.isDiscrete() && !domain.isNumeric())
+            {
+                if (this.value.Contains(VALUE_SPLITTER))
+                    return this.value.Split(new string[] { VALUE_SPLITTER }, StringSplitOptions.None).Cast<object>().ToArray();
+                else
+                    return this.value;
+            }
+            else
+            {
+                if (this.value.Contains(VALUE_SPLITTER))
+                {
+                    string[] vals = this.value.Split(new string[] { VALUE_SPLITTER }, StringSplitOptions.None);
+                    object[] dvals = new object[vals.Length];
+                    for (int i = 0; i < vals.Length; i++)
+                    {
+                        dvals[i] = Convert.ToDouble(vals[i]);
+                    }
+                    return dvals;
+                }
+                else
+                {
+                    return Convert.ToDouble(this.value);
+                }
+            }
+        }
     }
 }

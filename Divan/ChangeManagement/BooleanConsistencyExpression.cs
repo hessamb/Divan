@@ -15,6 +15,11 @@ namespace Divan
             this.value = value;
         }
 
+        public bool getValue()
+        {
+            return value;
+        }
+
         public override bool equals(ConsistencyExpression ce)
         {
             if (ce is BooleanConsistencyExpression)
@@ -24,10 +29,7 @@ namespace Divan
             else if (ce is PropertyConsistencyExpression)
             {
                 PropertyConsistencyExpression pce = (ce as PropertyConsistencyExpression);
-                if (pce.getValue() is Boolean)
-                    return (pce.getValue() as bool?) == value;
-                else
-                    return false;
+                return pce.getValue().Equals(value);
             }
             else
             {

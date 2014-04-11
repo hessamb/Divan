@@ -32,6 +32,13 @@ namespace Divan
         {
             if (value == null)
                 return false;
+            else if (value.Contains(LabelInstance.VALUE_SPLITTER)){
+                string[] words = value.Split(new string[]{LabelInstance.VALUE_SPLITTER}, StringSplitOptions.None);
+                foreach(String word in words)
+                    if (!this.IsValidValue(word))
+                        return false;
+                return true;
+            }
             else if (this.isDiscrete())
             {
                 if (this.isNumeric())
@@ -48,20 +55,13 @@ namespace Divan
                 }
                 else
                 {
-                    string[] vals = value.Split(new string[] { " - " }, StringSplitOptions.None);
-                    foreach (string word in vals)
-                    {
-                        bool valid = false;
-                        foreach (DiscreteDomainValue val in this.DiscreteDomainValues)
-                            if (word == val.value)
-                            {
-                                valid = true;
-                                break;
-                            }
-                        if (!valid)
-                            return false;
-                    }
-                    return true;
+                    foreach (DiscreteDomainValue val in this.DiscreteDomainValues)
+                        if (value == val.value)
+                        {
+                            return true;
+                            break;
+                        }
+                    return false;
                 }
             }
             else

@@ -28,13 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGrid_consistencies = new System.Windows.Forms.DataGridView();
-            this.AssetName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Importance = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Operand = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Inconsistent = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.radioButton_uid = new System.Windows.Forms.RadioButton();
@@ -42,6 +38,12 @@
             this.radioButton_allProperties = new System.Windows.Forms.RadioButton();
             this.searchTxt = new System.Windows.Forms.TextBox();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.AssetName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.mValue = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.sValue = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Importance = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Operand = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Inconsistent = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGrid_consistencies)).BeginInit();
             this.SuspendLayout();
             // 
@@ -50,14 +52,16 @@
             this.dataGrid_consistencies.AllowUserToAddRows = false;
             this.dataGrid_consistencies.AllowUserToDeleteRows = false;
             this.dataGrid_consistencies.AllowUserToResizeRows = false;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.dataGrid_consistencies.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.dataGrid_consistencies.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGrid_consistencies.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGrid_consistencies.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGrid_consistencies.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.AssetName,
+            this.mValue,
+            this.sValue,
             this.Importance,
             this.Operand,
             this.Inconsistent});
@@ -66,49 +70,12 @@
             this.dataGrid_consistencies.Name = "dataGrid_consistencies";
             this.dataGrid_consistencies.ReadOnly = true;
             this.dataGrid_consistencies.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.dataGrid_consistencies.RowsDefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.dataGrid_consistencies.RowsDefaultCellStyle = dataGridViewCellStyle2;
             this.dataGrid_consistencies.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.dataGrid_consistencies.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGrid_consistencies.Size = new System.Drawing.Size(660, 385);
             this.dataGrid_consistencies.TabIndex = 1;
-            // 
-            // AssetName
-            // 
-            this.AssetName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.AssetName.DataPropertyName = "AssetName";
-            this.AssetName.HeaderText = "نام دارایی";
-            this.AssetName.Name = "AssetName";
-            this.AssetName.ReadOnly = true;
-            // 
-            // Importance
-            // 
-            this.Importance.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.Importance.DataPropertyName = "Importance";
-            this.Importance.HeaderText = "اهمیت قانون";
-            this.Importance.Name = "Importance";
-            this.Importance.ReadOnly = true;
-            this.Importance.Width = 89;
-            // 
-            // Operand
-            // 
-            this.Operand.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.Operand.DataPropertyName = "condition";
-            this.Operand.HeaderText = "عملگر";
-            this.Operand.Name = "Operand";
-            this.Operand.ReadOnly = true;
-            this.Operand.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Operand.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.Operand.Width = 40;
-            // 
-            // Inconsistent
-            // 
-            this.Inconsistent.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.Inconsistent.DataPropertyName = "Inconsistent";
-            this.Inconsistent.HeaderText = "ناسازگار";
-            this.Inconsistent.Name = "Inconsistent";
-            this.Inconsistent.ReadOnly = true;
-            this.Inconsistent.Width = 55;
             // 
             // label2
             // 
@@ -192,6 +159,61 @@
             this.checkBox1.UseVisualStyleBackColor = true;
             this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
             // 
+            // AssetName
+            // 
+            this.AssetName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.AssetName.DataPropertyName = "AssetName";
+            this.AssetName.HeaderText = "نام دارایی";
+            this.AssetName.Name = "AssetName";
+            this.AssetName.ReadOnly = true;
+            // 
+            // mValue
+            // 
+            this.mValue.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.mValue.DataPropertyName = "mValue";
+            this.mValue.HeaderText = "مقدار موردسنجش";
+            this.mValue.Name = "mValue";
+            this.mValue.ReadOnly = true;
+            this.mValue.Width = 99;
+            // 
+            // sValue
+            // 
+            this.sValue.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.sValue.DataPropertyName = "sValue";
+            this.sValue.HeaderText = "مقدار مبنا";
+            this.sValue.Name = "sValue";
+            this.sValue.ReadOnly = true;
+            this.sValue.Width = 69;
+            // 
+            // Importance
+            // 
+            this.Importance.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Importance.DataPropertyName = "ImportanceString";
+            this.Importance.HeaderText = "اهمیت قانون";
+            this.Importance.Name = "Importance";
+            this.Importance.ReadOnly = true;
+            this.Importance.Width = 82;
+            // 
+            // Operand
+            // 
+            this.Operand.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Operand.DataPropertyName = "condition";
+            this.Operand.HeaderText = "عملگر";
+            this.Operand.Name = "Operand";
+            this.Operand.ReadOnly = true;
+            this.Operand.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Operand.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.Operand.Width = 40;
+            // 
+            // Inconsistent
+            // 
+            this.Inconsistent.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Inconsistent.DataPropertyName = "Inconsistent";
+            this.Inconsistent.HeaderText = "ناسازگار";
+            this.Inconsistent.Name = "Inconsistent";
+            this.Inconsistent.ReadOnly = true;
+            this.Inconsistent.Width = 55;
+            // 
             // ReportInconsistencies
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -224,11 +246,13 @@
         private System.Windows.Forms.RadioButton radioButton_name;
         private System.Windows.Forms.RadioButton radioButton_allProperties;
         private System.Windows.Forms.TextBox searchTxt;
+        private System.Windows.Forms.CheckBox checkBox1;
         private System.Windows.Forms.DataGridViewTextBoxColumn AssetName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn mValue;
+        private System.Windows.Forms.DataGridViewTextBoxColumn sValue;
         private System.Windows.Forms.DataGridViewTextBoxColumn Importance;
         private System.Windows.Forms.DataGridViewTextBoxColumn Operand;
         private System.Windows.Forms.DataGridViewCheckBoxColumn Inconsistent;
-        private System.Windows.Forms.CheckBox checkBox1;
 
     }
 }
